@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReporteCanc" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="0150c2a1-8f14-4fb9-b5c6-826df50fb4f5">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="puesto" class="java.lang.String"/>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="codCurso" class="java.lang.String"/>
+	<field name="cancelados" class="java.lang.Integer"/>
+	<field name="noShow" class="java.lang.Integer"/>
+	<field name="noExamen" class="java.lang.Integer"/>
+	<field name="dsc" class="java.lang.Integer"/>
+	<variable name="sumCanc" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{cancelados}!= null)? $F{cancelados} : 0]]></variableExpression>
+	</variable>
+	<variable name="sumNoShow" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{noShow}!= null)? $F{noShow} : 0]]></variableExpression>
+	</variable>
+	<variable name="sumNoExamen" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[($F{noExamen}!= null)? $F{noExamen} : 0]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="90" height="20" uuid="fef81e44-6b12-4647-b359-0ecfdbf75211"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="120" height="20" uuid="4caa12f1-9d12-4d60-b294-5e8b748aafbe"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="210" y="0" width="99" height="20" uuid="2c4e778e-ee74-4734-a569-38f93b13c6d5"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{puesto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="310" y="0" width="70" height="20" uuid="352c3fdf-469e-42a8-b821-3d4cc94c9fa0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="30" height="20" uuid="e626d73e-077b-4e34-852b-4a63f6d44889"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codCurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="20" width="30" height="20" uuid="21cccf67-9163-4f12-9586-43aee17c94b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{cancelados}!= null)? $F{cancelados} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="20" width="30" height="20" uuid="855dc6bb-acc8-41bc-8aed-1f10e390f417"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{noShow}!= null)? $F{noShow} : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="20" width="30" height="20" uuid="c6368264-99e8-4927-9e9b-51c96d101d1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{noExamen}!= null)? $F{noExamen} : ""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-10" y="40" width="544" height="1" uuid="5d90ecc9-a96f-4cea-8ac5-24a0abff7ff6"/>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="510" y="20" width="20" height="19" backcolor="#80FFFF" uuid="06a14740-664b-4267-95c2-d6b656cc7e43">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textField>
+					<reportElement x="1" y="1" width="19" height="18" uuid="a62eae78-291b-4a18-8d6b-2c69fbc32b55"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dsc}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<summary>
+		<band height="10">
+			<textField>
+				<reportElement x="430" y="1" width="30" height="3" forecolor="#FFFFFF" uuid="cb066cf3-6c1f-400e-b1a1-ae4ddcd0f4bd"/>
+				<textElement>
+					<font fontName="SansSerif" size="4.51"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumCanc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="1" width="30" height="3" forecolor="#FFFFFF" uuid="93aa1c3a-69e5-4546-abfd-f6020eabde59"/>
+				<textElement>
+					<font fontName="SansSerif" size="4.51"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNoShow}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="490" y="1" width="30" height="3" forecolor="#FFFFFF" uuid="e3077c3f-ce13-4999-997f-e554e8f49b1f"/>
+				<textElement>
+					<font fontName="SansSerif" size="4.51"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNoExamen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SUBREPORTECOBRANZA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cffa44ac-1914-4af4-9bdc-29bb245ea124">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="nombreCurso" class="java.lang.String"/>
+	<field name="codCurso" class="java.lang.String"/>
+	<field name="asistencias" class="java.lang.Integer"/>
+	<field name="costoUnitario" class="java.math.BigDecimal"/>
+	<field name="costo" class="java.math.BigDecimal"/>
+	<field name="url" class="java.lang.String"/>
+	<variable name="sumCosto" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{costo}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="11" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="-20" width="480" height="28" backcolor="#4472C4" uuid="240670bd-fd5b-49cd-bf98-8dee5f944f3b">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="60" height="27" forecolor="#FFFFFF" uuid="1c8ec026-afab-4444-aebf-720b0dc19e49">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62723e2e-c284-4c9a-ab51-30d39e7c87db"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="9"/>
+					</textElement>
+					<text><![CDATA[FECHA ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="61" y="1" width="100" height="27" forecolor="#FFFFFF" uuid="f26ed48a-a449-4037-be5d-79f7d5f8c5f5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="363c448a-2825-4993-8915-20b4061e9b62"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="9"/>
+					</textElement>
+					<text><![CDATA[ NOMBRE DEL CURSO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="161" y="1" width="98" height="27" forecolor="#FFFFFF" uuid="676358b1-7eb1-49ce-bc52-9be5ac350292">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68c03602-224e-476d-a5d8-28363dac554c"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="9"/>
+					</textElement>
+					<text><![CDATA[COD. CURSO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="259" y="1" width="50" height="27" forecolor="#FFFFFF" uuid="9157f999-7f6c-4a2e-a791-7acfd7f546ec">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ea1b888-46cf-47e6-915f-19ef6df55910"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="9"/>
+					</textElement>
+					<text><![CDATA[ ASISTENCIAS ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="310" y="1" width="100" height="27" forecolor="#FFFFFF" uuid="01b903f2-f02f-48f2-bd17-a178c01e8dd1">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="9"/>
+					</textElement>
+					<text><![CDATA[COSTO UNITARIO]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="60" height="30" uuid="6fa991ff-5d50-4059-8588-b995947b6f20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62723e2e-c284-4c9a-ab51-30d39e7c87db"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="0" width="100" height="30" uuid="f345567b-793a-4b0b-bfc8-495475a7313f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="363c448a-2825-4993-8915-20b4061e9b62"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreCurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="98" height="30" uuid="943df674-e2ee-4470-9a73-a74ea889f231">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68c03602-224e-476d-a5d8-28363dac554c"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codCurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="258" y="0" width="52" height="30" uuid="2860ea16-f027-420b-b8d6-a3eca869cbeb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ea1b888-46cf-47e6-915f-19ef6df55910"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{asistencias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="100" height="30" uuid="020e53a8-da80-443c-8bb9-65e3b5772bfc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costoUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="0" width="70" height="30" uuid="d99405f2-167c-4316-a85a-45bb21f3d798">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7dd01b7c-3483-479c-abed-f39bc015f0cf"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{costo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="70" height="30" uuid="e67fa871-30cd-44f1-a7c7-396b36c713c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="18df323f-e6c6-459d-b341-bd6f70969c6e"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Dotted" lineColor="#00B0F0"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{url}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="410" y="0" width="70" height="30" uuid="4d048fea-e23c-49f6-967a-881a26d1752e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumCosto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="42" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

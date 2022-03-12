@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="COBRANZA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cda75b82-9351-4f05-b022-2f8b4213cdd4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="subReporteCobr" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="cobranzaSR" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch">
+			<staticText>
+				<reportElement x="37" y="0" width="100" height="6" uuid="71be70c0-f024-4563-8b5d-9b7b529eb497">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="79bfdb21-832d-4bab-a147-dc9ee97dd0e0"/>
+				</reportElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="100" height="6" uuid="3f53071a-9ce2-4cf6-8dc2-2f5958bbf0c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82bcf182-9cb7-457f-a169-5634afdbb7e3"/>
+				</reportElement>
+				<text><![CDATA[nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="377" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="21" y="45" width="479" height="25" backcolor="#000000" uuid="f476f45f-7b8e-48b5-8e18-979ef033c676">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textField>
+					<reportElement x="1" y="1" width="478" height="24" forecolor="#FFFFFF" uuid="8c064771-cef1-40d1-a833-876bc6b5528c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82bcf182-9cb7-457f-a169-5634afdbb7e3"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Calibri" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<subreport>
+				<reportElement x="1" y="70" width="543" height="200" uuid="6302f445-7682-4722-a57c-7c1c207d1072"/>
+				<dataSourceExpression><![CDATA[$F{cobranzaSR}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReporteCobr}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="12" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="10" splitType="Stretch"/>
+	</summary>
+</jasperReport>

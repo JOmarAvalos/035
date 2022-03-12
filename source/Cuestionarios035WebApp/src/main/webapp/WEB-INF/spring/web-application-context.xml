@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        					http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       
+		<mvc:annotation-driven/>
+
+        <context:property-placeholder location="classpath:config/${app.environment}/application.properties" />
+        
+		<!-- Load @Controllers only -->
+        <context:component-scan base-package="com.teknei.webapp.controller" use-default-filters="false">
+            <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+        </context:component-scan>
+        <context:component-scan base-package="com.teknei.webapp.pvs.controller" use-default-filters="false">
+            <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+        </context:component-scan>
+		
+		<mvc:interceptors>
+		    <bean class="com.teknei.common.webapp.logging.NavigationLogger" />
+		    <bean class="com.teknei.common.webapp.interceptor.SessionHandlerInterceptor" />
+		    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            	<property name="paramName" value="locale" />
+            </bean>
+		</mvc:interceptors>
+
+		<mvc:resources mapping="/cache.appcache" location="/" />
+        <mvc:resources mapping="/favicon.ico" location="/" />
+		<mvc:resources mapping="/resources/css/**" location="/resources/css/" />
+		<mvc:resources mapping="/resources/fonts/**" location="/resources/fonts/" />
+		<mvc:resources mapping="/resources/plugins/**" location="/resources/plugins/" />
+		<mvc:resources mapping="/resources/images/**" location="/resources/images/" />
+		<mvc:resources mapping="/resources/js/**" location="/resources/js/" />
+		<mvc:resources mapping="/resources/localisation/**" location="/resources/localisation/" />
+		<mvc:resources mapping="/resources/libs/**" location="/resources/libs/" />
+		
+		<!-- Handle files uploading -->
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+        
+        <!-- Handle views with Tiles -->
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+            <property name="viewClass">
+                <value>org.springframework.web.servlet.view.tiles3.TilesView</value>
+            </property>
+        </bean>
+        <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+            <property name="definitions">
+                <list>
+                    <value>/WEB-INF/layouts/layouts.xml</value>
+                </list>
+            </property>
+        </bean>
+	  
+	    <!-- Handle automatic marshalling for json and xml requests responses -->
+		<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+            <property name="order" value="1" />
+            <property name="contentNegotiationManager" ref="cnManager" />
+            <property name="defaultViews">
+                <list>
+                    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+                    <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <constructor-arg >
+                        <bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+                    </constructor-arg>
+                    </bean>
+                </list>
+            </property>
+        </bean>
+        
+        <bean id="cnManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+            <property name="ignoreAcceptHeader" value="true" />
+            <property name="mediaTypes">
+                <map>
+                    <entry key="json" value="application/json" />
+                    <entry key="xml" value="application/xml" />
+                </map>
+            </property>
+        </bean>
+    	
+    	<!-- Handle localisation -->
+    	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	        <property name="defaultLocale" value="es" />
+	        <property name="cookieName" value="argosAppLocaleCookie"></property>
+	        <property name="cookieMaxAge" value="3600"></property>
+	    </bean>
+        
+</beans>

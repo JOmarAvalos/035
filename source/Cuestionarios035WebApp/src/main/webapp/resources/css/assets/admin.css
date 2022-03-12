@@ -1,0 +1,503 @@
+.admin_wrap{}
+.admin_wrap>h1{
+    font-size: 1.6em;
+    font-family: var(--fbold);
+    color: var(--color-main);
+    text-transform: uppercase;
+    margin: 0px 0 25px 0;
+    padding-top: 0px;
+    top: 0px;
+    line-height: 1;
+    position: relative;
+}
+.admin_wrap>h1::before{
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: var(--color-secondarylt);
+    bottom: -5px;
+    left: 0px;
+}
+
+.search_bar{
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: right;
+}
+.search_bar input[type=search] {
+    width: 60%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid var(--color-graytrd);
+    border-radius: 50px;
+    font-size: 13px;
+    background-color: var(--color-graysc);
+    padding: 6px 40px 5px 20px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    position: relative;
+    color: var(--color-text);
+}
+.search_bar input[type=search]:focus {
+    width: 100%;
+    outline: 0;
+}
+.search_bar input[type=search]+span{
+    position: absolute;
+    left: auto;
+}
+.search_bar input[type=search]+span:after{
+    content: '\f002';
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    position: absolute;
+    color:white;
+    right: 15px;
+    top: 5px;
+    font-size: 16px;
+    z-index: 111;
+    cursor:text;
+}
+.search_bar button{
+    background-color: transparent;
+    border: 0px;
+    position: absolute;
+    color: var(--color-gray);
+    right: 15px;
+    top: 9px;
+    font-size: 16px;
+    z-index: 2;
+    -webkit-transition: all ease-out .4s;
+    transition: all ease-out .4s;
+}
+.search_bar button:hover{
+    color: var(--color-graylt);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    cursor: pointer;
+}
+.search_bar button:focus{
+    outline: 0px;
+}
+
+.dropdown-toggle{
+    border: 1px solid var(--color-graytrd);
+    font-size: 14px;
+    background-color: var(--color-graysc);
+    color: var(--color-text);
+}
+.bootstrap-select .dropdown-toggle{
+    font-size: 12px;
+}
+.bootstrap-select .dropdown-toggle:focus{
+    border: 1px solid var(--color-green);
+    -webkit-box-shadow: 0px 0px 3px #b7b9de;
+    box-shadow: 0px 0px 3px var(--color-gray);
+    outline: none !important;
+
+}
+.bootstrap-select>.dropdown-toggle:after {
+    margin-top:0px;
+    background: var(--color-gray);
+    height: 101%;
+    position: absolute;
+    width: 35px;
+    right: 0;
+    border: 0px;
+    content: '\f0d7';
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 2;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    text-align: center;
+}
+
+.bootstrap-select .dropdown-menu {
+    font-size: 12px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 0em .75rem;
+    font-size: 1em;
+}
+
+/*TABLES ADMIN*/
+
+
+.table tbody{
+    background: #fdfdfd;
+    border: 1px solid #E3E3E3;
+}
+.table tr{
+    border: 0px solid ;
+    text-align: center;
+    vertical-align: bottom;
+}
+.table td{
+    vertical-align: bottom;
+    padding: 10px 16px;
+    font-size: .91em;
+}
+.table td a{
+    color: var(--color-secondarylt);
+}
+.table tr:nth-child(even){
+    background: rgba(29, 29, 27, 0.01);
+    border: 0px;
+}
+
+.table th {
+    text-align: center;
+    background-color:transparent;
+    color: var(--color-text);
+    font-family: var(--fbold);
+    border: 0px;
+}
+.tables-report tr td{
+    font-size: .91em;
+}
+.tables-report tr td:first-child{
+    text-align: left;
+}
+
+.pagination-container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    float: right;
+    text-align: right;
+}
+
+.pagination{
+    margin: 0 auto;
+    float: right;
+}
+.pagination li{
+    width: 30px;
+    padding: 5px;
+    text-align: center;
+    -webkit-transition:all ease-out .4s;
+    transition:all ease-out .4s;
+    color: var(--color-graytrd);
+}
+.pagination li:not(:last-child)::after{
+    content: ',';
+}
+.pagination li:hover{
+    cursor: pointer;
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    color: var(--color-secondarylt);
+}
+.pagination li.active{
+    font-family: var(--fbold);
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    color: var(--color-secondarylt);
+}
+
+.num_rows {
+    width: 100%;
+    float:left;
+}
+
+.rows_count {
+    width: 100%;
+    text-align:right;
+    color:var(--color-main);
+    font-size: 14px;
+    font-style: italic;
+    font-family: var(--fbold);
+}
+.rows_countEn {
+    width: 100%;
+    text-align:right;
+    color:var(--color-main);
+    font-size: 14px;
+    font-style: italic;
+    font-family: var(--fbold);
+}
+.rows_countFr {
+    width: 100%;
+    text-align:right;
+    color:var(--color-main);
+    font-size: 14px;
+    font-style: italic;
+    font-family: var(--fbold);
+}
+select.form-control option{
+    background: #ebebeb;
+    padding: 30px;
+    margin: 10px 0;
+    height: 30px;
+    position: absolute;
+    line-height: 3;
+    border-bottom: 1px solid #ccc;
+}
+select.form-control option .selected{
+    background: green;
+}
+
+.tabla-funcionarios tr td{
+    padding: 10px 16px;
+    font-size: 13px
+}
+.tabla-funcionarios tr td:first-child{
+    text-align: left;
+}
+.tabla-funcionarios tr td:last-child a{
+    margin: 0 10px;
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    -webkit-transition: all ease-out .4s;
+    transition: all ease-out .4s;
+    position: relative
+}
+
+
+.tabla-funcionarios tr td:last-child a:hover{
+    opacity: .8;
+    text-decoration: none;
+}
+
+
+*:focus,
+button:focus{
+    outline: 0px;
+}
+/*MODAL EDIT FUNCIONARIO*/
+
+.edit-func .modal-header h4{
+    color: var(--color-secondary);
+    font-family: var(--fbold);
+    text-transform: uppercase;
+    font-size: 1.92em;
+}
+.edit-func .modal-header p{
+    color: var(--color-main);
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    font-family: var(--fregular);
+}
+.edit-func .modal-header p span{
+    font-family: var(--fbold);
+}
+
+.edit-func .modal-body p{
+    font-size: 1em;
+    font-family: var(--fregular);
+}
+.edit-func .modal-body p span{
+    font-family: var(--fbold);
+    color: var(--color-main);
+    margin-right: 5px;
+
+}
+.edit-func .modal-body p a{
+    color: var(--color-secondary);
+    letter-spacing: 
+}
+.edit-func .modal-body .actions-modal{
+    text-align: center;
+    padding: 20px;
+}
+
+.telF{
+    letter-spacing: 1px;
+}
+
+.nfb{
+    padding-left: 5%;
+    height: 57px;
+}
+
+
+
+.edit-func{
+	font-size:13px;
+}
+.edit-func-modal{
+	width:80%;
+	margin:0 auto;
+}
+.edit-func-modal li.nav-item{
+	width:50%;
+}
+.edit-func-modal .nav-link.active {
+    border-bottom: 3px solid var(--color-secondarylt);
+}
+.edit-func .md-btn{
+	font-size:12px;
+	margin:10px 10px;
+}
+.new-func{
+	font-size:.9em;
+}
+
+/*MODAL INSCRIPCIONES*/
+.inscripciones .modal-content{
+    padding: 0px;
+    outline: none;
+    outline-offset:0px;
+    border: 0px;
+}
+.inscripciones .modal-header{
+    background: var(--color-secondary);
+    color: white;
+    margin-bottom: 26px;
+    padding: 16px 16px 0 16px;
+    min-height: 50px;
+}
+.inscripciones .modal-header h6{
+    font-size: 1.1em;
+}
+.inscripciones .modal-header h2{
+    font-size: 1.5em;
+    font-family: var(--fbold);
+    text-transform: uppercase;
+}
+.inscripciones .modal-header p{
+    font-size: 1.1em;
+    font-family: var(--fregular);
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0px 0 2px 0;
+}
+.inscripciones .modal-header p i{
+    margin: 10px ;
+}
+.inscripciones .modal-header p span{
+    font-family: var(--fregular);
+}
+.inscripciones .modal-header p span:not(:last-child){
+    margin-right: 20px;
+}
+.inscripciones .modal-header p span i{
+    margin-right: 3px;
+}
+
+/*MODAL CURSO CANCELADO*/
+.modal-curso-cancelado h1{
+    text-transform: uppercase;
+    font-family: var(--fbold);
+    color: var(--color-red);
+    text-align: center;
+    margin: 50px auto 10px auto;
+}
+.modal-curso-cancelado h1 i{
+    color: var(--color-orange);
+    margin-right: 16px;
+}
+.modal-curso-cancelado h4{
+    color: var(--color-text);
+    font-family: var(--fregular);
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+}
+.modal-curso-cancelado .modal-body p{
+    color: var(--color-text);
+    font-family: var(--fregular);
+    width: 90%;
+    margin: 50px auto 10px auto;
+}
+.modal-curso-cancelado .modal-body p:last-child{
+    margin: 10px auto 50px auto;
+}
+/* TABLE MODAL*/
+.inscripciones .tables-modal{
+    max-height: 370px;
+    overflow-y: auto;
+}
+.inscripciones .tables-modal .table {
+    width: 99%;
+    color: var(--color-text);
+    margin: 0 auto 1em auto;
+}
+.inscripciones .tables-modal .table td{
+    padding: 6px 16px;
+}
+.inscripciones .modal-body h3{
+    text-transform: uppercase;
+    font-family: var(--fbold);
+    font-size: 1.3em;
+    margin-top: 30px;
+    color: var(--color-secondary);
+}
+
+/*BOTONES TABLAS*/
+.inscripciones .tables-modal .table .add-user{
+    color: var(--color-secondarylt);
+    background-color: transparent;
+    border: 0px;
+    font-size: 1.1em;
+}
+.inscripciones .tables-modal .table .add-user:after{
+    content: '\f234';
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;   
+}
+.inscripciones .tables-modal .table .add-user:hover{
+    color: var(--color-secondary);
+}
+.inscripciones .tables-modal .table .delete-user{
+    color: var(--color-red);
+    background-color: transparent;
+    border: 0px;
+    font-size: 1.1em;
+}
+.inscripciones .tables-modal .table .delete-user:after{
+    content: '\f1f8';
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;   
+}
+.inscripciones .tables-modal .table .delete-user:hover{
+    color: var(--color-secondary);
+}
+
+.inscripciones .tables-modal .table .delete-user:disabled,
+.inscripciones .tables-modal .table .delete-user[disabled]{
+    color: var(--color-graytrd);
+    cursor: no-drop;
+}
+
+
+@media screen and (max-width: 1200px) { 
+    .search_bar input[type=search] {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 990px) { 
+    .nfb{
+        padding-left: 10%;
+        margin-bottom: 10px
+    }
+    .btn-new-func{
+        margin-bottom: 20px
+    }
+
+}
+@media screen and (max-width: 768px) { 
+
+}
+@media screen and (max-width: 574px) { 
+    .nfb{
+        text-align: center;
+        padding-left: 0%;
+        margin-bottom: 15px;
+    }
+
+}

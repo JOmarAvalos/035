@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# v1.0.1
+CACHE:
+favicon.ico
+resources/js/util/jquery-2.1.3.min.js
+resources/js/util/jquery.loadmask.js
+resources/js/util/bootstrap.min.js
+resources/css/util/bootstrap.min.css
+resources/fonts/util/font-awesome/css/font-awesome.min.css
+resources/images/logotipo_hermobile.png
+resources/images/img_login.png
+resources/images/bkg_barra_header_b.png
+resources/images/bkg_barra_header.png
+resources/images/control-loading.gif
+resources/images/loading.gif
+https://fonts.googleapis.com/css?family=Roboto:400italic,100,100italic,400
+
+NETWORK:
+*

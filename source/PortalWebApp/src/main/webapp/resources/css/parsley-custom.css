@@ -1,0 +1,19 @@
+
+.parsleyError {
+  border: 1px solid red !important;
+  background: rgb(255, 206, 206);
+}
+
+.parsleyCorrect {
+  border: 1px solid #ccc;
+  background-color: transparent;
+}
+
+.parsley-required {
+	color: red;
+}
+
+.parsley-range {
+	color: red;
+}
+

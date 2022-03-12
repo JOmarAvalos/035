@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx" 
+	   xmlns:security="http://www.springframework.org/schema/security" 
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:task="http://www.springframework.org/schema/task" 
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx   http://www.springframework.org/schema/tx/spring-tx.xsd 
+                           http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd 
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd 
+                           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- Load everything except @Controllers -->
+	<context:component-scan base-package="com.teknei.*">
+		<context:exclude-filter expression="org.springframework.stereotype.Controller"
+			type="annotation" />
+	</context:component-scan>
+
+    <tx:annotation-driven />
+
+	<aop:aspectj-autoproxy />
+	
+	<cache:annotation-driven />
+	
+	<task:executor id="asyncExecutor" pool-size="20" />
+	
+	<task:annotation-driven executor="asyncExecutor" />
+	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" 
+			p:cache-manager-ref="ehcache"/>
+			
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+			p:config-location="classpath:ehcache.xml" p:shared="true"/>
+	
+	<bean id="log4jConfigurer" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean" >
+        <property name="targetClass"><value>org.springframework.util.Log4jConfigurer</value></property>
+        <property name="targetMethod"><value>initLogging</value></property>
+        <property name="arguments">
+            <list>
+                <value>classpath:config/${app.environment}/log4j.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- TODO: Comment for production deployment -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+ 		<property name="locations">
+	 		<list>
+	 			<value>classpath:config/${app.environment}/jdbc.properties</value>
+				<value>classpath:config/${app.environment}/hibernate.properties</value>
+				<value>classpath:config/${app.environment}/application.properties</value>
+	 		</list>
+ 		</property>
+ 		<property name="ignoreUnresolvablePlaceholders" value="true" />
+ 	</bean>
+	
+	<!-- TODO: Uncomment for production deployment -->
+ 	<!-- <bean id="stringPBEConfig" class="org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig">
+		<property name="algorithm" value="PBEWithMD5AndDES" />
+		<property name="passwordEnvName" value="APP_CONFIG_PASSWORD" />
+	</bean>
+ 	
+ 	<bean id="encryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+ 		<property name="config" ref="stringPBEConfig" />
+	</bean>
+ 	
+ 	<bean id="propertyConfigurer" class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
+ 		<constructor-arg ref="encryptor" />
+ 		<property name="locations">
+	 		<list>
+	 			<value>classpath:config/${app.environment}/jdbc.properties</value>
+				<value>classpath:config/${app.environment}/hibernate.properties</value>
+				<value>classpath:config/${app.environment}/application.properties</value>
+	 		</list>
+ 		</property>
+ 		<property name="ignoreUnresolvablePlaceholders" value="true" />
+ 	</bean> -->
+
+    <bean class="com.teknei.common.webapp.logging.LoggingAspect" />
+
+    <!-- HikariCP configuration -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="poolName" value="springHikariCP" />
+		<property name="connectionTestQuery" value="SELECT 1" />
+		<property name="dataSourceClassName" value="${jdbc.dataSourceClassName}" />
+		<property name="maximumPoolSize" value="${jdbc.dataSource.poolSize}" />
+
+		<property name="dataSourceProperties">
+			<props>
+				<prop key="url">${jdbc.url}</prop>
+				<prop key="user">${jdbc.username}</prop>
+				<prop key="password">${jdbc.password}</prop>
+			</props>
+		</property>
+	</bean>
+
+    <!-- A JDBC pool datasource -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig" />
+	</bean>
+ 
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+ 		<array>
+              <value>com.teknei.entity</value>
+              <value>com.teknei.pvs.entity</value>
+         </array>
+     </property> 		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.current_session_context_class">${hibernate.current_session_context_class}</prop>
+				<prop key="hibernate.connection.autocommit">${hibernate.connection.autocommit}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.default_schema">${hibernate.default_schema}</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+    <bean id="mapper" class="org.dozer.DozerBeanMapper">
+        <property name="mappingFiles">
+            <list>
+                <value>META-INF/entity-mapping.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="savedRequestAwareAuthenticationSuccessHandler" 
+            class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+        <property name="targetUrlParameter" value="targetUrl" />
+    </bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+       	<property name="basename" value="/resources/localisation/messages" />
+       	<property name="defaultEncoding" value="UTF-8" />
+   	</bean>
+   	
+
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+    
+    <bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+	    <property name="key" value="rememberkysecurity" />
+	    <property name="userDetailsService" ref="userDetailsService" />
+	    <property name="alwaysRemember" value="true" />
+	    <property name="tokenValiditySeconds" value="10080" />
+	</bean>
+
+</beans>

@@ -1,0 +1,3 @@
+function editImage() {
+	$("#editImgMenu").modal();
+};

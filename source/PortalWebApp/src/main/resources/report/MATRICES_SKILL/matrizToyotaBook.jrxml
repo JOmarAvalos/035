@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="matrizToyotaBook" pageWidth="595" pageHeight="842" sectionType="Part" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="d2716064-8ae4-40cf-a575-33afba400e3a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<parameter name="subReportCalif" class="java.lang.String"/>
+	<parameter name="SubReportCumpl" class="java.lang.String"/>
+	<parameter name="logoToyota" class="java.awt.Image"/>
+	<parameter name="toyotaLogo" class="java.awt.Image"/>
+	<parameter name="fechaActualizacion" class="java.util.Date"/>
+	<parameter name="paraMap" class="java.util.Map"/>
+	<parameter name="dealer" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="contacto" class="java.lang.String"/>
+	<field name="consultor" class="java.lang.String"/>
+	<field name="lstCalificaciones" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="lstCumplimiento" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<detail>
+		<part uuid="9417f674-18a9-4ee5-afb3-28c435f7e896">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<subreportParameter name="REPORT_DATA_SOURCE">
+					<subreportParameterExpression><![CDATA[$F{lstCalificaciones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logoToyota">
+					<subreportParameterExpression><![CDATA[$P{logoToyota}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="toyotaLogo">
+					<subreportParameterExpression><![CDATA[$P{toyotaLogo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaActualizacion">
+					<subreportParameterExpression><![CDATA[$P{fechaActualizacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dealer">
+					<subreportParameterExpression><![CDATA[$P{dealer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="contacto">
+					<subreportParameterExpression><![CDATA[$F{contacto}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="consultor">
+					<subreportParameterExpression><![CDATA[$F{consultor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{subReportCalif}]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+		<part uuid="33971928-f023-4ec1-9e02-c67aa5c76e36">
+			<p:subreportPart xmlns:p="http://jasperreports.sourceforge.net/jasperreports/parts" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/parts http://jasperreports.sourceforge.net/xsd/parts.xsd">
+				<parametersMapExpression><![CDATA[$P{paraMap}]]></parametersMapExpression>
+				<subreportParameter name="REPORT_DATA_SOURCE">
+					<subreportParameterExpression><![CDATA[$F{lstCumplimiento}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logoToyota">
+					<subreportParameterExpression><![CDATA[$P{logoToyota}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="toyotaLogo">
+					<subreportParameterExpression><![CDATA[$P{toyotaLogo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaActualizacion">
+					<subreportParameterExpression><![CDATA[$P{fechaActualizacion}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="dealer">
+					<subreportParameterExpression><![CDATA[$P{dealer}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="contacto">
+					<subreportParameterExpression><![CDATA[$F{contacto}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="consultor">
+					<subreportParameterExpression><![CDATA[$F{consultor}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numPag">
+					<subreportParameterExpression><![CDATA[$V{PAGE_NUMBER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SubReportCumpl}]]></subreportExpression>
+			</p:subreportPart>
+		</part>
+	</detail>
+</jasperReport>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Maestro" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2070d45f-612f-41cc-a1af-3436ad14adb2">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="subReport" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="materiasDS" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="30" width="100" height="30" uuid="efb130a6-3816-4eb6-b04b-5b6c565104dd"/>
+				<text><![CDATA[LISTA DE ALUMNOS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="104" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="29" width="40" height="20" uuid="eddfbffd-1c67-4f12-a1bc-b39233a72de0"/>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="29" width="100" height="20" uuid="5f871889-1a85-4220-b37f-2664cfeb4527">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6f40f808-5bf7-4257-8dbe-b09cd94c50c7"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="29" width="60" height="20" uuid="4ba75296-363f-4532-8ee8-ffbcdc781a76"/>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="250" y="29" width="100" height="20" uuid="721a07c9-6f5a-452c-8d67-ac540addc225">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6efb114a-50df-40fb-97ea-1aa52a9efe70"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="60" width="544" height="40" uuid="72533f72-c596-4acd-bc42-c49e915f1a3d"/>
+				<dataSourceExpression><![CDATA[$F{materiasDS}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReport}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

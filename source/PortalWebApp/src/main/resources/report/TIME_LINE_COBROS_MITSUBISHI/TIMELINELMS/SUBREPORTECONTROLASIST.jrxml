@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SUBREPORTECONTROLASIST" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="225f97af-5d98-46de-a439-a5dd588a9e71">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fecha" class="java.util.Date"/>
+	<field name="sede" class="java.lang.String"/>
+	<field name="cobranza" class="java.lang.String"/>
+	<field name="curso" class="java.lang.String"/>
+	<field name="nombreCurso" class="java.lang.String"/>
+	<field name="invitados" class="java.lang.Integer"/>
+	<field name="prevHoras" class="java.lang.Integer"/>
+	<field name="cancelaciones" class="java.lang.Integer"/>
+	<field name="noShow" class="java.lang.Integer"/>
+	<field name="asistencias" class="java.lang.String"/>
+	<field name="asis" class="java.math.BigDecimal"/>
+	<field name="horas" class="java.lang.Integer"/>
+	<field name="costoCuader" class="java.math.BigDecimal"/>
+	<field name="coffeBreak" class="java.math.BigDecimal"/>
+	<field name="hotel" class="java.math.BigDecimal"/>
+	<field name="horasPV" class="java.lang.Integer"/>
+	<field name="horasVTA" class="java.lang.Integer"/>
+	<field name="horasTEC" class="java.lang.Integer"/>
+	<field name="horasVTAPV" class="java.lang.Integer"/>
+	<variable name="sumInvitados" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{invitados}]]></variableExpression>
+	</variable>
+	<variable name="sumprevHoras" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{prevHoras}]]></variableExpression>
+	</variable>
+	<variable name="sumCancelaciones" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{cancelaciones}]]></variableExpression>
+	</variable>
+	<variable name="sumNoshow" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{noShow}]]></variableExpression>
+	</variable>
+	<variable name="sumAsisten" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{asistencias}]]></variableExpression>
+	</variable>
+	<variable name="sumAsis" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{asis}]]></variableExpression>
+	</variable>
+	<variable name="sumHoras" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{horas}]]></variableExpression>
+	</variable>
+	<variable name="sumCostoC" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{costoCuader}]]></variableExpression>
+	</variable>
+	<variable name="sumCoffeBreak" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{coffeBreak}]]></variableExpression>
+	</variable>
+	<variable name="sumHotel" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{hotel}]]></variableExpression>
+	</variable>
+	<variable name="sumHorasPV" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{horasPV}]]></variableExpression>
+	</variable>
+	<variable name="sumHorasVTA" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{horasVTA}]]></variableExpression>
+	</variable>
+	<variable name="sumHorasTEC" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{horasTEC}]]></variableExpression>
+	</variable>
+	<variable name="sumHorasVTAPV" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{horasVTAPV}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="1" y="50" width="771" height="28" backcolor="#000000" uuid="ab763ec0-8d11-4675-9ed0-e29d662af01d">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="30" height="27" forecolor="#FFFFFF" uuid="0ae3af9b-4bd9-49d0-a8b4-e68b3ccc7fed">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62723e2e-c284-4c9a-ab51-30d39e7c87db"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SEDE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="30" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="59d4f5d5-f4ec-436a-b40c-da1910b0282d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="363c448a-2825-4993-8915-20b4061e9b62"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[COBRANZA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="70" y="0" width="50" height="27" forecolor="#FFFFFF" uuid="71fef6a5-5469-4084-a93c-989cfab18cd4">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="68c03602-224e-476d-a5d8-28363dac554c"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FECHA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="120" y="1" width="30" height="27" forecolor="#FFFFFF" uuid="fc8d1285-684f-4c7f-861d-1746cfce97e2">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7ea1b888-46cf-47e6-915f-19ef6df55910"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CURSO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="150" y="0" width="70" height="27" forecolor="#FFFFFF" uuid="762c58c6-78d8-440e-9a5e-1d15d5e7b09e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ NOMBRE DEL CURSO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="57077be2-b0db-4932-b163-7f495e20718b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INVITADOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="380" y="0" width="30" height="27" forecolor="#FFFFFF" uuid="5840a1e9-7613-4a8c-b7b9-db1ea935e215">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ No Show]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="260" y="0" width="70" height="27" forecolor="#FFFFFF" uuid="34f97833-2103-495c-baec-86e4063f697f">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PREVIA HORAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="330" y="0" width="50" height="27" forecolor="#FFFFFF" uuid="16504e7c-c730-4920-88ad-c1e06185f778">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cancelaciones]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="410" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="0b76a3df-3b9d-4859-be2d-c7798add0c29">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ASISTENCIAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="540" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="51a11d9c-29b7-42a7-b0e7-7cc4d81911c9">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[COFFE BREAK]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="500" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="e946e6c9-4441-4d29-86d1-8369aba61bd3">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[COSTO DE CUADERNILLOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="480" y="0" width="20" height="27" forecolor="#FFFFFF" uuid="bd4b9c12-b6dc-488f-8922-379fe4745f14">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[horas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="450" y="0" width="30" height="27" forecolor="#FFFFFF" uuid="bcadb920-19e6-418d-8efe-18b2566935e7">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[% Asist.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="580" y="0" width="30" height="27" forecolor="#FFFFFF" uuid="45e42347-d1b6-43c0-969c-3616b7002a54">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[HOTEL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="610" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="f00dab7c-c9ad-4b68-89b2-b238f701d734">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[HORAS PV]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="730" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="d6548c00-5272-45fe-b788-440b0d8cc29d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="5" isBold="true"/>
+					</textElement>
+					<text><![CDATA[HORAS VTA & PV]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="690" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="c4ea3be8-bc86-418f-af75-af84da06c295">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[HORAS TEC]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="650" y="0" width="40" height="27" forecolor="#FFFFFF" uuid="dd3a619c-9853-4b6c-a749-fcd412744fa4">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="df680fec-f7e8-4a45-b469-083225e48c77"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[HORAS VTA]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField textAdjust="StretchHeight" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="70" y="0" width="51" height="30" uuid="6e487815-aeab-4a62-ac28-86219c88b6e5"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="30" height="30" uuid="ce8fb05a-d6f0-428b-a6a4-1caf92e91a87">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d7f3f850-2cab-4535-a017-6b460a10f873"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{sede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="0" width="40" height="30" uuid="8310ac9e-5aab-49b6-993b-18632172f7d0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="41a3ff7f-d60c-4c82-b8f9-d69f7b804854"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cobranza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="121" y="0" width="31" height="30" uuid="d143dcba-699e-4eaf-b678-a359c1217cb2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b35b0de2-e334-4fdf-a308-300668cb4729"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="69" height="30" uuid="10e6bb45-e6db-406a-a961-ed493dc23736">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="151de3d9-0631-413e-b15a-d9d58a9dc80b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombreCurso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="0" width="50" height="30" uuid="d4727d37-aac6-4316-b4a8-6384f24efa55">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1cd4811a-971d-44a5-83aa-4b0c02b22027"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{invitados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="731" y="0" width="40" height="30" uuid="8a9aa724-a545-4759-81ed-8918a5847ee9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c30db59f-c669-4c0e-a4b4-b607f6cf2adc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{horasVTAPV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="691" y="0" width="40" height="30" uuid="7317a156-2744-4a8f-a019-fb5669349db2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb952c4a-f61e-4ee8-8db8-f2c684e1b788"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{horasTEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="651" y="0" width="40" height="30" uuid="5439ef5e-6df5-4129-9fed-a7024e5b6457">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6fd6623-4c50-43b7-97d5-8083994822c9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{horasVTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="611" y="0" width="40" height="30" uuid="6a1eee9f-7009-46a2-8f9f-6a52b955f3c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76d1c669-0d34-4b17-a447-cb1d484caa8a"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{horasPV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="581" y="0" width="30" height="30" uuid="40070050-23db-4ab6-a036-d11a840f4939">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="49fab96e-96a2-486c-9142-7a5e4f009eba"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{hotel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="541" y="0" width="40" height="30" uuid="3a975ee4-c027-4708-b7be-92e8264faac5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d73a7f6e-242b-4abc-aaf7-c594270d9791"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{coffeBreak}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="501" y="0" width="40" height="30" uuid="f1c0d1ff-26b1-4bc6-8dc9-597d415ebad9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f2ae13b4-f4bb-4315-8825-e733d20ffe44"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{costoCuader}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="0" width="20" height="30" uuid="d8c8b18a-3e5e-4284-9de2-52ffd9d7e8e7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="30312cdd-715b-4de5-b1c9-1a6a410af2ba"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="30" height="30" uuid="e6c03517-966b-48b6-ae70-429f5a42329c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbcae0e3-3db2-4918-bc21-803a78b50c22"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{asis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="40" height="30" uuid="8721f9ea-c301-4425-8332-ee6eab089145">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="474605f4-6aff-4896-8b0d-3f8aa182a1d6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{asistencias}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="30" height="30" uuid="9d22d601-2673-4f50-8bd2-3bfbe1f11f1d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4286bebd-8129-4b53-bd2e-39bee6b4fd48"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{noShow}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="0" width="50" height="30" uuid="28d6e2e1-1985-4f55-b20a-ce51b9406df1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6b041e7-8cdb-448c-b8ca-10ee6f5b7b81"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cancelaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="60" height="30" uuid="e9c557a3-5c81-42e2-a5e2-6867c6d3bd5e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5bb6a8c-a276-42d1-9c4c-e8655a3160b1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{prevHoras}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="96" splitType="Stretch">
+			<textField>
+				<reportElement x="221" y="0" width="50" height="30" uuid="1af4a2f9-6b91-493f-8282-ace1a93753dc"/>
+				<textFieldExpression><![CDATA[$V{sumInvitados}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="60" height="30" uuid="f2805559-7117-49ca-bb7f-363982756f2e"/>
+				<textFieldExpression><![CDATA[$V{sumprevHoras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="0" width="50" height="30" uuid="3805f436-541b-443e-939d-521994808ea0"/>
+				<textFieldExpression><![CDATA[$V{sumCancelaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="30" height="30" uuid="e43415c8-dab8-4cb7-b8ea-efe2e27600c8"/>
+				<textFieldExpression><![CDATA[$V{sumNoshow}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="40" height="30" uuid="7d503814-6035-4ec0-a160-28924afdc9d3"/>
+				<textFieldExpression><![CDATA[$V{sumAsisten}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="30" height="30" uuid="bfd5ee55-76bd-48d4-9470-6d1c51c04915"/>
+				<textFieldExpression><![CDATA[$V{sumAsis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="481" y="0" width="20" height="30" uuid="b480ac43-8fbb-44ff-b99d-9748846e7efa"/>
+				<textFieldExpression><![CDATA[$V{sumHoras}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="501" y="0" width="40" height="30" uuid="a68ea07d-7bcd-43e6-b3b9-6b3ffa5f2bb1"/>
+				<textFieldExpression><![CDATA[$V{sumCostoC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="541" y="0" width="40" height="30" uuid="3abc5237-feb3-46ac-aea8-0405e48cbc98"/>
+				<textFieldExpression><![CDATA[$V{sumCoffeBreak}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="581" y="0" width="30" height="30" uuid="9b46ae5d-1516-4892-8f92-769bdfc15b55"/>
+				<textFieldExpression><![CDATA[$V{sumHotel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="611" y="0" width="40" height="30" uuid="041163f5-ec29-45a5-a2bb-35a424d362fd"/>
+				<textFieldExpression><![CDATA[$V{sumHorasPV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="651" y="0" width="40" height="30" uuid="4d528100-8350-4b77-b45a-81ea27597774"/>
+				<textFieldExpression><![CDATA[$V{sumHorasVTA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="691" y="0" width="40" height="30" uuid="10260bae-0028-49e2-86f3-8836d1176d5b"/>
+				<textFieldExpression><![CDATA[$V{sumHorasTEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="731" y="0" width="40" height="30" uuid="17efdedb-22cf-48d5-abdc-2832b166bb73"/>
+				<textFieldExpression><![CDATA[$V{sumHorasVTAPV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="46" splitType="Stretch"/>
+	</summary>
+</jasperReport>

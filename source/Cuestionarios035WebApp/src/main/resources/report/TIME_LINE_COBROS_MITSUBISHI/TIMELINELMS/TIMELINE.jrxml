@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TIMELINE" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6702eb9-3795-4a5d-8417-356137dab560">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="subReporteTimeline" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="timeLine" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="14" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="238" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="50" width="750" height="160" uuid="8f111863-3931-4dbc-af01-213cbd952ff6"/>
+				<dataSourceExpression><![CDATA[$F{timeLine}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReporteTimeline}]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="20" width="10" height="30" uuid="0d168619-efa4-4f18-b770-6c2d0a3b188e"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="53" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="40" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="33" splitType="Stretch"/>
+	</summary>
+</jasperReport>

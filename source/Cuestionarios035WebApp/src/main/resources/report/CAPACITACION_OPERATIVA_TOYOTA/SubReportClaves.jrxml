@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SubReportClaves" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed609db4-3a86-4853-acb8-2619f1589a9d">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Field_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="595" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="550" height="20" uuid="f3d7681e-e186-43fe-a2af-44141c5ddf7a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVES Y DENOMINACIONES DE ÁREAS Y SUBÁREAS DEL CATÁLOGO NACIONAL DE OCUPACIONES
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="60" height="30" uuid="3ecaaf8a-9e3b-4a4e-b73c-089b236196ba"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVE DEL 
+ÁREA/SUBÁREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="20" width="190" height="30" uuid="7b558944-3185-4e64-b0b4-106eda0e4a04"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENOMINACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="20" width="240" height="30" uuid="6353f520-2292-4e67-9708-c05170f06d04"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENOMINACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="20" width="60" height="30" uuid="80dae2df-abd8-4150-9319-71759841cc91"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVE DEL 
+ÁREA/SUBÁREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="50" width="250" height="380" uuid="1b142f07-5811-4111-abd4-a5804be6f066"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1                      Cultivo, crianza y aprovechamiento
+01.1                 Agricultura y silvicultura
+01.2                 Ganadería
+01.3                 Pesca y acuacultura
+02                    Extracción y suministro 
+02.2                 Extracción 
+02.3                 Refinación y beneficio
+02.4                 Provisión de energía
+02.5                 Provisión de agua 
+03                    Construcción 
+03.1                 Planeación y dirección de obras
+03.2                 Edificación y urbanización
+03.3                 Acabado 
+03.4                 Instalación y mantenimiento
+04                   Tecnología 
+04.1                 Mecánica 
+04.2                 Electricidad
+04.3                 Electrónica
+04.4                 Informática 
+04.5                 Telecomunicaciones 
+04.6                 Procesos industriales 
+05                    Procesamiento y fabricación 
+05.1                 Minerales no metálicos
+05.2                 Metales 10 Comunicación
+05.3                 Alimentos y bebidas
+05.4                 Textiles y prendas de vestir 
+05.5                 Materia orgánica 
+05.6                 Productos químicos 
+05.7                 Productos metálicos y de hule y plástico 
+05.8                 Productos eléctricos y electrónicos
+05.9                 Productos impresos ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="50" width="300" height="400" uuid="9d6ee937-2ee2-41f4-9680-10d8043f2efd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[06                   Transporte
+06.1                 Ferroviario
+06.2                 Autotransporte
+06.3                 Aéreo
+06.4                 Marítimo y fluvial
+06.5                 Servicios de apoyo
+07                    Provisión de bienes y servicios
+07.1                 Comercio
+07.2                 Alimentación y hospedaje
+07.3                 Turismo
+07.4                 Deporte y esparcimiento
+07.5                 Servicios personales
+07.6                 Reparación de artículos de uso doméstico y personal
+07.7                 Limpieza
+07.8                 Servicio postal y mensajería
+08                    Gestión y soporte administrativo
+08.1                 Bolsa, banca y seguros
+08.2                 Administración
+08.3                 Servicios legales
+09                    Salud y protección social
+09.1                 Servicios médicos
+09.2                 Inspección sanitaria y del medio ambiente
+09.3                 Seguridad social
+09.4                 Protección de bienes y/o personas
+10.1                 Publicación
+10.2                 Radio, cine, televisión y teatro
+10.3                 Interpretación artística
+10.4                 Traducción e interpretación lingüística
+10.5                 Publicidad, propaganda y relaciones públicas
+11                    Desarrollo y extensión del conocimiento
+11.1                 Investigación
+11.2                 Enseñanza
+11.3                 Difusión cultural]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-11" y="450" width="550" height="20" uuid="40672f68-b8c9-4d34-9067-7a5b6ff90390"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVES Y DENOMINACIONES DEL CATÁLOGO DE ÁREAS TEMÁTICAS DE LOS CURSOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="470" width="60" height="30" uuid="cd484840-8a06-4566-8acc-49db7d415fe4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVE DEL 
+ÁREA/SUBÁREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="470" width="190" height="30" uuid="f1974131-5dc6-4e3c-b65b-d021514d8bf8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENOMINACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="470" width="60" height="30" uuid="32cc094f-256d-4a26-8a32-03f9ba090328"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAVE DEL 
+ÁREA/SUBÁREA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="470" width="240" height="30" uuid="af55491e-2d5e-4c9a-9e51-0783572ed9ec"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENOMINACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="500" width="250" height="80" uuid="67a1ebc9-daad-465b-bbfa-f2028f34198c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[1000                 Producción general 
+2000                 Servicios 
+3000                 Administración, contabilidad y economía 
+4000                 Comercialización 
+5000                 Mantenimiento y reparación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="500" width="300" height="65" uuid="fa186864-a27a-4fc2-a039-e88d0472e968"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[6000                 Seguridad
+7000                 Desarrollo personal y familiar
+8000                 Uso de tecnologías de la información y comunicación
+9000                 Participación social]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

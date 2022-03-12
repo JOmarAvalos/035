@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="masterReportMDTsDealer" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6943cb15-d047-4a1f-9a51-2a0a404e5730">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="paramTtep" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="270" y="0" width="370" height="33" backcolor="#00CCFF" uuid="0fb6307e-7d28-4c77-a502-f1cabdcd1015">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="3.25" lineColor="#D0CECE"/>
+					<topPen lineWidth="3.25" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="3.25" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="3.25" lineStyle="Solid" lineColor="#D0CECE"/>
+					<rightPen lineWidth="3.25" lineStyle="Solid" lineColor="#D0CECE"/>
+				</box>
+				<staticText>
+					<reportElement x="2" y="5" width="368" height="27" forecolor="#FFFFFF" uuid="7a69b1e1-93c6-4299-a6bb-65a975eeeb23"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Calibri" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA['TTEP (Toyota Technical Education Programm)]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="100" y="2" width="170" height="30" uuid="b8296eb1-7fb2-44fc-94fa-8444a74060b5"/>
+				<box>
+					<pen lineWidth="3.25" lineColor="#D0CECE"/>
+					<topPen lineWidth="3.25" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<leftPen lineWidth="3.25" lineStyle="Solid" lineColor="#FFFFFF"/>
+					<bottomPen lineWidth="3.25" lineStyle="Solid" lineColor="#D0CECE"/>
+					<rightPen lineWidth="3.25" lineStyle="Solid" lineColor="#FFFFFF"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="1" width="170" height="30" uuid="c4368a40-1895-41bb-b97b-41bfa9009d76"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Calibri" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="280" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

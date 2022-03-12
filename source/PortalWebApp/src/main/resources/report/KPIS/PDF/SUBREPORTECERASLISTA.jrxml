@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SUBREPORTECERASLISTA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="969e9d27-f959-4cf5-8436-626a65921e85">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fiel1" class="java.lang.Integer"/>
+	<field name="field2" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="200" y="0" width="100" height="30" uuid="d04a5391-1c11-4fda-977d-af52b9a0f231">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f652390-3913-42ba-9189-2acf21da2c52"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fiel1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="100" height="30" uuid="31045645-551c-499f-8627-a0af8936d436">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e9b21d8-2104-4e7a-aedf-5b51f38fd759"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{field2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="30" uuid="0b8c09ac-c96c-454c-8f9f-b022a43f8aff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="149f543d-87a8-4c38-aa1b-31e0fa15ea9e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

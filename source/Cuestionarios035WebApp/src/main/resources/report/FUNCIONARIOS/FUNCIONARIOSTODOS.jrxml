@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FUNCIONARIOSTODOS" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5679a9c0-5a0c-4476-a057-eea4fd9d51c9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="funcionariosTodos" uuid="cef91816-d98f-4bbc-8c72-b6597aa82572">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="rfc" class="java.lang.String"/>
+		<field name="spinId" class="java.lang.Integer"/>
+		<field name="wordId" class="java.lang.Integer"/>
+		<field name="idUser" class="java.lang.Integer"/>
+		<field name="idStatusUser" class="java.lang.Integer"/>
+		<field name="idPosition" class="java.lang.Integer"/>
+		<field name="namePosition" class="java.lang.String"/>
+		<field name="idCompany" class="java.lang.Integer"/>
+		<field name="dealerName" class="java.lang.String"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="lastName" class="java.lang.String"/>
+		<field name="secondLastName" class="java.lang.String"/>
+		<field name="email" class="java.lang.String"/>
+		<field name="registrationDate" class="java.util.Date"/>
+		<field name="lowDate" class="java.util.Date"/>
+		<field name="usbDate" class="java.util.Date"/>
+		<field name="nss" class="java.lang.Long"/>
+		<field name="fechaIniCurso" class="java.util.Date"/>
+		<field name="curp" class="java.lang.String"/>
+		<field name="tel" class="java.lang.Long"/>
+		<field name="telMovil" class="java.lang.Long"/>
+		<field name="fiel1" class="java.lang.Long"/>
+		<field name="fiel2" class="java.lang.String"/>
+		<field name="baja" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="paramFuncionarios" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="29" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="239" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="772" height="80" uuid="f19f99ad-be28-4656-b83e-dee40a3558c2">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="funcionariosTodos" uuid="ab9c705b-b911-48fd-8594-75ac58ce7a70">
+						<dataSourceExpression><![CDATA[$P{paramFuncionarios}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="e50b68ce-2871-4155-9ab6-fa1960fedb89">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="1d4bd766-068e-490a-bf63-5d5fb03836d2"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[RFC]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="42865c0b-254a-4632-be79-2ab3e122deb5"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{rfc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="c2c28403-1f7d-47e9-9454-29cdf3ccf042">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="d6d455ea-e199-452f-8505-b715492808ca"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Spin ID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="3a702893-7787-419b-ad26-653a5607256a"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{spinId}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="7cd910a0-16c9-43ef-9801-79b25d7a5131">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="2605a463-b980-4583-be89-984033762a23"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Work ID]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="6bf7a21f-f721-46a9-bfb5-030fed71cc0c"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{wordId}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="265c9e6e-5c34-42c8-94d9-95f799d804f4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="9ef74e2a-ea53-4483-a842-20590473a12f"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ID User]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="353a215a-225f-4f8d-9a46-2894f1b6dd9c"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idUser}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="ab04a104-1820-4d3b-9b62-594d7adf66ba">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="b73e89c9-5456-4603-aaf7-456d60a0f782"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ID Status User]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="fc5641ce-5f4a-4830-9f4f-079a4a3f30b9"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idStatusUser}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="b7304f83-aa19-480e-aec5-22e1996b80cc">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="3d031345-ed7b-4ab4-82b9-7d6f5a2127c2"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ID Position]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="b7aae5e4-7fcb-45b5-ab64-bf1262f4d39f"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idPosition}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="c847dc1f-c640-47e5-b546-c400010f8beb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="5939c4a5-a418-41e7-80fa-b19eef232ae7"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Name Position]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="c85e6ba4-d10b-4819-93f3-ce76cdf536c7"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{namePosition}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="c847e17a-870c-4008-94ed-f694b8c747ad">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="f607236c-1842-4221-8a2c-ab69432f3089"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ID Company]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="cdf159a8-1f40-452a-81b5-d07a69e7c9fe"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{idCompany}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="071c91e9-72cd-4506-afa8-b236c11b8873">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="e697c25f-4845-40e6-8912-3ba00d3b0760"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Dealer Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="6db2b349-247b-442a-b4c3-c4c73d8ea4f5"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{dealerName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="4c1137f8-fbfe-4516-9914-0bb52525b984">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="f188af3f-e7b3-4ef7-895e-38b0743dab67"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="2438bbab-b827-41d4-9935-ca18af4f201f"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="285cc73f-441b-4b0a-b6dc-260b5e73f2fa">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column11"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="475f1c68-40c1-4213-b4b9-33a72ae95a5e"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Last Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="3fbda5d1-2f53-412e-8864-f61fe5aed0f1"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="b0cfef46-da64-4200-9cf2-e68116be1f2f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column12"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="e3f08751-e54a-421e-adc9-82873b0c6cbb"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Second Last Name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="cc0cf986-c414-4316-82bf-8791caa04d54"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{secondLastName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="acf439f3-123e-4ed3-a030-79f8acbc3804">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column13"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="fc3ebeae-1ca7-4f98-a2f5-5c95d9f68761"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Email]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="87803f04-a02e-4ee6-9583-a57a5442ea5b"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="fcfa00e4-473a-4c40-9825-93e8c2d68ba4">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column14"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="01a17b11-d634-47d9-b125-7f65fcaae24c"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ Registration Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="M/d/yy">
+								<reportElement x="0" y="0" width="30" height="30" uuid="1c83f948-968d-4fdc-a2e5-6a119c969141"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registrationDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="99f55368-0c73-4236-8e45-034f73246aa0">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column15"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="170dadb6-c6de-4b12-9a35-5c01977e0f94"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[ Low Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="M/d/yy">
+								<reportElement x="0" y="0" width="30" height="30" uuid="084a6de2-5477-4e73-94d6-6b2df9e6f7d2"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{lowDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="bdcb5be3-3e76-434f-841d-f20c2a4de362">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column16"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="58527a94-ea6e-417b-b913-f1f4a3cae7ed"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[USB Date]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="M/d/yy">
+								<reportElement x="0" y="0" width="30" height="30" uuid="748580fa-2567-4844-8b3e-7327c6b58123"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{usbDate}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="053918eb-f68c-471a-b60c-7f293f7fee20">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column17"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="3f69ccb9-6753-4d98-ae3d-5ffb8e8da169"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[NSS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="a05ab652-be9b-4037-8164-b90a3eaa27b7"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{nss}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="e985b315-d44d-461e-a44d-0266b85c0170">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column18"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="e0b1f4c7-87d7-454e-8dad-2cabfd0a2ff8"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Fecha Ini Curso]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="M/d/yy">
+								<reportElement x="0" y="0" width="30" height="30" uuid="a5e94deb-1326-48d8-934f-c402c1a809e9"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fechaIniCurso}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="929b12d9-bc1d-462d-8bcd-936f43cc3f9a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column19"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="9067284e-b351-4289-be94-b2bd2c706906"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[CURP]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="6ead3aad-42f0-4b96-8e86-94bc4091f3fc"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{curp}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="c53692ee-98e7-42da-9e20-7a1f578cc143">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column20"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="cd11725c-c7d4-4441-8ec7-6a098e9a06dd"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Tel]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="869de11c-6762-4a9d-81e0-ea32341921b9"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tel}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="30" uuid="a9ed465b-608d-4d94-be1f-b251993056af">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column21"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="30" height="30" uuid="e3089db0-51c9-4164-839e-43df627fb86e"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[Tel Movil]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="30" height="30" uuid="2624efbb-07ad-4df5-9f19-bbcb286f0254"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{telMovil}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="d94aac58-2424-47e9-aba6-ff60a9c57d64">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column22"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="bcdef0c8-8965-4ece-bb15-23f3c474c047"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fiel1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="90e81c67-ec45-46b2-904f-b92b9a0de8a7">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column23"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="f51d3206-909f-46f0-9eee-73282975d310"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fiel2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="40" uuid="faa80307-0dd7-4429-9b65-4ffce6a89a18">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column24"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="3d6ab698-a269-4c13-9583-2d24bb8f9ed3"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<text><![CDATA[BAJA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="658958b1-b732-4e10-868b-4f142a580722"/>
+								<textElement verticalAlignment="Bottom">
+									<font fontName="Calibri" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{baja}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

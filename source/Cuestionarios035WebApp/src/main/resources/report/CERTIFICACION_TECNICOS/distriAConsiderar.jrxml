@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="distriAConsiderar" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a22e446c-b2ea-4816-86b7-03a74f35c1b6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<leftPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<rightPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="capStyle" mode="Opaque" backcolor="#5FC6D7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#5FC6D7"/>
+			<topPen lineWidth="0.5" lineColor="#5FC6D7"/>
+			<leftPen lineWidth="0.5" lineColor="#5FC6D7"/>
+			<bottomPen lineWidth="0.5" lineColor="#5FC6D7"/>
+			<rightPen lineWidth="0.5" lineColor="#5FC6D7"/>
+		</box>
+	</style>
+	<style name="pqssStyle" mode="Opaque" backcolor="#FCE4D6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#FCE4D6"/>
+			<topPen lineWidth="0.5" lineColor="#FCE4D6"/>
+			<leftPen lineWidth="0.5" lineColor="#FCE4D6"/>
+			<bottomPen lineWidth="0.5" lineColor="#FCE4D6"/>
+			<rightPen lineWidth="0.5" lineColor="#FCE4D6"/>
+		</box>
+	</style>
+	<subDataset name="DatasetDistribConsi" uuid="5a4cc1ed-6e80-46e4-a87c-ff91ab3635c5">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="codDealerCap" class="java.lang.Integer"/>
+		<field name="nombreDealerC" class="java.lang.String"/>
+		<field name="codDealerpq&amp;ss" class="java.lang.Integer"/>
+		<field name="nombreDealerPq&amp;ss" class="java.lang.String"/>
+		<field name="status" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="ParamDistribC" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="240" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="-23" width="540" height="93" uuid="608898a2-b448-4198-bb2c-a09d9ddff876">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="DatasetDistribConsi" uuid="920998d1-0f70-49fb-801d-2f6c25114e60">
+						<dataSourceExpression><![CDATA[$P{ParamDistribC}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="240" uuid="3d786a9c-6325-4832-a9dd-b36fa9dda6cd">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [2]"/>
+						<jr:columnHeader style="capStyle" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="240" height="30" uuid="256d1405-edb1-4982-b674-45f6dea4d5ed"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Calibri" size="8"/>
+								</textElement>
+								<text><![CDATA[DISTRIBUIDORES CONSIDERADOS POR CAPACITACIÓN]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:column width="40" uuid="c4b30797-b539-46c8-94d2-ddd0d6091421">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:columnHeader style="capStyle" height="2" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="40" height="30" uuid="63adfcb2-c503-4f4f-bcb0-3037c7a74e79"/>
+									<textElement textAlignment="Center">
+										<font fontName="Calibri" size="8"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{codDealerCap}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="200" uuid="e16fc5df-169f-4d81-8de3-70e76559c75b">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:columnHeader style="capStyle" height="2" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="200" height="30" uuid="4252badc-f4ba-4249-95d1-aa0aacdfc20a"/>
+									<textElement textAlignment="Center">
+										<font fontName="Calibri" size="8"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nombreDealerC}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:columnGroup width="250" uuid="7d186ec1-448f-4f2c-8cd2-43a95180b13f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [2]"/>
+						<jr:columnHeader style="pqssStyle" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="250" height="30" uuid="2e423412-ba67-4e82-8d39-debcf9ea9e3e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Calibri" size="8"/>
+								</textElement>
+								<text><![CDATA[DISTRIBUIDORES CONSIDERADOS POR PQ&SS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:column width="77" uuid="222400e8-c9f9-4088-9225-2b55b5d216fa">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:columnHeader style="pqssStyle" height="2" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="77" height="30" uuid="8c59223d-fac0-4ac9-aeec-46ad495cf4df"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="8" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{codDealerpq&ss}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="173" uuid="b2d944d3-0c61-4b07-8b8e-a2cd62f45245">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:columnHeader style="pqssStyle" height="2" rowSpan="1"/>
+							<jr:detailCell style="Table_TD" height="30">
+								<textField>
+									<reportElement x="0" y="0" width="173" height="30" uuid="1b4af1f7-4125-4b13-9ff3-27c34cbf1f0c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="8" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{nombreDealerPq&ss}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:column width="40" uuid="cc7ed938-ceeb-4506-b7a3-3b2c2bf74d91">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="32" rowSpan="2"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="40" height="30" uuid="75cb3331-7aad-4384-ba81-53e83bf1517c"/>
+								<textElement textAlignment="Left" verticalAlignment="Bottom">
+									<font fontName="Calibri" size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

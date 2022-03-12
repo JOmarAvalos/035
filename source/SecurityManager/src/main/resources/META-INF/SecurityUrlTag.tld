@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+		version="2.0">
+	<description>Security Url Tag</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>SecurityCryptManager</short-name>
+	<uri>http://www.teknei.com/jsp/crypt</uri>
+	<tag>
+		<description>Encript data values url params</description>
+		<name>cryptData</name>
+		<tag-class>com.teknei.security.tags.SecurityUrlTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description>The data to encript.</description>
+			<name>data</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>The name of the variable to export the evaluation result to.</description>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>The scope for the var.  'application', 'session', 'request' and 
+			'page' scopes are supported.  Defaults to page scope.  This attribute has no 
+			effect unless the var attribute is also defined.</description>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
