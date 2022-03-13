@@ -2,125 +2,102 @@ package com.teknei.vo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 
 public class UsuarioVO extends BaseVO implements Serializable {	
-/**
-	 * 
-	 */
+
+	
 	private static final long serialVersionUID = 3091293943377530518L;
 	
-//	private Integer id;
-	private String username;
-	private String password;
-	private Integer idEstatus;
-	private Date modificacion;
-	private Date creacion;
-	private Integer idEmpresa;
+
+	private String usuario;
+	private String contrasena;
+	private String nombre;
+	private String email;
+	private Integer idPerfil;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
-	private String usuarioCorp;
-	private List<String> lstAutoridades;
-	public UsuarioVO() {
+	private Date creacion;
+	private Date modificacion;
+	private Integer estatus;
+	private Integer banActivo;
+	
+	
+	public String getUsuario() {
+		return usuario;
 	}
-
-
-	public UsuarioVO(Integer id, String username, String password, Integer idEstatus,Date modificacion, Date creacion,Integer idEmpresa,
-			Integer idUsuarioCrea, Integer idUsuarioModifica)
-	{
-		super.setId(id);
-		this.username=username;
-		this.password=password;
-		this.idEstatus=idEstatus;
-		this.modificacion=modificacion;
-		this.creacion=creacion;
-		this.idEmpresa=idEmpresa;
-		this.idUsuarioCrea=idUsuarioCrea;
-		this.idUsuarioModifica=idUsuarioModifica;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
-
-
-	public String getUsername() {
-		return username;
+	
+	public String getContrasena() {
+		return contrasena;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
-	public String getPassword() {
-		return password;
+	
+	public String getNombre() {
+		return nombre;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public Integer getIdEstatus() {
-		return idEstatus;
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setIdEstatus(Integer idEstatus) {
-		this.idEstatus = idEstatus;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public Date getModificacion() {
-		return modificacion;
+	
+	public Integer getIdPerfil() {
+		return idPerfil;
 	}
-	public void setModificacion(Date modificacion) {
-		this.modificacion = modificacion;
+	public void setIdPerfil(Integer idPerfil) {
+		this.idPerfil = idPerfil;
 	}
+	
+	public Integer getIdUsuarioCrea() {
+		return idUsuarioCrea;
+	}
+	public void setIdUsuarioCrea(Integer idUsuarioCrea) {
+		this.idUsuarioCrea = idUsuarioCrea;
+	}
+	
+	public Integer getIdUsuarioModifica() {
+		return idUsuarioModifica;
+	}
+	public void setIdUsuarioModifica(Integer idUsuarioModifica) {
+		this.idUsuarioModifica = idUsuarioModifica;
+	}
+	
 	public Date getCreacion() {
 		return creacion;
 	}
 	public void setCreacion(Date creacion) {
 		this.creacion = creacion;
 	}
-
-	public Integer getIdEmpresa() {
-		return idEmpresa;
+	
+	public Date getModificacion() {
+		return modificacion;
 	}
-
-
-	public void setIdEmpresa(Integer idEmpresa) {
-		this.idEmpresa = idEmpresa;
-	}
-
-
-	public Integer getIdUsuarioCrea() {
-		return idUsuarioCrea;
-	}
-
-
-	public void setIdUsuarioCrea(Integer idUsuarioCrea) {
-		this.idUsuarioCrea = idUsuarioCrea;
-	}
-
-
-	public Integer getIdUsuarioModifica() {
-		return idUsuarioModifica;
-	}
-
-
-	public void setIdUsuarioModifica(Integer idUsuarioModifica) {
-		this.idUsuarioModifica = idUsuarioModifica;
+	public void setModificacion(Date modificacion) {
+		this.modificacion = modificacion;
 	}
 	
-	/**
-	 * @return the usuarioCorp
-	 */
-	public String getUsuarioCorp() {
-		return usuarioCorp;
+	public Integer getEstatus() {
+		return estatus;
 	}
-
-
-	/**
-	 * @param usuarioCorp the usuarioCorp to set
-	 */
-	public void setUsuarioCorp(String usuarioCorp) {
-		this.usuarioCorp = usuarioCorp;
+	public void setEstatus(Integer estatus) {
+		this.estatus = estatus;
 	}
-
-
-	public List<String> getLstAutoridades() {
-		return lstAutoridades;
+	
+	public Integer getBanActivo() {
+		return banActivo;
 	}
-	public void setLstAutoridades(List<String> lstAutoridades) {
-		this.lstAutoridades = lstAutoridades;
+	public void setBanActivo(Integer banActivo) {
+		this.banActivo = banActivo;
 	}
-
+	
 }

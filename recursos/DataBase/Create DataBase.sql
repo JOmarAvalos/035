@@ -197,7 +197,7 @@ create table desarrollo.tbl_preguntas
 (
   cve_pregunta serial NOT NULL,
   id_cuestionario integer NOT NULL,
-  id_tipo_pregunta integer NOT NULL,
+  id_pregunta_tipo integer NOT NULL,
   seccion character varying(200),
   nombre character varying(200) NOT NULL,
   titulo character varying(1000),
@@ -215,7 +215,7 @@ create table desarrollo.tbl_preguntas
       REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
 
-  CONSTRAINT fkey_tbl_preguntas_tbl_cata_preguntas_tipo_id FOREIGN KEY (id_tipo_pregunta)
+  CONSTRAINT fkey_tbl_preguntas_tbl_cata_preguntas_tipo_id FOREIGN KEY (id_pregunta_tipo)
       REFERENCES desarrollo.tbl_cata_preguntas_tipo (cve_pregunta_tipo) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );

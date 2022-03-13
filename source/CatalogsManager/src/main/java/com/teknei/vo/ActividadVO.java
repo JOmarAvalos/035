@@ -1,258 +1,128 @@
 package com.teknei.vo;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
-import java.util.List;
 
-public class ActividadVO  extends BaseVO implements Serializable{
 
+public class ActividadVO extends BaseVO implements Serializable {
+
+	
 	private static final long serialVersionUID = -3617796303912330545L;
 
-	private Integer idCurso;
-	private Integer idTipoActividad;
-	private String nombre;
-	private String descripcion;
-	private Integer orden;
-	private Integer banActivo;
+
+	private Integer idCentroTrabajo;
+	private Integer idCuestionario;
+	private String codigo;
+	private String rutaCuestionario;
+	private String rutaRespuesta;
+	private String numeroReferenciaPago;
+	private BigInteger costo;
+	private BigInteger iva;
+	private BigInteger total;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
 	private Date modificacion;
-	private String ruta;
-	private String url;
-	private Integer tiempoEstimado;
-	private Integer numeroOportunidades;
-	private Integer preguntasMostrar;
-	private Boolean preguntasAleatorias;
-	private Boolean promedia;
-	private Integer promediaPorcentaje;
-	private Boolean calificacionMinima;
-	private Integer calificacionMinimaPorcentaje;
-	private String nombreEn;
-	private String nombreFr;
-	private String descripcionEn;
-	private String descripcionFr;
+	private Integer idActividadEstatus;
 	
 	
+	public Integer getIdCentroTrabajo() {
+		return idCentroTrabajo;
+	}
+	public void setIdCentroTrabajo(Integer idCentroTrabajo) {
+		this.idCentroTrabajo = idCentroTrabajo;
+	}
 	
-	/**
-	 * @return the idCurso
-	 */
-	public Integer getIdCurso() {
-		return idCurso;
+	public Integer getIdCuestionario() {
+		return idCuestionario;
 	}
-	/**
-	 * @param idCurso the idCurso to set
-	 */
-	public void setIdCurso(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setIdCuestionario(Integer idCuestionario) {
+		this.idCuestionario = idCuestionario;
 	}
-	/**
-	 * @return the idTipoActividad
-	 */
-	public Integer getIdTipoActividad() {
-		return idTipoActividad;
+	
+	public String getCodigo() {
+		return codigo;
 	}
-	/**
-	 * @param idTipoActividad the idTipoActividad to set
-	 */
-	public void setIdTipoActividad(Integer idTipoActividad) {
-		this.idTipoActividad = idTipoActividad;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
+	
+	public String getRutaCuestionario() {
+		return rutaCuestionario;
 	}
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setRutaCuestionario(String rutaCuestionario) {
+		this.rutaCuestionario = rutaCuestionario;
 	}
-	/**
-	 * @return the descripcion
-	 */
-	public String getDescripcion() {
-		return descripcion;
+	
+	public String getRutaRespuesta() {
+		return rutaRespuesta;
 	}
-	/**
-	 * @param descripcion the descripcion to set
-	 */
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setRutaRespuesta(String rutaRespuesta) {
+		this.rutaRespuesta = rutaRespuesta;
 	}
-	/**
-	 * @return the orden
-	 */
-	public Integer getOrden() {
-		return orden;
+	
+	public String getNumeroReferenciaPago() {
+		return numeroReferenciaPago;
 	}
-	/**
-	 * @param orden the orden to set
-	 */
-	public void setOrden(Integer orden) {
-		this.orden = orden;
+	public void setNumeroReferenciaPago(String numeroReferenciaPago) {
+		this.numeroReferenciaPago = numeroReferenciaPago;
 	}
-	/**
-	 * @return the banActivo
-	 */
-	public Integer getBanActivo() {
-		return banActivo;
+	
+	public BigInteger getCosto() {
+		return costo;
 	}
-	/**
-	 * @param banActivo the banActivo to set
-	 */
-	public void setBanActivo(Integer banActivo) {
-		this.banActivo = banActivo;
+	public void setCosto(BigInteger costo) {
+		this.costo = costo;
 	}
-	/**
-	 * @return the idUsuarioCrea
-	 */
+	
+	public BigInteger getIva() {
+		return iva;
+	}
+	public void setIva(BigInteger iva) {
+		this.iva = iva;
+	}
+	
+	public BigInteger getTotal() {
+		return total;
+	}
+	public void setTotal(BigInteger total) {
+		this.total = total;
+	}
+	
 	public Integer getIdUsuarioCrea() {
 		return idUsuarioCrea;
 	}
-	/**
-	 * @param idUsuarioCrea the idUsuarioCrea to set
-	 */
 	public void setIdUsuarioCrea(Integer idUsuarioCrea) {
 		this.idUsuarioCrea = idUsuarioCrea;
 	}
-	/**
-	 * @return the idUsuarioModifica
-	 */
+	
 	public Integer getIdUsuarioModifica() {
 		return idUsuarioModifica;
 	}
-	/**
-	 * @param idUsuarioModifica the idUsuarioModifica to set
-	 */
 	public void setIdUsuarioModifica(Integer idUsuarioModifica) {
 		this.idUsuarioModifica = idUsuarioModifica;
 	}
-	/**
-	 * @return the creacion
-	 */
+	
 	public Date getCreacion() {
 		return creacion;
 	}
-	/**
-	 * @param creacion the creacion to set
-	 */
 	public void setCreacion(Date creacion) {
 		this.creacion = creacion;
 	}
-	/**
-	 * @return the modificacion
-	 */
+	
 	public Date getModificacion() {
 		return modificacion;
 	}
-	/**
-	 * @param modificacion the modificacion to set
-	 */
 	public void setModificacion(Date modificacion) {
 		this.modificacion = modificacion;
 	}
 	
-	
-	public String getRuta() {
-		return ruta;
+	public Integer getIdActividadEstatus() {
+		return idActividadEstatus;
 	}
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
-	}
-	
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
-	
-	public Integer getTiempoEstimado() {
-		return tiempoEstimado;
-	}
-	public void setTiempoEstimado(Integer tiempoEstimado) {
-		this.tiempoEstimado = tiempoEstimado;
-	}
-	
-	public Integer getNumeroOportunidades() {
-		return numeroOportunidades;
-	}
-	public void setNumeroOportunidades(Integer numeroOportunidades) {
-		this.numeroOportunidades = numeroOportunidades;
-	}
-	
-	public Integer getPreguntasMostrar() {
-		return preguntasMostrar;
-	}
-	public void setPreguntasMostrar(Integer preguntasMostrar) {
-		this.preguntasMostrar = preguntasMostrar;
-	}
-	
-	public Boolean getPreguntasAleatorias() {
-		return preguntasAleatorias;
-	}
-	public void setPreguntasAleatorias(Boolean preguntasAleatorias) {
-		this.preguntasAleatorias = preguntasAleatorias;
-	}
-	public Boolean getPromedia() {
-		return promedia;
-	}
-	public void setPromedia(Boolean promedia) {
-		this.promedia = promedia;
-	}
-	
-	public Integer getPromediaPorcentaje() {
-		return promediaPorcentaje;
-	}
-	public void setPromediaPorcentaje(Integer promediaPorcentaje) {
-		this.promediaPorcentaje = promediaPorcentaje;
-	}
-	
-	public Boolean getCalificacionMinima() {
-		return calificacionMinima;
-	}
-	public void setCalificacionMinima(Boolean calificacionMinima) {
-		this.calificacionMinima = calificacionMinima;
-	}
-	
-	public Integer getCalificacionMinimaPorcentaje() {
-		return calificacionMinimaPorcentaje;
-	}
-	public void setCalificacionMinimaPorcentaje(Integer calificacionMinimaPorcentaje) {
-		this.calificacionMinimaPorcentaje = calificacionMinimaPorcentaje;
-	}
-	
-	
-	public String getNombreEn() {
-		return nombreEn;
-	}
-	public void setNombreEn(String nombreEn) {
-		this.nombreEn = nombreEn;
-	}
-	
-	public String getNombreFr() {
-		return nombreFr;
-	}
-	public void setNombreFr(String nombreFr) {
-		this.nombreFr = nombreFr;
-	}
-	
-	public String getDescripcionEn() {
-		return descripcionEn;
-	}
-	public void setDescripcionEn(String descripcionEn) {
-		this.descripcionEn = descripcionEn;
-	}
-	
-	public String getDescripcionFr() {
-		return descripcionFr;
-	}
-	public void setDescripcionFr(String descripcionFr) {
-		this.descripcionFr = descripcionFr;
+	public void setIdActividadEstatus(Integer idActividadEstatus) {
+		this.idActividadEstatus = idActividadEstatus;
 	}
 
 }
