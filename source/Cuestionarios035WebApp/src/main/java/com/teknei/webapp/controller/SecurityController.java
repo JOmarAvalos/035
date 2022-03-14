@@ -3,13 +3,6 @@ package com.teknei.webapp.controller;
 import static com.teknei.common.webapp.RequestUtils.getLocalisedResource;
 import static com.teknei.common.webapp.RequestUtils.getRememberMeTargetUrlFromSession;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -41,13 +34,15 @@ public class SecurityController {
 	
 	private static final String UNAUTHORIZED_VIEW = "unauthorized";
 	
+	private static final String ATTR_LST_CALENDARIO = "lstCalendario";
+	
 	@Autowired
 	private UsersManager usersManager;
 	@Autowired
 	private MessageSource messageSource;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String welcome(Model model, HttpServletRequest request) {
+	public String welcome(Model model, HttpServletRequest request, @RequestParam(value="param", required = false) String cveEmpresa) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -55,23 +50,28 @@ public class SecurityController {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
 			
-			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsername());
+//			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsername());
+//			
+//			String empresaCVE = (String)request.getSession(false).getAttribute("empresa");
+//			request.getSession(false).setAttribute("isInstructor", funcionariosLMSManager.isInstructor(usuarioVO.getId()));
+//			FuncionarioVO funcionario =   funcionariosLMSManager.getFuncionarioByIdUsuario(usuarioVO.getId());
+//			request.getSession(false).setAttribute("isDSPMFTS", funcionariosLMSManager.isDSPMoFTS(funcionario.getId()));
+//			request.getSession(false).setAttribute("isMulti", multiLenguaje);
+//			EmpresaVO empresa = catalogosManager.getEmpresa(usuarioVO.getIdEmpresa()); 
 			
-			String empresaCVE = (String)request.getSession(false).getAttribute("empresa");
-			
-			String locale = request.getParameter("locale");
-			if(locale == null) {
-				locale = getLocalisedResource(messageSource, "app.general.locale");
-			}
-
-			request.getSession(false).setAttribute("locale", locale);
+//			String locale = request.getParameter("locale");
+//			if(locale == null) {
+//				locale = getLocalisedResource(messageSource, "app.general.locale");
+//			}
+//
+//			request.getSession(false).setAttribute("locale", locale);
+//			model.addAttribute("empresa", empresa.getClave());
 			
 			
 			
 			return HOME_VIEW;
 
 		} else {
-			
 			
 			return LOGIN_VIEW;
 		}
@@ -101,7 +101,6 @@ public class SecurityController {
 			model.addAttribute("msg", getLocalisedResource(messageSource, "login.logout_message"));
 		}
 		
-		
 		return LOGIN_VIEW;
 	}
 
@@ -118,4 +117,5 @@ public class SecurityController {
 		return UNAUTHORIZED_VIEW;
 	}
 	
+
 }

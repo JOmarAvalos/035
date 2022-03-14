@@ -15,7 +15,7 @@ public class PreguntaVO extends BaseVO implements Serializable {
 	private String nombre;
 	private String titulo;
 	private String descripcion;
-	private String orden;
+	private Integer orden;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
@@ -65,10 +65,10 @@ public class PreguntaVO extends BaseVO implements Serializable {
 		this.descripcion = descripcion;
 	}
 	
-	public String getOrden() {
+	public Integer getOrden() {
 		return orden;
 	}
-	public void setOrden(String orden) {
+	public void setOrden(Integer orden) {
 		this.orden = orden;
 	}
 	

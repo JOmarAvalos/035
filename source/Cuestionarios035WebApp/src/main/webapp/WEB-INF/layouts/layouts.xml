@@ -17,4 +17,209 @@
         <put-attribute name="footer" value="" />
     </definition>
     
+	<!-- LMS -->
+
+    <definition name="unauthorized" template="/WEB-INF/views/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/error/403.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="serverError" template="/WEB-INF/views/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/error/internal_error.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <!-- FUNCIONARIOS LMS -->
+    <definition name="funcionarios" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/usuarios/funcionariosLMS.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
+	<definition name="contacto" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/contacto/contacto.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+	<definition name="notificaciones" template="/WEB-INF/views/lms/master.jsp">
+	    <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+	    <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/views/lms/notificacion/notificacion.jsp" />
+	    <put-attribute name="footer" value="" />
+	</definition>
+	
+    <definition name="carrera" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carrera.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    <definition name="carreraPlan" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraPlan.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    <definition name="carreraCurso" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraCurso.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>  
+    <!-- Actividades del curso -->  
+    <definition name="carreraActividadVideo" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadVideo.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    <definition name="carreraActividadDoc" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadDocumento.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>   
+     <definition name="carreraActividadExamen" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadExamen.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    <definition name="carreraActividadEncuesta" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadEncuesta.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition> 
+    <definition name="carreraActividadScorm" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadScorm.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    <definition name="carreraActividadConferencia" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadConferencia.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+    
+    <definition name="carreraActividadTarea" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/carrera/carreraActividadTarea.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>    
+
+    <definition name="inscripciones" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/calendario/calendario.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="reportes" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/reportes/reportes.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="calificaciones" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/calificaciones/calificaciones.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="agenda" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/calendario/agenda.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
+    <definition name="perfil" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/perfil/perfil.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
+    <definition name="documentos" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/documentos/documentos.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    <!-- Insumos -->
+       
+    <definition name="insumoList" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/insumos/insumoList.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    <definition name="insumoHist" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/insumos/insumoHist.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    <definition name="insumoActividadEncuesta" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/insumos/insumoActividadEncuesta.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition> 
+    <definition name="insumoActividadEncuesta" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/insumos/insumoActividadEncuesta.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition> 
+    
+    <!-- Reportes adicionales -->
+    <definition name="reportesAdic" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/reportes/reportesAdic.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="instructores" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/instructor/eventos.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="evento" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/instructor/evento.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="validaciones" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/dspm/validaciones.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
+    <definition name="planCapacitacion" template="/WEB-INF/views/lms/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/lms/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/lms/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/lms/plan/planCapacitacion.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    
 </tiles-definitions>

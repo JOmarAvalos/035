@@ -11,7 +11,7 @@
     <definition name="home" template="/WEB-INF/views/admin/master.jsp">
         <put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/admin/menu.jsp" />
-        <put-attribute name="body" value="/WEB-INF/views/admin/lms/calendario/calendario.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/admin/home.jsp" />
         <put-attribute name="footer" value="" />
     </definition>
     

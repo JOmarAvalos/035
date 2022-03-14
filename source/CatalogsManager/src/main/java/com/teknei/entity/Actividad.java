@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import com.teknei.base.entity.BaseEntity;
 
 @Entity
-@Table(name="tbl_actividad")
+@Table(name="tbl_actividades")
 public class Actividad extends BaseEntity<Integer> {
 
 

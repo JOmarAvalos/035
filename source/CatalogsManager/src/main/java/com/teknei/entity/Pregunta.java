@@ -25,7 +25,7 @@ public class Pregunta extends BaseEntity<Integer> {
 	private String nombre;
 	private String titulo;
 	private String descripcion;
-	private String orden;
+	private Integer orden;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
@@ -89,10 +89,10 @@ public class Pregunta extends BaseEntity<Integer> {
 	}
 	
 	@Column(name = "orden")
-	public String getOrden() {
+	public Integer getOrden() {
 		return orden;
 	}
-	public void setOrden(String orden) {
+	public void setOrden(Integer orden) {
 		this.orden = orden;
 	}
 	

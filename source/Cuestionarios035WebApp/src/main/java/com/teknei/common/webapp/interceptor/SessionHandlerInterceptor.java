@@ -18,7 +18,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+//import com.teknei.admin.bsn.CatalogosManager;
 import com.teknei.security.bsn.UsersManager;
+//import com.teknei.vo.EmpresaVO;
 import com.teknei.vo.UsuarioVO;
 
 /**
@@ -30,6 +32,8 @@ public class SessionHandlerInterceptor extends HandlerInterceptorAdapter {
 	
 	@Autowired
 	private UsersManager usersManager;
+//	@Autowired
+//	private CatalogosManager catalogosManager;
 	@Autowired
 	private MessageSource messageSource;
 
@@ -56,16 +60,23 @@ public class SessionHandlerInterceptor extends HandlerInterceptorAdapter {
 				LOGGER.info("User information not found in session");
 				UsuarioVO currentUser = usersManager.getUserComplete(userName);
 //				UsuarioVO currentUser = usersManager.getUser(userName);
-				if(currentUser.getLstAutoridades() == null) {
-					currentUser.setLstAutoridades(new ArrayList<String>());
-					for(GrantedAuthority ga : auth.getAuthorities())
-						currentUser.getLstAutoridades().add(ga.getAuthority());
-//					request.getSession(false).setAttribute("currentUser", currentUser2);
-				}
-				request.getSession(false).setAttribute("currentUser", currentUser);
+//				if(currentUser.getLstAutoridades() == null) {
+//					currentUser.setLstAutoridades(new ArrayList<String>());
+//					for(GrantedAuthority ga : auth.getAuthorities())
+//						currentUser.getLstAutoridades().add(ga.getAuthority());
+////					request.getSession(false).setAttribute("currentUser", currentUser2);
+//				}
+//				request.getSession(false).setAttribute("currentUser", currentUser);
+//				EmpresaVO empresa = catalogosManager.getEmpresa(currentUser.getIdEmpresa());
 
-				LOGGER.info("User information in session updated");
-				
+//				request.getSession(false).setAttribute("colorPrimario", empresa.getColorPrimario());
+//				request.getSession(false).setAttribute("colorSecundario", empresa.getColorSecundario());
+//				request.getSession(false).setAttribute("colorContraste",empresa.getColorSecundarioAlt());
+//				request.getSession(false).setAttribute("colorTexto",empresa.getColorTexto());
+//				request.getSession(false).setAttribute("empresa", empresa.getClave());
+//				request.getSession(false).setAttribute("contacto", empresa.getContacto());
+//				LOGGER.info("User information in session updated");
+//				
 				
 				
 				String locale = request.getParameter("locale");
@@ -79,13 +90,20 @@ public class SessionHandlerInterceptor extends HandlerInterceptorAdapter {
 			}else {
 				UsuarioVO currentUser2 = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
 				currentUser2 = usersManager.getUserComplete(userName);
-				if(currentUser2.getLstAutoridades() == null) {
-					currentUser2.setLstAutoridades(new ArrayList<String>());
-					for(GrantedAuthority ga : auth.getAuthorities())
-						currentUser2.getLstAutoridades().add(ga.getAuthority());
-					request.getSession(false).setAttribute("currentUser", currentUser2);
-				}
-				
+//				if(currentUser2.getLstAutoridades() == null) {
+//					currentUser2.setLstAutoridades(new ArrayList<String>());
+//					for(GrantedAuthority ga : auth.getAuthorities())
+//						currentUser2.getLstAutoridades().add(ga.getAuthority());
+//					request.getSession(false).setAttribute("currentUser", currentUser2);
+//				}
+//				
+//				EmpresaVO empresa = catalogosManager.getEmpresa(currentUser2.getIdEmpresa());
+//
+//				request.getSession(false).setAttribute("colorPrimario", empresa.getColorPrimario());
+//				request.getSession(false).setAttribute("colorSecundario", empresa.getColorSecundario());
+//				request.getSession(false).setAttribute("colorContraste",empresa.getColorSecundarioAlt());
+//				request.getSession(false).setAttribute("colorTexto",empresa.getColorTexto());
+//				request.getSession(false).setAttribute("empresa", empresa.getClave());
 				LOGGER.info("User information in session updated");
 
 				String locale = request.getParameter("locale");

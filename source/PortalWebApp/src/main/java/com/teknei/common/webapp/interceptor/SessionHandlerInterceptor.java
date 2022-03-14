@@ -1,6 +1,7 @@
 package com.teknei.common.webapp.interceptor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.teknei.security.bsn.UsersManager;
+import com.teknei.util.Constants;
 import com.teknei.vo.UsuarioVO;
 
 /**
@@ -55,6 +57,7 @@ public class SessionHandlerInterceptor extends HandlerInterceptorAdapter {
 			if(request.getSession(false).getAttribute("currentUser") == null) {
 				LOGGER.info("User information not found in session");
 				UsuarioVO currentUser = usersManager.getUser(userName);
+//				currentUser.setDtsFuncionarioVO(funcionariosManager.getByIdUsuario(currentUser.getId()).getDatosFuncionarioVO());
 				
 				if(currentUser.getLstAutoridades() == null) {
 					currentUser.setLstAutoridades(new ArrayList<String>());
@@ -74,6 +77,7 @@ public class SessionHandlerInterceptor extends HandlerInterceptorAdapter {
 					currentUser2.setId(currentUser.getId());
 				}
 				
+//				currentUser2.setDtsFuncionarioVO(funcionariosManager.getByIdUsuario(currentUser2.getId()).getDatosFuncionarioVO());
 				
 				if(currentUser2.getLstAutoridades() == null) {
 					currentUser2.setLstAutoridades(new ArrayList<String>());

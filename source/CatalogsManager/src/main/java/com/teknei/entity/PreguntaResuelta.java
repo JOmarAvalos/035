@@ -33,7 +33,7 @@ public class PreguntaResuelta extends BaseEntity<Integer> {
 		return super.getId();
 	}
 	
-	@Column(name = "id_actividad", nullable = false)
+	@Column(name = "id_actividad_resuelta", nullable = false)
 	public Integer getIdActividadResuelta() {
 		return idActividadResuelta;
 	}
@@ -41,7 +41,7 @@ public class PreguntaResuelta extends BaseEntity<Integer> {
 		this.idActividadResuelta = idActividadResuelta;
 	}
 	
-	@Column(name = "id_actividad", nullable = false)
+	@Column(name = "id_pregunta", nullable = false)
 	public Integer getIdPregunta() {
 		return idPregunta;
 	}

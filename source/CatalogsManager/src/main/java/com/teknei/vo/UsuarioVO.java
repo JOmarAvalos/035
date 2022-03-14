@@ -2,6 +2,7 @@ package com.teknei.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 public class UsuarioVO extends BaseVO implements Serializable {	
@@ -21,6 +22,9 @@ public class UsuarioVO extends BaseVO implements Serializable {
 	private Date modificacion;
 	private Integer estatus;
 	private Integer banActivo;
+	
+	private List<String> lstAutoridades;
+
 	
 	
 	public String getUsuario() {
@@ -98,6 +102,18 @@ public class UsuarioVO extends BaseVO implements Serializable {
 	}
 	public void setBanActivo(Integer banActivo) {
 		this.banActivo = banActivo;
+	}
+	/**
+	 * @return the lstAutoridades
+	 */
+	public List<String> getLstAutoridades() {
+		return lstAutoridades;
+	}
+	/**
+	 * @param lstAutoridades the lstAutoridades to set
+	 */
+	public void setLstAutoridades(List<String> lstAutoridades) {
+		this.lstAutoridades = lstAutoridades;
 	}
 	
 }

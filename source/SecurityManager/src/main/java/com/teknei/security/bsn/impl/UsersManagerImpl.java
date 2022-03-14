@@ -78,17 +78,17 @@ public class UsersManagerImpl implements UsersManager {
 		UsuarioVO result;
 		Usuario user = userDAO.getUser(userToUpdate.getId());
 
-		user.setIdEstatus(userToUpdate.getIdEstatus());
-		user.setPassword(userToUpdate.getPassword());
-		user.setIdEstatus(userToUpdate.getIdEstatus());
+//		user.setIdEstatus(userToUpdate.getIdEstatus());
+//		user.setPassword(userToUpdate.getPassword());
+//		user.setIdEstatus(userToUpdate.getIdEstatus());
 		user.setModificacion(userToUpdate.getModificacion());
-		user.setIdEmpresa(userToUpdate.getIdEmpresa());
-		user.setUsername(userToUpdate.getUsername());
+//		user.setIdEmpresa(userToUpdate.getIdEmpresa());
+//		user.setUsername(userToUpdate.getUsername());
 		user.setIdUsuarioModifica(userToUpdate.getIdUsuarioModifica());
-		user.setUsuarioCorp(userToUpdate.getUsuarioCorp());
+//		user.setUsuarioCorp(userToUpdate.getUsuarioCorp());
 		user = userDAO.updateUser(user);
 
-		Usuario persistedUser = userDAO.getUser(userToUpdate.getUsername());
+		Usuario persistedUser = userDAO.getUser(userToUpdate.getUsuario());
 		result = mapper.map(persistedUser, UsuarioVO.class);
 
 		return result;
@@ -97,8 +97,8 @@ public class UsersManagerImpl implements UsersManager {
 	public UsuarioVO updateUserPassword(UsuarioVO userToUpdate) {
 		UsuarioVO result;
 
-		Usuario user = userDAO.getUser(userToUpdate.getUsername());
-		user.setPassword(userToUpdate.getPassword());
+		Usuario user = userDAO.getUser(userToUpdate.getUsuario());
+//		user.setPassword(userToUpdate.getPassword());
 		user = userDAO.updateUser(user);
 		result = mapper.map(user, UsuarioVO.class);
 

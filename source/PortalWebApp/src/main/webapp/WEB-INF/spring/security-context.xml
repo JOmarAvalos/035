@@ -17,20 +17,8 @@
     
         <security:intercept-url pattern="/auth/login_check" access="isAuthenticated() or isAnonymous()" />
         <security:intercept-url pattern="/login" access="isAuthenticated() or isAnonymous()" />
-        <security:intercept-url pattern="/home" access="isAuthenticated() or isAnonymous()" />
-        <security:intercept-url pattern="/home/**" access="isAuthenticated() or isAnonymous()" />        
-        <security:intercept-url pattern="/email" access="isAuthenticated()" />
-        <security:intercept-url pattern="/email/content" access="isAuthenticated() or isAnonymous()" />
-        <security:intercept-url pattern="/catalogo/**" access="hasAuthority('ADMIN_CATALOGOS')" />
-        <security:intercept-url pattern="/lms/**" access="hasAuthority('ADMIN_LMS')" />
-        <security:intercept-url pattern="/users/**" access="hasAuthority('ADMIN_USER')" />
-        <security:intercept-url pattern="/actividad/**" access="isAuthenticated()" />
-        <security:intercept-url pattern="/config/**" access="hasAuthority('ADMIN_CALENDARIO')" />
-        <security:intercept-url pattern="/funcionarios/**" access="hasAuthority('ADMIN_FUNCIONARIOS')" />
-        <security:intercept-url pattern="/contacto/**" access="isAuthenticated()" />        
         <security:intercept-url pattern="/resources/**" access="isAuthenticated() or isAnonymous()" />
         <security:intercept-url pattern="/" access="isAuthenticated() or isAnonymous()" />
-         <security:intercept-url pattern="/notificacion" access="isAuthenticated() or isAnonymous()" />
         <security:intercept-url pattern="/cache.appcache" access="isAuthenticated() or isAnonymous()" />
         <security:intercept-url pattern="/favicon.ico" access="isAuthenticated() or isAnonymous()" />
         <security:intercept-url pattern="/**" access="isAuthenticated()" />
@@ -63,16 +51,13 @@
         <security:authentication-provider >
             <security:password-encoder hash="bcrypt" ref="encoder" />
 	        <security:jdbc-user-service data-source-ref="dataSource"
-	            users-by-username-query="SELECT usuario,contrasena, case id_estatus_usuario when 1 then true else false end estatus FROM megadealer.mdl_usuarios WHERE usuario = ? And id_estatus_usuario=1 and id_empresa=1"
+	            users-by-username-query="SELECT usuario,contrasena, case ban_activo when 1 then true else false end estatus FROM desarrollo.tbl_usuarios WHERE usuario = ? And ban_activo=1 "
 	            authorities-by-username-query="
-												select u.usuario, mw.perfil as role
-													from megadealer.mdl_usuarios as u, 
-															megadealer.mdl_cata_modulo_web as mw, 
-															megadealer.mdl_usuario_modulo_web as umw
-													where umw.id_usuario = u.cve_usuario
-													and mw.cve_modulo_web = umw.id_modulo_web
-													and mw.ban_activo = 1
-													and u.usuario = ?
+												select u.usuario, cp.nombre as role
+												from desarrollo.tbl_usuarios as u, 
+														desarrollo.tbl_cata_perfil as cp 
+												where cp.cve_perfil = u.id_perfil
+												and u.usuario = ?
 												  " />
         </security:authentication-provider>
     </security:authentication-manager>
