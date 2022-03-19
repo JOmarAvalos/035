@@ -122,6 +122,7 @@ public class SecurityController {
 	
 	private static final String LOGIN_VIEW = "appLogin";
 	private static final String HOME_VIEW = "home";
+	private static final String HOME_LOGIN_VIEW = "homeLogin";
 	private static final String UNAUTHORIZED_VIEW = "notFound";
 	private static final String ATTR_MODULOS = "modulos";
 	private static final String ATTR_LST_CALENDARIO = "lstCalendario";

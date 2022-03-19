@@ -3,6 +3,7 @@ package com.teknei.vo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 public class CuestionarioVO extends BaseVO implements Serializable {
 	
@@ -23,6 +24,8 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	private Date creacion;
 	private Date modificacion;
 	private Integer banActivo;
+	
+	private List<PreguntaVO> preguntas;
 	
 	
 	public String getNombre() {
@@ -114,6 +117,18 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	}
 	public void setBanActivo(Integer banActivo) {
 		this.banActivo = banActivo;
+	}
+	/**
+	 * @return the preguntas
+	 */
+	public List<PreguntaVO> getPreguntas() {
+		return preguntas;
+	}
+	/**
+	 * @param preguntas the preguntas to set
+	 */
+	public void setPreguntas(List<PreguntaVO> preguntas) {
+		this.preguntas = preguntas;
 	}
 	
 }

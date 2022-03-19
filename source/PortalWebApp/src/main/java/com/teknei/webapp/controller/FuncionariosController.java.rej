@@ -1,0 +1,109 @@
+diff a/source/PortalWebApp/src/main/java/com/teknei/webapp/controller/FuncionariosController.java b/source/PortalWebApp/src/main/java/com/teknei/webapp/controller/FuncionariosController.java	(rejected hunks)
+@@ -1,6 +1,7 @@
+ package com.teknei.webapp.controller;
+ 
+ import java.util.ArrayList;
++import java.util.Date;
+ import java.util.List;
+ 
+ import javax.servlet.http.HttpServletRequest;
+@@ -12,6 +13,7 @@
+ import org.springframework.security.core.Authentication;
+ import org.springframework.security.core.context.SecurityContextHolder;
+ import org.springframework.security.core.userdetails.UserDetails;
++import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.ui.Model;
+ import org.springframework.web.bind.annotation.RequestBody;
+@@ -88,53 +90,49 @@
+ 	public List<Object> saveFuncionario(Model model, HttpServletRequest request, @RequestBody FuncionarioVO funcionario) {
+ 
+ 		List<Object> resp = new ArrayList<Object>();
+-		try {
+-			datosManager.saveFuncionario(funcionario);
+-			//datosManager.saveDtsFuncionario(dtsfuncionario);
+-			//datosManager.saveUsuario(usuario);
+-		} catch (Exception e) {
+-			resp.add(false);
+-			return resp;
+-		}
+-		resp.add(true);
+-		return resp;
+-	}
+-	
+-	///prueba
+-	@RequestMapping(value = "/funcionarios/saveUsuario", method = RequestMethod.POST)
+-	@ResponseBody
+-	public List<Object> saveUsuario(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
++		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
++		boolean respB = false;
+ 
+-		List<Object> resp = new ArrayList<Object>();
+-		try {
+-			//datosManager.saveFuncionario(funcionario);
+-			//datosManager.saveDtsFuncionario(dtsfuncionario);
+-			datosManager.saveUsuario(usuario);
+-		} catch (Exception e) {
+-			resp.add(false);
+-			return resp;
++		if (!(auth instanceof AnonymousAuthenticationToken)) {
++			UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
++			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsername());
++			Date fechaCreacion = new Date();
++			try {
++				
++				UsuarioVO usuario = new UsuarioVO();
++				BCryptPasswordEncoder bcEncoder = new BCryptPasswordEncoder();
++				usuario.setPassword(bcEncoder.encode(funcionario.getDatosFuncionarioVO().getNss()));
++				usuario.setUsername(funcionario.getRfc());
++				usuario.setIdEmpresa(funcionario.getAuxEmpresa());
++				usuario.setCreacion(fechaCreacion);
++				usuario.setIdEstatus(Constants.BAN_ACTIVO);
++				
++				usuario = datosManager.saveUsuario(usuario);
++				
++				//Se obtienen los datos del funcionario
++				DtsFuncionarioVO dtsFuncionarioVO = funcionario.getDatosFuncionarioVO();
++				//Se agrega informacion adicional del funcionario 
++				funcionario.setIdUsuario(usuario.getId());
++				funcionario.setIdUsuarioCrea(usuarioVO.getId());
++				funcionario.setCreacion(fechaCreacion);
++				//Se guarda el funcionario
++				funcionario =  datosManager.saveFuncionario(funcionario);
++				//Se agrega informacion adicional a los datos del  funcionario
++				dtsFuncionarioVO.setIdFuncionario(funcionario.getId());
++				dtsFuncionarioVO.setIdUsuarioCrea(usuarioVO.getId());
++				dtsFuncionarioVO.setCreacion(fechaCreacion);
++				datosManager.saveDtsFuncionario(dtsFuncionarioVO);
++				
++				respB = true;
++				
++			} catch (Exception e) {
++				LOGGER.error("Ocurrio un error al guardar el funcionario 			error:", e);
++			}
+ 		}
+-		resp.add(true);
++		resp.add(respB);
+ 		return resp;
+ 	}
+ 	
+-	///prueba
+-	@RequestMapping(value = "/funcionarios/saveDtsFuncionario", method = RequestMethod.POST)
+-	@ResponseBody
+-	public List<Object> saveDtsFuncionario(Model model, HttpServletRequest request, @RequestBody DtsFuncionarioVO dtsFuncionario) {
+-
+-		List<Object> resp = new ArrayList<Object>();
+-		try {
+-			//datosManager.saveFuncionario(funcionario);
+-			datosManager.saveDtsFuncionario(dtsFuncionario);
+-			//datosManager.saveUsuario(usuario);
+-		} catch (Exception e) {
+-			resp.add(false);
+-			return resp;
+-		}
+-		resp.add(true);
+-		return resp;
+-	}
+ 	
+ 
+ 

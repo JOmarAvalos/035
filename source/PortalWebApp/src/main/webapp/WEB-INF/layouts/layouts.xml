@@ -7,7 +7,7 @@
     <definition name="appLogin" template="/WEB-INF/views/login.jsp" />
     
     <definition name="notFound" template="/WEB-INF/views/error/404.jsp" />
-     
+    
     <definition name="home" template="/WEB-INF/views/admin/master.jsp">
         <put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/admin/menu.jsp" />
@@ -15,4 +15,15 @@
         <put-attribute name="footer" value="" />
     </definition>
     
+    <definition name="homeLogin" template="/WEB-INF/views/anonimous/master.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/anonimous/header.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/anonimous/home.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/anonimous/footer.jsp" />
+    </definition>
+    
+    <definition name="cuestionarios" template="/WEB-INF/views/anonimous/masterCuestionarios.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/anonimous/headerCuestionarios.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/anonimous/cuestionario.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/anonimous/footer.jsp" />
+    </definition>
 </tiles-definitions>

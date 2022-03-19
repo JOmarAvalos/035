@@ -13,8 +13,7 @@
 <jsp:useBean id="now" class="java.util.Date" />
 
 
-<script src="<c:url value='/resources/js/admin/funcionarios.js' />"
-	type="text/javascript"></script>
+<script src="<c:url value='/resources/js/admin/funcionarios.js' />" type="text/javascript"></script>
 
 
 <sec:hasAccess module="ADMIN_USER" var="admin_user" />

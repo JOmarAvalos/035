@@ -2,6 +2,7 @@ package com.teknei.vo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class PreguntaVO extends BaseVO implements Serializable {
 	
@@ -21,6 +22,8 @@ public class PreguntaVO extends BaseVO implements Serializable {
 	private Date creacion;
 	private Date modificacion;
 	private Integer banActivo;
+	
+	private List<RespuestaVO> respuestas;
 	
 	
 	public Integer getIdCuestionario() {
@@ -105,6 +108,18 @@ public class PreguntaVO extends BaseVO implements Serializable {
 	}
 	public void setBanActivo(Integer banActivo) {
 		this.banActivo = banActivo;
+	}
+	/**
+	 * @return the respuestas
+	 */
+	public List<RespuestaVO> getRespuestas() {
+		return respuestas;
+	}
+	/**
+	 * @param respuestas the respuestas to set
+	 */
+	public void setRespuestas(List<RespuestaVO> respuestas) {
+		this.respuestas = respuestas;
 	}
 	
 }

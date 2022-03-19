@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
-<html class="bg-gray">
+<html class="bg-black">
     <head>
         <meta charset="UTF-8">
         <title>AdminLTE | Log in</title>
@@ -28,45 +28,97 @@
             <script>
       var ctx = "${pageContext.request.contextPath}"
     </script>
+    
+    <script src="<c:url value='/resources/js/035/login.js' />" type="text/javascript"></script>
     </head>
-    <body class="bg-login">
+    <body class="bg-black">
 
 	<div class="form-box" id="login-box">
 
-		<div class="login-container">
-			<div class="header_login">
-				 <img src="<c:url value='/resources/css/img/Logo-MD.svg' />" alt="Megadealer">
+		<div id="divLogin">
+			<div class="login-container">
+				<div class="header_login">
+					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+				</div>
+				<div class="body_login">
+					<h1>¡Bienvenido!</h1>
+					<p>Inicia sesión</p>
+					<form name="loginForm" class="form"
+						action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />"
+						method="POST" role="form">
+						<div class="form-group">
+							<input type="text" id="username" name="username"
+								class="form-control" placeholder="User ID" required/>
+						</div>
+						<div class="form-group">
+							<input type="password" id="password" name="password"
+								class="form-control" placeholder="Password" required/>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
+						</div>
+							<button type="submit" class="btn">Iniciar sesión</button>
+					</form>
+					
+					<p><a href="#" onclick="showRecuperaPwd();">Olvide mi contraseña</a></p>
+					<p><a href="#" onclick="showRegistro();">Registro</a></p>
+					
+				</div>
 			</div>
-			<div class="body_login">
-				<h1>¡Bienvenido!</h1>
-				<p>Inicia sesión</p>
-				<form name="loginForm" class="form"
-					action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />"
-					method="POST" role="form">
+		</div>
+		
+		<div id="divRegistro" style="display:none;">
+			<div class="login-container">
+				<div class="header_login">
+					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+				</div>
+				<div class="body_login">
+					<h1>Registro</h1>
+					<p>Captura la siguiente informaci&oacute;n</p>
 					<div class="form-group">
-						<input type="text" id="username" name="username"
-							class="form-control" placeholder="User ID" required/>
+						<input type="text" id="email" name="email"
+							class="form-control" placeholder="Email" required/>
 					</div>
 					<div class="form-group">
-						<input type="password" id="password" name="password"
-							class="form-control" placeholder="Password" required/>
+						<input type="text" id="confirmEmail" name="confirmEmail"
+							class="form-control" placeholder="Confirma Email" required/>
 					</div>
 					<div class="form-group">
-						<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
+						<input type="password" id="passwordRegistro" name="passwordRegistro"
+							class="form-control" placeholder="Contrasentilde;a" required/>
 					</div>
-						<button type="submit" class="btn">Iniciar sesión</button>
-				</form>
+					<div class="form-group">
+						<input type="password" id="confirmPasswordRegistro" name="confirmPasswordRegistro"
+							class="form-control" placeholder="Confirma contrase&ntilde;a" required/>
+					</div>
+					
+					<p><a href="#" onclick="showLogin();">Ya tengo cuenta</a></p>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div id="divRecuperaPwd" style="display:none;">
+			<div class="login-container">
+				<div class="header_login">
+					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+				</div>
+				<div class="body_login">
+					<h1>Olvide mi contrase&ntilde;a</h1>
+					<p>Captura tu usuario o email</p>
+					<div class="form-group">
+						<input type="text" id="confirmEmail" name="confirmEmail"
+							class="form-control" placeholder="" required/>
+					</div>
+					
+					<p><a href="#" onclick="showLogin();">Cancelar</a></p>
+					
+				</div>
 			</div>
 		</div>
 
-		<!--        <a href="<c:url value='/home/document'/>" target="_blank" class="text-center">Reporte 2</a>
-		  <button onclick="javascript:generateDepartmentReport();" id="btnGenerateReport" class="btn btn-info pull-right">
-		  <spring:message code="generate.report" /> 
-		</button> -->
-
-
-
 	</div>
+
 
 
 	<!-- jQuery 2.0.2 -->

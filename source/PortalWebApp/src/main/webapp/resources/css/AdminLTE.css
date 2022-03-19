@@ -20,7 +20,7 @@ html, body {
 	
 	-webkit-font-smoothing: antialiased;
 	min-height: 100%;
-	background: #f9f9f9;
+	background: #a4a4a4;
 }
 
 .blink {
@@ -70,7 +70,7 @@ keyframes blinker-two { 100% {
 }
 
 a {
-	color: #3c8dbc;
+	color: #0569a2;
 }
 
 a:hover, a:active, a:focus {
@@ -313,7 +313,7 @@ supports ((-webkit-backdrop-filter: none ) or (backdrop-filter: none ))
 	padding: 10px 10px;
 	border-radius: 4px 4px 0 0;
 	text-align: center;
-	background-color: #017DAD;
+	background-color: #ffffff;
 }
 
 .header_login img {
@@ -321,7 +321,7 @@ supports ((-webkit-backdrop-filter: none ) or (backdrop-filter: none ))
 }
 
 .body_login {
-	color: white;
+	color: black;
 	padding: 10px 16px;
 	font-size: 1.3em;
 }
@@ -4409,3 +4409,298 @@ button.close{
     font-size: 2.2em;
 }
 
+/*CONTAINER MAIN*/
+main.l-main {
+    width: 100%;
+    height: 100%;
+    padding: 45px 0 0 70px;
+    -webkit-transition: padding 0.5s ease-in-out;
+    transition: padding 0.5s ease-in-out;
+}
+main.l-main .content-wrapper {
+    padding:25px 16px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+@font-face {
+    font-family: 'montserratblack';
+    src: url("../fonts/Montserrat/montserrat-black-webfont.eot");
+    src: url("../fonts/Montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"), 
+    url("../fonts/Montserrat/montserrat-black-webfont.woff2") format("woff2"), 
+    url("../fonts/Montserrat/montserrat-black-webfont.woff") format("woff"), 
+    url("../fonts/Montserrat/montserrat-black-webfont.ttf") format("truetype"), 
+    url("../fonts/Montserrat/montserrat-black-webfont.i#montserratblack") format("i");
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'montserratbold';
+    src: url("../fonts/Montserrat/montserrat-bold-webfont.eot");
+    src: url("../fonts/Montserrat/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"), 
+    url("../fonts/Montserrat/montserrat-bold-webfont.woff2") format("woff2"), 
+    url("../fonts/Montserrat/montserrat-bold-webfont.woff") format("woff"), 
+    url("../fonts/Montserrat/montserrat-bold-webfont.ttf") format("truetype"), 
+    url("../fonts/Montserrat/montserrat-bold-webfont.i#montserratbold") format("i");
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'montserratregular';
+    src: url("../fonts/Montserrat/montserrat-regular-webfont.eot");
+    src: url("../fonts/Montserrat/montserrat-regular-webfont.eot?#iefix") format("embedded-opentype"), 
+    url("../fonts/Montserrat/montserrat-regular-webfont.woff2") format("woff2"), 
+    url("../fonts/Montserrat/montserrat-regular-webfont.woff") format("woff"),
+    url("../fonts/Montserrat/montserrat-regular-webfont.ttf") format("truetype"), 
+    url("../fonts/Montserrat/montserrat-regular-webfont.i#montserratregular") format("i");
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'montserratlight';
+    src: url("../fonts/Montserrat/montserrat-light-webfont.eot");
+    src: url("../fonts/Montserrat/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"), 
+    url("../fonts/Montserrat/montserrat-light-webfont.woff2") format("woff2"), 
+    url("../fonts/Montserrat/montserrat-light-webfont.woff") format("woff"), 
+    url("../fonts/Montserrat/montserrat-light-webfont.ttf") format("truetype"), 
+    url("../fonts/Montserrat/montserrat-light-webfont.i#montserratlight") format("i");
+    font-weight: normal;
+    font-style: normal; 
+}
+
+/*Fonts*/
+.light {
+    font-family: "montserratlight", sans-serif !important; 
+}
+.regular {
+    font-family: "montserratregular", sans-serif !important; 
+}
+.bold {
+    font-family: "montserratbold", sans-serif !important; 
+}
+.black {
+    font-family: "montserratblack", sans-serif !important; 
+}
+.italic{
+    font-style: italic !important;
+}
+.uppercase{
+    text-transform: uppercase;
+}
+
+
+.txt-main{
+	color:var(--color-main) !important;
+}
+.txt-secondary{
+	color:var(--color-secondary) !important;
+}
+.txt-secondarylt{
+	color:var(--color-secondarylt) !important;
+}
+
+.color-orange{
+    color: #EB9829 !important;
+}
+
+.txt-blue{
+	color:#00BADF !important;
+}
+
+.txt-blue-dark{
+	color:#004F6E !important;
+}
+.txt-green{
+	color:var(--color-green) !important;
+}
+.txt-orange{
+	color:var(--color-orange) !important;
+}
+.txt-red{
+	color:var(--color-red) !important;
+}
+.txt-amazul{
+	color:#3190AF !important;
+}
+.txt-gray{
+	color:var(--color-gray) !important;
+}
+.txt-graylt{
+	color:var(--color-graylt) !important;
+}
+.txt-graysc{
+	color:var(--color-graysc) !important;
+}
+.txt-graytrd{
+	color:var(--color-graytrd) !important;
+}
+.txt-small{
+	font-size:.85em !important;
+}
+
+
+/* EXAMEN */
+.examen textarea{
+	width: 30%;
+    min-width: 300px;
+    height: 100px;
+    margin: 16px auto;
+    padding: 6px;
+}
+.img-examen{
+	text-align:center;
+	overflow: auto;
+}
+.img-examen img{
+	width: 40%;
+    min-width: 500px;
+    margin: 20px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 0.52);
+    border: 2px solid transparent;
+     transition: all .3s linear;
+}
+.img-examen img:hover{
+  transform: scale(1.12);
+  transition: all .2s linear;
+      cursor: zoom-in;
+}
+
+/*checks*/
+.span_pseudo, .chiller_cb span:before, .chiller_cb span:after {
+  content: "";
+  display: inline-block;
+  background: #fff;
+  width: 0;
+  height: 0.2rem;
+  position: absolute;
+  transform-origin: 0% 0%;
+}
+
+.chiller_cb {
+  position: relative;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+.chiller_cb input {
+  display: none;
+}
+.chiller_cb input:checked ~ span {
+  background: var(--color-secondarylt);
+  border-color: var(--color-secondarylt);
+}
+.chiller_cb input:checked ~ span:before {
+  width: 1rem;
+  height: 0.15rem;
+  transition: width 0.1s;
+  transition-delay: 0.3s;
+}
+.chiller_cb input:checked ~ span:after {
+  width: 0.4rem;
+  height: 0.15rem;
+  transition: width 0.1s;
+  transition-delay: 0.2s;
+}
+.chiller_cb input:disabled ~ span {
+  background: #ececec;
+  border-color: #dcdcdc;
+}
+.chiller_cb input:disabled ~ label {
+  color: #dcdcdc;
+}
+.chiller_cb input:disabled ~ label:hover {
+  cursor: default;
+}
+.chiller_cb label {
+ padding-left: 2em;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    margin-top: 5px;
+    line-height: 1.7;
+
+}
+.chiller_cb span {
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid #ccc;
+  position: absolute;
+  left: 0;
+  transition: all 0.2s;
+  z-index: 1;
+  box-sizing: content-box;
+}
+.chiller_cb span:before {
+  transform: rotate(-55deg);
+  top: .91rem;
+  left: 0.36rem;
+}
+.chiller_cb span:after {
+  transform: rotate(35deg);
+  bottom: 0.32rem;
+  left: 0.14rem;
+}
+
+/* RadioButtons */
+.radio {
+ 	display: block;
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+.radio::first-letter {
+  text-transform: uppercase;
+}
+.radio:hover{
+	font-family:var(--fbold);
+}
+
+.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkround {
+	position: absolute;
+    top: 0px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border-color: var(--color-secondarylt);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 50%;
+}
+
+
+.radio input:checked ~ .checkround {
+    background-color: #000;
+}
+
+.checkround:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio input:checked ~ .checkround:after {
+    display: block;
+}
+
+.radio .checkround:after {
+    left: 2px;
+    top: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-secondarylt);
+    
+ 
+}

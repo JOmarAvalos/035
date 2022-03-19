@@ -342,3 +342,20 @@ create table desarrollo.tbl_preguntas_resueltas
       REFERENCES desarrollo.tbl_respuestas (cve_respuesta) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
+
+
+---------------------------------------
+-- public.persistent_logins
+---------------------------------------
+-- Table: public.persistent_logins
+
+-- DROP TABLE public.persistent_logins;
+
+CREATE TABLE public.persistent_logins
+(
+    username character varying(64) NOT NULL,
+    series character varying(64) NOT NULL,
+    token character varying(64) NOT NULL,
+    last_used timestamp without time zone NOT NULL,
+    CONSTRAINT persistent_logins_pkey PRIMARY KEY (series)
+)
