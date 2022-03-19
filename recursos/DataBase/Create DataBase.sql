@@ -64,7 +64,7 @@ create table desarrollo.tbl_usuarios
 (
   cve_usuario serial NOT NULL,
   usuario character varying(15) NOT NULL,
-  contrasena character varying(50) NOT NULL,
+  contrasena character varying(200) NOT NULL,
   nombre character varying(100) NOT NULL,
   email character varying(80) NOT NULL,
   id_perfil integer NOT NULL,
