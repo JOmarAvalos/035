@@ -25,7 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		try  {  
 //			compareDates();
-			encriptaPwd();
+//			encriptaPwd();
+			compareContrasenia();
 
 		}  
 		catch(Exception e)  {  
@@ -37,6 +38,20 @@ public class Main {
 		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		 String pwd = passwordEncoder.encode("Mexico1987*");
 		 System.out.println(pwd);
+	}
+	
+	private static void compareContrasenia() {
+//		String encoded = "$2a$10$C0If2Mg1hpoqEIliV7qJauesutIYnr.PWMC/zJKTS4O";
+		String encoded = "$2a$10$C0If2Mg1hpoqEIliV7qJauesutIYnr.PWMC/zJKTS4Obl1FiYmN1q";
+		String decoded = "30048412891";
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		if(passwordEncoder.matches(decoded, encoded)) {
+			System.out.println("coinciden");
+		}else {
+			System.out.println("verga");
+		}
+
 	}
 	
 	private static void compareDates() {
@@ -222,18 +237,7 @@ public class Main {
 		
 	}
 	
-	private static void compareContrasenia() {
-		String encoded = "$2a$10$assza9Ws1lXZhLeNPGsD8O2LxkxwTqu4DT0NwhTfvU3AFY2ILC8.q";
-		String decoded = "12137912345";
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		
-		if(passwordEncoder.matches(decoded, encoded)) {
-			System.out.println("coinciden");
-		}else {
-			System.out.println("verga");
-		}
-
-	}
+	
 	
 	private static void getSemanas() {
 		try {
