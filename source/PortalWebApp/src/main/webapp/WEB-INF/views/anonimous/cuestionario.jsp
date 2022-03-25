@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<script type="text/javascript">function iniciar(){}</script>
 
 <script src="<c:url value='/resources/js/035/custionarios.js' />" type="text/javascript"></script>
 

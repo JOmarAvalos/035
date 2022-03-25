@@ -93,28 +93,6 @@ public class SecurityController {
 	private UsersManager usersManager;
 	@Autowired
 	private MessageSource messageSource;
-//	@Autowired
-//	private DatosPersonalesManager datosPersonalesManager;
-//	@Autowired
-//	private CursoManager cursoManager;
-//	@Autowired
-//	private FuncionariosManager funcionariosManager;
-//	@Autowired
-//	private CatalogosManager catalogosManager;
-//	@Autowired
-//	private CalendarioManager calendarioManager;
-//	@Autowired
-//	private EventoCalendarioManager eventoCalendarioManager;
-//	@Autowired
-//	private MotivoCancelacionManager motivoCancelacionManager;
-//	@Autowired
-//	private NotificacionManager notificacionManager;
-//	@Autowired
-//	private MotivoCancelacionCursoManager motivoCancelacionCursoManager;
-//	@Autowired
-//	private EventoSesionManager eventoSesionManager;
-//	@Autowired
-//	private ActividadManager actividadManager;
 	
 	
 //	@Value("${app.wff.inscripcion.justificante}")

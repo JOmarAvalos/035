@@ -61,8 +61,7 @@
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes)
 	<script src="<c:url value='/resources/js/AdminLTE/dashboard.js' />" type="text/javascript"></script> -->
-<script src="<c:url value='/resources/js/util/util.js' />"
-	type="text/javascript"></script>
+<script src="<c:url value='/resources/js/util/util.js' />" type="text/javascript"></script>
 	<!-- InputMask -->
 	<script src="<c:url value='/resources/js/plugins/input-mask/jquery.inputmask.js' />" type="text/javascript"></script>
 	<script src="<c:url value='/resources/js/plugins/input-mask/jquery.inputmask.date.extensions.js' />" type="text/javascript"></script>

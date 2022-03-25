@@ -207,6 +207,3 @@ function inUploadChange(element,text) {
 //	}
 }
 
-function showLogin(){
-		$('#modalLogin').modal({backdrop: 'static', keyboard: false});
-} 
