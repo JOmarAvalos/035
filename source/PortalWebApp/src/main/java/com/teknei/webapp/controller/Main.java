@@ -25,8 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		try  {  
 //			compareDates();
-//			encriptaPwd();
-			compareContrasenia();
+			encriptaPwd();
+//			compareContrasenia();
 
 		}  
 		catch(Exception e)  {  
@@ -36,7 +36,7 @@ public class Main {
 	
 	private static void encriptaPwd(){
 		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		 String pwd = passwordEncoder.encode("Mexico1987*");
+		 String pwd = passwordEncoder.encode("12345");
 		 System.out.println(pwd);
 	}
 	
