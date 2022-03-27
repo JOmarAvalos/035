@@ -31,6 +31,9 @@ public interface UsersManager {
 	List<UsuarioVO> getAllUsersByEnpresa(Integer idEmpresa);
 	
 	UsuarioVO getUserCorp(String userName);
+	
+	UsuarioVO getUserByMail(String mail);
 
+	UsuarioVO getByUsrPwd(String userName, String pwd);
 	
 }

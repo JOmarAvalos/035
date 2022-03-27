@@ -78,14 +78,11 @@ public class UsersManagerImpl implements UsersManager {
 		UsuarioVO result;
 		Usuario user = userDAO.getUser(userToUpdate.getId());
 
-//		user.setIdEstatus(userToUpdate.getIdEstatus());
-//		user.setPassword(userToUpdate.getPassword());
-//		user.setIdEstatus(userToUpdate.getIdEstatus());
+		user.setEstatus(userToUpdate.getEstatus());
+		user.setContrasena(userToUpdate.getContrasena());
 		user.setModificacion(userToUpdate.getModificacion());
-//		user.setIdEmpresa(userToUpdate.getIdEmpresa());
-//		user.setUsername(userToUpdate.getUsername());
 		user.setIdUsuarioModifica(userToUpdate.getIdUsuarioModifica());
-//		user.setUsuarioCorp(userToUpdate.getUsuarioCorp());
+		user.setBanActivo(userToUpdate.getBanActivo());
 		user = userDAO.updateUser(user);
 
 		Usuario persistedUser = userDAO.getUser(userToUpdate.getUsuario());
@@ -182,5 +179,15 @@ public class UsersManagerImpl implements UsersManager {
 		Usuario user = userDAO.getUserCorp(userName);
 
 		return com.teknei.mapper.Mapper.toVO(user);
+	}
+
+	@Override
+	public UsuarioVO getUserByMail(String mail) {
+		return com.teknei.mapper.Mapper.toVO(userDAO.getUserByMail(mail));
+	}
+
+	@Override
+	public UsuarioVO getByUsrPwd(String userName, String pwd) {
+		return com.teknei.mapper.Mapper.toVO(userDAO.getByUsrPwd(userName, pwd));
 	}
 }

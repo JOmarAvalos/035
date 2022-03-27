@@ -13,12 +13,8 @@ public class ReadFileForEmail {
 	
 	private static final Logger LOGGER = Logger.getLogger(ReadFileForEmail.class);
 	
-	public static final String EMAIL = "/mail-confirma-cuenta.html";
+	public static final String EMAIL = "/confirmacion.html";
 
-	public static final String URLBG_MDL = "/megadealer/megadealer-bg.png";
-	public static final String URLBG_TOY = "/megadealer/toyota-bg.png";
-	public static final String URLBG_MIT = "/megadealer/mitsubishi-bg.png";
-	
 	public static String getFile(String file) throws IOException {
 		try {
 			File inFile = new File(file);

@@ -23,7 +23,7 @@ public class UserDAOImpl extends HibernateBaseDAO<Integer, Usuario> implements U
 	
 	@Override
 	public Usuario getUser(String userName) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where username = :userName");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where usuario = :userName");
 		query.setString("userName", userName );
 		
 		return (Usuario)query.uniqueResult();
@@ -114,6 +114,23 @@ public class UserDAOImpl extends HibernateBaseDAO<Integer, Usuario> implements U
 	public Usuario getUserCorp(String userName) {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where usuarioCorp = :userName");
 		query.setString("userName", userName );
+		
+		return (Usuario)query.uniqueResult();
+	}
+
+	@Override
+	public Usuario getUserByMail(String mail) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where upper(email) = :mail");
+		query.setString("mail", mail );
+		
+		return (Usuario)query.uniqueResult();
+	}
+
+	@Override
+	public Usuario getByUsrPwd(String userName, String pwd) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where usuario = :userName and contrasena = :contrasena ");
+		query.setString("userName", userName );
+		query.setString("contrasena", pwd );
 		
 		return (Usuario)query.uniqueResult();
 	}	

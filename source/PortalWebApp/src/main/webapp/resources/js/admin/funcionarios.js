@@ -598,24 +598,10 @@ validaRFC = function() {
 			success : function(response) {
 				result = response[0];
 				if (result) {
-					coincide = response[1];
-					//se encontraron coincidencias
-					if(!coincide){
-						var mensajes = response[2];
-						var htmlAddMsg = '';
-						for (var i = 0; i < mensajes.length; i++) {
-							var element = mensajes[i];
-							htmlAddMsg += element+'<br>';
-						}
-						$('#divMensajesC').append(htmlAddMsg);
-						$('#modalCoincidencias').modal({backdrop: 'static', keyboard: false});
-					}
+					//es valido
 				} else {
-					//se encontro un RFC identico
-//					modalCoincidencias
-					$('#btnSaveFuncionario').attr('disabled',true);
-					$('#divMensajesC').append(response[1]);
-					$('#modalCoincidencias').modal({backdrop: 'static', keyboard: false});
+					// repetido
+					
 				}
 			},
 			error : function(msg) {

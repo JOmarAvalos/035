@@ -76,12 +76,12 @@
 				<div class="body_login">
 					<h1>Registro</h1>
 					<p>Captura la siguiente informaci&oacute;n</p>
-					<form name="registroForm" class="form"
+					<form id="registroForm" name="registroForm" class="form"
 						action="javascript:validaRegisto();" role="form">
 						<div class="form-group">
 							<label for="email">Email:</label>
 							<input type="text" id="email" name="email"
-								class="form-control" placeholder="Email" />
+								class="form-control" placeholder="Email"  onchange="validaMail();"/>
 						</div>
 						<div class="form-group">
 							<label for="confirmEmail">Confirmaci&oacute;n de email:</label>
@@ -107,8 +107,9 @@
 						<p id="pEmailNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">El email y la confirmaci&oacute;n del email no coiniden.</span></p>
 						<p id="pContrasenaFormato" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a no cumple con el formato.</span></p>
 						<p id="pPwdNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a y la confirmaci&oacute;n de la contrase&ntilde;a no coiniden.</span></p>
+						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El correo ya se encuentra registado.</span></p>
 						
-						<button type="submit"  class="btn">Registro</button>
+						<button id="btnRegistro" type="submit"  class="btn">Registro</button>
 					</form>
 					
 					<p><a href="#" onclick="showLogin();">Ya tengo cuenta</a></p>
@@ -132,6 +133,17 @@
 					
 					<p><a href="#" onclick="showLogin();">Cancelar</a></p>
 					
+				</div>
+			</div>
+		</div>
+		
+		<div id="divRegistrado" style="display:none;">
+			<div class="login-container">
+				<div class="header_login">
+					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+				</div>
+				<div class="body_login">
+					<h1>Te hemos enviado un correo para confirmar tu cuenta</h1>
 				</div>
 			</div>
 		</div>
@@ -164,9 +176,12 @@
 	<!-- jQuery 2.0.2 -->
    
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<c:url value='/resources/js/bootstrap.min.js' />" type="text/javascript"></script>
 
        <script src="<c:url value='/resources/js/admin/prueba.js' />" type="text/javascript"></script> 
     </body>
+<div id="wait" class="loading-img" style="display: none;"></div>
 </html>
