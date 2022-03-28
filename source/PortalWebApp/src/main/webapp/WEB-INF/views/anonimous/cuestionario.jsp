@@ -137,35 +137,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-
-
-$(document).ready(function() {
-    function changeNumber() {
-    	var idMonitoreoActividadActi=$("#idMonitoreoActividadActi").val();
-    	if(idMonitoreoActividadActi > 0){
-    	var urltxt=ctx+"/lms/carrera/updateMonitoreoActividad?id="+idMonitoreoActividadActi; 
-    	$.ajax({
-    		type : "POST",
-    		url : urltxt,
-    		contentType : "application/json",
-    		beforeSend : function() {
-    		},
-    		complete : function() {
-    		},
-    		success : function(response) {
-    			
-    			if (response[0]) {				
-    			} else {
-    			}
-    		},
-    		error : function(msg) {
-    		}
-    	});
-    }
-    }
-    setInterval(changeNumber, 30000);
-});
-
-</script>

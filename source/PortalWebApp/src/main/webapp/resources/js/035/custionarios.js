@@ -71,6 +71,30 @@ saveRespuesta = function(actual, siguiente, tipo, total, idPregunta, totalRespue
 				}else{
 					$('#pregunta21').show();
 				}
+			}else if (idPregunta == 72){
+				if($('input:radio[name=check72]:checked').val() == 305 ){
+					$('#pregunta'+siguiente).show();
+				}else if(($('input:radio[name=check72]:checked').val() == 306 )){
+					$('#pregunta50').show();
+				}
+			}else if (idPregunta == 76){
+				if($('input:radio[name=check72]:checked').val() == 322 ){
+					$('#pregunta'+siguiente).show();
+				}else if(($('input:radio[name=check72]:checked').val() == 323 )){
+					$('#endExamen').show();
+				}
+			}else if (idPregunta ==149){
+				if($('input:radio[name=check149]:checked').val() == 691 ){
+					$('#pregunta'+siguiente).show();
+				}else if(($('input:radio[name=check149]:checked').val() == 692 )){
+					$('#pregunta75').show();
+				}
+			}else if (idPregunta == 154){
+				if($('input:radio[name=check154]:checked').val() == 713 ){
+					$('#pregunta'+siguiente).show();
+				}else if(($('input:radio[name=check154]:checked').val() == 714 )){
+					$('#endExamen').show();
+				}
 			}else{
 				$('#pregunta'+siguiente).show();
 			}
@@ -79,6 +103,9 @@ saveRespuesta = function(actual, siguiente, tipo, total, idPregunta, totalRespue
 		$('#pMsjAdvertenciaExamen').append(mensaje);
 		$('#modalAdvertenciaExamen').modal({backdrop: 'static', keyboard: false});
 	}
+}
 
-	
+openCuestionario = function(idCuestionario){
+	url = ctx+'/cuestionarios/cuestionario?param1='+idCuestionario;
+	window.open(url, '_blank');
 }
