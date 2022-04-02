@@ -12,7 +12,7 @@
 <!-- Inicio head -->
 <head>
 <meta charset="UTF-8">
-<title>Mega Dealer || Dashboard V11-08-2020</title>
+<title>035</title>
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>

@@ -8,7 +8,7 @@
 <header class="header-lte">
     <a onclick="getHome()" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        <img src="<c:url value='/resources/css/img/Logo-Mega-CH-white.png' />" class="img-logo" alt="User Image"/>
+        <img src="<c:url value='/resources/css/img/Logo_035.png' />" class="img-logo" alt="035"/>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">

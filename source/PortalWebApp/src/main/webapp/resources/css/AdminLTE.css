@@ -3020,7 +3020,7 @@ Component: timeline
 }
 /* skin-blue logo */
 .skin-blue .logo {
-	background-color: #017DAD;
+	background-color: #f9f9f9;
 	color: #f9f9f9;
 }
 
@@ -3029,7 +3029,7 @@ Component: timeline
 }
 
 .skin-blue .logo:hover {
-	background: #357ca5;
+	background: #f9f9f9;
 }
 /* skin-blue content header */
 .skin-blue .right-side>.content-header {

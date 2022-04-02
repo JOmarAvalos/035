@@ -9,7 +9,7 @@
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Log in</title>
+        <title>035 | Log in</title>
 
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	    <!-- bootstrap 3.0.2 -->
@@ -39,7 +39,7 @@
 		<div id="divLogin">
 			<div class="login-container">
 				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
 				</div>
 				<div class="body_login">
 					<h1>¡Bienvenido!</h1>
@@ -71,7 +71,7 @@
 		<div id="divRegistro" style="display:none;">
 			<div class="login-container">
 				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
 				</div>
 				<div class="body_login">
 					<h1>Registro</h1>
@@ -121,13 +121,13 @@
 		<div id="divRecuperaPwd" style="display:none;">
 			<div class="login-container">
 				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
 				</div>
 				<div class="body_login">
 					<h1>Olvide mi contrase&ntilde;a</h1>
 					<p>Captura tu usuario o email</p>
 					<div class="form-group">
-						<input type="text" id="emailRecover" name=""emailRecover""
+						<input type="text" id="emailRecover" name="emailRecover"
 							class="form-control" placeholder="" required/>
 					</div>
 					
@@ -140,7 +140,7 @@
 		<div id="divRegistrado" style="display:none;">
 			<div class="login-container">
 				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/logo_disolit.png' />" alt="DISOLIT">
+					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
 				</div>
 				<div class="body_login">
 					<h1>Te hemos enviado un correo para confirmar tu cuenta</h1>

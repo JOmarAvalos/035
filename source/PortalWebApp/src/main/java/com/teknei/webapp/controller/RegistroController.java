@@ -108,7 +108,7 @@ public class RegistroController {
 	
 	private String generaLink(UsuarioVO usuario){
 		StringBuilder sbResp = new StringBuilder();
-		sbResp.append("http://localhost/Admin035/");
+		sbResp.append("https://app.035.com.mx/Admin035/");
 		sbResp.append("registro/confimaCorreo?param1=");
 		sbResp.append(usuario.getEmail());
 		sbResp.append("&param2=");
