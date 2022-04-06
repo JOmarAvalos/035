@@ -107,5 +107,10 @@ saveRespuesta = function(actual, siguiente, tipo, total, idPregunta, totalRespue
 
 openCuestionario = function(idCuestionario){
 	url = ctx+'/cuestionarios/cuestionario?param1='+idCuestionario;
-	window.open(url, '_blank');
+	window.location = url;
+}
+
+terminaActividad = function(){
+	url = ctx+'/cuestionarios';
+	window.location = url;
 }

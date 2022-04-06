@@ -44,13 +44,13 @@
 					<c:set var="count" value="${count + 1}" scope="page" />
 					<div class="row bg-white">
 						<div class="col">
-							<h2 class="bold uppercase mt-2 mb-4">${pregunta.seccion}</h2>
+							<h2 class="bold mt-2 mb-4">${pregunta.seccion}</h2>
 						</div>
 						<div class="col">
-							<h4 class="bold uppercase mt-2 mb-4">${pregunta.titulo}</h4>
+							<h4 class="bold mt-2 mb-4">${pregunta.titulo}</h4>
 						</div>
 						<div class="col">
-							<h6 class="bold uppercase mt-2 mb-4">${pregunta.nombre}</h6>
+							<h6 class="bold mt-2 mb-4">${pregunta.nombre}</h6>
 						</div>
 					</div>
 					<c:if test="${pregunta.idPreguntaTipo == 3}">
@@ -88,20 +88,28 @@
 			</c:forEach>
 		</c:if>
 <hr>
-		<div id="endExamen" style="display: none;">
+		<div id="endExamen" style="display:none;">
 			<input type="hidden" id="iptCalificacionExamen" value="100">
 			<div class="row">
 				<div class="col">
-					<h5 class="regular my-4 txt-graytrd">Has concluido con el cuestionario
-					<span class="bold italic txt-gray">"${cuestionario.nombre}"</span></h5>
+					<h3><span class="bold txt-gray">Gracias por contestar</span></h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<button type="button" class="md-btn md-btn-main ml-0"
-						onclick="terminaActividadExamen(${actividadVO.idCurso}, '${planName}', '${certificadoName}', '${cursoName}', ${idInscripcion}, ${planId}, '${actividadVO.id}', '${idCertificado}');" >Terminar <i class="fas fa-check ml-2"></i></button>
+						onclick="terminaActividad();" >Terminar <i class="fas fa-check ml-2"></i></button>
 						<hr>
 				</div>
+			</div>
+		</div>
+		
+		<div class="row" id="divConfidencial">
+			<div class="col">
+				<h5>
+					Sus respuestas permanecer&aacute;n confidenciales en el &aacute;rea de recursos humanos y ser&aacute;n tratadas con fines estadísticos para reducir los riesgos psicosociales y/o mejorar el ambiente de trabajo
+				</h5>
+
 			</div>
 		</div>
 
