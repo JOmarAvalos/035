@@ -38,7 +38,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                            	<a href="#" onclick="showUpdatePassword();" class="btn btn-default btn-flat">Cambiar Contraseña</a>
+                            	<a href="#" onclick="goPerfil();" class="btn btn-default btn-flat">Mi perfil</a>
                             </div>
                             <div class="pull-right">
                                 <a href="#" onclick="logout();" class="btn btn-default btn-flat">Salir</a>

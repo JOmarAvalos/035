@@ -4,6 +4,8 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<script src="<c:url value='/resources/js/035/home.js' />" type="text/javascript"></script>
+
 <!-- Right side column. Contains the navbar and content of the page -->
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -518,3 +520,61 @@
 
     </section><!-- /.content -->
 </aside><!-- /.right-side -->
+
+
+<div class="modal fade" id="modalPerfil" tabindex="-1"
+	role="dialog" aria-labelledby="modalPerfil" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content bg-glass-sknd">
+			<div class="modal-header bg-glass-sknd">
+				<h3 class="box-title">Perfil</h3>
+			</div>
+			<div class="modal-body text-white" style="color: grey;">
+				<div class="box box-primary">
+					<div class="box-header"></div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form role="form" >
+						<div class="box-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Email</label> <input type="text" readonly="readonly"
+											class="form-control" placeholder="RFC"  maxlength="30" value="correo@mail.com">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Nombre</label> <input type="text" readonly="readonly"
+											class="form-control" placeholder="RFC"  maxlength="30" value="Jose Omar Avalos">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for=""># Empleados</label> <input type="text" style="text-transform: uppercase;"
+											class="form-control"  placeholder="RFC"  maxlength="30" value="60">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">RFC</label> <input type="text" style="text-transform: uppercase;"
+											class="form-control"  placeholder="RFC"  maxlength="30">
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>

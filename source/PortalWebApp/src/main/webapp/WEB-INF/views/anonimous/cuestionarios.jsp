@@ -21,7 +21,7 @@
 			<div class="col">
 				<input type="hidden" id="idConsultaActividad">
 				<h3>
-					Es necesario contestar los siguientes cuestionarios: 
+					Estas a punto de contestar los siguientes cuestionarios: 
 				</h3>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 		<div id="cuestionario" style="background:#a4a4a4;" class="examen container-fluid" >
 			<div class="row bg-white">
 				<div class="col-md-6">
-					<h4 class="bold uppercase mt-2 mb-4">Eventos traumáticos severos</h4>
+					<h4 class="bold mt-2 mb-4">Eventos traumáticos severos</h4>
 				</div>
 				<div class="col-md-6">
 					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(1);">
@@ -45,7 +45,7 @@
 		<div id="cuestionario2" style="background:#a4a4a4;" class="examen container-fluid" >
 			<div class="row bg-white">
 				<div class="col-md-6">
-					<h4 class="bold uppercase mt-2 mb-4">Riesgos Psicosociales</h4>
+					<h4 class="bold mt-2 mb-4">Riesgos Psicosociales</h4>
 				</div>
 				<div class="col-md-6">
 					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(2);">
@@ -61,7 +61,7 @@
 		<div id="cuestionario3" style="background:#a4a4a4;" class="examen container-fluid" >
 			<div class="row bg-white">
 				<div class="col-md-6">
-					<h4 class="bold uppercase mt-2 mb-4">Riesgos Psicosociales y Ambiente laboral</h4>
+					<h4 class="bold mt-2 mb-4">Riesgos Psicosociales y Ambiente laboral</h4>
 				</div>
 				<div class="col-md-6">
 					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(3);">
