@@ -83,6 +83,7 @@ public class UsersManagerImpl implements UsersManager {
 		user.setModificacion(userToUpdate.getModificacion());
 		user.setIdUsuarioModifica(userToUpdate.getIdUsuarioModifica());
 		user.setBanActivo(userToUpdate.getBanActivo());
+		user.setNombre(userToUpdate.getNombre());
 		user = userDAO.updateUser(user);
 
 		Usuario persistedUser = userDAO.getUser(userToUpdate.getUsuario());

@@ -30,8 +30,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.teknei.admin.bsn.CentroTrabajoManager;
 import com.teknei.security.bsn.UsersManager;
 import com.teknei.util.Constants;
+import com.teknei.vo.CentroTrabajoVO;
 import com.teknei.vo.UsuarioVO;
 import com.teknei.webapp.utils.EMailService;
 import com.teknei.webapp.utils.ReadFileForEmail;
@@ -43,6 +45,8 @@ public class RegistroController {
 	
 	@Autowired
 	private UsersManager usersManager;
+	@Autowired
+	private CentroTrabajoManager centroTrabajoManager;
 	
 	@Autowired
 	CompositeSessionAuthenticationStrategy strategy;
@@ -70,7 +74,7 @@ public class RegistroController {
 	
 	@RequestMapping(value = "/registro/registro", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Object> updateFuncionario(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
+	public List<Object> registro(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
 
 		List<Object> resp = new ArrayList<Object>();
 		
@@ -99,13 +103,90 @@ public class RegistroController {
 		} catch (Exception e) {
 			LOGGER.error("Ourrio un error en el registro				error:	",e);
 			resp = new ArrayList<Object>();
-			resp.add(true);
+			resp.add(false);
 		}
 		
 		return resp;
 
 	}
 	
+	@RequestMapping(value = "/registro/updateUsuario", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Object> actualizaUsuario(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
+
+		List<Object> resp = new ArrayList<Object>();
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			try {
+				UserDetails userDetail = (UserDetails) auth.getPrincipal();
+				UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
+
+				UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
+				
+				usuarioVO.setNombre(usuario.getNombre());
+				usuarioVO.setIdUsuarioModifica(usuarioVO.getId());
+				usuarioVO.setModificacion(new Date());
+				
+				usersManager.updateUser(usuarioVO);
+
+				resp.add(true);
+				
+				
+				
+			} catch (Exception e) {
+				LOGGER.error("Ourrio un error al actualizar el perfil				error:	",e);
+				resp = new ArrayList<Object>();
+				resp.add(false);
+			}
+		}
+		
+		return resp;
+
+	}
+	
+	@RequestMapping(value = "/registro/updateCentro", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Object> actualizaCentro(Model model, HttpServletRequest request, @RequestBody CentroTrabajoVO centro) {
+
+		List<Object> resp = new ArrayList<Object>();
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			try {
+				UserDetails userDetail = (UserDetails) auth.getPrincipal();
+				UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
+
+				UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
+				
+				if(centro.getId() != null) {
+					centro.setIdUsuarioModifica(usuarioVO.getId());
+					centro.setModificacion(new Date());
+				}else{
+					centro.setIdUsuarioCrea(usuarioVO.getId());
+					centro.setCreacion(new Date());
+					centro.setIdUsuario(usuarioVO.getId());
+					centro.setBanActivo(Constants.BAN_ACTIVO);
+				}
+				centroTrabajoManager.save(centro);
+
+				resp.add(true);
+				
+				
+				
+			} catch (Exception e) {
+				LOGGER.error("Ourrio un error al actualizar el centro				error:	",e);
+				resp = new ArrayList<Object>();
+				resp.add(false);
+			}
+		}
+		
+		return resp;
+
+	}
+
 	private String generaLink(UsuarioVO usuario){
 		StringBuilder sbResp = new StringBuilder();
 		sbResp.append("https://app.035.com.mx/Admin035/");

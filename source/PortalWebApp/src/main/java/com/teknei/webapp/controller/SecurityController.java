@@ -81,7 +81,13 @@ import com.teknei.util.Constants;
 //import com.teknei.vo.SedeVO;
 import com.teknei.vo.UsuarioVO;
 import com.teknei.vo.ActividadVO;
+import com.teknei.vo.CentroTrabajoVO;
+import com.teknei.vo.EstadoRepublicaVO;
+import com.teknei.vo.GiroVO;
 import com.teknei.admin.bsn.ActividadManager;
+import com.teknei.admin.bsn.CentroTrabajoManager;
+import com.teknei.admin.bsn.EstadoRepublicaManager;
+import com.teknei.admin.bsn.GiroManager;
 
 @Controller
 public class SecurityController {
@@ -93,6 +99,12 @@ public class SecurityController {
 	private UsersManager usersManager;
 	@Autowired
 	private MessageSource messageSource;
+	@Autowired 
+	private CentroTrabajoManager centroTrabajoManager;
+	@Autowired
+	private GiroManager giroManager;
+	@Autowired
+	private EstadoRepublicaManager estadoRepublicaManager;
 	
 	
 //	@Value("${app.wff.inscripcion.justificante}")
@@ -100,24 +112,11 @@ public class SecurityController {
 	
 	private static final String LOGIN_VIEW = "appLogin";
 	private static final String HOME_VIEW = "home";
-	private static final String HOME_LOGIN_VIEW = "homeLogin";
 	private static final String UNAUTHORIZED_VIEW = "notFound";
-	private static final String ATTR_MODULOS = "modulos";
-	private static final String ATTR_LST_CALENDARIO = "lstCalendario";
-	private static final String ATTR_LST_CURSOS = "lstCursos";
-	private static final String ATTR_LST_INSTRUCTORES = "lstInstructores";
-	private static final String ATTR_LST_SEDES = "lstSedes";
-	private static final String ATTR_LST_EVENTOS = "lstEventos";
-	private static final String ATTR_LST_EVENTOS_PROXIMOS = "lstEventosProximos";
-	private static final String ATTR_LST_EVENTOS_ANTERIORES = "lstEventosAnteriores";
-	private static final String EVENTO_CALENDARIO_MODEL = "eventoCalendario";
-	private static final String EVENTO_CALENDARIO_VIEW = "evento";
-	private static final String ATTR_EVENTO = "evento";
-	private static final String ATTR_MOTIVOS_CANCELACION = "lstMotivosCancelacion";
-	private static final String ATTR_MOTIVOS_CANCELACION_CURSO = "lstMotivosCancelacionCurso";
-	private static final String ATTR_LST_ACTIVIDADES = "lstActividades";
-	private static final String ATTR_EMPRESA = "empresa";
-	private static final String LST_EVENTOS_VIEW = "eventos";
+	private static final String ATTR_CENTRO = "centro";
+	private static final String ATTR_USUARIO = "usuario";
+	private static final String ATTR_LST_GIRO = "lstGiro";
+	private static final String ATTR_LST_ESTADOS = "lstEstados";
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -125,10 +124,19 @@ public class SecurityController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-//			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-//			UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
 
-//			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
+			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
+			
+			CentroTrabajoVO centroTrabajo = centroTrabajoManager.getByUuario(usuarioVO.getId());
+			List<GiroVO> giros = giroManager.getGiros();
+			List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
+			
+			model.addAttribute(ATTR_CENTRO, centroTrabajo);
+			model.addAttribute(ATTR_LST_GIRO, giros);
+			model.addAttribute(ATTR_LST_ESTADOS, estados);
+			model.addAttribute(ATTR_USUARIO, usuarioVO);
 			
 			return HOME_VIEW;
 		} else {

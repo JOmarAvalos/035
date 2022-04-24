@@ -285,6 +285,7 @@ public class Mapper {
 		ce.setEmpleadoNumero(c.getEmpleadoNumero());
 		ce.setIdUsuario(c.getIdUsuario());
 		ce.setIdGiro(c.getIdGiro());
+		ce.setIdEstadoRepublica(c.getIdEstadoRepublica());
 		ce.setFacNombre(c.getFacNombre());
 		ce.setFacRfc(c.getFacRfc());
 		ce.setFacPais(c.getFacPais());

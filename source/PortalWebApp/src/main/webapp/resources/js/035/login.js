@@ -74,16 +74,19 @@ validaMail = function(){
 				result = response[0];
 				if (result) {
 					//es valido
-					$('#btnRegistro').show();
+					return true;
 				} else {
 					// no es valido(repetido)
-					$('#btnRegistro').hide();
+					$('#pEmailRepetido').show();
+					return false;
 				}
 			},
 			error : function(msg) {
-				alert('error');
+				return false;
 			}
 		});
+	}else{
+		return false;
 	}
 }
 
@@ -102,19 +105,9 @@ validaRegisto = function(){
 
 	
 	registroValido = true;
-	if (!notNull($("#email"))) {
+	if(!validaMail()){
 		registroValido = false;
-		$('#pObligatorios').show();
-	}else{
-		if (!$("#email").val().toUpperCase().match(regExpMail)) {
-			//no cumple con el formato de email
-			marcaRojo($("#email"));
-			registroValido = false;
-			$('#pEmailFormato').show();
-			//$("#span2NameRegMailFormatError").show();
-		} else {
-			eliminaMarcaRojo($("#email"));
-		}
+		marcaRojo($("#email"));
 	}
 	if (!notNull($("#confirmEmail"))) {
 		registroValido = false;
@@ -165,8 +158,6 @@ validaRegisto = function(){
 		usuario.email = $('#email').val();
 		usuario.contrasena = $('#passwordRegistro').val();
 		
-		alert(JSON.stringify(usuario));
-
 		var urltxt = ctx + '/registro/registro';
 		$.ajax({
 			type : "POST",
@@ -187,7 +178,6 @@ validaRegisto = function(){
 					$('#divRecuperaPwd').hide();
 					$('#divLogin').hide();
 					$('#divRegistrado').show();
-					divRegistrado
 				} else {
 					$('#modalErrGenerico').modal({backdrop: 'static', keyboard: false});
 				}

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.teknei.admin.bsn.CuestionariosManager;
+import com.teknei.util.StringEncrypt;
 import com.teknei.vo.CuestionarioVO;
 
 @Controller
@@ -19,7 +20,17 @@ public class CuestionariosController {
 	private CuestionariosManager cuestionariosManager;
 	
 	@RequestMapping(value = "/cuestionarios", method = RequestMethod.GET)
-	public String cuestionarios(Model model, HttpServletRequest request) {
+	public String cuestionarios(Model model, HttpServletRequest request, 
+			@RequestParam(value = "param", required = false) String param, 
+			@RequestParam(value = "param2", required = false) Integer param2) {
+		
+		try {
+			Integer id = Integer.valueOf(StringEncrypt.decrypt(StringEncrypt.KEY, StringEncrypt.IV, param));
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return "cuestionarios";
 	}
 	

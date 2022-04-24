@@ -7,6 +7,12 @@
 	$('#pregunta1').show();
 }
 
+showAnterior = function(actual){
+	anterior = actual -1;
+	$('#pregunta'+actual).hide();
+	$('#pregunta'+anterior).show();
+}
+
 saveRespuesta = function(actual, siguiente, tipo, total, idPregunta, totalRespuestas){
 	
 	$('#pMsjAdvertenciaExamen').html('');

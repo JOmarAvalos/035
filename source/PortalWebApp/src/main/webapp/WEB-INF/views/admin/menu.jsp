@@ -23,22 +23,42 @@
 <aside class="left-side sidebar-offcanvas">
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
-		<!-- Sidebar user panel -->
-		<div class="user-panel">
-			<div class="pull-left image">
-				<img src="<c:url value='/resources/css/img/avatar3.png' />"
-					class="img-circle" alt="User Image" />
-			</div>
-			<div class="pull-left info">
-				<p>nombre</p>
-			</div>
-		</div>
-		<!-- /.search form -->
-		<!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
-			<li class="active"><a style="cursor:pointer;" onclick="getHome();"> <i
-					class="fa fa-dashboard"></i> <span>Dashboard</span>
-			</a></li>
+			<c:if test="${usuario.idPerfil == 1}">
+				<li>
+					<a style="cursor:pointer;" onclick="goUsuarios();"> 
+						<i class="fa fa-user"></i> 
+						<span>Usuarios</span>
+					</a>
+				</li>
+				
+			</c:if>
+			<c:if test="${usuario.idPerfil == 2}">
+				<li>
+					<a style="cursor:pointer;" onclick="goPerfil();"> 
+						<i class="fa fa-user"></i> 
+						<span>Perfil</span>
+					</a>
+				</li>
+				<li>
+					<a style="cursor:pointer;" onclick="goCentros();"> 
+						<i class="fa fa-group"></i> 
+						<span>Centro de trabajo</span>
+					</a>
+				</li>
+				<li>
+					<a style="cursor:pointer;" onclick="goCuestionarios();"> 
+						<i class="fa fa-book"></i> 
+						<span>Cuestionarios</span>
+					</a>
+				</li>
+			</c:if>
+			<li>
+				<a style="cursor:pointer;" onclick="logout();"> 
+					<i class="fa fa-sign-out"></i> 
+					<span>Salir</span>
+				</a>
+			</li>
 		</ul>
 	</section>
 	<!-- /.sidebar -->

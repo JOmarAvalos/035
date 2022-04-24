@@ -76,7 +76,14 @@
 						</c:if>
 					</c:if>
 					<div class="row bg-white">
-						<div class="col">
+					
+						<c:if test="${countActual gt 1}">
+							<div class="col-md-2">
+								<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3"
+									onclick="showAnterior('${countActual}');">Anterior <i class="fas fa-arrow-right ml-2"></i></button>								
+							</div>
+						</c:if>
+						<div class="col-md-2">
 							<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3"
 								onclick="saveRespuesta('${countActual}','${count}','${pregunta.idPreguntaTipo}', 
 							'${cuestionario.preguntas.size()}','${pregunta.id}','${pregunta.respuestas.size()}');">Siguiente <i class="fas fa-arrow-right ml-2"></i></button>								

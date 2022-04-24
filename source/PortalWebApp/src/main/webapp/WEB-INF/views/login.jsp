@@ -81,7 +81,7 @@
 						<div class="form-group">
 							<label for="email">Email:</label>
 							<input type="text" id="email" name="email"
-								class="form-control" placeholder="Email"  onchange="validaMail();"/>
+								class="form-control" placeholder="Email"  />
 						</div>
 						<div class="form-group">
 							<label for="confirmEmail">Confirmaci&oacute;n de email:</label>
@@ -107,7 +107,7 @@
 						<p id="pEmailNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">El email y la confirmaci&oacute;n del email no coiniden.</span></p>
 						<p id="pContrasenaFormato" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a no cumple con el formato.</span></p>
 						<p id="pPwdNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a y la confirmaci&oacute;n de la contrase&ntilde;a no coiniden.</span></p>
-						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El correo ya se encuentra registado.</span></p>
+						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El email ya se encuentra registado.</span></p>
 						
 						<button id="btnRegistro" type="submit"  class="btn">Registro</button>
 					</form>
