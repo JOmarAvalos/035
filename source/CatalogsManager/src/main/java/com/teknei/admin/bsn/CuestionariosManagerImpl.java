@@ -59,6 +59,13 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		}
 		return resp;
 	}
+
+
+	@Override
+	public List<CuestionarioVO> getCuestionariosByCentro(Integer idCentro) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

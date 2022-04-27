@@ -82,6 +82,7 @@ import com.teknei.util.Constants;
 import com.teknei.vo.UsuarioVO;
 import com.teknei.vo.ActividadVO;
 import com.teknei.vo.CentroTrabajoVO;
+import com.teknei.vo.CuestionarioVO;
 import com.teknei.vo.EstadoRepublicaVO;
 import com.teknei.vo.GiroVO;
 import com.teknei.admin.bsn.ActividadManager;
@@ -117,6 +118,7 @@ public class SecurityController {
 	private static final String ATTR_USUARIO = "usuario";
 	private static final String ATTR_LST_GIRO = "lstGiro";
 	private static final String ATTR_LST_ESTADOS = "lstEstados";
+	private static final String ATTR_LST_CUESTIONARIOS = "lstCuestionarios";
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -132,6 +134,8 @@ public class SecurityController {
 			CentroTrabajoVO centroTrabajo = centroTrabajoManager.getByUuario(usuarioVO.getId());
 			List<GiroVO> giros = giroManager.getGiros();
 			List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
+			
+			List<CuestionarioVO> cuestionarios = new ArrayList<CuestionarioVO>();
 			
 			model.addAttribute(ATTR_CENTRO, centroTrabajo);
 			model.addAttribute(ATTR_LST_GIRO, giros);
