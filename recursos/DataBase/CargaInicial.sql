@@ -74,12 +74,12 @@ INSERT INTO desarrollo.tbl_cata_preguntas_tipo (nombre, ban_activo) VALUES ('Abi
 
 
 -- Cuestionarios
-INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, costo, id_usuario_crea, fch_creacion, ban_activo)
-    VALUES ('Eventos traumáticos severos', 'Guía de referencia I. Eventos traumáticos severos. Se aplica en todos los centros de trabajo','', 0, 15, 1, 10, 1000, 1,now(), 1);
-INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, costo, id_usuario_crea, fch_creacion, ban_activo)
-    VALUES ('Riesgos Psicosociales', 'Cuestionario para identificar los factores de riesgo psicosocial en los centros de trabajo de 16 a 50 empleados','', 16, 50, 2, 10, 2000, 1,now(), 1);
-INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, costo, id_usuario_crea, fch_creacion, ban_activo)
-    VALUES ('Riesgos Psicosociales y Ambiente laboral', 'Cuestionario para identificar los factores de riesgo psicosocial y evaluar el entorno organizacional en los centros de trabajo con más de 50 empleados','', 51, 100000, 3, 10, 3000, 1,now(), 1);
+INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
+    VALUES ('Eventos traumáticos severos', 'Guía de referencia I. Eventos traumáticos severos. Se aplica en todos los centros de trabajo','', 0, 15, 1, 10, 1,now(), 1);
+INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
+    VALUES ('Riesgos Psicosociales', 'Cuestionario para identificar los factores de riesgo psicosocial en los centros de trabajo de 16 a 50 empleados','', 16, 50, 2, 10, 1,now(), 1);
+INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
+    VALUES ('Riesgos Psicosociales y Ambiente laboral', 'Cuestionario para identificar los factores de riesgo psicosocial y evaluar el entorno organizacional en los centros de trabajo con más de 50 empleados','', 51, 100000, 3, 10, 1,now(), 1);
 
 -- Preguntas
 INSERT INTO desarrollo.tbl_preguntas (id_cuestionario, id_pregunta_tipo, seccion, nombre, titulo, descripcion, orden, id_usuario_crea, fch_creacion, ban_activo)
