@@ -98,14 +98,6 @@ public class Cuestionario extends BaseEntity<Integer> {
 		this.diasLimiteActividad = diasLimiteActividad;
 	}
 	
-	@Column(name = "costo")
-	public BigDecimal getCosto() {
-		return costo;
-	}
-	public void setCosto(BigDecimal costo) {
-		this.costo = costo;
-	}
-	
 	@Column(name = "id_usuario_crea")
 	public Integer getIdUsuarioCrea() {
 		return idUsuarioCrea;
