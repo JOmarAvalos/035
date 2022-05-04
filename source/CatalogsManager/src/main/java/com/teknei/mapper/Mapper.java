@@ -356,7 +356,6 @@ public class Mapper {
 		cu.setEmpleadosRangoFinal(c.getEmpleadosRangoFinal());
 		cu.setOrden(c.getOrden());
 		cu.setDiasLimiteActividad(c.getDiasLimiteActividad());
-		cu.setCosto(c.getCosto());
 		cu.setIdUsuarioCrea(c.getIdUsuarioCrea());
 		cu.setIdUsuarioModifica(c.getIdUsuarioModifica());
 		cu.setCreacion(c.getCreacion());
@@ -381,7 +380,6 @@ public class Mapper {
 		c.setEmpleadosRangoInicial(cu.getEmpleadosRangoFinal());
 		c.setOrden(cu.getOrden());
 		c.setDiasLimiteActividad(cu.getDiasLimiteActividad());
-		c.setCosto(cu.getCosto());
 		c.setIdUsuarioCrea(cu.getIdUsuarioCrea());
 		c.setIdUsuarioModifica(cu.getIdUsuarioModifica());
 		c.setCreacion(cu.getCreacion());
@@ -390,6 +388,47 @@ public class Mapper {
 
 		return c;
 	}
+	
+	//////////////////////////////
+	
+	public static ProductoVO toVO(Producto p) {
+		if (p == null) {
+			return null;
+		}
+	
+		ProductoVO pr = new ProductoVO();
+
+		pr.setId(p.getId());
+		pr.setIdCuestionario(p.getIdCuestionario());
+		pr.setPrecio(p.getPrecio());
+		pr.setIdUsuarioCrea(p.getIdUsuarioCrea());
+		pr.setIdUsuarioModifica(p.getIdUsuarioModifica());
+		pr.setCreacion(p.getCreacion());
+		pr.setModificacion(p.getModificacion());
+		pr.setBanActivo(p.getBanActivo());
+
+		return pr;
+	}
+	
+	public static Producto toEntity(ProductoVO pr) {
+		if (pr == null) {
+			return null;
+		}
+	
+		Producto p = new Producto();
+		
+		p.setId(pr.getId());
+		p.setIdCuestionario(pr.getIdCuestionario());
+		p.setPrecio(pr.getPrecio());
+		p.setIdUsuarioCrea(pr.getIdUsuarioCrea());
+		p.setIdUsuarioModifica(pr.getIdUsuarioModifica());
+		p.setCreacion(pr.getCreacion());
+		p.setModificacion(pr.getModificacion());
+		p.setBanActivo(pr.getBanActivo());
+
+		return p;
+	}
+	
 	
 	//////////////////////////////
 	
@@ -494,7 +533,7 @@ public class Mapper {
 
 		ac.setId(a.getId());
 		ac.setIdCentroTrabajo(a.getIdCentroTrabajo());
-		ac.setIdCuestionario(a.getIdCuestionario());
+		ac.setIdProducto(a.getIdProducto());
 		ac.setCodigo(a.getCodigo());
 		ac.setRutaCuestionario(a.getRutaCuestionario());
 		ac.setRutaRespuesta(a.getRutaRespuesta());
@@ -520,7 +559,7 @@ public class Mapper {
 		
 		a.setId(ac.getId());
 		a.setIdCentroTrabajo(ac.getIdCentroTrabajo());
-		a.setIdCuestionario(ac.getIdCuestionario());
+		a.setIdProducto(ac.getIdProducto());
 		a.setCodigo(ac.getCodigo());
 		a.setRutaCuestionario(ac.getRutaCuestionario());
 		a.setRutaRespuesta(ac.getRutaRespuesta());

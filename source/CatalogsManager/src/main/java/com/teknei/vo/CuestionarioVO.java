@@ -18,7 +18,6 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	private Integer empleadosRangoFinal;
 	private Integer orden;
 	private Integer diasLimiteActividad;
-	private BigDecimal costo;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
@@ -75,13 +74,6 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	}
 	public void setDiasLimiteActividad(Integer diasLimiteActividad) {
 		this.diasLimiteActividad = diasLimiteActividad;
-	}
-	
-	public BigDecimal getCosto() {
-		return costo;
-	}
-	public void setCosto(BigDecimal costo) {
-		this.costo = costo;
 	}
 	
 	public Integer getIdUsuarioCrea() {

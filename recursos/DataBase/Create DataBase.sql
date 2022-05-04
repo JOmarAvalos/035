@@ -166,7 +166,6 @@ create table desarrollo.tbl_cuestionarios
   empleados_rango_final integer NOT NULL,
   orden integer NOT NULL,
   dias_limite_actividad integer NOT NULL,
-  costo numeric(10,2) NOT NULL,
   id_usuario_crea integer NOT NULL,
   id_usuario_modifica integer,
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
@@ -257,6 +256,31 @@ create table desarrollo.tbl_cata_actividad_estatus
 );
 
 
+
+---------------------------------------
+-- desarrollo.tbl_productos
+---------------------------------------
+
+create table desarrollo.tbl_productos
+(
+  cve_producto serial NOT NULL,
+  id_cuestionario integer NOT NULL,
+  precio numeric(10,2) NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
+  fch_modificacion timestamp without time zone,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT tbl_productos_pkey PRIMARY KEY (cve_producto),
+ 
+  CONSTRAINT fkey_tbl_productos_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
+      REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
+
 ---------------------------------------
 -- desarrollo.tbl_actividades
 ---------------------------------------
@@ -265,7 +289,7 @@ create table desarrollo.tbl_actividades
 (
   cve_actividad serial NOT NULL,
   id_centro_trabajo integer NOT NULL,
-  id_cuestionario integer NOT NULL,
+  id_producto integer NOT NULL,
   codigo character varying(20) NOT NULL,
   ruta_cuestionario character varying(200) NOT NULL,
   ruta_respuesta character varying(200),
@@ -285,8 +309,8 @@ create table desarrollo.tbl_actividades
       REFERENCES desarrollo.tbl_centros_trabajo (cve_centro_trabajo) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
 
-  CONSTRAINT fkey_tbl_actividades_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
-      REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
+  CONSTRAINT fkey_tbl_actividades_tbl_productos_id FOREIGN KEY (id_producto)
+      REFERENCES desarrollo.tbl_productos (cve_producto) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
 
   CONSTRAINT fkey_tbl_actividades_tbl_cata_actividad_estatus_id FOREIGN KEY (id_actividad_estatus)

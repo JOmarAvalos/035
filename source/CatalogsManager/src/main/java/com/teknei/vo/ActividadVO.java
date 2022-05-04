@@ -12,7 +12,7 @@ public class ActividadVO extends BaseVO implements Serializable {
 
 
 	private Integer idCentroTrabajo;
-	private Integer idCuestionario;
+	private Integer idProducto;
 	private String codigo;
 	private String rutaCuestionario;
 	private String rutaRespuesta;
@@ -34,11 +34,11 @@ public class ActividadVO extends BaseVO implements Serializable {
 		this.idCentroTrabajo = idCentroTrabajo;
 	}
 	
-	public Integer getIdCuestionario() {
-		return idCuestionario;
+	public Integer getIdProducto() {
+		return idProducto;
 	}
-	public void setIdCuestionario(Integer idCuestionario) {
-		this.idCuestionario = idCuestionario;
+	public void setIdProducto(Integer idProducto) {
+		this.idProducto = idProducto;
 	}
 	
 	public String getCodigo() {
