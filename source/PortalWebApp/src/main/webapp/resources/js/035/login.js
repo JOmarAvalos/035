@@ -64,6 +64,7 @@ validaMail = function(){
 			type : "POST",
 			url : urltxt,
 			contentType : "application/json",
+			async:false,
 			beforeSend : function() {
 				$("#wait").css("display", "block");
 			},
@@ -74,15 +75,15 @@ validaMail = function(){
 				result = response[0];
 				if (result) {
 					//es valido
-					return true;
+					return 'true';
 				} else {
 					// no es valido(repetido)
 					$('#pEmailRepetido').show();
-					return false;
+					return 'false';
 				}
 			},
 			error : function(msg) {
-				return false;
+				return 'false';
 			}
 		});
 	}else{
@@ -105,7 +106,63 @@ validaRegisto = function(){
 
 	
 	registroValido = true;
-	if(!validaMail()){
+	
+	emailValidoReg = false;
+	
+	$('#pEmailRepetido').hide();
+	emailValido = true; 
+	var regExpMail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	if (!notNull($("#email"))) {
+		eliminaMarcaRojo($("#email"));
+		emailValido = false;
+	}else{
+		if (!$("#email").val().toUpperCase().match(regExpMail)) {
+			//no cumple con el formato de email
+			marcaRojo($("#email"));
+			emailValido = false;
+			$('#pEmailFormato').show();
+			//$("#span2NameRegMailFormatError").show();
+		} else {
+			eliminaMarcaRojo($("#email"));
+		}
+	}
+	
+	if(emailValido){
+		emailToValidate = $("#email").val();
+
+		var urltxt = ctx + '/registro/validaMail?mail='+emailToValidate;
+		
+		$.ajax({
+			type : "POST",
+			url : urltxt,
+			contentType : "application/json",
+			async:false,
+			beforeSend : function() {
+				$("#wait").css("display", "block");
+			},
+			complete : function() {
+				$("#wait").css("display", "none");
+			},
+			success : function(response) {
+				result = response[0];
+				if (result) {
+					//es valido
+					emailValidoReg = true;
+				} else {
+					// no es valido(repetido)
+					$('#pEmailRepetido').show();
+					emailValidoReg = false;
+				}
+			},
+			error : function(msg) {
+				emailValidoReg = false;
+			}
+		});
+	}else{
+		emailValidoReg = false;
+	}
+	
+	if(!emailValidoReg){
 		registroValido = false;
 		marcaRojo($("#email"));
 	}

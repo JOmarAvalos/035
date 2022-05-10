@@ -31,8 +31,8 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 //import com.teknei.vo.JobVO;
 
 
-@WebListener
-@Repository
+//@WebListener
+//@Repository
 public class QuartzListener extends QuartzInitializerListener{
     private static final Logger LOG = LoggerFactory.getLogger(QuartzListener.class);
 

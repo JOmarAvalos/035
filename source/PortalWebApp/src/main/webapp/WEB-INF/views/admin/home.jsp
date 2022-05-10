@@ -121,8 +121,12 @@
 								<div class="col-md-3" id="btnActualizaPerfil" >
 									<button type="button" class="btn btn-primary" onclick="actualizaUsuario();">Actualizar</button>
 								</div>
+								<div class="col-md-3" id="btnPlanes" >
+									<button type="button" class="btn btn-primary" onclick="showPlan();">Actualizar</button>
+								</div>
 							</div>
 						</div>
+						
 					</form>
 				</div>
 	        </div>
@@ -338,8 +342,62 @@
 	        </div>
         </div>
 
+        <div id="divCuestionarios" style="display:none;">
+	        <div class="row">
+	        	<div class="box">
+	                 <div class="box-header">
+	                     <h3 class="box-title">Mis cuestionarios</h3>                                    
+	                 </div><!-- /.box-header -->
+	                 <div class="box-body table-responsive">
+	                 	<div class="row">
+	                 		<div class="col-md-6">
+	                 			<div class="input-group">
+                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="https://app.035.com.mx/Admin035/cuestionarios">
+                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
+                                </div>
+	                 		</div>
+	                 	</div>
+	                 	<br>
+	                     <table id="tblCuestionarios" class="table table-bordered table-striped">
+	                         <thead>
+	                             <tr>
+	                                 <th>Cuestionario</th>
+	                                 <th>Respondido</th>
+	                                 <th>Acciones</th>
+	                             </tr>
+	                         </thead>
+	                         <tbody>
+	                         	<c:if test="${not empty lstCuestionarios}">
+	                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
+			                             <tr>
+			                                 <td>${cuestionario.nombre}</td>
+			                                 <td>0</td>
+			                                 <td>
+			                                 	<a href="#" title="Descargar cuestionarios"><i class="fa fa-fw fa-download"></i></a>
+			                                 </td>
+			                             </tr>
+	                         		</c:forEach>
+	                         	</c:if>
+	                         </tbody>
+	                         <tfoot>
+	                             <tr>
+	                                 <th>Cuestionario</th>
+	                                 <th>Respondido</th>
+	                                 <th>Acciones</th>
+	                             </tr>
+	                         </tfoot>
+	                     </table>
+	                 </div><!-- /.box-body -->
+	             </div><!-- /.box -->
+	        </div>
+        </div>
+        
     </section><!-- /.content -->
 </aside><!-- /.right-side -->
+
+<div id="elementoCopiado" class="alert alert-success" role="alert" style="display: none;">
+	<span id="successText"></span>
+</div>
 
 <div class="modal fade" id="modalDatosActualizados" tabindex="-1" role="dialog"
 	aria-labelledby="modalDatosActualizados" aria-hidden="true">
@@ -356,7 +414,7 @@
 				<h4>Tu informaci&oacute;n se actualizo de forma correcta.</h4>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn" data-dismiss="modal">Aceptar</button>
+				<button type="button" class="btn" onclick="location.reload();" data-dismiss="modal">Aceptar</button>
 			</div>	
 		</div>
 	</div>
@@ -365,6 +423,7 @@
 <script type="text/javascript">
             $(function() {
                 $("#example1").dataTable();
+                $("#tblCuestionarios").dataTable();
             });
         </script>
 

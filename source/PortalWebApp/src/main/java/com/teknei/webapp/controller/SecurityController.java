@@ -87,6 +87,7 @@ import com.teknei.vo.EstadoRepublicaVO;
 import com.teknei.vo.GiroVO;
 import com.teknei.admin.bsn.ActividadManager;
 import com.teknei.admin.bsn.CentroTrabajoManager;
+import com.teknei.admin.bsn.CuestionariosManager;
 import com.teknei.admin.bsn.EstadoRepublicaManager;
 import com.teknei.admin.bsn.GiroManager;
 
@@ -106,6 +107,8 @@ public class SecurityController {
 	private GiroManager giroManager;
 	@Autowired
 	private EstadoRepublicaManager estadoRepublicaManager;
+	@Autowired
+	private CuestionariosManager cuestionariosManager;
 	
 	
 //	@Value("${app.wff.inscripcion.justificante}")
@@ -137,10 +140,15 @@ public class SecurityController {
 			
 			List<CuestionarioVO> cuestionarios = new ArrayList<CuestionarioVO>();
 			
+			if(centroTrabajo != null){
+				cuestionarios = cuestionariosManager.getCuestionariosByCentro(centroTrabajo.getId());
+			}
+			
 			model.addAttribute(ATTR_CENTRO, centroTrabajo);
 			model.addAttribute(ATTR_LST_GIRO, giros);
 			model.addAttribute(ATTR_LST_ESTADOS, estados);
 			model.addAttribute(ATTR_USUARIO, usuarioVO);
+			model.addAttribute(ATTR_LST_CUESTIONARIOS, cuestionarios);
 			
 			return HOME_VIEW;
 		} else {

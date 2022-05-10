@@ -5,23 +5,28 @@
 goPerfil = function(){
 	$('#divCentros').hide();
 	$('#divUsuario').hide();
+	$('#divCuestionarios').hide();
 	$('#divPerfil').show();
 }
 
 goCentros = function(){
 	$('#divPerfil').hide();
 	$('#divUsuario').hide();
+	$('#divCuestionarios').hide();
 	$('#divCentros').show();
 }
 
 goCuestionarios = function(){
-	url = ctx+'/cuestionarios';
-	window.open(url,'_blank');
+	$('#divPerfil').hide();
+	$('#divUsuario').hide();
+	$('#divCentros').hide();
+	$('#divCuestionarios').show();
 }
 
 goUsuarios = function(){
 	$('#divPerfil').hide();
 	$('#divCentros').hide();
+	$('#divCuestionarios').hide();
 	$('#divUsuario').show();
 }
 
@@ -133,3 +138,20 @@ actualizaCentro = function(){
 	}
 	
 }
+
+copyToClip = function(iptToCopy, textToShow) {
+	  /* Get the text field */
+	  var copyText = document.getElementById(iptToCopy);
+
+	  /* Select the text field */
+	  copyText.select();
+
+	  /* Copy the text inside the text field */
+	  document.execCommand("copy");
+	  
+	  /* Success Text  */
+	  $("#successText").html("<i class='fa fa-copy'></i> "+textToShow+" <br>" + copyText.value);
+	  $("#elementoCopiado").fadeIn();
+	  setTimeout(function(){ $("#elementoCopiado").fadeOut(); }, 2000);
+	  
+	}

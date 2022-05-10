@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.teknei.admin.dao.CuestionarioDAO;
 import com.teknei.admin.dao.PreguntaDAO;
 import com.teknei.admin.dao.RespuestaDAO;
+import com.teknei.entity.Cuestionario;
 import com.teknei.entity.Pregunta;
 import com.teknei.entity.Respuesta;
 import com.teknei.mapper.Mapper;
@@ -63,8 +64,15 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 
 	@Override
 	public List<CuestionarioVO> getCuestionariosByCentro(Integer idCentro) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CuestionarioVO> resp = new ArrayList<CuestionarioVO>();
+		List<Cuestionario> cuestionarios = cuestionarioDAO.getByCentro(idCentro);
+		for(Cuestionario cuestionario: cuestionarios){
+			
+			CuestionarioVO cuestionarioVO = Mapper.toVO(cuestionario);
+			resp.add(cuestionarioVO);
+		}
+		
+		return resp;
 	}
 	
 	
