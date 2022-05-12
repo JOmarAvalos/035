@@ -83,7 +83,7 @@ create table desarrollo.tbl_usuarios
 );
 
 ---------------------------------------
--- desarrollo.tbl_cata_giro
+-- desarrollo.tbl_cata_giros
 ---------------------------------------
 
 create table desarrollo.tbl_cata_giros
@@ -243,21 +243,6 @@ create table desarrollo.tbl_respuestas
 );
 
 ---------------------------------------
--- desarrollo.tbl_cata_actividad_estatus
----------------------------------------
-
-create table desarrollo.tbl_cata_actividad_estatus
-(
-  cve_actividad_estatus serial NOT NULL,
-  nombre character varying(50) NOT NULL,
-  ban_activo integer NOT NULL,
-
-  CONSTRAINT tbl_cata_actividad_estatus_pkey PRIMARY KEY (cve_actividad_estatus)
-);
-
-
-
----------------------------------------
 -- desarrollo.tbl_productos
 ---------------------------------------
 
@@ -265,7 +250,8 @@ create table desarrollo.tbl_productos
 (
   cve_producto serial NOT NULL,
   id_cuestionario integer NOT NULL,
-  precio numeric(10,2) NOT NULL,
+  empleados_rango_inicial integer NOT NULL,
+  empleados_rango_final integer NOT NULL,
   id_usuario_crea integer NOT NULL,
   id_usuario_modifica integer,
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
@@ -273,25 +259,35 @@ create table desarrollo.tbl_productos
   ban_activo integer NOT NULL,
 
   CONSTRAINT tbl_productos_pkey PRIMARY KEY (cve_producto),
- 
+
   CONSTRAINT fkey_tbl_productos_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
       REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
-
-
 ---------------------------------------
--- desarrollo.tbl_actividades
+-- desarrollo.tbl_cata_compra_estatus
 ---------------------------------------
 
-create table desarrollo.tbl_actividades
+create table desarrollo.tbl_cata_compra_estatus
 (
-  cve_actividad serial NOT NULL,
+  cve_compra_estatus serial NOT NULL,
+  nombre character varying(50) NOT NULL,
+  ban_activo integer NOT NULL,
+
+  CONSTRAINT tbl_cata_preguntas_tipo_pkey PRIMARY KEY (cve_compra_estatus)
+);
+
+---------------------------------------
+-- desarrollo.tbl_producto_comprado
+---------------------------------------
+
+create table desarrollo.tbl_producto_comprado
+(
+  cve_producto_comprado serial NOT NULL,
   id_centro_trabajo integer NOT NULL,
   id_producto integer NOT NULL,
-  codigo character varying(20) NOT NULL,
-  ruta_cuestionario character varying(200) NOT NULL,
+  codigo character varying(20),
   ruta_respuesta character varying(200),
   numero_referencia_pago character varying(50),
   costo numeric(10,2) NOT NULL,
@@ -301,21 +297,42 @@ create table desarrollo.tbl_actividades
   id_usuario_modifica integer,
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
   fch_modificacion timestamp without time zone,
-  id_actividad_estatus integer NOT NULL,
+  id_compra_estatus integer NOT NULL,
+
+  CONSTRAINT tbl_producto_comprado_pkey PRIMARY KEY (cve_producto_comprado),
+
+  CONSTRAINT fkey_tbl_producto_comprado_tbl_centros_trabajo_id FOREIGN KEY (id_centro_trabajo)
+      REFERENCES desarrollo.tbl_centros_trabajo (cve_centro_trabajo) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+
+  CONSTRAINT fkey_tbl_producto_comprado_tbl_productos_id FOREIGN KEY (id_producto)
+      REFERENCES desarrollo.tbl_productos (cve_producto) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+  
+  CONSTRAINT fkey_tbl_producto_comprado_tbl_cata_compra_estatus_id FOREIGN KEY (id_compra_estatus)
+      REFERENCES desarrollo.tbl_cata_compra_estatus (cve_compra_estatus) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+---------------------------------------
+-- desarrollo.tbl_actividades
+---------------------------------------
+
+create table desarrollo.tbl_actividades
+(
+  cve_actividad serial NOT NULL,
+  id_cuestionario integer NOT NULL,
+  ruta_cuestionario character varying(200) NOT NULL,
+  id_usuario_crea integer NOT NULL,
+  id_usuario_modifica integer,
+  fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
+  fch_modificacion timestamp without time zone,
 
   CONSTRAINT tbl_actividades_pkey PRIMARY KEY (cve_actividad),
 
-  CONSTRAINT fkey_tbl_actividades_tbl_centros_trabajo_id FOREIGN KEY (id_centro_trabajo)
-      REFERENCES desarrollo.tbl_centros_trabajo (cve_centro_trabajo) MATCH SIMPLE
+  CONSTRAINT fkey_tbl_actividades_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
+      REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_tbl_actividades_tbl_productos_id FOREIGN KEY (id_producto)
-      REFERENCES desarrollo.tbl_productos (cve_producto) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-
-  CONSTRAINT fkey_tbl_actividades_tbl_cata_actividad_estatus_id FOREIGN KEY (id_actividad_estatus)
-      REFERENCES desarrollo.tbl_cata_actividad_estatus (cve_actividad_estatus) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 ---------------------------------------

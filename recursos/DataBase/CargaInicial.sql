@@ -25,13 +25,13 @@ INSERT INTO desarrollo.tbl_usuarios (usuario, contrasena, nombre, email, id_perf
 
 
 INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 1', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 2', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 3', 1);
 
 
-INSERT INTO desarrollo.tbl_cata_actividad_estatus (nombre, ban_activo) VALUES ('Uso libre', 1);
-INSERT INTO desarrollo.tbl_cata_actividad_estatus (nombre, ban_activo) VALUES ('Comprado', 1);
-INSERT INTO desarrollo.tbl_cata_actividad_estatus (nombre, ban_activo) VALUES ('Descargado', 1);
-INSERT INTO desarrollo.tbl_cata_actividad_estatus (nombre, ban_activo) VALUES ('Entregado', 1);
-
+INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Comprado', 1);
+INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Entregado', 1);
+INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Descargado', 1);
 
 
 INSERT INTO desarrollo.tbl_cata_estados_republica (nombre, ban_activo) VALUES ('Aguascalientes', 1);
