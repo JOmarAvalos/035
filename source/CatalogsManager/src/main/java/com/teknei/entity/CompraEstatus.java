@@ -11,10 +11,10 @@ import javax.persistence.Table;
 import com.teknei.base.entity.BaseEntity;
 
 @Entity
-@Table(name = "tbl_cata_actividad_estatus")
-public class ActividadEstatus  extends BaseEntity<Integer> {
+@Table(name = "tbl_cata_compra_estatus")
+public class CompraEstatus extends BaseEntity<Integer> {
 
-	private static final long serialVersionUID = 8440760761901325993L;
+	private static final long serialVersionUID = 8440760761901325992L;
 	
 	
 	private String nombre;
@@ -23,11 +23,11 @@ public class ActividadEstatus  extends BaseEntity<Integer> {
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "cve_actividad_estatus", unique = true, nullable = false)
+	@Column(name = "cve_compra_estatus", unique = true, nullable = false)
 	public Integer getId() {
 		return super.getId();
 	}
-	
+
 	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
@@ -35,7 +35,7 @@ public class ActividadEstatus  extends BaseEntity<Integer> {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	@Column(name = "ban_activo")
 	public Integer getBanActivo() {
 		return banActivo;

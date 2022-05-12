@@ -205,36 +205,6 @@ public class Mapper {
 	
 	//////////////////////////////
 	
-	public static ActividadEstatusVO toVO(ActividadEstatus a) {
-		if (a == null) {
-			return null;
-		}
-	
-		ActividadEstatusVO ac = new ActividadEstatusVO();
-
-		ac.setId(a.getId());
-		ac.setNombre(a.getNombre());
-		ac.setBanActivo(a.getBanActivo());
-
-		return ac;
-	}
-	
-	public static ActividadEstatus toEntity(ActividadEstatusVO ac) {
-		if (ac == null) {
-			return null;
-		}
-	
-		ActividadEstatus a = new ActividadEstatus();
-		
-		a.setId(ac.getId());
-		a.setNombre(ac.getNombre());
-		a.setBanActivo(ac.getBanActivo());
-
-		return a;
-	}
-	
-	//////////////////////////////
-	
 	public static PerfilMenuVO toVO(PerfilMenu p) {
 		if (p == null) {
 			return null;
@@ -401,6 +371,8 @@ public class Mapper {
 		pr.setId(p.getId());
 		pr.setIdCuestionario(p.getIdCuestionario());
 		pr.setPrecio(p.getPrecio());
+		pr.setEmpleadosRangoInicial(p.getEmpleadosRangoInicial());
+		pr.setEmpleadosRangoFinal(p.getEmpleadosRangoFinal());
 		pr.setIdUsuarioCrea(p.getIdUsuarioCrea());
 		pr.setIdUsuarioModifica(p.getIdUsuarioModifica());
 		pr.setCreacion(p.getCreacion());
@@ -420,6 +392,8 @@ public class Mapper {
 		p.setId(pr.getId());
 		p.setIdCuestionario(pr.getIdCuestionario());
 		p.setPrecio(pr.getPrecio());
+		p.setEmpleadosRangoInicial(pr.getEmpleadosRangoInicial());
+		p.setEmpleadosRangoInicial(pr.getEmpleadosRangoFinal());
 		p.setIdUsuarioCrea(pr.getIdUsuarioCrea());
 		p.setIdUsuarioModifica(pr.getIdUsuarioModifica());
 		p.setCreacion(pr.getCreacion());
@@ -431,6 +405,61 @@ public class Mapper {
 	
 	
 	//////////////////////////////
+	
+	
+	public static ProductoCompradoVO toVO(ProductoComprado p) {
+		if (p == null) {
+			return null;
+		}
+	
+		ProductoCompradoVO pr = new ProductoCompradoVO();
+
+		pr.setId(p.getId());
+		pr.setIdCentroTrabajo(p.getIdCentroTrabajo());
+		pr.setIdProducto(p.getIdProducto());
+		pr.setCodigo(p.getCodigo());
+		pr.setRutaRespuesta(p.getRutaRespuesta());
+		pr.setNumeroReferenciaPago(p.getNumeroReferenciaPago());
+		pr.setCosto(p.getCosto());
+		pr.setIva(p.getIva());
+		pr.setTotal(p.getTotal());
+		pr.setIdUsuarioCrea(p.getIdUsuarioCrea());
+		pr.setIdUsuarioModifica(p.getIdUsuarioModifica());
+		pr.setCreacion(p.getCreacion());
+		pr.setModificacion(p.getModificacion());
+		pr.setIdCompraEstatus(p.getIdCompraEstatus());
+
+		return pr;
+	}
+	
+	public static ProductoComprado toEntity(ProductoCompradoVO pr) {
+		if (pr == null) {
+			return null;
+		}
+	
+		ProductoComprado p = new ProductoComprado();
+		
+		p.setId(pr.getId());
+		p.setIdCentroTrabajo(pr.getIdCentroTrabajo());
+		p.setIdProducto(pr.getIdProducto());
+		p.setCodigo(pr.getCodigo());
+		p.setRutaRespuesta(pr.getRutaRespuesta());
+		p.setNumeroReferenciaPago(pr.getNumeroReferenciaPago());
+		p.setCosto(pr.getCosto());
+		p.setIva(pr.getIva());
+		p.setTotal(pr.getTotal());
+		p.setIdUsuarioCrea(pr.getIdUsuarioCrea());
+		p.setIdUsuarioModifica(pr.getIdUsuarioModifica());
+		p.setCreacion(pr.getCreacion());
+		p.setModificacion(pr.getModificacion());
+		p.setIdCompraEstatus(pr.getIdCompraEstatus());
+
+		return p;
+	}	
+	
+	
+	//////////////////////////////
+	
 	
 	public static PreguntaVO toVO(Pregunta p) {
 		if (p == null) {
@@ -532,20 +561,12 @@ public class Mapper {
 		ActividadVO ac = new ActividadVO();
 
 		ac.setId(a.getId());
-		ac.setIdCentroTrabajo(a.getIdCentroTrabajo());
-		ac.setIdProducto(a.getIdProducto());
-		ac.setCodigo(a.getCodigo());
+		ac.setIdCuestionario(a.getIdCuestionario());
 		ac.setRutaCuestionario(a.getRutaCuestionario());
-		ac.setRutaRespuesta(a.getRutaRespuesta());
-		ac.setNumeroReferenciaPago(a.getNumeroReferenciaPago());
-		ac.setCosto(a.getCosto());
-		ac.setIva(a.getIva());
-		ac.setTotal(a.getTotal());
 		ac.setIdUsuarioCrea(a.getIdUsuarioCrea());
 		ac.setIdUsuarioModifica(a.getIdUsuarioModifica());
 		ac.setCreacion(a.getCreacion());
 		ac.setModificacion(a.getModificacion());
-		ac.setIdActividadEstatus(a.getIdActividadEstatus());
 
 		return ac;
 	}
@@ -558,20 +579,12 @@ public class Mapper {
 		Actividad a = new Actividad();
 		
 		a.setId(ac.getId());
-		a.setIdCentroTrabajo(ac.getIdCentroTrabajo());
-		a.setIdProducto(ac.getIdProducto());
-		a.setCodigo(ac.getCodigo());
+		a.setIdCuestionario(ac.getIdCuestionario());
 		a.setRutaCuestionario(ac.getRutaCuestionario());
-		a.setRutaRespuesta(ac.getRutaRespuesta());
-		a.setNumeroReferenciaPago(ac.getNumeroReferenciaPago());
-		a.setCosto(ac.getCosto());
-		a.setIva(ac.getIva());
-		a.setTotal(ac.getTotal());
 		a.setIdUsuarioCrea(ac.getIdUsuarioCrea());
 		a.setIdUsuarioModifica(ac.getIdUsuarioModifica());
 		a.setCreacion(ac.getCreacion());
 		a.setModificacion(ac.getModificacion());
-		a.setIdActividadEstatus(ac.getIdActividadEstatus());
 
 		return a;
 	}
@@ -648,6 +661,36 @@ public class Mapper {
 		p.setCreacion(pr.getCreacion());
 
 		return p;
+	}
+	
+	//////////////////////////////
+	
+	public static CompraEstatusVO toVO(CompraEstatus c) {
+		if (c == null) {
+			return null;
+		}
+	
+		CompraEstatusVO co = new CompraEstatusVO();
+
+		co.setId(c.getId());
+		co.setNombre(c.getNombre());
+		co.setBanActivo(c.getBanActivo());
+
+		return co;
+	}
+	
+	public static CompraEstatus toEntity(CompraEstatusVO co) {
+		if (co == null) {
+			return null;
+		}
+	
+		CompraEstatus c = new CompraEstatus();
+		
+		c.setId(co.getId());
+		c.setNombre(co.getNombre());
+		c.setBanActivo(co.getBanActivo());
+
+		return c;
 	}
 	
 	//////////////////////////////

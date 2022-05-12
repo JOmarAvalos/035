@@ -250,6 +250,7 @@ create table desarrollo.tbl_productos
 (
   cve_producto serial NOT NULL,
   id_cuestionario integer NOT NULL,
+  precio numeric(10,2) NOT NULL,
   empleados_rango_inicial integer NOT NULL,
   empleados_rango_final integer NOT NULL,
   id_usuario_crea integer NOT NULL,
@@ -275,7 +276,7 @@ create table desarrollo.tbl_cata_compra_estatus
   nombre character varying(50) NOT NULL,
   ban_activo integer NOT NULL,
 
-  CONSTRAINT tbl_cata_preguntas_tipo_pkey PRIMARY KEY (cve_compra_estatus)
+  CONSTRAINT tbl_cata_compra_estatus_pkey PRIMARY KEY (cve_compra_estatus)
 );
 
 ---------------------------------------
@@ -303,11 +304,11 @@ create table desarrollo.tbl_producto_comprado
 
   CONSTRAINT fkey_tbl_producto_comprado_tbl_centros_trabajo_id FOREIGN KEY (id_centro_trabajo)
       REFERENCES desarrollo.tbl_centros_trabajo (cve_centro_trabajo) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
 
   CONSTRAINT fkey_tbl_producto_comprado_tbl_productos_id FOREIGN KEY (id_producto)
       REFERENCES desarrollo.tbl_productos (cve_producto) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
   
   CONSTRAINT fkey_tbl_producto_comprado_tbl_cata_compra_estatus_id FOREIGN KEY (id_compra_estatus)
       REFERENCES desarrollo.tbl_cata_compra_estatus (cve_compra_estatus) MATCH SIMPLE
@@ -332,7 +333,7 @@ create table desarrollo.tbl_actividades
 
   CONSTRAINT fkey_tbl_actividades_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
       REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
+      ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
 ---------------------------------------

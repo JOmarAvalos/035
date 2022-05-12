@@ -1,10 +1,14 @@
 package com.teknei.vo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.math.BigInteger;
 
-public class ActividadEstatusVO extends BaseVO implements Serializable  {
 
-	private static final long serialVersionUID = 4612531967742768769L;
+public class CompraEstatusVO extends BaseVO implements Serializable {
+
+	
+	private static final long serialVersionUID = -3617796304012330645L;
 	
 	
 	private String nombre;

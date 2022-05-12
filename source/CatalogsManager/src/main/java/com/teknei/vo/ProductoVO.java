@@ -12,6 +12,8 @@ public class ProductoVO extends BaseVO implements Serializable {
 	
 	private Integer idCuestionario;
 	private BigInteger precio;
+	private Integer empleadosRangoInicial;
+	private Integer empleadosRangoFinal;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
@@ -32,6 +34,20 @@ public class ProductoVO extends BaseVO implements Serializable {
 	}
 	public void setPrecio(BigInteger precio) {
 		this.precio = precio;
+	}
+	
+	public Integer getEmpleadosRangoInicial() {
+		return empleadosRangoInicial;
+	}
+	public void setEmpleadosRangoInicial(Integer empleadosRangoInicial) {
+		this.empleadosRangoInicial = empleadosRangoInicial;
+	}
+	
+	public Integer getEmpleadosRangoFinal() {
+		return empleadosRangoFinal;
+	}
+	public void setEmpleadosRangoFinal(Integer empleadosRangoFinal) {
+		this.empleadosRangoFinal = empleadosRangoFinal;
 	}
 	
 	public Integer getIdUsuarioCrea() {

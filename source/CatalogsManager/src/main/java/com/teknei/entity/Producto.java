@@ -20,6 +20,8 @@ public class Producto extends BaseEntity<Integer> {
 	
 	private Integer idCuestionario;
 	private BigInteger precio;
+	private Integer empleadosRangoInicial;
+	private Integer empleadosRangoFinal;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
@@ -48,6 +50,22 @@ public class Producto extends BaseEntity<Integer> {
 	}
 	public void setPrecio(BigInteger precio) {
 		this.precio = precio;
+	}
+
+	@Column(name = "empleados_rango_inicial")
+	public Integer getEmpleadosRangoInicial() {
+		return empleadosRangoInicial;
+	}
+	public void setEmpleadosRangoInicial(Integer empleadosRangoInicial) {
+		this.empleadosRangoInicial = empleadosRangoInicial;
+	}
+
+	@Column(name = "empleados_rango_final")
+	public Integer getEmpleadosRangoFinal() {
+		return empleadosRangoFinal;
+	}
+	public void setEmpleadosRangoFinal(Integer empleadosRangoFinal) {
+		this.empleadosRangoFinal = empleadosRangoFinal;
 	}
 
 	@Column(name = "id_usuario_crea")

@@ -1,6 +1,5 @@
 package com.teknei.entity;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -20,20 +19,12 @@ public class Actividad extends BaseEntity<Integer> {
 	private static final long serialVersionUID = 5981177210512620507L;
 
 	
-	private Integer idCentroTrabajo;
-	private Integer idProducto;
-	private String codigo;
+	private Integer idCuestionario;
 	private String rutaCuestionario;
-	private String rutaRespuesta;
-	private String numeroReferenciaPago;
-	private BigInteger costo;
-	private BigInteger iva;
-	private BigInteger total;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
 	private Date creacion;
 	private Date modificacion;
-	private Integer idActividadEstatus;
 	
 	
 	@Id
@@ -43,28 +34,12 @@ public class Actividad extends BaseEntity<Integer> {
 		return super.getId();
 	}
 
-	@Column(name = "id_centro_trabajo", nullable = false)
-	public Integer getIdCentroTrabajo() {
-		return idCentroTrabajo;
+	@Column(name = "id_cuestionario")
+	public Integer getIdCuestionario() {
+		return idCuestionario;
 	}
-	public void setIdCentroTrabajo(Integer idCentroTrabajo) {
-		this.idCentroTrabajo = idCentroTrabajo;
-	}
-
-	@Column(name = "id_producto", nullable = false)
-	public Integer getIdProducto() {
-		return idProducto;
-	}
-	public void setIdProducto(Integer idProducto) {
-		this.idProducto = idProducto;
-	}
-
-	@Column(name = "codigo")
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setIdCuestionario(Integer idCuestionario) {
+		this.idCuestionario = idCuestionario;
 	}
 
 	@Column(name = "ruta_cuestionario")
@@ -73,46 +48,6 @@ public class Actividad extends BaseEntity<Integer> {
 	}
 	public void setRutaCuestionario(String rutaCuestionario) {
 		this.rutaCuestionario = rutaCuestionario;
-	}
-
-	@Column(name = "ruta_respuesta")
-	public String getRutaRespuesta() {
-		return rutaRespuesta;
-	}
-	public void setRutaRespuesta(String rutaRespuesta) {
-		this.rutaRespuesta = rutaRespuesta;
-	}
-
-	@Column(name = "numero_referencia_pago")
-	public String getNumeroReferenciaPago() {
-		return numeroReferenciaPago;
-	}
-	public void setNumeroReferenciaPago(String numeroReferenciaPago) {
-		this.numeroReferenciaPago = numeroReferenciaPago;
-	}
-
-	@Column(name = "costo")
-	public BigInteger getCosto() {
-		return costo;
-	}
-	public void setCosto(BigInteger costo) {
-		this.costo = costo;
-	}
-
-	@Column(name = "iva")
-	public BigInteger getIva() {
-		return iva;
-	}
-	public void setIva(BigInteger iva) {
-		this.iva = iva;
-	}
-
-	@Column(name = "total")
-	public BigInteger getTotal() {
-		return total;
-	}
-	public void setTotal(BigInteger total) {
-		this.total = total;
 	}
 
 	@Column(name = "id_usuario_crea")
@@ -145,14 +80,6 @@ public class Actividad extends BaseEntity<Integer> {
 	}
 	public void setModificacion(Date modificacion) {
 		this.modificacion = modificacion;
-	}
-
-	@Column(name = "id_actividad_estatus", nullable = false)
-	public Integer getIdActividadEstatus() {
-		return idActividadEstatus;
-	}
-	public void setIdActividadEstatus(Integer idActividadEstatus) {
-		this.idActividadEstatus = idActividadEstatus;
 	}
 
 }
