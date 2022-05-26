@@ -9,5 +9,7 @@ import com.teknei.entity.Actividad;
 public interface ActividadDAO extends BaseDAO<Integer, Actividad> {
 
 	List<Actividad> getAll();
+	
+	Actividad getByCentroCuestionario(Integer idCentro, Integer idCuestionario); 
 }
 

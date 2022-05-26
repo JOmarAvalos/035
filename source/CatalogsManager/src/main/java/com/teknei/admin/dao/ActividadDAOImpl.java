@@ -23,5 +23,14 @@ private static final long serialVersionUID = 1L;
 		return (List<Actividad>)query.list();
 	}
 
+
+	@Override
+	public Actividad getByCentroCuestionario(Integer idCentro, Integer idCuestionario) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Actividad where idCentroTrabajo = :idCentroTrabajo and idCuestionario = :idCuestionario ");
+		query.setParameter("idCentroTrabajo", idCentro);
+		query.setParameter("idCuestionario", idCuestionario);
+		return (Actividad) query.uniqueResult();
+	}
+
 }
 

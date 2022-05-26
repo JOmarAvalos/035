@@ -12,6 +12,8 @@ public class Constants {
 	
 	public static final Integer ID_PERFIL_ADMIIN = 1; 
 	public static final Integer ID_PERFIL_CLIENTE = 2; 
+	
+	public static final Integer ID_PRODUCTO_DISPONIBLE = 1;
 
 
 }

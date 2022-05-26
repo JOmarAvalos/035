@@ -1,6 +1,8 @@
 package com.teknei.webapp.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -164,13 +166,27 @@ public class RegistroController {
 				if(centro.getId() != null) {
 					centro.setIdUsuarioModifica(usuarioVO.getId());
 					centro.setModificacion(new Date());
+					centroTrabajoManager.save(centro);
 				}else{
 					centro.setIdUsuarioCrea(usuarioVO.getId());
 					centro.setCreacion(new Date());
 					centro.setIdUsuario(usuarioVO.getId());
 					centro.setBanActivo(Constants.BAN_ACTIVO);
+					centro = centroTrabajoManager.save(centro);
+					
+					
+					
+					StringBuilder sb = new StringBuilder();
+					sb.append("http://localhost:8080/Admin035/cuestionarios?param=");
+					sb.append(centro.getIdCrypt());
+					
+					String url = URLEncoder.encode(sb.toString(), StandardCharsets.UTF_8.toString());
+					envioCorreoPasos(usuarioVO);
+					envioCorreoUrl(usuarioVO, url);
+					
 				}
-				centroTrabajoManager.save(centro);
+				
+				
 
 				resp.add(true);
 				
@@ -221,6 +237,49 @@ public class RegistroController {
 	}
 
 
+	private void envioCorreoPasos(UsuarioVO user) {
+
+		try {
+			String emailFile = ReadFileForEmail.EMAIL_INSTRUCCIONES;
+			String urlBG = "";
+			String color = "";
+			String notificacionFrom = "noreply@035.com.mx";
+			List<String> lstEmail = new ArrayList<String>();
+			lstEmail.add(user.getEmail());
+			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
+			String asunto = "Bienvenido a 035 ";
+			String shtml = "";
+
+			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile);
+
+			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+	private void envioCorreoUrl(UsuarioVO user, String url) {
+
+		try {
+			String emailFile = ReadFileForEmail.EMAIL_CUESTIONARIOS;
+			String urlBG = "";
+			String color = "";
+			String notificacionFrom = "noreply@035.com.mx";
+			List<String> lstEmail = new ArrayList<String>();
+			lstEmail.add(user.getEmail());
+			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
+			String asunto = "Bienvenido a 035 ";
+			String shtml = "";
+
+			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(url));
+
+			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
 	
 	@RequestMapping(value = "/registro/validaMail", method = RequestMethod.POST)
 	@ResponseBody

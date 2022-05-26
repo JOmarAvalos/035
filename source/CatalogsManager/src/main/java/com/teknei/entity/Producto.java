@@ -27,6 +27,7 @@ public class Producto extends BaseEntity<Integer> {
 	private Date creacion;
 	private Date modificacion;
 	private Integer banActivo;
+	private String nombre;
 	
 	
 	@Id
@@ -106,6 +107,21 @@ public class Producto extends BaseEntity<Integer> {
 	}
 	public void setBanActivo(Integer banActivo) {
 		this.banActivo = banActivo;
+	}
+
+	/**
+	 * @return the nombre
+	 */
+	@Column(name = "nombre")
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }

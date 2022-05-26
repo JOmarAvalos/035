@@ -378,6 +378,7 @@ public class Mapper {
 		pr.setCreacion(p.getCreacion());
 		pr.setModificacion(p.getModificacion());
 		pr.setBanActivo(p.getBanActivo());
+		pr.setNombre(p.getNombre());
 
 		return pr;
 	}
@@ -399,6 +400,7 @@ public class Mapper {
 		p.setCreacion(pr.getCreacion());
 		p.setModificacion(pr.getModificacion());
 		p.setBanActivo(pr.getBanActivo());
+		p.setNombre(pr.getNombre());
 
 		return p;
 	}

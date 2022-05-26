@@ -1,5 +1,7 @@
 package com.teknei.webapp.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class CuestionariosController {
 	@Autowired
 	private CuestionariosManager cuestionariosManager;
 	
-	@RequestMapping(value = "/cuestionarios", method = RequestMethod.GET)
+	@RequestMapping(value = "/cuestionariosOld", method = RequestMethod.GET)
 	public String cuestionarios(Model model, HttpServletRequest request, 
 			@RequestParam(value = "param", required = false) String param, 
 			@RequestParam(value = "param2", required = false) Integer param2) {
@@ -30,6 +32,24 @@ public class CuestionariosController {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+		}
+		return "cuestionarios";
+	}
+	
+	@RequestMapping(value = "/cuestionarios", method = RequestMethod.GET)
+	public String cuestionariosCentro(Model model, HttpServletRequest request, 
+			@RequestParam(value = "param", required = true) String param) {
+		
+		try {
+			Integer id = Integer.valueOf(StringEncrypt.decrypt(StringEncrypt.KEY, StringEncrypt.IV, param));
+			
+			List<CuestionarioVO> cuestonanrios =  cuestionariosManager.getCuestionariosByCentro(id);
+			
+			model.addAttribute("cuestionarios", cuestonanrios);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return "cuestionarios";
 	}

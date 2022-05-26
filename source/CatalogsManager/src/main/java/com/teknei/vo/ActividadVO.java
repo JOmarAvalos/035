@@ -11,6 +11,7 @@ public class ActividadVO extends BaseVO implements Serializable {
 
 
 	private Integer idCuestionario;
+	private Integer idCentroTrabajo;
 	private String rutaCuestionario;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
@@ -25,6 +26,18 @@ public class ActividadVO extends BaseVO implements Serializable {
 		this.idCuestionario = idCuestionario;
 	}
 	
+	/**
+	 * @return the idCentroTrabajo
+	 */
+	public Integer getIdCentroTrabajo() {
+		return idCentroTrabajo;
+	}
+	/**
+	 * @param idCentroTrabajo the idCentroTrabajo to set
+	 */
+	public void setIdCentroTrabajo(Integer idCentroTrabajo) {
+		this.idCentroTrabajo = idCentroTrabajo;
+	}
 	public String getRutaCuestionario() {
 		return rutaCuestionario;
 	}

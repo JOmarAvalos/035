@@ -6,6 +6,7 @@ goPerfil = function(){
 	$('#divCentros').hide();
 	$('#divUsuario').hide();
 	$('#divCuestionarios').hide();
+	$('#divProductos').hide();
 	$('#divPerfil').show();
 }
 
@@ -13,6 +14,7 @@ goCentros = function(){
 	$('#divPerfil').hide();
 	$('#divUsuario').hide();
 	$('#divCuestionarios').hide();
+	$('#divProductos').hide();
 	$('#divCentros').show();
 }
 
@@ -20,6 +22,7 @@ goCuestionarios = function(){
 	$('#divPerfil').hide();
 	$('#divUsuario').hide();
 	$('#divCentros').hide();
+	$('#divProductos').hide();
 	$('#divCuestionarios').show();
 }
 
@@ -27,6 +30,7 @@ goUsuarios = function(){
 	$('#divPerfil').hide();
 	$('#divCentros').hide();
 	$('#divCuestionarios').hide();
+	$('#divProductos').hide();
 	$('#divUsuario').show();
 }
 
@@ -155,3 +159,11 @@ copyToClip = function(iptToCopy, textToShow) {
 	  setTimeout(function(){ $("#elementoCopiado").fadeOut(); }, 2000);
 	  
 	}
+	
+showProductos = function(){
+	$('#divProductos').show();
+}
+
+hideProductos = function(){
+	$('#divProductos').hide();
+}

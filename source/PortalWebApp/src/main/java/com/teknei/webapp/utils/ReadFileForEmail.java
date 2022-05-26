@@ -14,6 +14,8 @@ public class ReadFileForEmail {
 	private static final Logger LOGGER = Logger.getLogger(ReadFileForEmail.class);
 	
 	public static final String EMAIL = "/confirmacion.html";
+	public static final String EMAIL_INSTRUCCIONES = "/instrucciones.html";
+	public static final String EMAIL_CUESTIONARIOS = "/cuestionarios.html";
 
 	public static String getFile(String file) throws IOException {
 		try {

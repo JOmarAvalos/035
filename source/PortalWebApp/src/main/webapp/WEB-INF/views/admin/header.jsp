@@ -12,6 +12,15 @@
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
+        <div class="navbar-right">
+            <ul class="nav navbar-nav">
+            	<li class="dropdown messages-menu">
+	                <a href="#" onclick="logout();">
+	                    Salir <i class="fa fa-sign-out"></i>
+	                </a>
+	            </li>
+            </ul>
+            
+        </div>
     </nav>
 </header>

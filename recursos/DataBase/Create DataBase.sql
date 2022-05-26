@@ -1,9 +1,3 @@
--- DataBase: disofgis_035
--- Schema:
-    -- desarrollo
-    -- produccion
-
-CREATE SCHEMA desarrollo;
 
 ---------------------------------------
 -- desarrollo.tbl_cata_perfil
@@ -63,9 +57,9 @@ create table desarrollo.tbl_perfil_menu
 create table desarrollo.tbl_usuarios
 (
   cve_usuario serial NOT NULL,
-  usuario character varying(15) NOT NULL,
+  usuario character varying(100) NOT NULL,
   contrasena character varying(200) NOT NULL,
-  nombre character varying(100) NOT NULL,
+  nombre character varying(100),
   email character varying(80) NOT NULL,
   id_perfil integer NOT NULL,
   id_usuario_crea integer NOT NULL,
@@ -250,6 +244,7 @@ create table desarrollo.tbl_productos
 (
   cve_producto serial NOT NULL,
   id_cuestionario integer NOT NULL,
+  nombre character varying(200) NOT NULL,
   precio numeric(10,2) NOT NULL,
   empleados_rango_inicial integer NOT NULL,
   empleados_rango_final integer NOT NULL,
@@ -309,7 +304,7 @@ create table desarrollo.tbl_producto_comprado
   CONSTRAINT fkey_tbl_producto_comprado_tbl_productos_id FOREIGN KEY (id_producto)
       REFERENCES desarrollo.tbl_productos (cve_producto) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION,
-  
+
   CONSTRAINT fkey_tbl_producto_comprado_tbl_cata_compra_estatus_id FOREIGN KEY (id_compra_estatus)
       REFERENCES desarrollo.tbl_cata_compra_estatus (cve_compra_estatus) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -323,7 +318,8 @@ create table desarrollo.tbl_actividades
 (
   cve_actividad serial NOT NULL,
   id_cuestionario integer NOT NULL,
-  ruta_cuestionario character varying(200) NOT NULL,
+  id_centro_trabajo integer NOT NULL,
+  ruta_cuestionario character varying(200),
   id_usuario_crea integer NOT NULL,
   id_usuario_modifica integer,
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
@@ -333,6 +329,10 @@ create table desarrollo.tbl_actividades
 
   CONSTRAINT fkey_tbl_actividades_tbl_cuestionarios_id FOREIGN KEY (id_cuestionario)
       REFERENCES desarrollo.tbl_cuestionarios (cve_cuestionario) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+
+  CONSTRAINT fkey_tbl_actividades_tbl_ccentro_trabajo_id FOREIGN KEY (id_centro_trabajo)
+      REFERENCES desarrollo.tbl_centros_trabajo (cve_centro_trabajo) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -384,20 +384,3 @@ create table desarrollo.tbl_preguntas_resueltas
       REFERENCES desarrollo.tbl_respuestas (cve_respuesta) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
 );
-
-
----------------------------------------
--- public.persistent_logins
----------------------------------------
--- Table: public.persistent_logins
-
--- DROP TABLE public.persistent_logins;
-
-CREATE TABLE public.persistent_logins
-(
-    username character varying(64) NOT NULL,
-    series character varying(64) NOT NULL,
-    token character varying(64) NOT NULL,
-    last_used timestamp without time zone NOT NULL,
-    CONSTRAINT persistent_logins_pkey PRIMARY KEY (series)
-)

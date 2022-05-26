@@ -29,6 +29,8 @@ INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 2', 1);
 INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 3', 1);
 
 
+INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Disponible', 1);
+INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('En carrito', 1);
 INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Comprado', 1);
 INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Entregado', 1);
 INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Descargado', 1);
@@ -75,7 +77,7 @@ INSERT INTO desarrollo.tbl_cata_preguntas_tipo (nombre, ban_activo) VALUES ('Abi
 
 -- Cuestionarios
 INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
-    VALUES ('Eventos traumáticos severos', 'Guía de referencia I. Eventos traumáticos severos. Se aplica en todos los centros de trabajo','', 0, 15, 1, 10, 1,now(), 1);
+    VALUES ('Eventos traumáticos severos', 'Guía de referencia I. Eventos traumáticos severos. Se aplica en todos los centros de trabajo','', 0, 100000, 1, 10, 1,now(), 1);
 INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
     VALUES ('Riesgos Psicosociales', 'Cuestionario para identificar los factores de riesgo psicosocial en los centros de trabajo de 16 a 50 empleados','', 16, 50, 2, 10, 1,now(), 1);
 INSERT INTO desarrollo.tbl_cuestionarios (nombre, titulo, descripcion, empleados_rango_inicial, empleados_rango_final, orden, dias_limite_actividad, id_usuario_crea, fch_creacion, ban_activo)
@@ -1178,3 +1180,15 @@ INSERT INTO desarrollo.tbl_respuestas (id_pregunta, nombre, orden, id_usuario_cr
 INSERT INTO desarrollo.tbl_respuestas (id_pregunta, nombre, orden, id_usuario_crea, fch_creacion, ban_activo) VALUES (158,'Algunas veces', 3, 1, now(), 1);
 INSERT INTO desarrollo.tbl_respuestas (id_pregunta, nombre, orden, id_usuario_crea, fch_creacion, ban_activo) VALUES (158,'Casi nunca', 4, 1, now(), 1);
 INSERT INTO desarrollo.tbl_respuestas (id_pregunta, nombre, orden, id_usuario_crea, fch_creacion, ban_activo) VALUES (158,'Nunca', 5, 1, now(), 1);
+
+
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 100.00, 1, 15, 1, now(), 1,'Resumen general de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 200.00, 16, 50, 1, now(), 1,'Resumen general de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 400.00, 51, 100000, 1, now(), 1,'Resumen general de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 100.00, 1, 15, 1, now(), 1,'Hojas individuales de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 200.00, 16, 50, 1, now(), 1,'Hojas individuales de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (1, 400.00, 51, 100000, 1, now(), 1,'Hojas individuales de eventos traumáticos severos');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (2, 600.00, 16, 50, 1, now(), 1,'Resumen');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (3, 1200.00, 51, 100000, 1, now(), 1,'Resumen');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (2, 1000.00, 16, 50, 1, now(), 1,'Resultado por área de trabajo y recomendaciones');
+INSERT INTO desarrollo.tbl_productos (id_cuestionario, precio, empleados_rango_inicial, empleados_rango_final, id_usuario_crea, fch_creacion, ban_activo, nombre) VALUES (3, 2000.00, 51, 100000, 1, now(), 1,'Resultado por área de trabajo y recomendaciones');

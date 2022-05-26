@@ -19,7 +19,8 @@ public class ProductoVO extends BaseVO implements Serializable {
 	private Date creacion;
 	private Date modificacion;
 	private Integer banActivo;
-	
+	private String nombre;
+	private CuestionarioVO cuestionarioVO;
 	
 	
 	public Integer getIdCuestionario() {
@@ -83,6 +84,30 @@ public class ProductoVO extends BaseVO implements Serializable {
 	}
 	public void setBanActivo(Integer banActivo) {
 		this.banActivo = banActivo;
+	}
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	/**
+	 * @return the cuestionarioVO
+	 */
+	public CuestionarioVO getCuestionarioVO() {
+		return cuestionarioVO;
+	}
+	/**
+	 * @param cuestionarioVO the cuestionarioVO to set
+	 */
+	public void setCuestionarioVO(CuestionarioVO cuestionarioVO) {
+		this.cuestionarioVO = cuestionarioVO;
 	}
 	
 }

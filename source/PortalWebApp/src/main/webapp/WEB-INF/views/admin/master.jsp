@@ -141,7 +141,6 @@
 <body class="skin-blue">
 	<tiles:insertAttribute name="header" />
 	<div class="wrapper row-offcanvas row-offcanvas-left">
-		<tiles:insertAttribute name="menu" />
 		<tiles:insertAttribute name="body" />
 	</div>
 	<tiles:insertAttribute name="footer" />

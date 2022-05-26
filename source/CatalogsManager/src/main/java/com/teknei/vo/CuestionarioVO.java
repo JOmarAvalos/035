@@ -26,6 +26,8 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	
 	private List<PreguntaVO> preguntas;
 	
+	private ActividadVO actividad;
+	
 	
 	public String getNombre() {
 		return nombre;
@@ -121,6 +123,18 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	 */
 	public void setPreguntas(List<PreguntaVO> preguntas) {
 		this.preguntas = preguntas;
+	}
+	/**
+	 * @return the actividad
+	 */
+	public ActividadVO getActividad() {
+		return actividad;
+	}
+	/**
+	 * @param actividad the actividad to set
+	 */
+	public void setActividad(ActividadVO actividad) {
+		this.actividad = actividad;
 	}
 	
 }

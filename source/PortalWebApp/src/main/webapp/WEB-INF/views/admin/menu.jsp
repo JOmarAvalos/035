@@ -49,7 +49,7 @@
 				<li>
 					<a style="cursor:pointer;" onclick="goCuestionarios();"> 
 						<i class="fa fa-book"></i> 
-						<span>Cuestionarios</span>
+						<span>Resultados de evaluaciones/Cuestonarios</span>
 					</a>
 				</li>
 			</c:if>

@@ -23,17 +23,55 @@
 				<hr>
 			</div>
 		</div>
-		<div class="row" id="startExamen">
-			<div class="col">
-				<input type="hidden" id="idConsultaActividad">
-					<h3>
-						Estas a punto de comenzar el custionario <span class="bold">"${cuestionario.nombre}"</span>, una vez que inicies no debes cerrar la ventana hasta concluir con todas las preguntas.
-					</h3>
-
-				<button type="button" class="md-btn md-btn-main d-block mt-4 ml-0"
-					onclick="startCuestionario();">Comenzar <i class="fas fa-rocket ml-2"></i></button>
+		
+		<div id="startExamen">
+			<div class="row">
+				<div class="col">
+					<input type="hidden" id="idConsultaActividad">
+						<h3>
+							Estas a punto de comenzar el custionario <span class="bold">"${cuestionario.nombre}"</span>, una vez que inicies no debes cerrar la ventana hasta concluir con todas las preguntas.
+						</h3>
+				</div>
 			</div>
+			
+			<div style="background:#a4a4a4;" class="examen container-fluid" >
+				<div class="row bg-white">
+					<div class="col">
+						<h6 class="bold mt-2 mb-4">Dtos personales</h6>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3" >
+						<div class="form-group">
+							<label for="iptNombreR">Nombre(s):</label> 
+							<input type="text" id="iptNombreR" class="form-control" placeholder="Nombre(s)">
+						</div>
+					</div>
+					<div class="col-md-3" >
+						<div class="form-group">
+							<label for="iptAPaternoR">Apellido paterno:</label> 
+							<input type="text" id="iptAPaternoR" class="form-control" placeholder="Apellido paterno">
+						</div>
+					</div>
+					<div class="col-md-3" >
+						<div class="form-group">
+							<label for="iptAMaternoR">Apellido materno:</label> 
+							<input type="text" id="iptAMaternoR" class="form-control" placeholder="Apellido materno">
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div class="col">
+					<button type="button" class="md-btn md-btn-main d-block mt-4 ml-0"
+						onclick="startCuestionario();">Comenzar <i class="fas fa-rocket ml-2"></i></button>
+				</div>
+			</div>
+			
 		</div>
+		
 
 		<c:if test="${not empty cuestionario.preguntas}">
 			<c:set var="count" value="1" scope="page" />
@@ -152,3 +190,33 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="modalDatosObligatorios" tabindex="-1"
+	role="dialog" aria-labelledby="modalDatosObligatorios"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content bg-glass-sknd">
+			<div class="modal-header">
+				<h4 class="modal-title txt-orange uppercase bold text-center">
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <br>
+					Advertencia
+				</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row my-4">
+					<div class="col">
+				        <p class="bold">Para poder continuar debes capturar tu nombre y apellidos</p>
+					</div>
+				</div>
+				<hr>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="md-btn md-btn-close "
+					data-dismiss="modal">Cerrar</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+

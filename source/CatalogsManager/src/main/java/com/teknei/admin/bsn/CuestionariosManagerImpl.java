@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.teknei.admin.dao.ActividadDAO;
 import com.teknei.admin.dao.CuestionarioDAO;
 import com.teknei.admin.dao.PreguntaDAO;
 import com.teknei.admin.dao.RespuestaDAO;
@@ -15,6 +16,7 @@ import com.teknei.entity.Cuestionario;
 import com.teknei.entity.Pregunta;
 import com.teknei.entity.Respuesta;
 import com.teknei.mapper.Mapper;
+import com.teknei.vo.ActividadVO;
 import com.teknei.vo.CuestionarioVO;
 import com.teknei.vo.PreguntaVO;
 import com.teknei.vo.RespuestaVO;
@@ -31,6 +33,8 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 	private PreguntaDAO preguntaDAO;
 	@Autowired
 	private RespuestaDAO respuestaDAO;
+	@Autowired
+	private ActividadDAO actividadDAO;
 	
 
 	@Override
@@ -69,6 +73,8 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		for(Cuestionario cuestionario: cuestionarios){
 			
 			CuestionarioVO cuestionarioVO = Mapper.toVO(cuestionario);
+			ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentro, cuestionario.getId()));
+			cuestionarioVO.setActividad(actividadVO);
 			resp.add(cuestionarioVO);
 		}
 		

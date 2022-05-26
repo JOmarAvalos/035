@@ -22,7 +22,7 @@ public class CuestionarioDAOImpl extends HibernateBaseDAO<Integer,Cuestionario> 
 		
 		StringBuilder sbQuery = new StringBuilder();
 		sbQuery.append("from Cuestionario c ");
-		sbQuery.append("where (select ct.empleadoNumero from CentroTrabajo ct where ct.id = :idCentro ) >= c.empleadosRangoInicial");
+		sbQuery.append("where (select ct.empleadoNumero from CentroTrabajo ct where ct.id = :idCentro ) >= c.empleadosRangoInicial and  (select ct.empleadoNumero from CentroTrabajo ct where ct.id = :idCentro ) <= c.empleadosRangoFinal ");
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(sbQuery.toString());
 		query.setParameter("idCentro", idCentro);

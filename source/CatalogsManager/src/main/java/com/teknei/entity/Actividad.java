@@ -20,6 +20,7 @@ public class Actividad extends BaseEntity<Integer> {
 
 	
 	private Integer idCuestionario;
+	private Integer idCentroTrabajo;
 	private String rutaCuestionario;
 	private Integer idUsuarioCrea;
 	private Integer idUsuarioModifica;
@@ -40,6 +41,15 @@ public class Actividad extends BaseEntity<Integer> {
 	}
 	public void setIdCuestionario(Integer idCuestionario) {
 		this.idCuestionario = idCuestionario;
+	}
+
+	@Column(name = "id_centro_trabajo")
+	public Integer getIdCentroTrabajo() {
+		return idCentroTrabajo;
+	}
+
+	public void setIdCentroTrabajo(Integer idCentroTrabajo) {
+		this.idCentroTrabajo = idCentroTrabajo;
 	}
 
 	@Column(name = "ruta_cuestionario")

@@ -3,8 +3,27 @@
  */
  
  startCuestionario = function(){
-	$('#startExamen').hide();
-	$('#pregunta1').show();
+	
+	nombreValido = true;
+	
+	if(!notNull($('#iptNombreR'))){
+		nombreValido = false;
+	}
+	if(!notNull($('#iptAPaternoR'))){
+		nombreValido = false;
+	}
+	if(!notNull($('#iptAMaternoR'))){
+		nombreValido = false;
+	}
+	
+	if(nombreValido){
+		$('#startExamen').hide();
+		$('#pregunta1').show();
+	}else{
+		$('#modalDatosObligatorios').modal({backdrop: 'static', keyboard: false});
+
+	}
+	
 }
 
 showAnterior = function(actual){

@@ -85,7 +85,9 @@ import com.teknei.vo.CentroTrabajoVO;
 import com.teknei.vo.CuestionarioVO;
 import com.teknei.vo.EstadoRepublicaVO;
 import com.teknei.vo.GiroVO;
+import com.teknei.vo.ProductoCompradoVO;
 import com.teknei.admin.bsn.ActividadManager;
+import com.teknei.admin.bsn.CarritoManager;
 import com.teknei.admin.bsn.CentroTrabajoManager;
 import com.teknei.admin.bsn.CuestionariosManager;
 import com.teknei.admin.bsn.EstadoRepublicaManager;
@@ -109,6 +111,8 @@ public class SecurityController {
 	private EstadoRepublicaManager estadoRepublicaManager;
 	@Autowired
 	private CuestionariosManager cuestionariosManager;
+	@Autowired
+	private CarritoManager carritoManager;
 	
 	
 //	@Value("${app.wff.inscripcion.justificante}")
@@ -122,6 +126,7 @@ public class SecurityController {
 	private static final String ATTR_LST_GIRO = "lstGiro";
 	private static final String ATTR_LST_ESTADOS = "lstEstados";
 	private static final String ATTR_LST_CUESTIONARIOS = "lstCuestionarios";
+	private static final String ATTR_LST_PRODUCTOS = "lstProductos";
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -139,9 +144,11 @@ public class SecurityController {
 			List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
 			
 			List<CuestionarioVO> cuestionarios = new ArrayList<CuestionarioVO>();
+			List<ProductoCompradoVO> productos = new ArrayList<ProductoCompradoVO>();
 			
 			if(centroTrabajo != null){
 				cuestionarios = cuestionariosManager.getCuestionariosByCentro(centroTrabajo.getId());
+				productos = carritoManager.getByidCentro(centroTrabajo.getId());
 			}
 			
 			model.addAttribute(ATTR_CENTRO, centroTrabajo);
@@ -149,6 +156,7 @@ public class SecurityController {
 			model.addAttribute(ATTR_LST_ESTADOS, estados);
 			model.addAttribute(ATTR_USUARIO, usuarioVO);
 			model.addAttribute(ATTR_LST_CUESTIONARIOS, cuestionarios);
+			model.addAttribute(ATTR_LST_PRODUCTOS, productos);
 			
 			return HOME_VIEW;
 		} else {
