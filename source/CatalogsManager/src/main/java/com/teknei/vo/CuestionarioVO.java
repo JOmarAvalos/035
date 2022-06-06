@@ -28,6 +28,8 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	
 	private ActividadVO actividad;
 	
+	private Integer resueltos;
+	
 	
 	public String getNombre() {
 		return nombre;
@@ -135,6 +137,18 @@ public class CuestionarioVO extends BaseVO implements Serializable {
 	 */
 	public void setActividad(ActividadVO actividad) {
 		this.actividad = actividad;
+	}
+	/**
+	 * @return the resueltos
+	 */
+	public Integer getResueltos() {
+		return resueltos;
+	}
+	/**
+	 * @param resueltos the resueltos to set
+	 */
+	public void setResueltos(Integer resueltos) {
+		this.resueltos = resueltos;
 	}
 	
 }

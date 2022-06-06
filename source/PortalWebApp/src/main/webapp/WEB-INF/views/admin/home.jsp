@@ -309,37 +309,42 @@
 	                     <h1 class="box-title">Evaluaciones</h1>                                    
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
-	                 	<div class="row">
-	                 		<div class="col-md-6">
-	                 			<div class="input-group">
-                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="https://app.035.com.mx/Admin035/cuestionarios">
-                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
-                                </div>
-	                 		</div>
-	                 	</div>
-	                 	<br>
-	                     <table id="tblCuestionarios" class="table table-bordered table-striped">
-	                         <thead>
-	                             <tr>
-	                                 <th>Descargar evaluaciones/cuestionarios</th>
-	                                 <th>Nombre del cuestionario</th>
-	                                 <th># cuesionarios respondidos</th>
-	                             </tr>
-	                         </thead>
-	                         <tbody>
-	                         	<c:if test="${not empty lstCuestionarios}">
-	                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
-			                             <tr>
-			                                 <td>
-			                                 	<a href="#" title="Descargar cuestionarios">Descargar cuestonarios <i class="fa fa-fw fa-download fa-4x"></i></a>
-			                                 </td>
-			                                 <td>${cuestionario.nombre}</td>
-			                                 <td>0</td>
-			                             </tr>
-	                         		</c:forEach>
-	                         	</c:if>
-	                         </tbody>
-	                     </table>
+	                 	<c:if test="${not empty centro}">
+		                 	<div class="row">
+		                 		<div class="col-md-6">
+		                 			<div class="input-group">
+	                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="http://localhost:8080/Admin035/cuestionarios?param=${centro.idCrypt}">
+	                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
+	                                </div>
+		                 		</div>
+		                 	</div>
+		                 	<br>
+		                     <table id="tblCuestionarios" class="table table-bordered table-striped">
+		                         <thead>
+		                             <tr>
+		                                 <th>Descargar evaluaciones/cuestionarios</th>
+		                                 <th>Nombre del cuestionario</th>
+		                                 <th># cuesionarios respondidos</th>
+		                             </tr>
+		                         </thead>
+		                         <tbody>
+		                         	<c:if test="${not empty lstCuestionarios}">
+		                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
+				                             <tr>
+				                                 <td>
+				                                 	<a href="#" title="Descargar cuestionarios"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar cuestonarios</a>
+				                                 </td>
+				                                 <td>${cuestionario.nombre}</td>
+				                                 <td>${cuestionario.resueltos}</td>
+				                             </tr>
+		                         		</c:forEach>
+		                         	</c:if>
+		                         </tbody>
+		                     </table>
+	                 	</c:if>
+	                 	<c:if test="${empty centro}">
+	                 		<h3 class="box-title">Para poder ver las evaluaciones desponibles es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
+	                 	</c:if>
 	                 </div><!-- /.box-body -->
 	             </div><!-- /.box -->
 	        </div>
@@ -351,50 +356,60 @@
                      <h1 class="box-title">Resultados de evaluaciones</h1>
                  </div><!-- /.box-header -->
                  <div class="box-body table-responsive">
-                     <h3 class="box-title">Puedes comprar el resultado de las evaluaciones en cualquier momento</h3>                                    
-                     <table id="tblProductos" class="table table-bordered table-striped">
-                         <thead>
-                             <tr>
-                                 <th>Comprar/Descargar</th>
-                                 <th>Producto</th>
-                                 <th>Cuestionario</th>
-                                 <th>Precio</th>
-                                 <th>Estatus</th>
-                             </tr>
-                         </thead>
-                         <tbody>
-					        <c:if test="${not empty lstProductos}">
-						        <c:forEach items="${lstProductos}" var="producto" varStatus="loop">
-		                             <tr>
-		                                 <td>
-		                                 	<!-- <a href="#" title="Descargar resultado"><i class="fa fa-fw fa-download"></i></a> -->
-		                                 	<a href="#" title="Agregar al carrito"><i class="fa fa-shopping-cart fa-4x"></i></a>
-		                                 </td>
-		                                 <td>${producto.productoVO.nombre}</td>
-		                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-		                                 <td>$${producto.productoVO.precio}</td>
-		                                 <td>Disponible</td>
-		                             </tr>
-						        </c:forEach>
-					        </c:if>
-                         </tbody>
-                     </table>
+                 	<c:if test="${not empty centro}">
+	                     <h3 class="box-title">Puedes comprar el resultado de las evaluaciones en cualquier momento</h3>                                    
+	                     <table id="tblProductos" class="table table-bordered table-striped">
+	                         <thead>
+	                             <tr>
+	                                 <th>Comprar/Descargar</th>
+	                                 <th>Producto</th>
+	                                 <th>Cuestionario</th>
+	                                 <th>Precio</th>
+	                                 <th>Estatus</th>
+	                             </tr>
+	                         </thead>
+	                         <tbody>
+						        <c:if test="${not empty lstProductos}">
+							        <c:forEach items="${lstProductos}" var="producto" varStatus="loop">
+			                             <tr>
+			                                 <td>
+			                                 	<c:if test="${producto.idCompraEstatus == 1 }">
+				                                 	<a href="#" title="Agregar al carrito" onclick="agregaProducto(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Agregar al carrito</a>
+			                                 	</c:if>
+			                                 	<c:if test="${producto.idCompraEstatus == 2 }">
+				                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
+			                                 	</c:if>
+			                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+			                                 	</c:if>
+			                                 </td>
+			                                 <td>${producto.productoVO.nombre}</td>
+			                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+			                                 <td>$${producto.productoVO.precio}</td>
+			                                 <td>Disponible</td>
+			                             </tr>
+							        </c:forEach>
+						        </c:if>
+	                         </tbody>
+	                     </table>
+                 	</c:if>
+                 	<c:if test="${empty centro}">
+                 		<h3 class="box-title">Para poder ver los resultados de las evaluaciones es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
+                 	</c:if>
                  </div><!-- /.box-body -->
 				<div class="box-footer">
-					<div class="row">
-						<div class="col-md-3" >
-							<button type="button" class="btn btn-primary" onclick="hideProductos();">Salir</button>
+                 	<c:if test="${not empty centro}">
+						<div class="row">
+							<div class="col-md-3" id="btnActualizaPerfil" >
+								<button type="button" class="btn btn-primary" onclick="alert('En construcción');">Pagar</button>
+							</div>
 						</div>
-						<div class="col-md-3" id="btnActualizaPerfil" >
-							<button type="button" class="btn btn-primary" onclick="alert('En construcción');">Pagar</button>
+						<div class="row">
+							<div class="col-md-3">
+								Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
+							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
-						</div>
-					</div>
-					
+					</c:if>
 				</div>
                  
              </div><!-- /.box -->

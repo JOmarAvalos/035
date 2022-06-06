@@ -27,7 +27,8 @@
 		<div id="startExamen">
 			<div class="row">
 				<div class="col">
-					<input type="hidden" id="idConsultaActividad">
+					<input type="hidden" id="idActividadResuelta">
+					<input type="hidden" id="idActividad" value="${cuestionario.actividad.id}">
 						<h3>
 							Estas a punto de comenzar el custionario <span class="bold">"${cuestionario.nombre}"</span>, una vez que inicies no debes cerrar la ventana hasta concluir con todas las preguntas.
 						</h3>
@@ -37,7 +38,7 @@
 			<div style="background:#a4a4a4;" class="examen container-fluid" >
 				<div class="row bg-white">
 					<div class="col">
-						<h6 class="bold mt-2 mb-4">Dtos personales</h6>
+						<h6 class="bold mt-2 mb-4">Datos personales</h6>
 					</div>
 				</div>
 				<div class="row">
@@ -49,14 +50,14 @@
 					</div>
 					<div class="col-md-3" >
 						<div class="form-group">
-							<label for="iptAPaternoR">Apellido paterno:</label> 
-							<input type="text" id="iptAPaternoR" class="form-control" placeholder="Apellido paterno">
+							<label for="iptAPaternoR">Apellido Paterno:</label> 
+							<input type="text" id="iptAPaternoR" class="form-control" placeholder="Apellido Paterno">
 						</div>
 					</div>
 					<div class="col-md-3" >
 						<div class="form-group">
-							<label for="iptAMaternoR">Apellido materno:</label> 
-							<input type="text" id="iptAMaternoR" class="form-control" placeholder="Apellido materno">
+							<label for="iptAMaternoR">Apellido Materno:</label> 
+							<input type="text" id="iptAMaternoR" class="form-control" placeholder="Apellido Materno">
 						</div>
 					</div>
 				</div>
@@ -143,7 +144,7 @@
 			<div class="row">
 				<div class="col">
 					<button type="button" class="md-btn md-btn-main ml-0"
-						onclick="terminaActividad();" >Terminar <i class="fas fa-check ml-2"></i></button>
+						onclick="terminaCuestonario();" >Terminar <i class="fas fa-check ml-2"></i></button>
 						<hr>
 				</div>
 			</div>
@@ -205,7 +206,7 @@
 			<div class="modal-body">
 				<div class="row my-4">
 					<div class="col">
-				        <p class="bold">Para poder continuar debes capturar tu nombre y apellidos</p>
+				        <p class="bold">Para poder continuar debes capturar tu(s) nombre(s) y apellidos</p>
 					</div>
 				</div>
 				<hr>

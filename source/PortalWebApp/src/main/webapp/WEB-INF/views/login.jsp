@@ -49,19 +49,19 @@
 						method="POST" role="form">
 						<div class="form-group">
 							<input type="text" id="username" name="username"
-								class="form-control" placeholder="User ID" required/>
+								class="form-control" placeholder="Email" required autocomplete="off"/>
 						</div>
 						<div class="form-group">
 							<input type="password" id="password" name="password"
-								class="form-control" placeholder="Password" required/>
+								class="form-control" placeholder="Contrase&ntilde;a" required/>
 						</div>
 						<div class="form-group">
 							<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
 						</div>
-							<button type="submit" class="btn">Iniciar sesión</button>
+							<button type="submit" class="btn">Iniciar sesi&oacute;n</button>
 					</form>
 					
-					<p><a href="#" onclick="showRecuperaPwd();">Olvide mi contraseña</a></p>
+					<p><a href="#" onclick="showRecuperaPwd();">Olvide mi contrase&ntilde;a</a></p>
 					<p><a href="#" onclick="showRegistro();">Registro</a></p>
 					
 				</div>
@@ -91,7 +91,7 @@
 						<div class="form-group">
 							<label for="passwordRegistro">Contrase&ntilde;a:</label>
 							<input type="password" id="passwordRegistro" name="passwordRegistro"
-								class="form-control" placeholder="Contrasentilde;a" />
+								class="form-control" placeholder="Contrase&ntilde;a" />
 						</div>
 						<div class="form-group">
 							<label for="confirmPasswordRegistro">Confirmaci&oacute;n de contrase&ntilde;a:</label>

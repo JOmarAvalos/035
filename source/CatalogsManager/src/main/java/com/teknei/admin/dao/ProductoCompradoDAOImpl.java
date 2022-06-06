@@ -28,6 +28,7 @@ public class ProductoCompradoDAOImpl extends HibernateBaseDAO<Integer,ProductoCo
 		StringBuilder sbQuery = new StringBuilder();
 		sbQuery.append("from ProductoComprado p ");
 		sbQuery.append("where p.idCentroTrabajo = :idCentro ");
+		sbQuery.append("order by p.id ");
 		Query query = sessionFactory.getCurrentSession().createQuery(sbQuery.toString());
 		
 		query.setParameter("idCentro", idCentro);

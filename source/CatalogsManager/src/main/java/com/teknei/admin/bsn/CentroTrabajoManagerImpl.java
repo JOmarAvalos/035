@@ -62,6 +62,7 @@ public class CentroTrabajoManagerImpl implements CentroTrabajoManager{
 			for(Cuestionario cuestionario: cuestionarios) {
 				Actividad actividad = new Actividad();
 				actividad.setIdCuestionario(cuestionario.getId());
+				actividad.setIdCentroTrabajo(centro.getId());
 				actividad.setIdUsuarioCrea(centro.getIdUsuarioCrea());
 				actividad.setCreacion(new Date());
 				

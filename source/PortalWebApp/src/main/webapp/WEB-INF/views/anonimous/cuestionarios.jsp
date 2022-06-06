@@ -25,55 +25,28 @@
 				</h3>
 			</div>
 		</div>
+		
+		<c:if test="${not empty cuestionarios}">
+			<c:forEach items="${cuestionarios}" var="cuestionario" varStatus="loop">
+				<div style="background:#a4a4a4;" class="examen container-fluid" >
+					<div class="row bg-white">
+						<div class="col-md-6">
+							<h4 class="bold mt-2 mb-4">${cuestionario.nombre}</h4>
+						</div>
+						<div class="col-md-6">
+							<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario('${cuestionario.idCrypt}','${cuestionario.actividad.idCrypt}');">
+								Ir<i class="fas fa-arrow-right ml-2"></i>
+							</button>								
+						</div>
+					</div>
+					<div class="row bg-white">
+												
+					</div>
+					
+				</div>
+			</c:forEach>
+		</c:if>
 
-		<div id="cuestionario" style="background:#a4a4a4;" class="examen container-fluid" >
-			<div class="row bg-white">
-				<div class="col-md-6">
-					<h4 class="bold mt-2 mb-4">Eventos traumáticos severos</h4>
-				</div>
-				<div class="col-md-6">
-					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(1);">
-						Ir<i class="fas fa-arrow-right ml-2"></i>
-					</button>								
-				</div>
-			</div>
-			<div class="row bg-white">
-										
-			</div>
-			
-		</div>
-		<div id="cuestionario2" style="background:#a4a4a4;" class="examen container-fluid" >
-			<div class="row bg-white">
-				<div class="col-md-6">
-					<h4 class="bold mt-2 mb-4">Riesgos Psicosociales</h4>
-				</div>
-				<div class="col-md-6">
-					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(2);">
-						Ir<i class="fas fa-arrow-right ml-2"></i>
-					</button>								
-				</div>
-			</div>
-			<div class="row bg-white">
-										
-			</div>
-			
-		</div>
-		<div id="cuestionario3" style="background:#a4a4a4;" class="examen container-fluid" >
-			<div class="row bg-white">
-				<div class="col-md-6">
-					<h4 class="bold mt-2 mb-4">Riesgos Psicosociales y Ambiente laboral</h4>
-				</div>
-				<div class="col-md-6">
-					<button type="button" class="md-btn md-btn-main ml-0 mt-4 mb-3" onclick="openCuestionario(3);">
-						Ir<i class="fas fa-arrow-right ml-2"></i>
-					</button>								
-				</div>
-			</div>
-			<div class="row bg-white">
-										
-			</div>
-			
-		</div>
 <hr>
 		<div id="endExamen" style="display: none;">
 			<input type="hidden" id="iptCalificacionExamen" value="100">

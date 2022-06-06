@@ -53,6 +53,19 @@ public class CarritoManagerImpl implements CarritoManager {
 		return resp;
 	}
 
+
+	@Override
+	public ProductoCompradoVO findProducto(Integer id) {
+		
+		return Mapper.toVO(productoCompradoDAO.find(id));
+	}
+
+
+	@Override
+	public ProductoCompradoVO save(ProductoCompradoVO productoCompradoVO) {
+		return Mapper.toVO(productoCompradoDAO.update(Mapper.toEntity(productoCompradoVO)));
+	}
+
 	
 }
 

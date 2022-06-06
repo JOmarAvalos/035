@@ -247,7 +247,7 @@ public class RegistroController {
 			List<String> lstEmail = new ArrayList<String>();
 			lstEmail.add(user.getEmail());
 			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
-			String asunto = "Bienvenido a 035 ";
+			String asunto = "Instrucciones para difusión de cuestionarios y compra de resultados";
 			String shtml = "";
 
 			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile);
@@ -268,11 +268,12 @@ public class RegistroController {
 			List<String> lstEmail = new ArrayList<String>();
 			lstEmail.add(user.getEmail());
 			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
-			String asunto = "Bienvenido a 035 ";
+			String asunto = "Instrucciones para resolver cuestionarios 035 ";
 			String shtml = "";
 
+			String encodeUrl = URLEncoder.encode(url,"UTF");
 			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
-					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(url));
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(encodeUrl));
 
 			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
 		} catch (IOException e) {

@@ -372,7 +372,7 @@ create table desarrollo.tbl_preguntas_resueltas
   cve_pregunta_resuelta serial NOT NULL,
   id_actividad_resuelta integer NOT NULL,
   id_pregunta integer NOT NULL,
-  id_respuesta integer NOT NULL,
+  id_respuesta integer,
   respuesta_abierta character varying(1000),
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
 

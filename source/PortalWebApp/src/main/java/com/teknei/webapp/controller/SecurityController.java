@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -127,6 +129,8 @@ public class SecurityController {
 	private static final String ATTR_LST_ESTADOS = "lstEstados";
 	private static final String ATTR_LST_CUESTIONARIOS = "lstCuestionarios";
 	private static final String ATTR_LST_PRODUCTOS = "lstProductos";
+	private static final String ATTR_TOTAL_CARRITO = "totalCarrito";
+	private static final String ATTR_PRODUCTOS_CARRITO = "productosCarrito";
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -151,12 +155,26 @@ public class SecurityController {
 				productos = carritoManager.getByidCentro(centroTrabajo.getId());
 			}
 			
+			BigInteger total = new BigInteger("0");
+			int productosCarrito = 0;
+			
+			if(!productos.isEmpty()) {
+				for(ProductoCompradoVO producto: productos) {
+					if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO) {
+						total = total.add(producto.getProductoVO().getPrecio());
+						productosCarrito++;
+					}
+				}
+			}
+			
 			model.addAttribute(ATTR_CENTRO, centroTrabajo);
 			model.addAttribute(ATTR_LST_GIRO, giros);
 			model.addAttribute(ATTR_LST_ESTADOS, estados);
 			model.addAttribute(ATTR_USUARIO, usuarioVO);
 			model.addAttribute(ATTR_LST_CUESTIONARIOS, cuestionarios);
 			model.addAttribute(ATTR_LST_PRODUCTOS, productos);
+			model.addAttribute(ATTR_TOTAL_CARRITO, total);
+			model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
 			
 			return HOME_VIEW;
 		} else {

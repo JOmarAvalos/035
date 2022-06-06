@@ -14,6 +14,10 @@ public class Constants {
 	public static final Integer ID_PERFIL_CLIENTE = 2; 
 	
 	public static final Integer ID_PRODUCTO_DISPONIBLE = 1;
+	public static final Integer ID_PRODUCTO_EN_CARRITO = 2;
+	public static final Integer ID_PRODUCTO_COMPRADO = 3;
+	public static final Integer ID_PRODUCTO_ENTREGADO = 4;
+	public static final Integer ID_PRODUCTO_DESCARGADO = 5;
 
 
 }

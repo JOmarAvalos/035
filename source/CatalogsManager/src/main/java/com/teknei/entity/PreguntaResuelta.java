@@ -49,7 +49,7 @@ public class PreguntaResuelta extends BaseEntity<Integer> {
 		this.idPregunta = idPregunta;
 	}
 	
-	@Column(name = "id_respuesta", nullable = false)
+	@Column(name = "id_respuesta")
 	public Integer getIdRespuesta() {
 		return idRespuesta;
 	}

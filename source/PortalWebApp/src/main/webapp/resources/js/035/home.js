@@ -167,3 +167,65 @@ showProductos = function(){
 hideProductos = function(){
 	$('#divProductos').hide();
 }
+
+agregaProducto = function(id){
+	
+	urltxt = ctx+'/carrito/agregaProducto?param='+id;
+	
+	$.ajax({
+		type : "POST",
+		url : urltxt,
+		contentType : "application/json",
+		async:false,
+		beforeSend : function() {
+			$("#wait").css("display", "block");
+		},
+		complete : function() {
+			$("#wait").css("display", "none");
+		},
+		success : function(response) {
+			result = response[0];
+			if (result) {
+				//es valido
+				location.reload();
+			} else {
+				// no es valido(repetido)
+				alert('error');
+			}
+		},
+		error : function(msg) {
+			alert('error');
+		}
+	});
+}
+
+quitaProducto = function(id){
+	
+	urltxt = ctx+'/carrito/quitaProducto?param='+id;
+	
+	$.ajax({
+		type : "POST",
+		url : urltxt,
+		contentType : "application/json",
+		async:false,
+		beforeSend : function() {
+			$("#wait").css("display", "block");
+		},
+		complete : function() {
+			$("#wait").css("display", "none");
+		},
+		success : function(response) {
+			result = response[0];
+			if (result) {
+				//es valido
+				location.reload();
+			} else {
+				// no es valido(repetido)
+				alert('error');
+			}
+		},
+		error : function(msg) {
+			alert('error');
+		}
+	});
+}
