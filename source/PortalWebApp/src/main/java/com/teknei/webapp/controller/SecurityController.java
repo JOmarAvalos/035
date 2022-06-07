@@ -131,6 +131,12 @@ public class SecurityController {
 	private static final String ATTR_LST_PRODUCTOS = "lstProductos";
 	private static final String ATTR_TOTAL_CARRITO = "totalCarrito";
 	private static final String ATTR_PRODUCTOS_CARRITO = "productosCarrito";
+	private static final String ATTR_PRODUCTOS_COMPRADOS = "productosComprados";
+	private static final String ATTR_PRODUCTOS_ENTREGADOS = "productosEntregados";
+	private static final String ATTR_PRODUCTOS_SIN_COMPRA = "productosSinCompra";
+	private static final String ATTR_USUARIOS_REGISTRADO = "countUsers";
+	private static final String ATTR_CUESTIONARIOS_RESUELTOS = "countCuestionarios";
+	private static final String ATTR_TOTAL_VENTAS = "countVentas";
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -143,38 +149,70 @@ public class SecurityController {
 
 			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
 			
-			CentroTrabajoVO centroTrabajo = centroTrabajoManager.getByUuario(usuarioVO.getId());
-			List<GiroVO> giros = giroManager.getGiros();
-			List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
-			
-			List<CuestionarioVO> cuestionarios = new ArrayList<CuestionarioVO>();
-			List<ProductoCompradoVO> productos = new ArrayList<ProductoCompradoVO>();
-			
-			if(centroTrabajo != null){
-				cuestionarios = cuestionariosManager.getCuestionariosByCentro(centroTrabajo.getId());
-				productos = carritoManager.getByidCentro(centroTrabajo.getId());
-			}
-			
-			BigInteger total = new BigInteger("0");
-			int productosCarrito = 0;
-			
-			if(!productos.isEmpty()) {
-				for(ProductoCompradoVO producto: productos) {
-					if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO) {
-						total = total.add(producto.getProductoVO().getPrecio());
-						productosCarrito++;
+			if(usuarioVO.getIdPerfil() == Constants.ID_PERFIL_CLIENTE) {
+				CentroTrabajoVO centroTrabajo = centroTrabajoManager.getByUuario(usuarioVO.getId());
+				List<GiroVO> giros = giroManager.getGiros();
+				List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
+				
+				List<CuestionarioVO> cuestionarios = new ArrayList<CuestionarioVO>();
+				List<ProductoCompradoVO> productos = new ArrayList<ProductoCompradoVO>();
+				
+				if(centroTrabajo != null){
+					cuestionarios = cuestionariosManager.getCuestionariosByCentro(centroTrabajo.getId());
+					productos = carritoManager.getByidCentro(centroTrabajo.getId());
+				}
+				
+				BigInteger total = new BigInteger("0");
+				int productosCarrito = 0;
+				
+				if(!productos.isEmpty()) {
+					for(ProductoCompradoVO producto: productos) {
+						if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO) {
+							total = total.add(producto.getProductoVO().getPrecio());
+							productosCarrito++;
+						}
 					}
 				}
+				
+				model.addAttribute(ATTR_CENTRO, centroTrabajo);
+				model.addAttribute(ATTR_LST_GIRO, giros);
+				model.addAttribute(ATTR_LST_ESTADOS, estados);
+				model.addAttribute(ATTR_USUARIO, usuarioVO);
+				model.addAttribute(ATTR_LST_CUESTIONARIOS, cuestionarios);
+				model.addAttribute(ATTR_LST_PRODUCTOS, productos);
+				model.addAttribute(ATTR_TOTAL_CARRITO, total);
+				model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
+			}else if(usuarioVO.getIdPerfil() == Constants.ID_PERFIL_ADMIIN) {
+				
+				List<ProductoCompradoVO> productosComprados = new ArrayList<ProductoCompradoVO>();
+				List<ProductoCompradoVO> productosEntregados = new ArrayList<ProductoCompradoVO>();
+				List<ProductoCompradoVO> productosSinCompra = new ArrayList<ProductoCompradoVO>();
+				List<ProductoCompradoVO> productos = carritoManager.getAll();
+				
+				BigInteger totalCompras = new BigInteger("0");
+				int usuariosRegistrados = usersManager.usuariosRegistrados();
+				Integer cuestionariosResueltos = cuestionariosManager.cuestionariosResueltos();
+				
+				for(ProductoCompradoVO producto: productos) {
+					if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_DISPONIBLE || producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO ) {
+						productosSinCompra.add(producto);
+					}else if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_COMPRADO) {
+						totalCompras = totalCompras.add(producto.getProductoVO().getPrecio());
+						productosComprados.add(producto);
+					}else if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_DESCARGADO || producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_ENTREGADO ) {
+						totalCompras = totalCompras.add(producto.getProductoVO().getPrecio());
+						productosEntregados.add(producto);
+					}
+				}
+				model.addAttribute(ATTR_PRODUCTOS_COMPRADOS, productosComprados);
+				model.addAttribute(ATTR_PRODUCTOS_ENTREGADOS, productosEntregados);
+				model.addAttribute(ATTR_PRODUCTOS_SIN_COMPRA, productosSinCompra);
+				model.addAttribute(ATTR_USUARIOS_REGISTRADO, usuariosRegistrados);
+				model.addAttribute(ATTR_CUESTIONARIOS_RESUELTOS, cuestionariosResueltos);
+				model.addAttribute(ATTR_TOTAL_VENTAS, totalCompras);
+
 			}
 			
-			model.addAttribute(ATTR_CENTRO, centroTrabajo);
-			model.addAttribute(ATTR_LST_GIRO, giros);
-			model.addAttribute(ATTR_LST_ESTADOS, estados);
-			model.addAttribute(ATTR_USUARIO, usuarioVO);
-			model.addAttribute(ATTR_LST_CUESTIONARIOS, cuestionarios);
-			model.addAttribute(ATTR_LST_PRODUCTOS, productos);
-			model.addAttribute(ATTR_TOTAL_CARRITO, total);
-			model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
 			
 			return HOME_VIEW;
 		} else {

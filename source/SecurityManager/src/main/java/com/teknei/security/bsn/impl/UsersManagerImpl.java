@@ -191,4 +191,10 @@ public class UsersManagerImpl implements UsersManager {
 	public UsuarioVO getByUsrPwd(String userName, String pwd) {
 		return com.teknei.mapper.Mapper.toVO(userDAO.getByUsrPwd(userName, pwd));
 	}
+	
+	@Override
+	public int usuariosRegistrados() {
+		return  userDAO.countUsuariosRegistrados(); 
+	} 
+	
 }

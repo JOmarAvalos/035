@@ -9,6 +9,7 @@ import com.teknei.entity.ActividadResuelta;
 public interface ActividadResueltaDAO extends BaseDAO<Integer, ActividadResuelta> {
 
 	int actividadesConcluidas(Integer idActividad);
+	int actividadesConcluidasGeneral();
 	
 }
 

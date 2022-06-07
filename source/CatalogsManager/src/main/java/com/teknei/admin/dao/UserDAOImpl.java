@@ -134,4 +134,11 @@ public class UserDAOImpl extends HibernateBaseDAO<Integer, Usuario> implements U
 		
 		return (Usuario)query.uniqueResult();
 	}	
+	
+	@Override
+	public int countUsuariosRegistrados() {
+		Query query = sessionFactory.getCurrentSession().createQuery("Select count(*) from Usuario a where a.idPerfil = 2 ");
+		int total = ((Long)query.uniqueResult()).intValue();
+		return total;
+	}
 }

@@ -36,4 +36,6 @@ public interface UsersManager {
 
 	UsuarioVO getByUsrPwd(String userName, String pwd);
 	
+	int usuariosRegistrados();
+	
 }

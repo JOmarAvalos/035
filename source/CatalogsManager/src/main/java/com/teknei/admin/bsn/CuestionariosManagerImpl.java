@@ -144,4 +144,10 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 	}
 
 
+	@Override
+	public int cuestionariosResueltos() {
+		return actividadResueltaDAO.actividadesConcluidasGeneral();
+	}
+
+
 }

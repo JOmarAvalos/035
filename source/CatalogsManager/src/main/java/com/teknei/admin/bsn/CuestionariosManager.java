@@ -15,5 +15,7 @@ public interface CuestionariosManager {
 	PreguntaResueltaVO savePregunta(PreguntaResueltaVO preguntaResueltaVO);
 	
 	ActividadResueltaVO endActividadResuelta(Integer id);
+	
+	int cuestionariosResueltos();
 
 }

@@ -21,7 +21,7 @@
 	                <div class="small-box bg-aqua">
 	                    <div class="inner">
 	                        <h3>
-	                            45
+	                            ${countCuestionarios}
 	                        </h3>
 	                        <p>
 	                            Cuestionarios Contestados
@@ -30,9 +30,6 @@
 	                    <div class="icon">
 	                        <i class="ion ion-bag"></i>
 	                    </div>
-	                    <a href="#" class="small-box-footer">
-	                        More info <i class="fa fa-arrow-circle-right"></i>
-	                    </a>
 	                </div>
 	            </div><!-- ./col -->
 	            <div class="col-lg-4 col-xs-6">
@@ -40,7 +37,7 @@
 	                <div class="small-box bg-green">
 	                    <div class="inner">
 	                        <h3>
-	                            2
+	                            ${countUsers}
 	                        </h3>
 	                        <p>
 	                            Usuarios registrados
@@ -49,9 +46,6 @@
 	                    <div class="icon">
 	                        <i class="ion ion-stats-bars"></i>
 	                    </div>
-	                    <a href="#" class="small-box-footer">
-	                        More info <i class="fa fa-arrow-circle-right"></i>
-	                    </a>
 	                </div>
 	            </div><!-- ./col -->
 	            <div class="col-lg-4 col-xs-6">
@@ -59,7 +53,7 @@
 	                <div class="small-box bg-yellow">
 	                    <div class="inner">
 	                        <h3>
-	                            1000
+	                            $${countVentas}
 	                        </h3>
 	                        <p>
 	                            Ventas
@@ -68,396 +62,477 @@
 	                    <div class="icon">
 	                        <i class="ion ion-person-add"></i>
 	                    </div>
-	                    <a href="#" class="small-box-footer">
-	                        More info <i class="fa fa-arrow-circle-right"></i>
-	                    </a>
 	                </div>
 	            </div><!-- ./col -->
 	        </div><!-- /.row -->
-		</c:if>
-
-        <!-- Perfil row -->
-        <div id="divPerfil">
-	        <div class="row">
-	        	<!-- Inicio colummna perfil -->
-	        	<div class="col-md-6">
-	        		<div class="box box-primary">
-						<div class="box-header">
-							<h1 class="box-title">Perfil</h1>
-						</div>
-						<!-- /.box-header -->
-						<!-- form start -->
-						<form role="form" >
-							<div class="box-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="iptUsernameHome">Usuario</label> 
-											<input type="text" id="iptUsernameHome" readonly="readonly" class="form-control" placeholder="Usuario"  maxlength="30" value="${usuario.usuario}">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Email</label> 
-											<input type="text" readonly="readonly" id="iptEmailHome" class="form-control" placeholder="Email"  maxlength="30" value="${usuario.email}">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Nombre</label> 
-											<input type="text" id="iptNombreHome" class="form-control" placeholder="Nombre"  maxlength="100" value="${usuario.nombre}">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="box-footer">
-								<div class="row">
-									<div class="col-md-3" id="btnActualizaPerfil" >
-										<button type="button" class="btn btn-primary" onclick="actualizaUsuario();">Actualizar</button>
-									</div>
-								</div>
-							</div>
-							
-						</form>
-					</div>
-	        	</div>
-	        	<!-- Fin columna perfil -->
-	        	<!-- Inicio columna cenro de trabajo -->
-	        	<div class="col-md-6">
-	        		<div class="box box-primary">
-						<div class="box-header">
-							<h1 class="box-title">Centro de trabajo</h1>
-						</div>
-						<!-- /.box-header -->
-						<!-- form start -->
-						<form role="form" >
-							<input type="hidden" id="iptIdCentro" value="${centro.id}">
-							<div class="box-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Alias</label> 
-											<input type="text" id="iptNombreCentro" class="form-control" placeholder="Alias"  maxlength="30" value="${centro.nombre}">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Giro</label> 
-											<select class="form-control" id="selectGiroCentro">
-												<option value="0">Seleccione...</option>
-												<c:if test="${not empty lstGiro}">
-													<c:forEach items="${lstGiro}" var="giro">
-														<c:if test="${not empty centro }">
-															<c:if test="${giro.id == centro.idGiro}">
-																<option value="${giro.id}" selected="selected">${giro.nombre}</option>
-															</c:if>
-															<c:if test="${giro.id != centro.idGiro}">
-																<option value="${giro.id}">${giro.nombre}</option>
-															</c:if>
-														</c:if>
-														<c:if test="${empty centro}">
-																<option value="${giro.id}">${giro.nombre}</option>
-														</c:if>
-													</c:forEach>
-												</c:if>
-	
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for=""># Empleados</label> 
-											<input type="number" id="iptEmpleadosCentro" class="form-control"  placeholder="# Empleados" min="0" 
-											<c:if test="${not empty centro}">
-												readonly="readonly"
-											</c:if>
-											value="${centro.empleadoNumero}">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Estado</label> 
-											<select required class="form-control" id="selectEstadoCentro" >
-												<option value="0">Seleccione...</option>
-												<c:if test="${not empty lstEstados}">
-													<c:forEach items="${lstEstados}" var="estado">
-														<c:if test="${not empty centro }">
-															<c:if test="${estado.id == centro.idEstadoRepublica}">
-																<option value="${estado.id}" selected="selected">${estado.nombre}</option>
-															</c:if>
-															<c:if test="${estado.id != centro.idEstadoRepublica}">
-																<option value="${estado.id}">${estado.nombre}</option>
-															</c:if>
-														</c:if>
-														<c:if test="${empty centro}">
-																<option value="${estado.id}">${estado.nombre}</option>
-														</c:if>
-													</c:forEach>
-												</c:if>
-											</select>
-										</div>
-									</div>
-								</div>
-								<!-- 
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Raz&oacute;n social</label> <input type="text" 
-												class="form-control"  placeholder="Raz&oacute;n social"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">RFC</label> <input type="text" 
-												class="form-control"  placeholder="RFC"  maxlength="30">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Pa&iacute;s</label> <input type="text" 
-												class="form-control"  placeholder="Pa&iacute;s"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Estado</label> <input type="text" 
-												class="form-control"  placeholder="Estado"  maxlength="30">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Municipio</label> <input type="text" 
-												class="form-control"  placeholder="Municipio"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Colonia</label> <input type="text" 
-												class="form-control"  placeholder="Colonia"  maxlength="30">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Calle</label> <input type="text" 
-												class="form-control"  placeholder="Calle"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="">N&uacute;mero exterior</label> <input type="text" 
-												class="form-control"  placeholder="N&uacute;mero exterior"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label for="">N&uacute;mero interior</label> <input type="text" 
-												class="form-control"  placeholder="N&uacute;mero interior"  maxlength="30">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Codigo postal</label> <input type="text" 
-												class="form-control"  placeholder="Codigo postal"  maxlength="30">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label for="">Telefono</label> <input type="text" 
-												class="form-control"  placeholder="Telefono"  maxlength="30">
-										</div>
-									</div>
-								</div> -->
-							</div>
-							<div class="box-footer">
-								<div class="row">
-									<div class="col-md-3" id="btnActualizaPerfil" >
-										<button type="button" class="btn btn-primary" onclick="actualizaCentro();">Actualizar</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-	        	</div>
-	        	<!--  Fin columna cenro de trabajo-->
-	        </div>
-        </div>
-        <!-- /.row (Perfil row) -->
-        <!-- Centros row -->
-        <div id="divCentros">
-	        <div class="row">
-	        	
-	        </div>
-        </div>
-        <!-- /.row (Centros row) -->
-        
-        <div id="divCuestionarios" >
 	        <div class="row">
 	        	<div class="box">
 	                 <div class="box-header">
-	                     <h1 class="box-title">Evaluaciones</h1>                                    
+	                     <h1 class="box-title">Productos comprados(Pendientes de respuesta)</h1>
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
-	                 	<c:if test="${not empty centro}">
-		                 	<div class="row">
-		                 		<div class="col-md-6">
-		                 			<div class="input-group">
-	                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="http://localhost:8080/Admin035/cuestionarios?param=${centro.idCrypt}">
-	                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
-	                                </div>
-		                 		</div>
-		                 	</div>
-		                 	<br>
-		                     <table id="tblCuestionarios" class="table table-bordered table-striped">
+	                 	<c:if test="${not empty productosComprados}">
+		                     <table id="tblProductos" class="table table-bordered table-striped">
 		                         <thead>
 		                             <tr>
-		                                 <th>Descargar evaluaciones/cuestionarios</th>
-		                                 <th>Nombre del cuestionario</th>
-		                                 <th># cuesionarios respondidos</th>
+		                                 <th>Descargar/Cargar</th>
+		                                 <th>Producto</th>
+		                                 <th>Cuestionario</th>
+		                                 <th>Precio</th>
+		                                 <th>Estatus</th>
 		                             </tr>
 		                         </thead>
 		                         <tbody>
-		                         	<c:if test="${not empty lstCuestionarios}">
-		                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
+								        <c:forEach items="${productosComprados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar cuestionarios"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar cuestonarios</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaReporte();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
 				                                 </td>
-				                                 <td>${cuestionario.nombre}</td>
-				                                 <td>${cuestionario.resueltos}</td>
+				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+				                                 <td>$${producto.productoVO.precio}</td>
+				                                 <td>Comprado/Pendiene de respuesta</td>
 				                             </tr>
-		                         		</c:forEach>
-		                         	</c:if>
+								        </c:forEach>
+		                         </tbody>
+		                     </table>
+	                 	</c:if>
+	                 	<c:if test="${empty productosComprados}">
+	                 		<h3 class="box-title">Sin productos pendientes de respuesta</h3>
+	                 	</c:if>
+	                 </div><!-- /.box-body -->
+					<div class="box-footer">
+					</div>
+	                 
+	             </div><!-- /.box -->
+	        </div>
+	        <div class="row">
+	        	<div class="box">
+	                 <div class="box-header">
+	                     <h1 class="box-title">Productos respondidos</h1>
+	                 </div><!-- /.box-header -->
+	                 <div class="box-body table-responsive">
+	                 	<c:if test="${not empty productosEntregados}">
+		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                         <thead>
+		                             <tr>
+		                                 <th>Descargar/Cargar</th>
+		                                 <th>Producto</th>
+		                                 <th>Cuestionario</th>
+		                                 <th>Precio</th>
+		                                 <th>Estatus</th>
+		                             </tr>
+		                         </thead>
+		                         <tbody>
+								        <c:forEach items="${productosEntregados}" var="producto" varStatus="loop">
+				                             <tr>
+				                                 <td>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
+				                                 </td>
+				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+				                                 <td>$${producto.productoVO.precio}</td>
+				                                 <td>
+				                                 	<c:if test="${producto.idCompraEstatus == 4}">
+				                                 		Descarga pendiente
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 4}">
+				                                 		Descargado
+				                                 	</c:if>
+				                                 </td>
+				                             </tr>
+								        </c:forEach>
+		                         </tbody>
+		                     </table>
+	                 	</c:if>
+	                 	<c:if test="${empty productosEntregados}">
+	                 		<h3 class="box-title">Sin productos Entregados</h3>
+	                 	</c:if>
+	                 </div><!-- /.box-body -->
+					<div class="box-footer">
+					</div>
+	                 
+	             </div><!-- /.box -->
+	        </div>
+	        <div class="row">
+	        	<div class="box">
+	                 <div class="box-header">
+	                     <h1 class="box-title">Productos sin comprar</h1>
+	                 </div><!-- /.box-header -->
+	                 <div class="box-body table-responsive">
+	                 	<c:if test="${not empty productosSinCompra}">
+		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                         <thead>
+		                             <tr>
+		                                 <th>Descargar</th>
+		                                 <th>Producto</th>
+		                                 <th>Cuestionario</th>
+		                                 <th>Precio</th>
+		                                 <th>Estatus</th>
+		                             </tr>
+		                         </thead>
+		                         <tbody>
+								        <c:forEach items="${productosSinCompra}" var="producto" varStatus="loop">
+				                             <tr>
+				                                 <td>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 </td>
+				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+				                                 <td>$${producto.productoVO.precio}</td>
+				                                 <td>Disponible</td>
+				                             </tr>
+								        </c:forEach>
+		                         </tbody>
+		                     </table>
+	                 	</c:if>
+	                 	<c:if test="${empty productosSinCompra}">
+	                 		<h3 class="box-title">Sin productos</h3>
+	                 	</c:if>
+	                 </div><!-- /.box-body -->
+					<div class="box-footer">
+					</div>
+	                 
+	             </div><!-- /.box -->
+	        </div>
+		</c:if>
+
+		<c:if test="${usuario.idPerfil == 2}">
+	        <!-- Perfil row -->
+	        <div id="divPerfil">
+		        <div class="row">
+		        	<!-- Inicio colummna perfil -->
+		        	<div class="col-md-6">
+		        		<div class="box box-primary">
+							<div class="box-header">
+								<h1 class="box-title">Perfil</h1>
+							</div>
+							<!-- /.box-header -->
+							<!-- form start -->
+							<form role="form" >
+								<div class="box-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="iptUsernameHome">Usuario</label> 
+												<input type="text" id="iptUsernameHome" readonly="readonly" class="form-control" placeholder="Usuario"  maxlength="30" value="${usuario.usuario}">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Email</label> 
+												<input type="text" readonly="readonly" id="iptEmailHome" class="form-control" placeholder="Email"  maxlength="30" value="${usuario.email}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Nombre</label> 
+												<input type="text" id="iptNombreHome" class="form-control" placeholder="Nombre"  maxlength="100" value="${usuario.nombre}">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="box-footer">
+									<div class="row">
+										<div class="col-md-3" id="btnActualizaPerfil" >
+											<button type="button" class="btn btn-primary" onclick="actualizaUsuario();">Actualizar</button>
+										</div>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+		        	</div>
+		        	<!-- Fin columna perfil -->
+		        	<!-- Inicio columna cenro de trabajo -->
+		        	<div class="col-md-6">
+		        		<div class="box box-primary">
+							<div class="box-header">
+								<h1 class="box-title">Centro de trabajo</h1>
+							</div>
+							<!-- /.box-header -->
+							<!-- form start -->
+							<form role="form" >
+								<input type="hidden" id="iptIdCentro" value="${centro.id}">
+								<div class="box-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Alias</label> 
+												<input type="text" id="iptNombreCentro" class="form-control" placeholder="Alias"  maxlength="30" value="${centro.nombre}">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Giro</label> 
+												<select class="form-control" id="selectGiroCentro">
+													<option value="0">Seleccione...</option>
+													<c:if test="${not empty lstGiro}">
+														<c:forEach items="${lstGiro}" var="giro">
+															<c:if test="${not empty centro }">
+																<c:if test="${giro.id == centro.idGiro}">
+																	<option value="${giro.id}" selected="selected">${giro.nombre}</option>
+																</c:if>
+																<c:if test="${giro.id != centro.idGiro}">
+																	<option value="${giro.id}">${giro.nombre}</option>
+																</c:if>
+															</c:if>
+															<c:if test="${empty centro}">
+																	<option value="${giro.id}">${giro.nombre}</option>
+															</c:if>
+														</c:forEach>
+													</c:if>
+		
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for=""># Empleados</label> 
+												<input type="number" id="iptEmpleadosCentro" class="form-control"  placeholder="# Empleados" min="0" 
+												<c:if test="${not empty centro}">
+													readonly="readonly"
+												</c:if>
+												value="${centro.empleadoNumero}">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Estado</label> 
+												<select required class="form-control" id="selectEstadoCentro" >
+													<option value="0">Seleccione...</option>
+													<c:if test="${not empty lstEstados}">
+														<c:forEach items="${lstEstados}" var="estado">
+															<c:if test="${not empty centro }">
+																<c:if test="${estado.id == centro.idEstadoRepublica}">
+																	<option value="${estado.id}" selected="selected">${estado.nombre}</option>
+																</c:if>
+																<c:if test="${estado.id != centro.idEstadoRepublica}">
+																	<option value="${estado.id}">${estado.nombre}</option>
+																</c:if>
+															</c:if>
+															<c:if test="${empty centro}">
+																	<option value="${estado.id}">${estado.nombre}</option>
+															</c:if>
+														</c:forEach>
+													</c:if>
+												</select>
+											</div>
+										</div>
+									</div>
+									<!-- 
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Raz&oacute;n social</label> <input type="text" 
+													class="form-control"  placeholder="Raz&oacute;n social"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">RFC</label> <input type="text" 
+													class="form-control"  placeholder="RFC"  maxlength="30">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Pa&iacute;s</label> <input type="text" 
+													class="form-control"  placeholder="Pa&iacute;s"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Estado</label> <input type="text" 
+													class="form-control"  placeholder="Estado"  maxlength="30">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Municipio</label> <input type="text" 
+													class="form-control"  placeholder="Municipio"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Colonia</label> <input type="text" 
+													class="form-control"  placeholder="Colonia"  maxlength="30">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Calle</label> <input type="text" 
+													class="form-control"  placeholder="Calle"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="">N&uacute;mero exterior</label> <input type="text" 
+													class="form-control"  placeholder="N&uacute;mero exterior"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label for="">N&uacute;mero interior</label> <input type="text" 
+													class="form-control"  placeholder="N&uacute;mero interior"  maxlength="30">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Codigo postal</label> <input type="text" 
+													class="form-control"  placeholder="Codigo postal"  maxlength="30">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="">Telefono</label> <input type="text" 
+													class="form-control"  placeholder="Telefono"  maxlength="30">
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<div class="box-footer">
+									<div class="row">
+										<div class="col-md-3" id="btnActualizaPerfil" >
+											<button type="button" class="btn btn-primary" onclick="actualizaCentro();">Actualizar</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+		        	</div>
+		        	<!--  Fin columna cenro de trabajo-->
+		        </div>
+	        </div>
+	        <!-- /.row (Perfil row) -->
+	        
+	        <!-- .row (Cuestionarios row) -->
+	        <div id="divCuestionarios" >
+		        <div class="row">
+		        	<div class="box">
+		                 <div class="box-header">
+		                     <h1 class="box-title">Evaluaciones</h1>                                    
+		                 </div><!-- /.box-header -->
+		                 <div class="box-body table-responsive">
+		                 	<c:if test="${not empty centro}">
+			                 	<div class="row">
+			                 		<div class="col-md-6">
+			                 			<div class="input-group">
+		                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="http://localhost:8080/Admin035/cuestionarios?param=${centro.idCrypt}">
+		                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
+		                                </div>
+			                 		</div>
+			                 	</div>
+			                 	<br>
+			                     <table id="tblCuestionarios" class="table table-bordered table-striped">
+			                         <thead>
+			                             <tr>
+			                                 <th>Descargar evaluaciones/cuestionarios</th>
+			                                 <th>Nombre del cuestionario</th>
+			                                 <th># cuesionarios respondidos</th>
+			                             </tr>
+			                         </thead>
+			                         <tbody>
+			                         	<c:if test="${not empty lstCuestionarios}">
+			                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
+					                             <tr>
+					                                 <td>
+					                                 	<a href="#" title="Descargar cuestionarios"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar cuestonarios</a>
+					                                 </td>
+					                                 <td>${cuestionario.nombre}</td>
+					                                 <td>${cuestionario.resueltos}</td>
+					                             </tr>
+			                         		</c:forEach>
+			                         	</c:if>
+			                         </tbody>
+			                     </table>
+		                 	</c:if>
+		                 	<c:if test="${empty centro}">
+		                 		<h3 class="box-title">Para poder ver las evaluaciones desponibles es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
+		                 	</c:if>
+		                 </div><!-- /.box-body -->
+		             </div><!-- /.box -->
+		        </div>
+	        </div>
+	        <div class="row">
+	        	<div class="box">
+	                 <div class="box-header">
+	                     <h1 class="box-title">Resultados de evaluaciones</h1>
+	                 </div><!-- /.box-header -->
+	                 <div class="box-body table-responsive">
+	                 	<c:if test="${not empty centro}">
+		                     <h3 class="box-title">Puedes comprar el resultado de las evaluaciones en cualquier momento</h3>                                    
+		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                         <thead>
+		                             <tr>
+		                                 <th>Comprar/Descargar</th>
+		                                 <th>Producto</th>
+		                                 <th>Cuestionario</th>
+		                                 <th>Precio</th>
+		                                 <th>Estatus</th>
+		                             </tr>
+		                         </thead>
+		                         <tbody>
+							        <c:if test="${not empty lstProductos}">
+								        <c:forEach items="${lstProductos}" var="producto" varStatus="loop">
+				                             <tr>
+				                                 <td>
+				                                 	<c:if test="${producto.idCompraEstatus == 1 }">
+					                                 	<a href="#" title="Agregar al carrito" onclick="agregaProducto(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Agregar al carrito</a>
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 2 }">
+					                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
+					                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	</c:if>
+				                                 </td>
+				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+				                                 <td>$${producto.productoVO.precio}</td>
+				                                 <td>Disponible</td>
+				                             </tr>
+								        </c:forEach>
+							        </c:if>
 		                         </tbody>
 		                     </table>
 	                 	</c:if>
 	                 	<c:if test="${empty centro}">
-	                 		<h3 class="box-title">Para poder ver las evaluaciones desponibles es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
+	                 		<h3 class="box-title">Para poder ver los resultados de las evaluaciones es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
 	                 	</c:if>
 	                 </div><!-- /.box-body -->
+					<div class="box-footer">
+	                 	<c:if test="${not empty centro}">
+							<div class="row">
+								<div class="col-md-3" id="btnActualizaPerfil" >
+									<button type="button" class="btn btn-primary" onclick="alert('En construcción');">Pagar</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
+								</div>
+							</div>
+						</c:if>
+					</div>
+	                 
 	             </div><!-- /.box -->
 	        </div>
-        </div>
-        
-        <div class="row">
-        	<div class="box">
-                 <div class="box-header">
-                     <h1 class="box-title">Resultados de evaluaciones</h1>
-                 </div><!-- /.box-header -->
-                 <div class="box-body table-responsive">
-                 	<c:if test="${not empty centro}">
-	                     <h3 class="box-title">Puedes comprar el resultado de las evaluaciones en cualquier momento</h3>                                    
-	                     <table id="tblProductos" class="table table-bordered table-striped">
-	                         <thead>
-	                             <tr>
-	                                 <th>Comprar/Descargar</th>
-	                                 <th>Producto</th>
-	                                 <th>Cuestionario</th>
-	                                 <th>Precio</th>
-	                                 <th>Estatus</th>
-	                             </tr>
-	                         </thead>
-	                         <tbody>
-						        <c:if test="${not empty lstProductos}">
-							        <c:forEach items="${lstProductos}" var="producto" varStatus="loop">
-			                             <tr>
-			                                 <td>
-			                                 	<c:if test="${producto.idCompraEstatus == 1 }">
-				                                 	<a href="#" title="Agregar al carrito" onclick="agregaProducto(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Agregar al carrito</a>
-			                                 	</c:if>
-			                                 	<c:if test="${producto.idCompraEstatus == 2 }">
-				                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
-			                                 	</c:if>
-			                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
-			                                 	</c:if>
-			                                 </td>
-			                                 <td>${producto.productoVO.nombre}</td>
-			                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-			                                 <td>$${producto.productoVO.precio}</td>
-			                                 <td>Disponible</td>
-			                             </tr>
-							        </c:forEach>
-						        </c:if>
-	                         </tbody>
-	                     </table>
-                 	</c:if>
-                 	<c:if test="${empty centro}">
-                 		<h3 class="box-title">Para poder ver los resultados de las evaluaciones es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
-                 	</c:if>
-                 </div><!-- /.box-body -->
-				<div class="box-footer">
-                 	<c:if test="${not empty centro}">
-						<div class="row">
-							<div class="col-md-3" id="btnActualizaPerfil" >
-								<button type="button" class="btn btn-primary" onclick="alert('En construcción');">Pagar</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-3">
-								Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
-							</div>
-						</div>
-					</c:if>
-				</div>
-                 
-             </div><!-- /.box -->
-        </div>
-        
-        <div id="divUsuario" style="display:none;">
-	        <div class="row">
-	        	<div class="box">
-	                 <div class="box-header">
-	                     <h1 class="box-title">Usuarios registrados</h1>                                    
-	                 </div><!-- /.box-header -->
-	                 <div class="box-body table-responsive">
-	                     <table id="example1" class="table table-bordered table-striped">
-	                         <thead>
-	                             <tr>
-	                                 <th>Usuario</th>
-	                                 <th>Perfil</th>
-	                                 <th>Estatus</th>
-	                                 <th>Acciones</th>
-	                             </tr>
-	                         </thead>
-	                         <tbody>
-	                             <tr>
-	                                 <td>ADMINGENERAL</td>
-	                                 <td>Administrador</td>
-	                                 <td>Activo</td>
-	                                 <td></td>
-	                             </tr>
-	                             <tr>
-	                                 <td>m.vill23@gmail.com</td>
-	                                 <td>Usuario</td>
-	                                 <td>Pagado</td>
-	                                 <td><button type="button" class="btn btn-primary">Descargar Cuestionarios</button></td>
-	                             </tr>
-	                         </tbody>
-	                         <tfoot>
-	                             <tr>
-	                                 <th>Usuario</th>
-	                                 <th>Perfil</th>
-	                                 <th>Estatus</th>
-	                                 <th>Acciones</th>
-	                             </tr>
-	                         </tfoot>
-	                     </table>
-	                 </div><!-- /.box-body -->
-	             </div><!-- /.box -->
-	        </div>
-        </div>
+		</c:if>
+
 
         
     </section><!-- /.content -->

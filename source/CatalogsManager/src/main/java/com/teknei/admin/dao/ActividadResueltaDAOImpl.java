@@ -23,5 +23,14 @@ public class ActividadResueltaDAOImpl extends HibernateBaseDAO<Integer,Actividad
 
 	}
 
+	@Override
+	public int actividadesConcluidasGeneral() {
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("Select count(*) from ActividadResuelta a where a.estatus = 2 ");
+		int total = ((Long)query.uniqueResult()).intValue();
+		return total;
+
+	}
+
 }
 

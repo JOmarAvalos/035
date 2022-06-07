@@ -66,6 +66,26 @@ public class CarritoManagerImpl implements CarritoManager {
 		return Mapper.toVO(productoCompradoDAO.update(Mapper.toEntity(productoCompradoVO)));
 	}
 
+
+	@Override
+	public List<ProductoCompradoVO> getAll() {
+		
+		List<ProductoCompradoVO> resp = new ArrayList<ProductoCompradoVO>();  
+		List<ProductoComprado> productosComprados = productoCompradoDAO.list();
+		
+		for(ProductoComprado prodC:productosComprados) {
+			ProductoCompradoVO vo = Mapper.toVO(prodC);
+			ProductoVO producto = Mapper.toVO(productoDAO.find(prodC.getIdProducto()));
+			CuestionarioVO cuestionario = Mapper.toVO(cuestionarioDAO.find(producto.getIdCuestionario()));
+			
+			producto.setCuestionarioVO(cuestionario);
+			vo.setProductoVO(producto);
+			
+			resp.add(vo);
+		}
+		return resp;
+	}
+
 	
 }
 

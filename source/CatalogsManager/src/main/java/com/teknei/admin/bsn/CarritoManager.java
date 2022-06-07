@@ -9,5 +9,6 @@ public interface CarritoManager {
 	List<ProductoCompradoVO> getByidCentro(Integer idCentro);
 	ProductoCompradoVO findProducto(Integer id);
 	ProductoCompradoVO save(ProductoCompradoVO productoCompradoVO);
+	List<ProductoCompradoVO> getAll();
 	
 }
