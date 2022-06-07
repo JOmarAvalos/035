@@ -32,6 +32,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.apache.commons.io.IOUtils;
+
 import com.teknei.admin.bsn.CentroTrabajoManager;
 import com.teknei.security.bsn.UsersManager;
 import com.teknei.util.Constants;
@@ -344,6 +353,63 @@ public class RegistroController {
 				return "redirect:/";
 			}
 		}
+	}
+	
+	@RequestMapping(value = "/registro/descargaCuestionarios", method = RequestMethod.GET)
+	public String descargaCuestionarios(Model model, HttpServletRequest request, HttpServletResponse response, 
+		@RequestParam(value = "param1") Integer id) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			
+			try {
+				
+				XSSFWorkbook workbook = new XSSFWorkbook();
+				XSSFSheet sheet = workbook.createSheet("Cuestionarios");
+
+				// Se crea el archivo temporal
+				File file = new File("Cuestionarios.xlsx");
+				
+				
+				
+				
+				
+				FileOutputStream outputStream = new FileOutputStream(file);
+				workbook.write(outputStream);
+				workbook.close();
+
+				FileInputStream fileInputStream = new FileInputStream(file);
+				String contentType = file.toURL().openConnection().getContentType();
+				byte[] outArray = IOUtils.toByteArray(fileInputStream);
+				response.setContentType(contentType);
+				response.setContentLength(outArray.length);
+				response.setHeader("Expires:", "0");
+				response.setHeader("Content-Disposition", "attachment; filename=" + file.getName());
+				response.getOutputStream().write(outArray);
+				response.getOutputStream().flush();
+				response.getOutputStream().close();
+				response.flushBuffer();
+
+				file.delete();
+			
+			} catch (Exception ex) {
+				
+				ex.printStackTrace();
+				LOGGER.error("Ocurrio un error en descargaCuestionarios", ex);
+				String result = "No se pudo descargar el archivo";
+				try {
+					response.getOutputStream().write(result.getBytes());
+					response.getOutputStream().flush();
+					response.getOutputStream().close();
+					response.flushBuffer();
+				} catch (IOException e) {
+					LOGGER.error("Ocurrio un error al cerrar el recurso", e);
+				}
+				
+			}
+		} 
+		return null;
 	}
 	
 }

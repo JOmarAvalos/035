@@ -229,3 +229,9 @@ quitaProducto = function(id){
 		}
 	});
 }
+
+descargaCuestionarios = function(id){
+	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+id; 
+	window.open(urltxt, '_blank');
+}
+
