@@ -230,8 +230,57 @@ quitaProducto = function(id){
 	});
 }
 
-descargaCuestionarios = function(id){
-	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+id; 
+openPago = function(){
+//	$('#divPago').show();
+//	document.getElementById('divPago').scrollIntoView();
+window.location = ctx+'/carrito/pagomp';
+}
+
+descargaCuestionarios = function(){
+	var urltxt = ctx + '/carriito/descargaCuest'; 
 	window.open(urltxt, '_blank');
 }
 
+descargaResultados = function(){
+	var urltxt = ctx + '/carriito/descargaInforme'; 
+	window.open(urltxt, '_blank');
+}
+
+realizaPago = function(){
+	
+	$('#divPago').hide();
+	
+	urltxt = ctx+'/carrito/pagoSimulado';
+	
+	$.ajax({
+		type : "POST",
+		url : urltxt,
+		contentType : "application/json",
+		async:false,
+		beforeSend : function() {
+			$("#wait").css("display", "block");
+		},
+		complete : function() {
+			$("#wait").css("display", "none");
+		},
+		success : function(response) {
+			result = response[0];
+			referencia = response[1];
+			if (result) {
+				$('#textPagoExitoRef').html('');
+				$('#textPagoExitoRef').append('Numero de referencia: '+referencia);
+				$('#modalPagoExito').modal({backdrop: 'static', keyboard: false});
+			} else {
+				// no es valido(repetido)
+				alert('error');
+			}
+		},
+		error : function(msg) {
+			alert('error');
+		}
+	});
+}
+
+showCarga = function(){
+	$('#modalAdvertenciaFormato').modal({backdrop: 'static', keyboard: false});
+}

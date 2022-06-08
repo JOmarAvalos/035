@@ -6,6 +6,7 @@
 
 <script src="<c:url value='/resources/js/035/home.js' />" type="text/javascript"></script>
 
+
 <!-- Right side column. Contains the navbar and content of the page -->
 <aside class="right-side">
     <!-- Content Header (Page header) -->
@@ -86,8 +87,8 @@
 								        <c:forEach items="${productosComprados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaReporte();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
-				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
@@ -128,7 +129,7 @@
 								        <c:forEach items="${productosEntregados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
 				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
@@ -177,7 +178,10 @@
 								        <c:forEach items="${productosSinCompra}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+                                          <a href="#" onclick="descargaCuestionarios()" title="Descargar cuestionarios">
+                                            <i class="fa fa-fw fa-download fa-4x"></i>
+                                            <br>Descargar cuestonarios
+                                          </a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
@@ -446,25 +450,11 @@
 			                             </tr>
 			                         </thead>
 			                         <tbody>
-
 			                         	<c:if test="${not empty lstCuestionarios}">
 			                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
 					                             <tr>
 					                                 <td>
-					                                 
-					                                 
-					                                 
-					                                 
-					                                 
-					                                 	<a href="#" onclick="descargaCuestionarios(${cuestionario.actividad.id});return false;" title="Descargar cuestionarios">
-					                                 		<i class="fa fa-fw fa-download fa-4x"></i>
-					                                 		<br>Descargar cuestonarios
-					                                 	</a>
-					                                 	
-					                                 	
-					                                 	
-					                                 	
-					                                 	
+					                                 	<a href="#" title="Descargar cuestionarios" onclick="descargaCuestionarios();"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar cuestonarios</a>
 					                                 </td>
 					                                 <td>${cuestionario.nombre}</td>
 					                                 <td>${cuestionario.resueltos}</td>
@@ -511,13 +501,26 @@
 					                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
 				                                 	</c:if>
 				                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
-					                                 	<a href="#" title="Descargar reporte" onclick="descargaProducto();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+					                                 	<a href="#" title="Descargar reporte" onclick="descargaResultados();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
 				                                 	</c:if>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
 				                                 <td>$${producto.productoVO.precio}</td>
-				                                 <td>Disponible</td>
+				                                 <td>
+				                                 	<c:if test="${producto.idCompraEstatus == 1 }">
+					                                 	Disponible
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 2 }">
+					                                 	Pendiene de pago
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 3 }">
+					                                 	En procesamiento por analistas  
+				                                 	</c:if>
+				                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
+					                                 	Liso para descargar
+				                                 	</c:if>
+				                                 </td>
 				                             </tr>
 								        </c:forEach>
 							        </c:if>
@@ -529,22 +532,23 @@
 	                 	</c:if>
 	                 </div><!-- /.box-body -->
 					<div class="box-footer">
-	                 	<c:if test="${not empty centro}">
+	                 	<c:if test="${productosCarrito > 0}">
 							<div class="row">
 								<div class="col-md-3" id="btnActualizaPerfil" >
-									<button type="button" class="btn btn-primary" onclick="alert('En construcción');">Pagar</button>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3">
-									Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
+									<button type="button" class="btn btn-primary" onclick="openPago();">Pagar(${productosCarrito})</button>
 								</div>
 							</div>
 						</c:if>
+							<div class="row">
+								<div class="col-md-12">
+									Revisa el detalle de nuestra oferta <a href="https://035.com.mx/paso-2/" target="_blank">aqui</a>
+								</div>
+							</div>
 					</div>
 	                 
 	             </div><!-- /.box -->
 	        </div>
+	        
 		</c:if>
 
 
@@ -577,9 +581,53 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modalAdvertenciaFormato" tabindex="-1"
+	role="dialog" aria-labelledby="modalAdvertenciaFormato" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content bg-glass-sknd">
+			<div class="modal-header bg-glass-sknd">
+				<h3 class="box-title">Actualizar formato</h3>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true" style="color: white;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-white" style="color: grey;">
+				<div class="box box-primary">
+					<div class="box-header"></div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<div class="box-body">
+						<input type="hidden" id="iptIdFormatoA">
+						<div class="row">
+							<div class="col-md-12">
+								<h4>Seleccione el documento a acargar</h4>
+								<h4>Nota: El documento actual sera reemplazado por el nuevo </h4>
+							</div>
+						</div>
+							<div class="row" id="divNuevoJustificante">
+								<div class="col-md-12">
+									<div class="form-group">
+	                                         <label for="justifFile">Documento</label>
+	                                         <input type="file" id="iptFileFormA" accept="application/pdf,image/*, .xls, .xlsx" onchange="validaSize(this);">
+	                                   </div>
+								</div>
+							</div>
+					</div>
+				</div>
+				<!-- /.box -->
+			</div>
+			<div class="modal-footer mdl-footr-lt">
+				<button type="button" class="btn" onclick="actualizaFormato()">Aceptar</button>
+				<button type="button" class="btn" data-dismiss="modal" >Cerrar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <script type="text/javascript">
             $(function() {
-                $("#example1").dataTable();
                 
                 $('#tblCuestionarios').dataTable({
                     "bPaginate": false,
@@ -607,4 +655,5 @@
                 
             });
         </script>
+
 

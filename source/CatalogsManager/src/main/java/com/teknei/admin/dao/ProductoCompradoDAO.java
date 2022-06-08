@@ -13,6 +13,7 @@ public interface ProductoCompradoDAO extends BaseDAO<Integer, ProductoComprado> 
 	
 	List<ProductoComprado> getByCentro(Integer idCentro);
 	
+	List<ProductoComprado> getByUsuario(Integer idUsuario);
 //	Actividad getByCentroCuestionario(Integer idCentro, Integer idCuestionario); 
 }
 

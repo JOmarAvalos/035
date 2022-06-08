@@ -36,4 +36,18 @@ public class ProductoCompradoDAOImpl extends HibernateBaseDAO<Integer,ProductoCo
 		return (List<ProductoComprado>)query.list();	
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProductoComprado> getByUsuario(Integer idUsuario) {
+		StringBuilder sbQuery = new StringBuilder();
+		sbQuery.append("from ProductoComprado p ");
+		sbQuery.append("where p.idUsuarioCrea = :idUsuario ");
+		sbQuery.append("order by p.id ");
+		Query query = sessionFactory.getCurrentSession().createQuery(sbQuery.toString());
+		
+		query.setParameter("idUsuario", idUsuario);
+		
+		return (List<ProductoComprado>)query.list();	
+	}
+
 }

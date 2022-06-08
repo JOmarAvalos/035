@@ -5,6 +5,7 @@
 <tiles-definitions>
 
     <definition name="appLogin" template="/WEB-INF/views/login.jsp" />
+    <definition name="pagoTmp" template="/WEB-INF/views/admin/payment.jsp" />
     
     <definition name="notFound" template="/WEB-INF/views/error/404.jsp" />
     

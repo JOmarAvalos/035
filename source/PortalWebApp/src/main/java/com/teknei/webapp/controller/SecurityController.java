@@ -99,7 +99,8 @@ import com.teknei.admin.bsn.GiroManager;
 public class SecurityController {
 
 	private static final Logger LOGGER = Logger.getLogger(SecurityController.class);
-
+	
+	
 	
 	@Autowired
 	private UsersManager usersManager;
@@ -117,8 +118,14 @@ public class SecurityController {
 	private CarritoManager carritoManager;
 	
 	
-//	@Value("${app.wff.inscripcion.justificante}")
-//	private String rutaJustificantes;
+	@Value("${app.035.pay.id}")
+	private String payID;
+	@Value("${app.035.pay.key.public}")
+	private String payPublicKey;
+	@Value("${app.035.pay.key.private}")
+	private String payPrivateKey;
+	@Value("${app.035.pay.sand}")
+	private boolean sandBox;
 	
 	private static final String LOGIN_VIEW = "appLogin";
 	private static final String HOME_VIEW = "home";
@@ -182,6 +189,11 @@ public class SecurityController {
 				model.addAttribute(ATTR_LST_PRODUCTOS, productos);
 				model.addAttribute(ATTR_TOTAL_CARRITO, total);
 				model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
+				model.addAttribute("idPay", payID);
+				model.addAttribute("publicKey", payPublicKey);
+				model.addAttribute("privateKey", payPrivateKey);
+				model.addAttribute("sandbox", sandBox);
+				
 			}else if(usuarioVO.getIdPerfil() == Constants.ID_PERFIL_ADMIIN) {
 				
 				List<ProductoCompradoVO> productosComprados = new ArrayList<ProductoCompradoVO>();
@@ -271,7 +283,65 @@ public class SecurityController {
 		return UNAUTHORIZED_VIEW;
 	}
 
-	
+	@RequestMapping(value = "/carriito/descargaInforme", method = RequestMethod.GET)
+	public String getDocument(Model model, HttpServletRequest request, HttpServletResponse response) {
+	  try {
+	    
+
+	    File docFile = new File("/Users/miguelmartinez/Documents/Mike/git/035/recursos/Docs/resultado.pdf");
+	    
+	    FileInputStream fis = new FileInputStream(docFile);
+	    ByteArrayOutputStream os = new ByteArrayOutputStream();
+	    int iterador = 0;
+	    while ((iterador = fis.read()) != -1) {
+	      os.write(iterador);
+	    }
+	    response.setHeader("Content-Disposition", "inline;filename=" + docFile.getName());
+	      response.setContentType("application/pdf");
+	    
+	    response.setHeader("Cache-Control", "cache, must-revalidate");
+	    response.setHeader("Pragma", "public");
+	    response.getOutputStream().write(os.toByteArray());
+	    fis.close();
+	    response.getOutputStream().flush();
+	    response.getOutputStream().close();
+	    response.flushBuffer();
+
+	  } catch (Exception e) {
+	    LOGGER.error("error en documento:			", e);
+	  }
+	  return null;
+	}
+
+	@RequestMapping(value = "/carriito/descargaCuest", method = RequestMethod.GET)
+	public String descargaCuest(Model model, HttpServletRequest request, HttpServletResponse response) {
+	  try {
+	    
+
+	    File docFile = new File("/Users/miguelmartinez/Documents/Mike/git/035/recursos/Docs/cuesionario.xls");
+	    
+	    FileInputStream fis = new FileInputStream(docFile);
+	    ByteArrayOutputStream os = new ByteArrayOutputStream();
+	    int iterador = 0;
+	    while ((iterador = fis.read()) != -1) {
+	      os.write(iterador);
+	    }
+	    response.setHeader("Content-Disposition", "inline;filename=" + docFile.getName());
+	      response.setContentType("application/vnd.ms-excel");
+	    
+	    response.setHeader("Cache-Control", "cache, must-revalidate");
+	    response.setHeader("Pragma", "public");
+	    response.getOutputStream().write(os.toByteArray());
+	    fis.close();
+	    response.getOutputStream().flush();
+	    response.getOutputStream().close();
+	    response.flushBuffer();
+
+	  } catch (Exception e) {
+	    LOGGER.error("error en documento:			", e);
+	  }
+	  return null;
+	}
 
 	
 //	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
