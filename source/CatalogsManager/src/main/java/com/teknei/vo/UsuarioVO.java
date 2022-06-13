@@ -24,6 +24,8 @@ public class UsuarioVO extends BaseVO implements Serializable {
 	private Integer banActivo;
 	
 	private List<String> lstAutoridades;
+	
+	private CentroTrabajoVO centroTrabajoVO;
 
 	
 	
@@ -114,6 +116,18 @@ public class UsuarioVO extends BaseVO implements Serializable {
 	 */
 	public void setLstAutoridades(List<String> lstAutoridades) {
 		this.lstAutoridades = lstAutoridades;
+	}
+	/**
+	 * @return the centroTrabajoVO
+	 */
+	public CentroTrabajoVO getCentroTrabajoVO() {
+		return centroTrabajoVO;
+	}
+	/**
+	 * @param centroTrabajoVO the centroTrabajoVO to set
+	 */
+	public void setCentroTrabajoVO(CentroTrabajoVO centroTrabajoVO) {
+		this.centroTrabajoVO = centroTrabajoVO;
 	}
 	
 }

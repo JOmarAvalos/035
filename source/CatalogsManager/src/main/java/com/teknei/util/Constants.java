@@ -18,6 +18,10 @@ public class Constants {
 	public static final Integer ID_PRODUCTO_COMPRADO = 3;
 	public static final Integer ID_PRODUCTO_ENTREGADO = 4;
 	public static final Integer ID_PRODUCTO_DESCARGADO = 5;
+	
+	public static final String NUMEROS = "0123456789";
+	public static final String MAYUSCULAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	public static final String MINUSCULAS = "abcdefghijklmnopqrstuvwxyz";
 
 
 }

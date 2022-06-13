@@ -84,6 +84,7 @@ public class UsersManagerImpl implements UsersManager {
 		user.setIdUsuarioModifica(userToUpdate.getIdUsuarioModifica());
 		user.setBanActivo(userToUpdate.getBanActivo());
 		user.setNombre(userToUpdate.getNombre());
+		user.setUsuario(userToUpdate.getUsuario());
 		user = userDAO.updateUser(user);
 
 		Usuario persistedUser = userDAO.getUser(userToUpdate.getUsuario());
@@ -183,8 +184,13 @@ public class UsersManagerImpl implements UsersManager {
 	}
 
 	@Override
-	public UsuarioVO getUserByMail(String mail) {
-		return com.teknei.mapper.Mapper.toVO(userDAO.getUserByMail(mail));
+	public List<UsuarioVO> getUsersByMail(String mail) {
+		List<UsuarioVO> resp = new ArrayList<UsuarioVO>(); 
+		List<Usuario> usuarios = userDAO.getUsersByMail(mail);
+		for(Usuario usuario: usuarios) {
+			resp.add(com.teknei.mapper.Mapper.toVO(usuario));
+		}
+		return resp;
 	}
 
 	@Override
@@ -197,4 +203,13 @@ public class UsersManagerImpl implements UsersManager {
 		return  userDAO.countUsuariosRegistrados(); 
 	} 
 	
+	@Override
+	public UsuarioVO getUserByMail(String mail) {
+		return com.teknei.mapper.Mapper.toVO(userDAO.getUserByMail(mail));
+	}
+
+	@Override
+	public int lastUser() {
+		return  userDAO.lastUser();
+	}
 }

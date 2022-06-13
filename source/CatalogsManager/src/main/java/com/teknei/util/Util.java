@@ -121,5 +121,16 @@ public class Util {
 		}
 		
 	}
+	
+	public static String getTmpPwd(int length) {
+		  StringBuilder pwd = new StringBuilder();
+		  String key = Constants.NUMEROS + Constants.MINUSCULAS + Constants.MAYUSCULAS;
+		  for (int i = 0; i < length; i++) {
+		    pwd.append(key.charAt((int)(Math.random() * key.length())));
+		  }
+
+		  return pwd.toString();
+		}
+
 
 }

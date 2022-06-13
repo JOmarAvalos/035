@@ -220,13 +220,13 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="iptUsernameHome">Usuario</label> 
+												<label for="iptUsernameHome">Contrato</label> 
 												<input type="text" id="iptUsernameHome" readonly="readonly" class="form-control" placeholder="Usuario"  maxlength="30" value="${usuario.usuario}">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="">Email</label> 
+												<label for="">Email contacto</label> 
 												<input type="text" readonly="readonly" id="iptEmailHome" class="form-control" placeholder="Email"  maxlength="30" value="${usuario.email}">
 											</div>
 										</div>
@@ -234,14 +234,14 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label for="">Nombre</label> 
-												<input type="text" id="iptNombreHome" class="form-control" placeholder="Nombre"  maxlength="100" value="${usuario.nombre}">
+												<label for="">Nombre contacto</label> 
+												<input type="text" readonly="readonly" id="iptNombreHome" class="form-control" placeholder="Nombre"  maxlength="100" value="${usuario.nombre}">
 											</div>
 										</div>
 									</div>
 								</div>
 								<div class="box-footer">
-									<div class="row">
+									<div class="row" style="display:none;">
 										<div class="col-md-3" id="btnActualizaPerfil" >
 											<button type="button" class="btn btn-primary" onclick="actualizaUsuario();">Actualizar</button>
 										</div>
@@ -409,7 +409,7 @@
 									</div> -->
 								</div>
 								<div class="box-footer">
-									<div class="row">
+									<div class="row" style="display:none;">
 										<div class="col-md-3" id="btnActualizaPerfil" >
 											<button type="button" class="btn btn-primary" onclick="actualizaCentro();">Actualizar</button>
 										</div>

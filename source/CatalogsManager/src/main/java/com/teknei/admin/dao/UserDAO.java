@@ -36,5 +36,8 @@ public interface UserDAO extends BaseDAO<Integer, Usuario> {
 	Usuario getByUsrPwd(String userName, String pwd);
 	
 	int countUsuariosRegistrados();
+	
+	List<Usuario> getUsersByMail(String mail);
 
+	int lastUser();
 }

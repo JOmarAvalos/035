@@ -3,6 +3,8 @@ package com.teknei.webapp.controller;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +46,7 @@ import org.apache.commons.io.IOUtils;
 import com.teknei.admin.bsn.CentroTrabajoManager;
 import com.teknei.security.bsn.UsersManager;
 import com.teknei.util.Constants;
+import com.teknei.util.Util;
 import com.teknei.vo.CentroTrabajoVO;
 import com.teknei.vo.UsuarioVO;
 import com.teknei.webapp.utils.EMailService;
@@ -86,6 +89,70 @@ public class RegistroController {
 	@RequestMapping(value = "/registro/registro", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Object> registro(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
+
+		List<Object> resp = new ArrayList<Object>();
+		
+		try {
+			
+			int lastUser =  usersManager.lastUser();
+			lastUser = lastUser+1;
+			CentroTrabajoVO centro = usuario.getCentroTrabajoVO();
+
+			StringBuilder contratoSB = new StringBuilder();
+			
+			Date fechaRegistro = new Date();
+			
+			DateFormat df = new SimpleDateFormat("ddMMyy");
+			
+			contratoSB.append(df.format(fechaRegistro));
+			contratoSB.append(String.format("%02d", centro.getIdGiro()));
+			contratoSB.append(String.format("%02d", centro.getIdEstadoRepublica()));
+			contratoSB.append(String.format("%04d", lastUser));
+			
+			
+			String tmpPwd = Util.getTmpPwd(12);
+			
+			System.out.println("*********************Contraseña:"+tmpPwd);
+			
+			usuario.setContrasena(tmpPwd);
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String pwd = passwordEncoder.encode(usuario.getContrasena());
+			
+			usuario.setContrasena(pwd);
+			usuario.setCreacion(new Date());
+			usuario.setUsuario(contratoSB.toString());
+			usuario.setIdPerfil(Constants.ID_PERFIL_CLIENTE);
+			usuario.setIdUsuarioCrea(0);
+			usuario.setBanActivo(Constants.BAN_INACTIVO);
+			usuario.setEstatus(Constants.BAN_INACTIVO);
+			 
+			usuario = usersManager.addUser(usuario);
+			
+			centro.setIdUsuarioCrea(usuario.getId());
+			centro.setCreacion(fechaRegistro);
+			centro.setIdUsuario(usuario.getId());
+			centro.setBanActivo(Constants.BAN_ACTIVO);
+			centro = centroTrabajoManager.save(centro);
+			
+			envioCorreoConfirmacion(usuario);
+
+			resp.add(true);
+			
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Ourrio un error en el registro				error:	",e);
+			resp = new ArrayList<Object>();
+			resp.add(false);
+		}
+		
+		return resp;
+
+	}
+	
+	@RequestMapping(value = "/registro/registroBK", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Object> registroBK(Model model, HttpServletRequest request, @RequestBody UsuarioVO usuario) {
 
 		List<Object> resp = new ArrayList<Object>();
 		
@@ -216,7 +283,7 @@ public class RegistroController {
 		StringBuilder sbResp = new StringBuilder();
 		sbResp.append("https://app.035.com.mx/Admin035/");
 		sbResp.append("registro/confimaCorreo?param1=");
-		sbResp.append(usuario.getEmail());
+		sbResp.append(usuario.getUsuario());
 		sbResp.append("&param2=");
 		sbResp.append(usuario.getContrasena());
 		return sbResp.toString();
@@ -300,11 +367,18 @@ public class RegistroController {
 		try {
 			
 			boolean valido = true;
-			UsuarioVO usuario =  usersManager.getUserByMail(mail.toUpperCase());
-			if(usuario != null) {
+			List<UsuarioVO> usuarios =  usersManager.getUsersByMail(mail.toUpperCase());
+			StringBuilder sb = new StringBuilder();
+//			UsuarioVO usuario =  usersManager.getUserByMail(mail.toUpperCase());
+			if(usuarios != null && !usuarios.isEmpty()) {
 				valido = false; 
+				for(UsuarioVO usuario : usuarios) {
+					sb.append(usuario.getUsuario());
+					sb.append("<br>");
+				}
 			}
 			resp.add(valido);
+			resp.add(sb.toString());
 			
 		} catch (Exception e) {
 			resp = new ArrayList<Object>();
@@ -330,26 +404,42 @@ public class RegistroController {
 		} else {
 			UsuarioVO usuarioCorpVO = usersManager.getByUsrPwd(usuario, contrasena);
 			
-			if(usuarioCorpVO != null) {
-				
-				if(usuarioCorpVO.getEstatus() == Constants.BAN_INACTIVO) {
-					usuarioCorpVO.setBanActivo(Constants.BAN_ACTIVO);
-					usuarioCorpVO.setEstatus(Constants.BAN_ACTIVO);
-					usuarioCorpVO = usersManager.updateUser(usuarioCorpVO);
+			try {
+				if(usuarioCorpVO != null) {
+					
+					if(usuarioCorpVO.getEstatus() == Constants.BAN_INACTIVO) {
+						usuarioCorpVO.setBanActivo(Constants.BAN_ACTIVO);
+						usuarioCorpVO.setEstatus(Constants.BAN_ACTIVO);
+						usuarioCorpVO = usersManager.updateUser(usuarioCorpVO);
+					}
+					
+					CentroTrabajoVO centro = centroTrabajoManager.getByUuario(usuarioCorpVO.getId());
+					
+					StringBuilder sb = new StringBuilder();
+					sb.append("https://app.035.com.mx/Admin035/cuestionarios?param=");
+					sb.append(URLEncoder.encode(centro.getIdCrypt(), StandardCharsets.UTF_8.toString()));
+					
+//					String url = sb.toString().replaceAll("+", "%2B");
+					envioCorreoPasos(usuarioCorpVO);
+					envioCorreoUrl(usuarioCorpVO, sb.toString());
+					
+
+					UserDetails userDetails = userDetailsService.loadUserByUsername(usuarioCorpVO.getUsuario());
+					RememberMeAuthenticationToken rememberMeAuthenticationToken = new RememberMeAuthenticationToken("remember_me", userDetails, userDetails.getAuthorities());
+					
+					rememberMeServices.loginSuccess(request, response, rememberMeAuthenticationToken);
+					
+					Authentication authenticatedUser = rememberMeAuthenticationToken;
+					
+					strategy.onAuthentication(authenticatedUser, request, response);
+					
+					SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+					
+					return "redirect:/";
+				}else {
+					return "redirect:/";
 				}
-				UserDetails userDetails = userDetailsService.loadUserByUsername(usuarioCorpVO.getUsuario());
-				RememberMeAuthenticationToken rememberMeAuthenticationToken = new RememberMeAuthenticationToken("remember_me", userDetails, userDetails.getAuthorities());
-				
-				rememberMeServices.loginSuccess(request, response, rememberMeAuthenticationToken);
-				
-				Authentication authenticatedUser = rememberMeAuthenticationToken;
-				
-				strategy.onAuthentication(authenticatedUser, request, response);
-				
-				SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
-				
-				return "redirect:/";
-			}else {
+			} catch (Exception e) {
 				return "redirect:/";
 			}
 		}

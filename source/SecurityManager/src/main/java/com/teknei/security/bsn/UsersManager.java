@@ -38,4 +38,7 @@ public interface UsersManager {
 	
 	int usuariosRegistrados();
 	
+	List<UsuarioVO> getUsersByMail(String mail);
+	
+	int lastUser();
 }

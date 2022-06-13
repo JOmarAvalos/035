@@ -141,4 +141,24 @@ public class UserDAOImpl extends HibernateBaseDAO<Integer, Usuario> implements U
 		int total = ((Long)query.uniqueResult()).intValue();
 		return total;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Usuario> getUsersByMail(String mail) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where upper(email) = :mail");
+		query.setString("mail", mail );
+		
+		return (List<Usuario>)query.list();
+	}
+
+	@Override
+	public int lastUser() {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario a order by a.id desc");
+		query.setMaxResults(1);
+		
+		Usuario usuario = (Usuario) query.uniqueResult();
+		int resp = usuario.getId();
+		return resp;
+	}
+	
 }

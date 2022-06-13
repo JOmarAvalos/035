@@ -228,6 +228,11 @@ public class SecurityController {
 			
 			return HOME_VIEW;
 		} else {
+			List<GiroVO> giros = giroManager.getGiros();
+			List<EstadoRepublicaVO> estados = estadoRepublicaManager.getAll();
+			model.addAttribute(ATTR_LST_GIRO, giros);
+			model.addAttribute(ATTR_LST_ESTADOS, estados);
+
 			return LOGIN_VIEW;
 		}
 	}
