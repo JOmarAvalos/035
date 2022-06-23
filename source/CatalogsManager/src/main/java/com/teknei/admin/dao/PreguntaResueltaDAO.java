@@ -9,6 +9,8 @@ import com.teknei.entity.PreguntaResuelta;
 public interface PreguntaResueltaDAO extends BaseDAO<Integer, PreguntaResuelta> {
 	
 	PreguntaResuelta getByActividadPregunta(Integer idActividad, Integer idPregunta);
+	String getRespuestaAbierta(Integer idActividadResuelta, Integer idPregunta);
+	String getRespuestaCerrada(Integer idActividadResuelta, Integer idPregunta);
 
 }
 

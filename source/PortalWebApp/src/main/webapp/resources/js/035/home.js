@@ -241,8 +241,8 @@ descargaCuestionarios = function(){
 	window.open(urltxt, '_blank');
 }
 
-descargaCuestionariosV2 = function(id){
-	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+id; 
+descargaCuestionariosV2 = function(idCuestionario, idCentroTrabajo){
+	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+idCuestionario+'&param2='+idCentroTrabajo; 
 	window.open(urltxt, '_blank');
 }
 

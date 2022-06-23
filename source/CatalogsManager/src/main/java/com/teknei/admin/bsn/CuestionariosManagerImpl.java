@@ -151,7 +151,7 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 	
 
 	@Override
-	public List<String[]> getCuestionarioTipo1Descarga(Integer id) {
+	public List<String[]> getCuestionarioTipo1Descarga(Integer idCuestionario, Integer idCentroTrabajo) {
 		List<String[]> resp = new ArrayList<String[]>();
 
 		String[] header0 = new String[300];
@@ -205,13 +205,78 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		resp.add(header2);
 		
 		
+		ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentroTrabajo, idCuestionario));
+		List<ActividadResuelta> actividadesResueltas = actividadResueltaDAO.actividadesConcluidasDetalle(actividadVO.getId());
+		
+		if(actividadesResueltas != null) {
+			for(ActividadResuelta actividadResuelta: actividadesResueltas) {
+				
+				Integer idActividadResuelta = actividadResuelta.getId();
+				String nombreCompleto = actividadResuelta.getNombre() + ' ' + actividadResuelta.getPaterno() + ' ' + actividadResuelta.getMaterno();
 
+				
+				String[] linea = new String[300];
+				linea[0] = nombreCompleto;
+				
+				
+				// Cuestionario estructura
+				List<Pregunta> cuestionarioEstructura = preguntaDAO.getActivasByCuestionario(idCuestionario);
+				Integer columna = 1;
+				for(Pregunta pregunta: cuestionarioEstructura) {
+					
+					Integer idPregunta =  pregunta.getId();
+					Integer tipoPregunta = pregunta.getIdPreguntaTipo();
+					String  respuesta = "";
+					
+					if(tipoPregunta == 3) { // Abierta
+						
+
+						String respuestasDetalle1 = preguntaResueltaDAO.getRespuestaAbierta(idActividadResuelta, idPregunta);
+						if(respuestasDetalle1 != null) {
+							respuesta = respuestasDetalle1;
+						}else {
+							respuesta = "";
+						}
+						
+						
+					} else {
+						
+						String respuestasDetalle2 = preguntaResueltaDAO.getRespuestaCerrada(idActividadResuelta, idPregunta);
+						if(respuestasDetalle2 != null) {
+							respuesta = respuestasDetalle2;
+						}else {
+							respuesta = "";
+						}
+						
+					}
+					linea[columna] = respuesta;
+					columna++;
+					
+				}
+				
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				
+				resp.add(linea);
+			}
+		}
+		
 		return resp;
 	}
 	
 	
 	@Override
-	public List<String[]> getCuestionarioTipo2Descarga(Integer id) {
+	public List<String[]> getCuestionarioTipo2Descarga(Integer idCuestionario, Integer idCentroTrabajo) {
 		List<String[]> resp = new ArrayList<String[]>();
 
 		String[] header0 = new String[300];
@@ -296,14 +361,78 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		header2[60]  = "Nombre del depto donde trabaja";
 		resp.add(header2);
 		
+		ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentroTrabajo, idCuestionario));
+		List<ActividadResuelta> actividadesResueltas = actividadResueltaDAO.actividadesConcluidasDetalle(actividadVO.getId());
 		
+		if(actividadesResueltas != null) {
+			for(ActividadResuelta actividadResuelta: actividadesResueltas) {
+				
+				Integer idActividadResuelta = actividadResuelta.getId();
+				String nombreCompleto = actividadResuelta.getNombre() + ' ' + actividadResuelta.getPaterno() + ' ' + actividadResuelta.getMaterno();
+
+				
+				String[] linea = new String[300];
+				linea[0] = nombreCompleto;
+				
+				
+				// Cuestionario estructura
+				List<Pregunta> cuestionarioEstructura = preguntaDAO.getActivasByCuestionario(idCuestionario);
+				Integer columna = 1;
+				for(Pregunta pregunta: cuestionarioEstructura) {
+					
+					Integer idPregunta =  pregunta.getId();
+					Integer tipoPregunta = pregunta.getIdPreguntaTipo();
+					String  respuesta = "";
+					
+					if(tipoPregunta == 3) { // Abierta
+						
+
+						String respuestasDetalle1 = preguntaResueltaDAO.getRespuestaAbierta(idActividadResuelta, idPregunta);
+						if(respuestasDetalle1 != null) {
+							respuesta = respuestasDetalle1;
+						}else {
+							respuesta = "";
+						}
+						
+						
+					} else {
+						
+						String respuestasDetalle2 = preguntaResueltaDAO.getRespuestaCerrada(idActividadResuelta, idPregunta);
+						if(respuestasDetalle2 != null) {
+							respuesta = respuestasDetalle2;
+						}else {
+							respuesta = "";
+						}
+						
+					}
+					linea[columna] = respuesta;
+					columna++;
+					
+				}
+				
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				
+				resp.add(linea);
+			}
+		}
 
 		return resp;
 	}
 	
 	
 	@Override
-	public List<String[]> getCuestionarioTipo3Descarga(Integer id) {
+	public List<String[]> getCuestionarioTipo3Descarga(Integer idCuestionario, Integer idCentroTrabajo) {
 		List<String[]> resp = new ArrayList<String[]>();
 
 		String[] header0 = new String[300];
@@ -420,7 +549,71 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		header2[86]  = "Nombre del depto donde trabaja";
 		resp.add(header2);
 		
+		ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentroTrabajo, idCuestionario));
+		List<ActividadResuelta> actividadesResueltas = actividadResueltaDAO.actividadesConcluidasDetalle(actividadVO.getId());
 		
+		if(actividadesResueltas != null) {
+			for(ActividadResuelta actividadResuelta: actividadesResueltas) {
+				
+				Integer idActividadResuelta = actividadResuelta.getId();
+				String nombreCompleto = actividadResuelta.getNombre() + ' ' + actividadResuelta.getPaterno() + ' ' + actividadResuelta.getMaterno();
+
+				
+				String[] linea = new String[300];
+				linea[0] = nombreCompleto;
+				
+				
+				// Cuestionario estructura
+				List<Pregunta> cuestionarioEstructura = preguntaDAO.getActivasByCuestionario(idCuestionario);
+				Integer columna = 1;
+				for(Pregunta pregunta: cuestionarioEstructura) {
+					
+					Integer idPregunta =  pregunta.getId();
+					Integer tipoPregunta = pregunta.getIdPreguntaTipo();
+					String  respuesta = "";
+					
+					if(tipoPregunta == 3) { // Abierta
+						
+
+						String respuestasDetalle1 = preguntaResueltaDAO.getRespuestaAbierta(idActividadResuelta, idPregunta);
+						if(respuestasDetalle1 != null) {
+							respuesta = respuestasDetalle1;
+						}else {
+							respuesta = "";
+						}
+						
+						
+					} else {
+						
+						String respuestasDetalle2 = preguntaResueltaDAO.getRespuestaCerrada(idActividadResuelta, idPregunta);
+						if(respuestasDetalle2 != null) {
+							respuesta = respuestasDetalle2;
+						}else {
+							respuesta = "";
+						}
+						
+					}
+					linea[columna] = respuesta;
+					columna++;
+					
+				}
+				
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				columna++;
+				linea[columna] = "XXX";
+				
+				resp.add(linea);
+			}
+		}
 
 		return resp;
 	}

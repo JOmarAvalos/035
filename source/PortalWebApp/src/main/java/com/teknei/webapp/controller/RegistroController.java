@@ -477,7 +477,8 @@ public class RegistroController {
 	
 	@RequestMapping(value = "/registro/descargaCuestionarios", method = RequestMethod.GET)
 	public String descargaCuestionarios(Model model, HttpServletRequest request, HttpServletResponse response, 
-		@RequestParam(value = "param1") Integer id) {
+		@RequestParam(value = "param1", required = true) Integer idCuestionario,
+		@RequestParam(value = "param2", required = true) Integer idCentroTrabajo) {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -492,11 +493,17 @@ public class RegistroController {
 				File file = new File("Cuestionarios.xlsx");
 			
 				int rowCount = 0;
+				List<String[]> lineasDSC = null;
 				
 				// Se crea la lista de contenido de la hoja
-				List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo1Descarga(id);
-				//List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo2Descarga(id);
-				//List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo3Descarga(id);
+				if(idCuestionario == 1) {
+					lineasDSC = cuestionariosManager.getCuestionarioTipo1Descarga(idCuestionario, idCentroTrabajo);
+				} else if (idCuestionario == 2) {
+					lineasDSC = cuestionariosManager.getCuestionarioTipo2Descarga(idCuestionario, idCentroTrabajo);
+				} else if (idCuestionario == 3) {
+					lineasDSC = cuestionariosManager.getCuestionarioTipo3Descarga(idCuestionario, idCentroTrabajo);
+				}
+				
 				
 				for (String[] linea : lineasDSC) {
 					Row row = sheet.createRow(rowCount++);

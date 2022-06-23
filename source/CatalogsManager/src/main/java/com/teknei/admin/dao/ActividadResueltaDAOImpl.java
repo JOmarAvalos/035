@@ -1,9 +1,12 @@
 package com.teknei.admin.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.teknei.base.dao.HibernateBaseDAO;
+import com.teknei.entity.Actividad;
 import com.teknei.entity.ActividadResuelta;
 
 
@@ -23,6 +26,16 @@ public class ActividadResueltaDAOImpl extends HibernateBaseDAO<Integer,Actividad
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ActividadResuelta> actividadesConcluidasDetalle(Integer idActividad) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from ActividadResuelta a where a.idActividad = :idActividad and a.estatus = 2 ");
+		query.setInteger("idActividad", idActividad);
+		return (List<ActividadResuelta>)query.list();
+	}
+	
+	
+	
 	@Override
 	public int actividadesConcluidasGeneral() {
 		

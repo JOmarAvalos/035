@@ -18,8 +18,8 @@ public interface CuestionariosManager {
 	
 	int cuestionariosResueltos();
 	
-	List<String[]> getCuestionarioTipo1Descarga(Integer id);
-	List<String[]> getCuestionarioTipo2Descarga(Integer id);
-	List<String[]> getCuestionarioTipo3Descarga(Integer id);
+	List<String[]> getCuestionarioTipo1Descarga(Integer idCuestionario, Integer idCentroTrabajo);
+	List<String[]> getCuestionarioTipo2Descarga(Integer idCuestionario, Integer idCentroTrabajo);
+	List<String[]> getCuestionarioTipo3Descarga(Integer idCuestionario, Integer idCentroTrabajo);
 
 }
