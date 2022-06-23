@@ -330,6 +330,7 @@ create table desarrollo.tbl_actividades
   id_usuario_modifica integer,
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
   fch_modificacion timestamp without time zone,
+  fch_fin timestamp without time zone,
 
   CONSTRAINT tbl_actividades_pkey PRIMARY KEY (cve_actividad),
 

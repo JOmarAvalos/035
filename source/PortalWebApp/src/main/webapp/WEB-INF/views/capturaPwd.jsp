@@ -42,159 +42,31 @@
 					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
 				</div>
 				<div class="body_login">
-					<h1>¡Bienvenido!</h1>
-					<p>Inicia sesión</p>
-					<form name="loginForm" class="form"
-						action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />"
+					<h1>¡Gracias por confirmar tu cuenta!</h1>
+					<p>Captura tu nueva contrase&ntilde;a para poder concluir el proceso de registro.</p>
+					<form id="pwdForm" name="pwdForm" class="form"
+						action="<c:url value='/registro/confirmaContrasena' />"
 						method="POST" role="form">
-						<div class="form-group">
-							<input type="text" id="username" name="username"
-								class="form-control" placeholder="N&uacute;mero de contrato" required autocomplete="off"/>
-						</div>
+						
+						<input type="hidden" value="${usr}" id="iptHidenUsr" name="iptHidenUsr">
+						<input type="hidden" value="${pwd}" id="iptHidenPwd" name="iptHidenPwd">
 						<div class="form-group">
 							<input type="password" id="password" name="password"
-								class="form-control" placeholder="Contrase&ntilde;a" required/>
+								class="form-control" placeholder="Contrase&ntilde;a" required autocomplete="off"/>
 						</div>
 						<div class="form-group">
-							<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
+							<input type="password" id="passwordConf" name="passwordConf"
+								class="form-control" placeholder="Confirma contrase&ntilde;a" required autocomplete="off"/>
 						</div>
-							<button type="submit" class="btn">Iniciar sesi&oacute;n</button>
+						<button type="button" class="btn" onclick="validaPwd();">Gurdar contrase&ntilde;a</button>
 					</form>
 					
-					<p><a href="#" onclick="showRecuperaPwd();">Olvide mi contrase&ntilde;a</a></p>
-					<p><a href="#" onclick="showRegistro();">Registro</a></p>
-					
 				</div>
 			</div>
 		</div>
 		
-		<div id="divRegistro" style="display:none;">
-			<div class="login-container">
-				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
-				</div>
-				<div class="body_login">
-					<h1>Registro</h1>
-					<p>Captura la siguiente informaci&oacute;n</p>
-					<form id="registroForm" name="registroForm" class="form"
-						action="javascript:validaRegisto();" role="form">
-						<div class="form-group">
-							<label for="email">Email:</label>
-							<input type="text" id="email" name="email"
-								class="form-control" placeholder="Email"  />
-						</div>
-						<div class="form-group">
-							<label for="confirmEmail">Confirmaci&oacute;n de email:</label>
-							<input type="text" id="confirmEmail" name="confirmEmail"
-								class="form-control" placeholder="Confirma Email" />
-						</div>
-						<div class="form-group">
-							<label for="centro">Centro de trabajo:</label>
-							<input type="text" id="centroNombre" name="centroNombre"
-								class="form-control" placeholder="Centro de trabajo"  />
-						</div>
-						<div class="form-group">
-							<label for="centro">Nombre de contacto del centro de trabajo:</label>
-							<input type="text" id="centroContacto" name="centroContacto"
-								class="form-control" placeholder="Nombre completo"  />
-						</div>
-						<div class="form-group">
-							<label for="centro">Tama&ntilde;o del centro de trabajo:</label>
-							<input type="number" id="centroTamanio" name="centroTamanio" class="form-control" placeholder="Tama&ntilde;o del centro de trabajo"  min="0" />
-						</div>
-						<div class="form-group">
-							<label for="">Giro</label> 
-							<select class="form-control" id="selectGiroCentro">
-								<option value="0">Seleccione...</option>
-								<c:if test="${not empty lstGiro}">
-									<c:forEach items="${lstGiro}" var="giro">
-										<c:if test="${not empty centro }">
-											<c:if test="${giro.id == centro.idGiro}">
-												<option value="${giro.id}" selected="selected">${giro.nombre}</option>
-											</c:if>
-											<c:if test="${giro.id != centro.idGiro}">
-												<option value="${giro.id}">${giro.nombre}</option>
-											</c:if>
-										</c:if>
-										<c:if test="${empty centro}">
-												<option value="${giro.id}">${giro.nombre}</option>
-										</c:if>
-									</c:forEach>
-								</c:if>
-	
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="">Estado</label> 
-							<select required class="form-control" id="selectEstadoCentro" >
-								<option value="0">Seleccione...</option>
-								<c:if test="${not empty lstEstados}">
-									<c:forEach items="${lstEstados}" var="estado">
-										<c:if test="${not empty centro }">
-											<c:if test="${estado.id == centro.idEstadoRepublica}">
-												<option value="${estado.id}" selected="selected">${estado.nombre}</option>
-											</c:if>
-											<c:if test="${estado.id != centro.idEstadoRepublica}">
-												<option value="${estado.id}">${estado.nombre}</option>
-											</c:if>
-										</c:if>
-										<c:if test="${empty centro}">
-												<option value="${estado.id}">${estado.nombre}</option>
-										</c:if>
-									</c:forEach>
-								</c:if>
-							</select>
-						</div>
-						
-						
-						<p style="text-align:left; display:none;">LA CONTRASE&Ntilde;A DEBE TENER COMO M&Iacute;NIMO OCHO CARACTERES CON UNA COMBINACI&Oacute;N DE N&Uacute;MEROS, LETRAS (MAY&Uacute;SCULAS Y MIN&Uacute;SCULAS) Y ALGUNO DE LOS SIGUIENTES S&Iacute;MBOLOS V&Aacute;LIDOS: @$!%*?&</p>
-						<br>
-						
-						<p id="pObligatorios" style="color:#B51101; text-align:left;"><span class="bold">Todos los datos son obligatorios.</span></p>
-						<p id="pEmailFormato" style="color:#B51101; text-align:left;"><span class="bold">El formato del email no es valido</span></p>
-						<p id="pEmailNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">El email y la confirmaci&oacute;n del email no coiniden.</span></p>
-						<p id="pContrasenaFormato" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a no cumple con el formato.</span></p>
-						<p id="pPwdNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a y la confirmaci&oacute;n de la contrase&ntilde;a no coiniden.</span></p>
-						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El email ya se encuentra registado.</span></p>
-						
-						<button id="btnRegistro" type="submit"  class="btn">Registro</button>
-					</form>
-					
-					<p><a href="#" onclick="showLogin();">Ya tengo cuenta</a></p>
-					
-				</div>
-			</div>
-		</div>
 		
-		<div id="divRecuperaPwd" style="display:none;">
-			<div class="login-container">
-				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
-				</div>
-				<div class="body_login">
-					<h1>Olvide mi contrase&ntilde;a</h1>
-					<p>Captura tu usuario o email</p>
-					<div class="form-group">
-						<input type="text" id="emailRecover" name="emailRecover"
-							class="form-control" placeholder="" required/>
-					</div>
-					
-					<p><a href="#" onclick="showLogin();">Cancelar</a></p>
-					
-				</div>
-			</div>
-		</div>
 		
-		<div id="divRegistrado" style="display:none;">
-			<div class="login-container">
-				<div class="header_login">
-					 <img src="<c:url value='/resources/css/img/Logo_035.png' />" alt="035">
-				</div>
-				<div class="body_login">
-					<h1>Te hemos enviado un correo para confirmar tu cuenta</h1>
-				</div>
-			</div>
-		</div>
 
 	</div>
 	
@@ -211,6 +83,7 @@
 				</div>
 				<div class="modal-body text-white" style="color: grey;">
 					<h4>Los campos marcados en rojo son obligatorios o no cumplen con el formato requerido.</h4>
+					<h4 id="h4ErrContrasena">Las contrase&ntilde;as no coinciden.</h4>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn" data-dismiss="modal">Aceptar</button>
@@ -219,50 +92,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="modalCoincidencias" tabindex="-1" role="dialog"
-		aria-labelledby="modalCoincidencias" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content bg-glass-sknd box box-danger">
-				<div class="modal-header bg-glass-sknd ">
-					<h3 class="box-title">Email registrado previamente</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true" style="color: white;">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body text-white" style="color: grey;">
-					<h4>Se encontraron los siguientes contratos con el email proporcionado:</h4>
-					<p id="pCoincidencias"></p>
-					<h4>¿Desea registrar un nuevo centro?</h4>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn" data-dismiss="modal">Cancelar</button>
-					<button type="button" class="btn" onclick="creaContrato();">Continuar</button>
-				</div>	
-			</div>
-		</div>
-	</div>
 
-	<div class="modal fade" id="modalCredo" tabindex="-1" role="dialog"
-		aria-labelledby="modalCredo" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content bg-glass-sknd box box-danger">
-				<div class="modal-header bg-glass-sknd ">
-					<h3 class="box-title">Contrato creado</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true" style="color: white;">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body text-white" style="color: grey;">
-					<h4>Hemos enviado un correo electronico a la cuenta registrada para continuar con el proceso.</h4>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn" onclick="goInfoHome();">Continuar</button>
-				</div>	
-			</div>
-		</div>
-	</div>
 
 	<!-- jQuery 2.0.2 -->
    

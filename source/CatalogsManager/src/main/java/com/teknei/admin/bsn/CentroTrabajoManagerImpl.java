@@ -1,5 +1,6 @@
 package com.teknei.admin.bsn;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.teknei.entity.Producto;
 import com.teknei.entity.ProductoComprado;
 import com.teknei.mapper.Mapper;
 import com.teknei.util.Constants;
+import com.teknei.util.Util;
 import com.teknei.vo.CentroTrabajoVO;
 
 @Service
@@ -55,6 +57,7 @@ public class CentroTrabajoManagerImpl implements CentroTrabajoManager{
 			
 			centro = Mapper.toVO(centroTrabajoDAO.update(centroOld));
 		}else {
+			
 			CentroTrabajo centroE = Mapper.toEntity(centro);
 			centro = Mapper.toVO(centroTrabajoDAO.save(centroE));
 			
@@ -65,6 +68,7 @@ public class CentroTrabajoManagerImpl implements CentroTrabajoManager{
 				actividad.setIdCentroTrabajo(centro.getId());
 				actividad.setIdUsuarioCrea(centro.getIdUsuarioCrea());
 				actividad.setCreacion(new Date());
+				actividad.setFin(Util.calculaFecha(new Date(), 10));
 				
 				actividadDAO.save(actividad);
 				

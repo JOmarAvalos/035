@@ -26,6 +26,7 @@ public class Actividad extends BaseEntity<Integer> {
 	private Integer idUsuarioModifica;
 	private Date creacion;
 	private Date modificacion;
+	private Date fin;
 	
 	
 	@Id
@@ -90,6 +91,21 @@ public class Actividad extends BaseEntity<Integer> {
 	}
 	public void setModificacion(Date modificacion) {
 		this.modificacion = modificacion;
+	}
+
+	/**
+	 * @return the fin
+	 */
+	@Column(name = "fch_fin")
+	public Date getFin() {
+		return fin;
+	}
+
+	/**
+	 * @param fin the fin to set
+	 */
+	public void setFin(Date fin) {
+		this.fin = fin;
 	}
 
 }

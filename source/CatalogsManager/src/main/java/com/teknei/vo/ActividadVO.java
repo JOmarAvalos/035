@@ -17,6 +17,7 @@ public class ActividadVO extends BaseVO implements Serializable {
 	private Integer idUsuarioModifica;
 	private Date creacion;
 	private Date modificacion;
+	private Date fin;
 
 	
 	public Integer getIdCuestionario() {
@@ -71,6 +72,18 @@ public class ActividadVO extends BaseVO implements Serializable {
 	}
 	public void setModificacion(Date modificacion) {
 		this.modificacion = modificacion;
+	}
+	/**
+	 * @return the fin
+	 */
+	public Date getFin() {
+		return fin;
+	}
+	/**
+	 * @param fin the fin to set
+	 */
+	public void setFin(Date fin) {
+		this.fin = fin;
 	}
 
 }

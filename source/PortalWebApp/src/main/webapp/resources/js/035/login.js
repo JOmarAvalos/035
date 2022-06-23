@@ -407,3 +407,32 @@ creaContrato = function(){
 goInfoHome = function(){
 	window.location = 'https://035.com.mx/';
 }
+
+validaPwd = function(){
+	
+	var regExpPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,}$/;
+	
+	datosPasswordValido = true;
+
+	if(!notNull($("#password"))){
+		datosPasswordValido = false;
+	}
+	
+	if(!notNull($("#passwordConf"))){
+		datosPasswordValido = false;
+	}else{
+		if ($("#passwordConf").val() != $("#password").val()) {
+			//pwds no coinciden
+			marcaRojo($("#passwordConf"));
+			datosPasswordValido = false;
+		} else {
+			eliminaMarcaRojo($("#datosPasswordValido"));
+		}
+	}
+	
+	if(datosPasswordValido){
+		$('#pwdForm').submit();
+	}else{
+		alert('se muuestra el error');
+	}
+}

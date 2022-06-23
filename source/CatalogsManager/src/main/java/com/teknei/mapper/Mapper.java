@@ -569,6 +569,7 @@ public class Mapper {
 		ac.setIdUsuarioModifica(a.getIdUsuarioModifica());
 		ac.setCreacion(a.getCreacion());
 		ac.setModificacion(a.getModificacion());
+		ac.setFin(a.getFin());
 
 		return ac;
 	}
@@ -587,6 +588,7 @@ public class Mapper {
 		a.setIdUsuarioModifica(ac.getIdUsuarioModifica());
 		a.setCreacion(ac.getCreacion());
 		a.setModificacion(ac.getModificacion());
+		a.setFin(ac.getFin());
 
 		return a;
 	}

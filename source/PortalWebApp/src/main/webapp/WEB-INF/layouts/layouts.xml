@@ -9,6 +9,8 @@
     
     <definition name="notFound" template="/WEB-INF/views/error/error.jsp" />
     
+    <definition name="confirmaPwd" template="/WEB-INF/views/capturaPwd.jsp" />
+    
     <definition name="home" template="/WEB-INF/views/admin/master.jsp">
         <put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/admin/menu.jsp" />

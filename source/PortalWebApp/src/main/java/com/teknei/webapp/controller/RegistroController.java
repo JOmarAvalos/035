@@ -112,8 +112,6 @@ public class RegistroController {
 			
 			String tmpPwd = Util.getTmpPwd(12);
 			
-			System.out.println("*********************Contraseña:"+tmpPwd);
-			
 			usuario.setContrasena(tmpPwd);
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String pwd = passwordEncoder.encode(usuario.getContrasena());
@@ -400,48 +398,77 @@ public class RegistroController {
 
 //			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
 			
-			return "redirect:/";
+			return "notFound";
 		} else {
 			UsuarioVO usuarioCorpVO = usersManager.getByUsrPwd(usuario, contrasena);
 			
 			try {
 				if(usuarioCorpVO != null) {
 					
-					if(usuarioCorpVO.getEstatus() == Constants.BAN_INACTIVO) {
-						usuarioCorpVO.setBanActivo(Constants.BAN_ACTIVO);
-						usuarioCorpVO.setEstatus(Constants.BAN_ACTIVO);
-						usuarioCorpVO = usersManager.updateUser(usuarioCorpVO);
-					}
-					
-					CentroTrabajoVO centro = centroTrabajoManager.getByUuario(usuarioCorpVO.getId());
-					
-					StringBuilder sb = new StringBuilder();
-					sb.append("https://app.035.com.mx/Admin035/cuestionarios?param=");
-					sb.append(URLEncoder.encode(centro.getIdCrypt(), StandardCharsets.UTF_8.toString()));
-					
-//					String url = sb.toString().replaceAll("+", "%2B");
-					envioCorreoPasos(usuarioCorpVO);
-					envioCorreoUrl(usuarioCorpVO, sb.toString());
-					
-
-					UserDetails userDetails = userDetailsService.loadUserByUsername(usuarioCorpVO.getUsuario());
-					RememberMeAuthenticationToken rememberMeAuthenticationToken = new RememberMeAuthenticationToken("remember_me", userDetails, userDetails.getAuthorities());
-					
-					rememberMeServices.loginSuccess(request, response, rememberMeAuthenticationToken);
-					
-					Authentication authenticatedUser = rememberMeAuthenticationToken;
-					
-					strategy.onAuthentication(authenticatedUser, request, response);
-					
-					SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
-					
-					return "redirect:/";
+					model.addAttribute("usr", usuario);
+					model.addAttribute("pwd", contrasena);
+					return "confirmaPwd";
 				}else {
-					return "redirect:/";
+					return "notFound";
 				}
 			} catch (Exception e) {
+				return "notFound";
+			}
+		}
+	}
+	
+	@RequestMapping(value = "/registro/confirmaContrasena", method = RequestMethod.POST)
+	public String concluyeRegistro(Model model, HttpServletRequest request, HttpServletResponse response) {
+
+		
+		String usuario = request.getParameter("iptHidenUsr");
+		String contrasena = request.getParameter("iptHidenPwd");
+		String contrasenaNew = request.getParameter("password");
+		
+		UsuarioVO usuarioCorpVO = usersManager.getByUsrPwd(usuario, contrasena);
+		
+		try {
+			if(usuarioCorpVO != null) {
+				
+				if(usuarioCorpVO.getEstatus() == Constants.BAN_INACTIVO) {
+					
+					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+					String pwd = passwordEncoder.encode(contrasenaNew);
+
+					usuarioCorpVO.setBanActivo(Constants.BAN_ACTIVO);
+					usuarioCorpVO.setEstatus(Constants.BAN_ACTIVO);
+					usuarioCorpVO.setContrasena(pwd);
+					
+					usuarioCorpVO = usersManager.updateUser(usuarioCorpVO);
+				}
+				
+				CentroTrabajoVO centro = centroTrabajoManager.getByUuario(usuarioCorpVO.getId());
+				
+				StringBuilder sb = new StringBuilder();
+				sb.append("https://app.035.com.mx/Admin035/cuestionarios?param=");
+				sb.append(URLEncoder.encode(centro.getIdCrypt(), StandardCharsets.UTF_8.toString()));
+				
+				envioCorreoPasos(usuarioCorpVO);
+				envioCorreoUrl(usuarioCorpVO, sb.toString());
+				
+
+				UserDetails userDetails = userDetailsService.loadUserByUsername(usuarioCorpVO.getUsuario());
+				RememberMeAuthenticationToken rememberMeAuthenticationToken = new RememberMeAuthenticationToken("remember_me", userDetails, userDetails.getAuthorities());
+				
+				rememberMeServices.loginSuccess(request, response, rememberMeAuthenticationToken);
+				
+				Authentication authenticatedUser = rememberMeAuthenticationToken;
+				
+				strategy.onAuthentication(authenticatedUser, request, response);
+				
+				SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
+				
+				return "redirect:/";
+			}else {
 				return "redirect:/";
 			}
+		} catch (Exception e) {
+			return "redirect:/";
 		}
 	}
 	
