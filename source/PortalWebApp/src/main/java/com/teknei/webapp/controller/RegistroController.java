@@ -44,6 +44,7 @@ import java.io.FileOutputStream;
 import org.apache.commons.io.IOUtils;
 
 import com.teknei.admin.bsn.CentroTrabajoManager;
+import com.teknei.admin.bsn.CuestionariosManager;
 import com.teknei.security.bsn.UsersManager;
 import com.teknei.util.Constants;
 import com.teknei.util.Util;
@@ -61,6 +62,8 @@ public class RegistroController {
 	private UsersManager usersManager;
 	@Autowired
 	private CentroTrabajoManager centroTrabajoManager;
+	@Autowired
+	private CuestionariosManager cuestionariosManager;
 	
 	@Autowired
 	CompositeSessionAuthenticationStrategy strategy;
@@ -487,10 +490,24 @@ public class RegistroController {
 
 				// Se crea el archivo temporal
 				File file = new File("Cuestionarios.xlsx");
+			
+				int rowCount = 0;
 				
+				// Se crea la lista de contenido de la hoja
+				List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo1Descarga(id);
+				//List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo2Descarga(id);
+				//List<String[]> lineasDSC = cuestionariosManager.getCuestionarioTipo3Descarga(id);
 				
-				
-				
+				for (String[] linea : lineasDSC) {
+					Row row = sheet.createRow(rowCount++);
+					int columnCount = 0;
+					for (String field : linea) {
+						Cell cell = row.createCell(columnCount++);
+						if (field instanceof String) {
+							cell.setCellValue((String) field);
+						}
+					}
+				}
 				
 				FileOutputStream outputStream = new FileOutputStream(file);
 				workbook.write(outputStream);

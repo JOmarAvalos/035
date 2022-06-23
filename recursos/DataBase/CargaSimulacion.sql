@@ -346,3 +346,13 @@ INSERT INTO desarrollo.tbl_preguntas_resueltas (id_actividad_resuelta, id_pregun
   VALUES (9, 6, 12, '', now()); 
 INSERT INTO desarrollo.tbl_preguntas_resueltas (id_actividad_resuelta, id_pregunta, id_respuesta, respuesta_abierta, fch_creacion) 
   VALUES (10, 6, 12, '', now()); 
+
+
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Agricultura, ganadería, pesca, minería', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Comercio mayorista, detallista, distribución', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Industria (textil, química, transformación, metal mecánica, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Servicios (comunicación, logística, transporte, financieros, salud, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Academia desde preescolar hasta postgrado, cursos, idiomas, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Otros', 1);
+
+

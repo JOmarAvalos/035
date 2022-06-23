@@ -17,5 +17,9 @@ public interface CuestionariosManager {
 	ActividadResueltaVO endActividadResuelta(Integer id);
 	
 	int cuestionariosResueltos();
+	
+	List<String[]> getCuestionarioTipo1Descarga(Integer id);
+	List<String[]> getCuestionarioTipo2Descarga(Integer id);
+	List<String[]> getCuestionarioTipo3Descarga(Integer id);
 
 }

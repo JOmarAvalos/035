@@ -241,6 +241,11 @@ descargaCuestionarios = function(){
 	window.open(urltxt, '_blank');
 }
 
+descargaCuestionariosV2 = function(id){
+	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+id; 
+	window.open(urltxt, '_blank');
+}
+
 descargaResultados = function(){
 	var urltxt = ctx + '/carriito/descargaInforme'; 
 	window.open(urltxt, '_blank');
