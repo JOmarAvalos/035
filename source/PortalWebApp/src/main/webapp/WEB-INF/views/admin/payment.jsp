@@ -344,23 +344,33 @@ a.button.disabled {
     font-weight: 400;
     margin: 0;
 }
+
+.card-expl div.resumeTranns {
+    margin-left: 30px;
+}
+
 </style>
 </head>
 <body>
  <div class="row" id="divPago" >
-    <div class="col-md-3">
-    		<h1>Informaci&oacute;n de pago</h1>
-    		<h3>Concepto:</h3>
-    		<h4>Compra de servicio NOM035</h4>
-    		<h3>Importe:</h3>
-    		<h1>$ ${totalCarrito}.00</h1>
-    		
-    </div>
-    <div class="col-md-6">
     <div class="bkng-tb-cntnt">
         <div class="pymnts">
             <form action="javascript:realizaPago();" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
+                <div class="pymnt-itm card active">
+                    <h2>Resumen de la transacci&oacute;n</h2>
+                    <div class="pymnt-cntnt">
+                      <div class="card-expl">
+                          <div class="resumeTranns"><h4>Concepto: </h4>
+                            <br>Compra de servicio NOM035
+                            <br>
+                            <br><h4>Importe: </h4>
+                            <br>$ ${totalCarrito}.00
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
                 <div class="pymnt-itm card active">
                     <h2>Tarjeta de crédito o débito</h2>
                     <div class="pymnt-cntnt">
@@ -395,7 +405,6 @@ a.button.disabled {
                 </div>
             </form>
         </div>
-    </div>
     </div>
     </div>
     

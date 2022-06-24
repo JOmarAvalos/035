@@ -304,7 +304,8 @@ public class RegistroController {
 			String shtml = "";
 
 			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
-					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(generaLink(user)));
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(generaLink(user)))
+					.replaceAll(Pattern.quote("{numContrato}"), user.getUsuario());
 
 			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
 		} catch (IOException e) {

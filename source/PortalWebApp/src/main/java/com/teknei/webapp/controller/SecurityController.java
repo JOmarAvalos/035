@@ -216,6 +216,7 @@ public class SecurityController {
 						productosEntregados.add(producto);
 					}
 				}
+				model.addAttribute(ATTR_USUARIO, usuarioVO);
 				model.addAttribute(ATTR_PRODUCTOS_COMPRADOS, productosComprados);
 				model.addAttribute(ATTR_PRODUCTOS_ENTREGADOS, productosEntregados);
 				model.addAttribute(ATTR_PRODUCTOS_SIN_COMPRA, productosSinCompra);

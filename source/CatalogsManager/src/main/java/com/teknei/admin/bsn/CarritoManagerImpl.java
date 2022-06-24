@@ -9,14 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.teknei.admin.dao.CentroTrabajoDAO;
 import com.teknei.admin.dao.CuestionarioDAO;
 import com.teknei.admin.dao.ProductoCompradoDAO;
 import com.teknei.admin.dao.ProductoDAO;
+import com.teknei.admin.dao.UserDAO;
 import com.teknei.entity.ProductoComprado;
 import com.teknei.mapper.Mapper;
+import com.teknei.vo.CentroTrabajoVO;
 import com.teknei.vo.CuestionarioVO;
 import com.teknei.vo.ProductoCompradoVO;
 import com.teknei.vo.ProductoVO;
+import com.teknei.vo.UsuarioVO;
 
 
 @Service
@@ -31,6 +35,10 @@ public class CarritoManagerImpl implements CarritoManager {
 	private ProductoCompradoDAO productoCompradoDAO;
 	@Autowired
 	private CuestionarioDAO cuestionarioDAO;
+	@Autowired
+	private CentroTrabajoDAO centroTrabajoDAO;
+	@Autowired
+	private UserDAO userDAO;
 	
 	
 	@Override
@@ -78,8 +86,14 @@ public class CarritoManagerImpl implements CarritoManager {
 			ProductoVO producto = Mapper.toVO(productoDAO.find(prodC.getIdProducto()));
 			CuestionarioVO cuestionario = Mapper.toVO(cuestionarioDAO.find(producto.getIdCuestionario()));
 			
+			CentroTrabajoVO centro = Mapper.toVO(centroTrabajoDAO.find(vo.getIdCentroTrabajo()));
+			UsuarioVO usuario = Mapper.toVO(userDAO.find(centro.getIdUsuario()));
+			
+			
 			producto.setCuestionarioVO(cuestionario);
 			vo.setProductoVO(producto);
+			usuario.setCentroTrabajoVO(centro);
+			vo.setUsuario(usuario);
 			
 			resp.add(vo);
 		}

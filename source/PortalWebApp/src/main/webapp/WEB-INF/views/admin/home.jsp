@@ -41,7 +41,7 @@
 	                            ${countUsers}
 	                        </h3>
 	                        <p>
-	                            Usuarios registrados
+	                            Contratos registrados
 	                        </p>
 	                    </div>
 	                    <div class="icon">
@@ -57,7 +57,7 @@
 	                            $${countVentas}
 	                        </h3>
 	                        <p>
-	                            Ventas
+	                            Ventas totales
 	                        </p>
 	                    </div>
 	                    <div class="icon">
@@ -73,12 +73,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosComprados}">
-		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                     <table id="tblProductosComprados" class="table table-bordered table-striped">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
+										<th>Contrato</th>
+										<th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -87,11 +89,13 @@
 								        <c:forEach items="${productosComprados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
-				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();"><i class="fa fa-fw fa-upload fa-4x"></i><br>Subir respuesta</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+												<td>${producto.usuario.usuario}</td>
+												<td>${producto.usuario.email}</td>
 				                                 <td>$${producto.productoVO.precio}</td>
 				                                 <td>Comprado/Pendiene de respuesta</td>
 				                             </tr>
@@ -115,12 +119,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosEntregados}">
-		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                     <table id="tblProductosRepondidos" class="table table-bordered table-striped">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
+										<th>Contrato</th>
+										<th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -129,17 +135,19 @@
 								        <c:forEach items="${productosEntregados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
-				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Subir respuesta</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-fw fa-upload fa-4x"></i><br>Actualizar respuesta</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+												<td>${producto.usuario.usuario}</td>
+												<td>${producto.usuario.email}</td>
 				                                 <td>$${producto.productoVO.precio}</td>
 				                                 <td>
 				                                 	<c:if test="${producto.idCompraEstatus == 4}">
 				                                 		Descarga pendiente
 				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 4}">
+				                                 	<c:if test="${producto.idCompraEstatus == 5}">
 				                                 		Descargado
 				                                 	</c:if>
 				                                 </td>
@@ -164,12 +172,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosSinCompra}">
-		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                     <table id="tblProductosPend" class="table table-bordered table-striped">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
+										<th>Contrato</th>
+										<th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -180,11 +190,13 @@
 				                                 <td>
                                           <a href="#" onclick="descargaCuestionarios()" title="Descargar cuestionarios">
                                             <i class="fa fa-fw fa-download fa-4x"></i>
-                                            <br>Descargar cuestonarios
+                                            <br>Descargar base de datos
                                           </a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+												<td>${producto.usuario.usuario}</td>
+												<td>${producto.usuario.email}</td>
 				                                 <td>$${producto.productoVO.precio}</td>
 				                                 <td>Disponible</td>
 				                             </tr>
@@ -647,6 +659,42 @@
                     "bFilter": false,
                     "bSort": false,
                     "bInfo": false,
+                    "bAutoWidth": true,
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
+                    }
+                });
+                
+                $('#tblProductosComprados').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": false,
+                    "bInfo": true,
+                    "bAutoWidth": true,
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
+                    }
+                });
+
+                $('#tblProductosRepondidos').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": false,
+                    "bInfo": true,
+                    "bAutoWidth": true,
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
+                    }
+                });
+
+                $('#tblProductosPend').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": false,
+                    "bInfo": true,
                     "bAutoWidth": true,
                     "language": {
                         "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
