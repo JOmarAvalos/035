@@ -20,5 +20,5 @@ public class CentroTrabajoDAOImpl extends HibernateBaseDAO<Integer,CentroTrabajo
 		query.setParameter("idUsuario", idUsuario);
 		return (CentroTrabajo) query.uniqueResult();
 	}
-
+ 
 }

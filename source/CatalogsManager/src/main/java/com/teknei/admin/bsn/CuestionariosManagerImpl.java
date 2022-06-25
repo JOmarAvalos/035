@@ -11,22 +11,29 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.teknei.admin.dao.ActividadDAO;
 import com.teknei.admin.dao.ActividadResueltaDAO;
+import com.teknei.admin.dao.CentroTrabajoDAO;
 import com.teknei.admin.dao.CuestionarioDAO;
+import com.teknei.admin.dao.GiroDAO;
 import com.teknei.admin.dao.PreguntaDAO;
 import com.teknei.admin.dao.PreguntaResueltaDAO;
 import com.teknei.admin.dao.RespuestaDAO;
+import com.teknei.admin.dao.UserDAO;
 import com.teknei.entity.ActividadResuelta;
 import com.teknei.entity.Cuestionario;
 import com.teknei.entity.Pregunta;
 import com.teknei.entity.PreguntaResuelta;
 import com.teknei.entity.Respuesta;
+import com.teknei.entity.Usuario;
 import com.teknei.mapper.Mapper;
 import com.teknei.vo.ActividadResueltaVO;
 import com.teknei.vo.ActividadVO;
+import com.teknei.vo.CentroTrabajoVO;
 import com.teknei.vo.CuestionarioVO;
+import com.teknei.vo.GiroVO;
 import com.teknei.vo.PreguntaResueltaVO;
 import com.teknei.vo.PreguntaVO;
 import com.teknei.vo.RespuestaVO;
+import com.teknei.vo.UsuarioVO;
 
 @Service
 @Transactional
@@ -46,6 +53,13 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 	private ActividadResueltaDAO actividadResueltaDAO;
 	@Autowired
 	private PreguntaResueltaDAO preguntaResueltaDAO;
+	@Autowired
+	private CentroTrabajoDAO centroTrabajoDAO;
+	@Autowired
+	private UserDAO userDAO;
+	@Autowired
+	private GiroDAO giroDAO;
+	
 	
 
 	@Override
@@ -201,7 +215,6 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		header2[30]  = "Num de contrato";
 		header2[31]  = "Giro del centro de trabajo";
 		header2[32]  = "Tamaño del centro de trabajo";
-		header2[33]  = "Nombre del depto donde trabaja";
 		resp.add(header2);
 		
 		
@@ -255,17 +268,32 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 				}
 				
 				columna++;
-				linea[columna] = "XXX";
+				
+				
+				// Clave del cuestionario
+				linea[columna] = Integer.toString(idCuestionario);
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Alias del centro de trabajo
+				CentroTrabajoVO centroTrabajo = Mapper.toVO(centroTrabajoDAO.find(idCentroTrabajo));
+				linea[columna] = centroTrabajo.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Num de contrato
+				Integer idUsuario = centroTrabajo.getIdUsuario();
+				Usuario usuario = userDAO.getUser(idUsuario);
+				linea[columna] = usuario.getUsuario();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Giro del centro de trabajo
+				Integer idGiro = centroTrabajo.getIdGiro();
+				GiroVO giro = Mapper.toVO(giroDAO.find(idGiro));
+				linea[columna] = giro.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Tamaño del centro de trabajo
+				linea[columna] = Integer.toString(centroTrabajo.getEmpleadoNumero());
 				columna++;
-				linea[columna] = "XXX";
 				
 				resp.add(linea);
 			}
@@ -411,17 +439,32 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 				}
 				
 				columna++;
-				linea[columna] = "XXX";
+				
+				
+				// Clave del cuestionario
+				linea[columna] = Integer.toString(idCuestionario);
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Alias del centro de trabajo
+				CentroTrabajoVO centroTrabajo = Mapper.toVO(centroTrabajoDAO.find(idCentroTrabajo));
+				linea[columna] = centroTrabajo.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Num de contrato
+				Integer idUsuario = centroTrabajo.getIdUsuario();
+				Usuario usuario = userDAO.getUser(idUsuario);
+				linea[columna] = usuario.getUsuario();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Giro del centro de trabajo
+				Integer idGiro = centroTrabajo.getIdGiro();
+				GiroVO giro = Mapper.toVO(giroDAO.find(idGiro));
+				linea[columna] = giro.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Tamaño del centro de trabajo
+				linea[columna] = Integer.toString(centroTrabajo.getEmpleadoNumero());
 				columna++;
-				linea[columna] = "XXX";
 				
 				resp.add(linea);
 			}
@@ -599,17 +642,32 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 				}
 				
 				columna++;
-				linea[columna] = "XXX";
+				
+				
+				// Clave del cuestionario
+				linea[columna] = Integer.toString(idCuestionario);
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Alias del centro de trabajo
+				CentroTrabajoVO centroTrabajo = Mapper.toVO(centroTrabajoDAO.find(idCentroTrabajo));
+				linea[columna] = centroTrabajo.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Num de contrato
+				Integer idUsuario = centroTrabajo.getIdUsuario();
+				Usuario usuario = userDAO.getUser(idUsuario);
+				linea[columna] = usuario.getUsuario();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Giro del centro de trabajo
+				Integer idGiro = centroTrabajo.getIdGiro();
+				GiroVO giro = Mapper.toVO(giroDAO.find(idGiro));
+				linea[columna] = giro.getNombre();
 				columna++;
-				linea[columna] = "XXX";
+				
+				// Tamaño del centro de trabajo
+				linea[columna] = Integer.toString(centroTrabajo.getEmpleadoNumero());
 				columna++;
-				linea[columna] = "XXX";
 				
 				resp.add(linea);
 			}
