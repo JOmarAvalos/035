@@ -89,9 +89,9 @@
 								class="form-control" placeholder="Confirma Email" />
 						</div>
 						<div class="form-group">
-							<label for="centro">Centro de trabajo:</label>
+							<label for="centro">Alias del dentro de trabajo:</label>
 							<input type="text" id="centroNombre" name="centroNombre"
-								class="form-control" placeholder="Centro de trabajo"  />
+								class="form-control" placeholder="Alias del centro de trabajo"  />
 						</div>
 						<div class="form-group">
 							<label for="centro">Nombre de contacto del centro de trabajo:</label>
@@ -99,8 +99,8 @@
 								class="form-control" placeholder="Nombre completo"  />
 						</div>
 						<div class="form-group">
-							<label for="centro">Tama&ntilde;o del centro de trabajo:</label>
-							<input type="number" id="centroTamanio" name="centroTamanio" class="form-control" placeholder="Tama&ntilde;o del centro de trabajo"  min="0" />
+							<label for="centro">Número de empleados del centro de trabajo:</label>
+							<input type="number" id="centroTamanio" name="centroTamanio" class="form-control" placeholder="Número de empleados del centro de trabajo"  min="0" />
 						</div>
 						<div class="form-group">
 							<label for="">Giro</label> 

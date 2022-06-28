@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <script src="<c:url value='/resources/js/035/home.js' />" type="text/javascript"></script>
 
@@ -54,7 +55,8 @@
 	                <div class="small-box bg-yellow">
 	                    <div class="inner">
 	                        <h3>
-	                            $${countVentas}
+	                        	<fmt:setLocale value="es_MX" scope="session"/>
+                    			<fmt:formatNumber value = "${countVentas}" type = "number" pattern = "$##,##0"/>
 	                        </h3>
 	                        <p>
 	                            Ventas totales
@@ -73,14 +75,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosComprados}">
-		                     <table id="tblProductosComprados" class="table table-bordered table-striped">
+		                     <table id="tblProductosComprados" class="display nowrap">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
-										<th>Contrato</th>
-										<th>Contacto</th>
+										 <th>Contrato</th>
+										 <th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -94,9 +96,12 @@
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												<td>${producto.usuario.usuario}</td>
-												<td>${producto.usuario.email}</td>
-				                                 <td>$${producto.productoVO.precio}</td>
+												 <td>${producto.usuario.usuario}</td>
+												 <td>${producto.usuario.email}</td>
+				                                 <td>
+								                    <fmt:setLocale value="es_MX" scope="session"/>
+								                    <fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
+								                 </td>
 				                                 <td>Comprado/Pendiene de respuesta</td>
 				                             </tr>
 								        </c:forEach>
@@ -119,14 +124,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosEntregados}">
-		                     <table id="tblProductosRepondidos" class="table table-bordered table-striped">
+		                     <table id="tblProductosRepondidos" class="display nowrap">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
-										<th>Contrato</th>
-										<th>Contacto</th>
+										 <th>Contrato</th>
+										 <th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -140,9 +145,12 @@
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												<td>${producto.usuario.usuario}</td>
-												<td>${producto.usuario.email}</td>
-				                                 <td>$${producto.productoVO.precio}</td>
+												 <td>${producto.usuario.usuario}</td>
+												 <td>${producto.usuario.email}</td>
+				                                 <td>
+				                                 	<fmt:setLocale value="es_MX" scope="session"/>
+                     								<fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
+				                                 </td>
 				                                 <td>
 				                                 	<c:if test="${producto.idCompraEstatus == 4}">
 				                                 		Descarga pendiente
@@ -172,14 +180,14 @@
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty productosSinCompra}">
-		                     <table id="tblProductosPend" class="table table-bordered table-striped">
+		                     <table id="tblProductosPend" class="display nowrap"">
 		                         <thead>
 		                             <tr>
 		                                 <th>Descargar</th>
 		                                 <th>Producto</th>
 		                                 <th>Cuestionario</th>
-										<th>Contrato</th>
-										<th>Contacto</th>
+										 <th>Contrato</th>
+										 <th>Contacto</th>
 		                                 <th>Precio</th>
 		                                 <th>Estatus</th>
 		                             </tr>
@@ -195,9 +203,12 @@
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												<td>${producto.usuario.usuario}</td>
-												<td>${producto.usuario.email}</td>
-				                                 <td>$${producto.productoVO.precio}</td>
+												 <td>${producto.usuario.usuario}</td>
+												 <td>${producto.usuario.email}</td>
+				                                 <td>
+				                                 	<fmt:setLocale value="es_MX" scope="session"/>
+                     								<fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
+				                                 </td>
 				                                 <td>Disponible</td>
 				                             </tr>
 								        </c:forEach>
@@ -279,13 +290,21 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="">Alias</label> 
-												<input type="text" id="iptNombreCentro" class="form-control" placeholder="Alias"  maxlength="30" value="${centro.nombre}">
+												<input type="text" id="iptNombreCentro" class="form-control" placeholder="Alias"  maxlength="30" 
+												<c:if test="${not empty centro}">
+													readonly="readonly"
+                        						</c:if>
+												value="${centro.nombre}">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="">Giro</label> 
-												<select class="form-control" id="selectGiroCentro">
+												<select class="form-control" id="selectGiroCentro" 
+													<c:if test="${not empty centro}">
+														readonly="readonly"
+	                        						</c:if>
+												>
 													<option value="0">Seleccione...</option>
 													<c:if test="${not empty lstGiro}">
 														<c:forEach items="${lstGiro}" var="giro">
@@ -302,7 +321,6 @@
 															</c:if>
 														</c:forEach>
 													</c:if>
-		
 												</select>
 											</div>
 										</div>
@@ -321,7 +339,11 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label for="">Estado</label> 
-												<select required class="form-control" id="selectEstadoCentro" >
+												<select required class="form-control" id="selectEstadoCentro" 
+													<c:if test="${not empty centro}">
+														readonly="readonly"
+	                        						</c:if>
+												>
 													<option value="0">Seleccione...</option>
 													<c:if test="${not empty lstEstados}">
 														<c:forEach items="${lstEstados}" var="estado">
@@ -453,12 +475,15 @@
 			                 		</div>
 			                 	</div>
 			                 	<br>
-			                     <table id="tblCuestionarios" class="table table-bordered table-striped">
+			                 	
+			                 	
+			                 	
+			                     <table id="tblCuestionarios" class="display nowrap">
 			                         <thead>
 			                             <tr>
 			                                 <th>Descargar evaluaciones/cuestionarios</th>
 			                                 <th>Nombre del cuestionario</th>
-			                                 <th># cuesionarios respondidos</th>
+			                                 <th># Cuestionarios respondidos</th>
 			                             </tr>
 			                         </thead>
 			                         <tbody>
@@ -475,6 +500,9 @@
 			                         	</c:if>
 			                         </tbody>
 			                     </table>
+			                     
+			                     
+			                     
 		                 	</c:if>
 		                 	<c:if test="${empty centro}">
 		                 		<h3 class="box-title">Para poder ver las evaluaciones desponibles es necesario actualizar la informaci&oacute;n de tu centro de trabajo</h3>
@@ -491,7 +519,7 @@
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty centro}">
 		                     <h3 class="box-title">Puedes comprar el resultado de las evaluaciones en cualquier momento</h3>                                    
-		                     <table id="tblProductos" class="table table-bordered table-striped">
+		                     <table id="tblProductos" class="display nowrap">
 		                         <thead>
 		                             <tr>
 		                                 <th>Comprar/Descargar</th>
@@ -518,7 +546,10 @@
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-				                                 <td>$${producto.productoVO.precio}</td>
+				                                 <td>
+					                                 <fmt:setLocale value="es_MX" scope="session"/>
+	         										 <fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
+				                                 </td>
 				                                 <td>
 				                                 	<c:if test="${producto.idCompraEstatus == 1 }">
 					                                 	Disponible
@@ -639,69 +670,99 @@
 
 
 <script type="text/javascript">
-            $(function() {
-                
-                $('#tblCuestionarios').dataTable({
-                    "bPaginate": false,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "bInfo": false,
-                    "bAutoWidth": true,
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
-                    }
-                });
-                
-                $('#tblProductos').dataTable({
-                    "bPaginate": false,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "bInfo": false,
-                    "bAutoWidth": true,
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
-                    }
-                });
-                
-                $('#tblProductosComprados').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "bInfo": true,
-                    "bAutoWidth": true,
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
-                    }
-                });
 
-                $('#tblProductosRepondidos').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "bInfo": true,
-                    "bAutoWidth": true,
+            $(document).ready(function() {
+            	
+                $('#tblCuestionarios').DataTable( {
+                    "dom": '<"top">Brtl<"bottom"p><"clear">',
+                    buttons: [
+                        'excel'
+                    ],
+                    "ordering": false,
                     "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
+                        "info":         "Mostrando pagina _PAGE_ de _PAGES_",
+                        "lengthMenu":   "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first":    "Primera",
+                            "last":     "Ultima",
+                            "next":     "Siguiente",
+                            "previous": "Anterior"
+                        },
                     }
-                });
-
-                $('#tblProductosPend').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": false,
-                    "bInfo": true,
-                    "bAutoWidth": true,
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json" 
-                    }
-                });
+                } );
                 
-            });
+                $('#tblProductos').DataTable( {
+                    "dom": '<"top">Brtl<"bottom"p><"clear">',
+                    buttons: [
+                        'excel'
+                    ],
+                    "ordering": false,
+                    "language": {
+                        "info":         "Mostrando pagina _PAGE_ de _PAGES_",
+                        "lengthMenu":   "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first":    "Primera",
+                            "last":     "Ultima",
+                            "next":     "Siguiente",
+                            "previous": "Anterior"
+                        },
+                    }
+                } );
+                
+                $('#tblProductosComprados').DataTable( {
+                    "dom": '<"top">Brtl<"bottom"p><"clear">',
+                    buttons: [
+                        'excel'
+                    ],
+                    "ordering": false,
+                    "language": {
+                        "info":         "Mostrando pagina _PAGE_ de _PAGES_",
+                        "lengthMenu":   "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first":    "Primera",
+                            "last":     "Ultima",
+                            "next":     "Siguiente",
+                            "previous": "Anterior"
+                        },
+                    }
+                } );
+                
+                $('#tblProductosRepondidos').DataTable( {
+                    "dom": '<"top">Brtl<"bottom"p><"clear">',
+                    buttons: [
+                        'excel'
+                    ],
+                    "ordering": false,
+                    "language": {
+                        "info":         "Mostrando pagina _PAGE_ de _PAGES_",
+                        "lengthMenu":   "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first":    "Primera",
+                            "last":     "Ultima",
+                            "next":     "Siguiente",
+                            "previous": "Anterior"
+                        },
+                    }
+                } );
+                
+                $('#tblProductosPend').DataTable( {
+                    "dom": '<"top">Brtl<"bottom"p><"clear">',
+                    buttons: [
+                        'excel'
+                    ],
+                    "ordering": false,
+                    "language": {
+                        "info":         "Mostrando pagina _PAGE_ de _PAGES_",
+                        "lengthMenu":   "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first":    "Primera",
+                            "last":     "Ultima",
+                            "next":     "Siguiente",
+                            "previous": "Anterior"
+                        },
+                    }
+                } );
+                
+            } );
+            
         </script>
-
-

@@ -386,7 +386,6 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		header2[57]  = "Num de contrato";
 		header2[58]  = "Giro del centro de trabajo";
 		header2[59]  = "Tamaño del centro de trabajo";
-		header2[60]  = "Nombre del depto donde trabaja";
 		resp.add(header2);
 		
 		ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentroTrabajo, idCuestionario));
@@ -589,7 +588,6 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		header2[83]  = "Num de contrato";
 		header2[84]  = "Giro del centro de trabajo";
 		header2[85]  = "Tamaño del centro de trabajo";
-		header2[86]  = "Nombre del depto donde trabaja";
 		resp.add(header2);
 		
 		ActividadVO actividadVO = Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentroTrabajo, idCuestionario));
