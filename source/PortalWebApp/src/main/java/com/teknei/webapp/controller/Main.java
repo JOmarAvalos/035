@@ -25,8 +25,8 @@ public class Main {
 	public static void main(String[] args) {
 		try  {  
 //			compareDates();
-			encriptaPwd();
-//			compareContrasenia();
+//			encriptaPwd();
+			compareContrasenia();
 
 		}  
 		catch(Exception e)  {  
@@ -36,14 +36,14 @@ public class Main {
 	
 	private static void encriptaPwd(){
 		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		 String pwd = passwordEncoder.encode("12345");
+		 String pwd = passwordEncoder.encode("agregar3Espacios");
 		 System.out.println(pwd);
 	}
 	
 	private static void compareContrasenia() {
 //		String encoded = "$2a$10$C0If2Mg1hpoqEIliV7qJauesutIYnr.PWMC/zJKTS4O";
-		String encoded = "$2a$10$C0If2Mg1hpoqEIliV7qJauesutIYnr.PWMC/zJKTS4Obl1FiYmN1q";
-		String decoded = "30048412891";
+		String encoded = "$2a$10$aZgpupIT7GHELjUaV84bOOEIYpYW28.XCAwbb45S//a5MLnUjPj4e";
+		String decoded = "agregar3Espacios";
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		
 		if(passwordEncoder.matches(decoded, encoded)) {

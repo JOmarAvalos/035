@@ -62,7 +62,9 @@ realizaPago = function(){
 	$.ajax({
 		type : "POST",
 		url : urltxt,
-		contentType : "application/json",
+		contentType : false,
+		processData : false,
+		data : new FormData(document.getElementById("payment-form")),
 		async:false,
 		beforeSend : function() {
 			$("#wait").css("display", "block");
@@ -357,6 +359,7 @@ a.button.disabled {
         <div class="pymnts">
             <form action="javascript:realizaPago();" method="POST" id="payment-form">
                 <input type="hidden" name="token_id" id="token_id">
+                <input type="hidden" name="monto" id="monto" value="${totalCarrito}">
                 <div class="pymnt-itm card active">
                     <h2>Resumen de la transacci&oacute;n</h2>
                     <div class="pymnt-cntnt">
@@ -380,19 +383,19 @@ a.button.disabled {
                         </div>
                         <div class="sctn-row">
                             <div class="sctn-col l">
-                                <label>Nombre del titular</label><input type="text" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name">
+                                <label>Nombre del titular</label><input type="text" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name" name="holder_name">
                             </div>
                             <div class="sctn-col">
-                                <label>Número de tarjeta</label><input type="text" autocomplete="off" data-openpay-card="card_number"></div>
+                                <label>Número de tarjeta</label><input type="text" autocomplete="off" data-openpay-card="card_number" name="card_number"></div>
                             </div>
                             <div class="sctn-row">
                                 <div class="sctn-col l">
                                     <label>Fecha de expiración</label>
-                                    <div class="sctn-col half l"><input type="text" placeholder="Mes" data-openpay-card="expiration_month"></div>
-                                    <div class="sctn-col half l"><input type="text" placeholder="Año" data-openpay-card="expiration_year"></div>
+                                    <div class="sctn-col half l"><input type="text" placeholder="Mes" data-openpay-card="expiration_month" name="expiration_month"></div>
+                                    <div class="sctn-col half l"><input type="text" placeholder="Año" data-openpay-card="expiration_year" name="expiration_year"></div>
                                 </div>
                                 <div class="sctn-col cvv"><label>Código de seguridad</label>
-                                    <div class="sctn-col half l"><input type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2"></div>
+                                    <div class="sctn-col half l"><input type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2" name="cvv2"></div>
                                 </div>
                             </div>
                             <div class="openpay"><div class="logo">Transacciones realizadas vía:</div>

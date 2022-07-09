@@ -1,5 +1,6 @@
 package com.teknei.webapp.controller;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +32,14 @@ import com.teknei.vo.EstadoRepublicaVO;
 import com.teknei.vo.GiroVO;
 import com.teknei.vo.ProductoCompradoVO;
 import com.teknei.vo.UsuarioVO;
+
+import mx.openpay.client.Address;
+import mx.openpay.client.Card;
+import mx.openpay.client.Charge;
+import mx.openpay.client.Customer;
+import mx.openpay.client.core.OpenpayAPI;
+import mx.openpay.client.core.requests.RequestBuilder;
+import mx.openpay.client.core.requests.transactions.CreateCardChargeParams;
 
 @Controller
 public class CarritoController {
@@ -103,6 +112,7 @@ public class CarritoController {
 	
 	
 	
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/carrito/pagoSimulado", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Object> simulaPago(Model model, HttpServletRequest request) {
@@ -115,22 +125,75 @@ public class CarritoController {
 				UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
 
 				UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
-				String referencia = null;
 				
-				List<ProductoCompradoVO> productosAll = carritoManager.getCarritoByidUsuario(usuarioVO.getId());
-				for(ProductoCompradoVO producto: productosAll) {
-					if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO){
-						producto.setIdCompraEstatus(Constants.ID_PRODUCTO_COMPRADO);
-						producto.setNumeroReferenciaPago(producto.getIdCrypt());
-						producto.setIdUsuarioModifica(null);
-						producto.setModificacion(new Date());
-						producto = carritoManager.save(producto);
-						referencia = producto.getIdCrypt();
+//				String tarjeta = request.getParameter("card_number");
+//				String nombre = request.getParameter("holder_name");
+//				Integer anio = Integer.valueOf(request.getParameter("expiration_year"));
+//				Integer mes = Integer.valueOf(request.getParameter("expiration_month"));
+//				String cvv = request.getParameter("cvv2");
+//				String monto = request.getParameter("monto");
+				String sessionId = request.getParameter("deviceIdHiddenFieldName");
+				String token = request.getParameter("token_id");
+				
+				System.out.println("******************************");
+//				System.out.println(tarjeta);
+//				System.out.println(nombre);
+//				System.out.println(anio);
+//				System.out.println(mes);
+//				System.out.println(cvv);
+//				System.out.println(monto);
+				System.out.println(sessionId);
+				System.out.println(token);
+				System.out.println("******************************");
+				
+				
+				
+				OpenpayAPI api = new OpenpayAPI("https://sandbox-api.openpay.mx", "sk_61d6b63daefb41caa4b5d5a1d3b095b7", "ms7xebg9txnc6i3bbw4p");
+				
+				Customer customer = api.customers().create(new Customer()
+				        .name("John")
+				        .lastName("Doe")
+				        .email("johndoe@example.com")
+//				        .phoneNumber("554-170-3567")
+//				        .address(address)
+				        );
+				
+				CreateCardChargeParams requestB = new CreateCardChargeParams();
+				
+				requestB.cardId(token); // =source_id
+				requestB.amount(new BigDecimal("100.00"));
+				requestB.currency("MXN");
+				requestB.description("Cargo inicial a mi merchant");
+				requestB.orderId("oid-00");
+				requestB.deviceSessionId(sessionId);
+				requestB.customer(customer);
+
+				Charge charge = api.charges().createCharge(requestB);
+				
+				System.out.println(charge.getStatus());
+				System.out.println(charge.getAuthorization());
+				
+				String referencia = "";
+				
+				
+				if(charge.getStatus().equalsIgnoreCase("completed")) {
+					List<ProductoCompradoVO> productosAll = carritoManager.getCarritoByidUsuario(usuarioVO.getId());
+					for(ProductoCompradoVO producto: productosAll) {
+						if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO){
+							producto.setIdCompraEstatus(Constants.ID_PRODUCTO_COMPRADO);
+							producto.setNumeroReferenciaPago(producto.getIdCrypt());
+							producto.setIdUsuarioModifica(null);
+							producto.setModificacion(new Date());
+							producto = carritoManager.save(producto);
+							referencia = charge.getAuthorization();
+						}
 					}
+					
+					resp.add(true);
+					resp.add(referencia);
+				}else {
+					resp.add(false);
 				}
-				
-				resp.add(true);
-				resp.add(referencia);
 				
 			}else {
 				resp.add(false);
@@ -155,27 +218,27 @@ public class CarritoController {
 
 			UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
 			
-				List<ProductoCompradoVO> productos = carritoManager.getCarritoByidUsuario(usuarioVO.getId());
-				
-				
-				BigInteger total = new BigInteger("0");
-				int productosCarrito = 0;
-				
-				if(!productos.isEmpty()) {
-					for(ProductoCompradoVO producto: productos) {
-						if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO) {
-							total = total.add(producto.getProductoVO().getPrecio());
-							productosCarrito++;
-						}
+			List<ProductoCompradoVO> productos = carritoManager.getCarritoByidUsuario(usuarioVO.getId());
+			
+			
+			BigInteger total = new BigInteger("0");
+			int productosCarrito = 0;
+			
+			if(!productos.isEmpty()) {
+				for(ProductoCompradoVO producto: productos) {
+					if(producto.getIdCompraEstatus() == Constants.ID_PRODUCTO_EN_CARRITO) {
+						total = total.add(producto.getProductoVO().getPrecio());
+						productosCarrito++;
 					}
 				}
-				
-				model.addAttribute(ATTR_TOTAL_CARRITO, total);
-				model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
-				model.addAttribute("idPay", payID);
-				model.addAttribute("publicKey", payPublicKey);
-				model.addAttribute("privateKey", payPrivateKey);
-				model.addAttribute("sandbox", sandBox);
+			}
+			
+			model.addAttribute(ATTR_TOTAL_CARRITO, total);
+			model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
+			model.addAttribute("idPay", payID);
+			model.addAttribute("publicKey", payPublicKey);
+			model.addAttribute("privateKey", payPrivateKey);
+			model.addAttribute("sandbox", sandBox);
 
 			
 			

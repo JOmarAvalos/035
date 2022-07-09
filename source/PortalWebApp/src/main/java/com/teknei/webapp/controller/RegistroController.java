@@ -282,7 +282,7 @@ public class RegistroController {
 
 	private String generaLink(UsuarioVO usuario){
 		StringBuilder sbResp = new StringBuilder();
-		sbResp.append("https://app.035.com.mx/Admin035/");
+		sbResp.append("https://app.035.com.mx/035/");
 		sbResp.append("registro/confimaCorreo?param1=");
 		sbResp.append(usuario.getUsuario());
 		sbResp.append("&param2=");
@@ -349,9 +349,9 @@ public class RegistroController {
 			String asunto = "Instrucciones para resolver cuestionarios 035 ";
 			String shtml = "";
 
-			String encodeUrl = URLEncoder.encode(url,"UTF");
+//			String encodeUrl = URLEncoder.encode(url,"UTF");
 			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
-					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(encodeUrl));
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(url));
 
 			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
 		} catch (IOException e) {
@@ -449,7 +449,7 @@ public class RegistroController {
 				CentroTrabajoVO centro = centroTrabajoManager.getByUuario(usuarioCorpVO.getId());
 				
 				StringBuilder sb = new StringBuilder();
-				sb.append("https://app.035.com.mx/Admin035/cuestionarios?param=");
+				sb.append("https://app.035.com.mx/035/cuestionarios?param=");
 				sb.append(URLEncoder.encode(centro.getIdCrypt(), StandardCharsets.UTF_8.toString()));
 				
 				envioCorreoPasos(usuarioCorpVO);

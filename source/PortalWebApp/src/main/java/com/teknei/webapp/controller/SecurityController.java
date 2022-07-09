@@ -88,6 +88,7 @@ import com.teknei.vo.CuestionarioVO;
 import com.teknei.vo.EstadoRepublicaVO;
 import com.teknei.vo.GiroVO;
 import com.teknei.vo.ProductoCompradoVO;
+import com.teknei.vo.ProductoVO;
 import com.teknei.admin.bsn.ActividadManager;
 import com.teknei.admin.bsn.CarritoManager;
 import com.teknei.admin.bsn.CentroTrabajoManager;
@@ -348,6 +349,78 @@ public class SecurityController {
 	  }
 	  return null;
 	}
+	
+//	@RequestMapping(value = "/registro/saveRespuesta", method = RequestMethod.POST)
+//	@ResponseBody
+//	public List<Object> saveActividadTarea(Model model, MultipartHttpServletRequest request) {
+//
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		List<Object> resp = new ArrayList<Object>();
+//
+//		if (!(auth instanceof AnonymousAuthenticationToken)) {
+//			UsuarioVO currentUser = (UsuarioVO) request.getSession(false).getAttribute("currentUser");
+//
+//			if (currentUser.getId() != null) {
+//				UsuarioVO usuarioVO = usersManager.getUser(currentUser.getUsuario());
+//
+//				try {
+//
+//					Integer idProducto = (Integer) request.getAttribute("idProductoComprado");
+//					MultipartFile multipartFile = request.getFile("iptRespuestaFile");
+//					String nombreArchivo = multipartFile.getOriginalFilename();
+//					Long sizeArchivo = multipartFile.getSize();
+//
+//
+//					// Salva el archivo
+//					if (multipartFile.getBytes().length > 0) {
+//
+//						// Verificar si existe el registro
+//						ProductoCompradoVO productoComprado = carritoManager.findProducto(idProducto);
+//						ProductoVO producto
+////						producto.set
+//
+//						String subdirName = null;
+//						// Actualizacion
+//
+//						String[] rutaArray = null;
+//						if (consultaActividadRes.getRuta() != null) {
+//							rutaArray = consultaActividadRes.getRuta().split("/");
+//							subdirName = rutaArray[1];
+//						}
+//
+//						File fileFolder = new File(rutaRecursos + "/" + subdirName);
+//						deleteFolder(fileFolder);
+//
+//						writeFile(rutaRecursos, subdirName, nombreArchivo, multipartFile.getBytes());
+//
+//						consultaActividadRes.setRuta("/" + subdirName + "/" + nombreArchivo);
+//						consultaActividadRes.setIdUsuarioModifica(usuarioVO.getId());
+//						consultaActividadRes.setModificacion(new Date());
+//
+//						ConsultaActividadVO consultaActividadResult = consultaActividadManager
+//								.saveConsultaActividad(consultaActividadRes);
+//
+//
+//						resp.add(true);
+//						resp.add(getLocalisedResource(messageSource, "lms.carrera.actividad.tarea.save.success"));
+//						return resp;
+//					}
+//				} catch (Exception e) {
+//					resp.add(false);
+//					resp.add(getLocalisedResource(messageSource, "lms.carrera.actividad.tarea.save.exception.error"));
+//				}
+//				return resp;
+//			} else {
+//				resp.add(false);
+//				resp.add(getLocalisedResource(messageSource, "app.error.session_message_detail"));
+//				return resp;
+//			}
+//		} else {
+//			resp.add(false);
+//			resp.add(getLocalisedResource(messageSource, "app.error.session_message_detail"));
+//			return resp;
+//		}
+//	}
 
 	
 //	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

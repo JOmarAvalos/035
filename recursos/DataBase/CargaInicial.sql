@@ -24,10 +24,12 @@ INSERT INTO desarrollo.tbl_usuarios (usuario, contrasena, nombre, email, id_perf
     VALUES ('ADMINGENERAL', '$2a$10$WCsR0O09qeZ9XrbbA0fn4edxPowBuY9ZlwAZ.ucqZKsN8X9U/J20C', 'ADMINISTRADOR NOMBRE', 'correo@mail.com', 1, 1, now(), 0, 1);
 
 
-INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 1', 1);
-INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 2', 1);
-INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) VALUES ('Giro 3', 1);
-
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Agricultura, ganadería, pesca, minería', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Comercio mayorista, detallista, distribución', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Industria (textil, química, transformación, metal mecánica, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Servicios (comunicación, logística, transporte, financieros, salud, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Academia desde preescolar hasta postgrado, cursos, idiomas, etc.)', 1);
+INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Otros', 1);
 
 INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('Disponible', 1);
 INSERT INTO desarrollo.tbl_cata_compra_estatus (nombre, ban_activo) VALUES ('En carrito', 1);
