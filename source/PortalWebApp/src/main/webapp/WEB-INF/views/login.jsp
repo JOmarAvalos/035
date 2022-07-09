@@ -58,12 +58,11 @@
 						<div class="form-group">
 							<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
 						</div>
-							<button type="submit" class="btn">Iniciar sesi&oacute;n</button>
+						<button type="submit" class="btn_light_blue">Iniciar sesi&oacute;n</button>
+						<button type="button" class="btn_dark_blue_bold" onclick="showRegistro();">Registro</button>
+						<button type="button" class="btn_dark_blue" onclick="showRecuperaPwd();">Olvide mi contrase&ntilde;a</button>
 					</form>
-					
-					<p><a href="#" onclick="showRecuperaPwd();">Olvide mi contrase&ntilde;a</a></p>
-					<p><a href="#" onclick="showRegistro();">Registro</a></p>
-					
+
 				</div>
 			</div>
 		</div>
@@ -157,11 +156,10 @@
 						<p id="pPwdNoCoincide" style="color:#B51101; text-align:left;"><span class="bold">La contrase&ntilde;a y la confirmaci&oacute;n de la contrase&ntilde;a no coiniden.</span></p>
 						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El email ya se encuentra registado.</span></p>
 						
-						<button id="btnRegistro" type="submit"  class="btn">Registro</button>
+						<button id="btnRegistro" type="submit" class="btn_light_blue">Registro</button>
+						<button type="button" class="btn_dark_blue" onclick="showLogin();">Ya tengo cuenta</button>
 					</form>
-					
-					<p><a href="#" onclick="showLogin();">Ya tengo cuenta</a></p>
-					
+
 				</div>
 			</div>
 		</div>
@@ -173,13 +171,15 @@
 				</div>
 				<div class="body_login">
 					<h1>Olvide mi contrase&ntilde;a</h1>
-					<p>Captura tu usuario o email</p>
+					<p>Captura tu contrato o email</p>
 					<div class="form-group">
 						<input type="text" id="emailRecover" name="emailRecover"
 							class="form-control" placeholder="" required/>
 					</div>
 					
-					<p><a href="#" onclick="showLogin();">Cancelar</a></p>
+					<p>
+						<button type="button" class="btn_dark_blue" onclick="showLogin();">Cancelar</button>
+					</p>
 					
 				</div>
 			</div>

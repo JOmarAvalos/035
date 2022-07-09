@@ -58,16 +58,13 @@
 							<input type="password" id="passwordConf" name="passwordConf"
 								class="form-control" placeholder="Confirma contrase&ntilde;a" required autocomplete="off"/>
 						</div>
-						<button type="button" class="btn" onclick="validaPwd();">Gurdar contrase&ntilde;a</button>
+						<button type="button" class="btn_light_blue" onclick="validaPwd();">Guardar contrase&ntilde;a</button>
 					</form>
 					
 				</div>
 			</div>
 		</div>
 		
-		
-		
-
 	</div>
 	
 	<div class="modal fade" id="modalDatosObligatorios" tabindex="-1" role="dialog"
@@ -93,16 +90,13 @@
 	</div>
 
 
-
 	<!-- jQuery 2.0.2 -->
-   
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-		<!-- Bootstrap -->
-		<script src="<c:url value='/resources/js/bootstrap.min.js' />" type="text/javascript"></script>
-
-       <script src="<c:url value='/resources/js/admin/prueba.js' />" type="text/javascript"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<!-- Bootstrap -->
+	<script src="<c:url value='/resources/js/bootstrap.min.js' />" type="text/javascript"></script>
+    <script src="<c:url value='/resources/js/admin/prueba.js' />" type="text/javascript"></script> 
+    
     </body>
-<div id="wait" class="loading-img" style="display: none;"></div>
+	<div id="wait" class="loading-img" style="display: none;"></div>
 </html>

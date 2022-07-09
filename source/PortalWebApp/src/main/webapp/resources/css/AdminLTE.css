@@ -360,6 +360,63 @@ supports ((-webkit-backdrop-filter: none ) or (backdrop-filter: none ))
 	color: white;
 }
 
+
+
+
+
+
+.btn_light_blue {
+	display: block;
+	margin: 30px auto 10px auto;
+	background: #36A7DF;
+	color: white;
+	padding: 5px 30px;
+	border: none;
+	width: 190px;
+}
+
+.btn_light_blue:hover {
+	background: #017DAD;
+	color: white;
+}
+
+.btn_dark_blue {
+	display: block;
+	margin: 30px auto 10px auto;
+	background: #4c84bc;
+	color: white;
+	padding: 5px 30px;
+	border: none;
+	width: 190px;
+}
+
+.btn_dark_blue:hover {
+	background: #7ba0ce;
+	color: white;
+}
+
+
+.btn_dark_blue_bold {
+	display: block;
+	margin: 30px auto 10px auto;
+	background: #4c84bc;
+	color: white;
+	padding: 5px 30px;
+	border: none;
+	width: 190px;
+	font-weight: bold;
+}
+
+.btn_dark_blue_bold:hover {
+	background: #7ba0ce;
+	color: white;
+	font-weight: bold;
+}
+
+
+
+
+
 /* Text colors */
 .text-red {
 	color: #f56954 !important;

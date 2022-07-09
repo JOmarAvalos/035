@@ -491,7 +491,20 @@
 			                         		<c:forEach items="${lstCuestionarios}" var="cuestionario" varStatus="loop">
 					                             <tr>
 					                                 <td>
-					                                 	<a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV2(${cuestionario.id},${centro.id});"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar cuestonarios</a>
+					                                 	<c:if test="${cuestionario.resueltos == 0 }">
+					                                 		<a href="#" title="Descargar cuestionarios" onclick="alert('No hay cuestionarios por descargar');">
+						                                 		<i class="fa fa-fw fa-download fa-4x"></i>
+						                                 		<br>
+						                                 		Descargar cuestonarios
+						                                 	</a>
+					                                 	</c:if>
+					                                 	<c:if test="${cuestionario.resueltos != 0 }">
+					                                 		<a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV2(${cuestionario.id},${centro.id});">
+						                                 		<i class="fa fa-fw fa-download fa-4x"></i>
+						                                 		<br>
+						                                 		Descargar cuestonarios
+						                                 	</a>
+					                                 	</c:if>
 					                                 </td>
 					                                 <td>${cuestionario.nombre}</td>
 					                                 <td>${cuestionario.resueltos}</td>
