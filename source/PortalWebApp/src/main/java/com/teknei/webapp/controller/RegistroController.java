@@ -250,25 +250,19 @@ public class RegistroController {
 					centro.setIdUsuario(usuarioVO.getId());
 					centro.setBanActivo(Constants.BAN_ACTIVO);
 					centro = centroTrabajoManager.save(centro);
-					
-					
-					
+
 					StringBuilder sb = new StringBuilder();
 					sb.append("http://localhost:8080/Admin035/cuestionarios?param=");
 					sb.append(centro.getIdCrypt());
 					
 					String url = URLEncoder.encode(sb.toString(), StandardCharsets.UTF_8.toString());
 					envioCorreoPasos(usuarioVO);
-					envioCorreoUrl(usuarioVO, url);
+					envioCorreoUrl_1_15(usuarioVO, url);
 					
 				}
-				
-				
 
 				resp.add(true);
-				
-				
-				
+
 			} catch (Exception e) {
 				LOGGER.error("Ourrio un error al actualizar el centro				error:	",e);
 				resp = new ArrayList<Object>();
@@ -282,7 +276,7 @@ public class RegistroController {
 
 	private String generaLink(UsuarioVO usuario){
 		StringBuilder sbResp = new StringBuilder();
-		sbResp.append("https://app.035.com.mx/035/");
+		sbResp.append("https://app.035.com.mx/Admin035/");
 		sbResp.append("registro/confimaCorreo?param1=");
 		sbResp.append(usuario.getUsuario());
 		sbResp.append("&param2=");
@@ -325,10 +319,11 @@ public class RegistroController {
 			List<String> lstEmail = new ArrayList<String>();
 			lstEmail.add(user.getEmail());
 			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
-			String asunto = "Instrucciones para difusión de cuestionarios y compra de resultados";
+			String asunto = "Instrucciones para difusi&oacute;n de cuestionarios y compra de resultados";
 			String shtml = "";
 
-			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile);
+			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
+					.replaceAll(Pattern.quote("{numContrato}"), user.getUsuario());
 
 			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
 		} catch (IOException e) {
@@ -336,22 +331,48 @@ public class RegistroController {
 			e.printStackTrace();
 		}
 	}
-	private void envioCorreoUrl(UsuarioVO user, String url) {
+	private void envioCorreoUrl_1_15(UsuarioVO user, String url) {
 
 		try {
-			String emailFile = ReadFileForEmail.EMAIL_CUESTIONARIOS;
+			String emailFile = ReadFileForEmail.EMAIL_CUESTIONARIOS_1_15;
 			String urlBG = "";
 			String color = "";
 			String notificacionFrom = "noreply@035.com.mx";
 			List<String> lstEmail = new ArrayList<String>();
 			lstEmail.add(user.getEmail());
 			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
-			String asunto = "Instrucciones para resolver cuestionarios 035 ";
+			String asunto = "Conteste el cuestionario de la Norma 035 ";
 			String shtml = "";
 
-//			String encodeUrl = URLEncoder.encode(url,"UTF");
+			String encodeUrl = URLEncoder.encode(url,"UTF");
 			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
-					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(url));
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(encodeUrl))
+					.replaceAll(Pattern.quote("{numContrato}"), user.getUsuario());
+
+			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+	
+	private void envioCorreoUrl_16_mas(UsuarioVO user, String url) {
+
+		try {
+			String emailFile = ReadFileForEmail.EMAIL_CUESTIONARIOS_16_MAS;
+			String urlBG = "";
+			String color = "";
+			String notificacionFrom = "noreply@035.com.mx";
+			List<String> lstEmail = new ArrayList<String>();
+			lstEmail.add(user.getEmail());
+			EMailService email = new EMailService(mailUser, pass, smtp, tsl, port, login);
+			String asunto = "Conteste el cuestionario de la Norma 035 ";
+			String shtml = "";
+
+			String encodeUrl = URLEncoder.encode(url,"UTF");
+			shtml = ReadFileForEmail.getFile(rutaHtml + emailFile)
+					.replaceAll(Pattern.quote("{url}"), Matcher.quoteReplacement(encodeUrl))
+					.replaceAll(Pattern.quote("{numContrato}"), user.getUsuario());
 
 			email.sendEmail(notificacionFrom, lstEmail, asunto, shtml);
 		} catch (IOException e) {
@@ -449,13 +470,17 @@ public class RegistroController {
 				CentroTrabajoVO centro = centroTrabajoManager.getByUuario(usuarioCorpVO.getId());
 				
 				StringBuilder sb = new StringBuilder();
-				sb.append("https://app.035.com.mx/035/cuestionarios?param=");
+				sb.append("https://app.035.com.mx/Admin035/cuestionarios?param=");
 				sb.append(URLEncoder.encode(centro.getIdCrypt(), StandardCharsets.UTF_8.toString()));
 				
 				envioCorreoPasos(usuarioCorpVO);
-				envioCorreoUrl(usuarioCorpVO, sb.toString());
 				
-
+				if(centro.getEmpleadoNumero() <= 15) {
+					envioCorreoUrl_1_15(usuarioCorpVO, sb.toString());
+				}else {
+					envioCorreoUrl_16_mas(usuarioCorpVO, sb.toString());
+				}
+				
 				UserDetails userDetails = userDetailsService.loadUserByUsername(usuarioCorpVO.getUsuario());
 				RememberMeAuthenticationToken rememberMeAuthenticationToken = new RememberMeAuthenticationToken("remember_me", userDetails, userDetails.getAuthorities());
 				
