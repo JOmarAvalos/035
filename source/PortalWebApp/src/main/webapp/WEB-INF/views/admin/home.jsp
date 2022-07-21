@@ -91,8 +91,12 @@
 								        <c:forEach items="${productosComprados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos</a>
-				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();"><i class="fa fa-fw fa-upload fa-4x"></i><br>Subir respuesta</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+				                                 		<i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos
+				                                 	</a>
+				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();">
+				                                 		<i class="fa fa-fw fa-upload fa-4x"></i><br>Subir respuesta
+				                                 	</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
@@ -140,8 +144,13 @@
 								        <c:forEach items="${productosEntregados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionarios();"><i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos</a>
-				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});"><i class="fa fa-fw fa-upload fa-4x"></i><br>Actualizar respuesta</a>
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+				                                 		<i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos
+				                                 	</a>
+				                                 	
+				                                 	<a href="#" title="Subir respuesta" onclick="showCargarRespuesa(${producto.id});">
+				                                 		<i class="fa fa-fw fa-upload fa-4x"></i><br>Actualizar respuesta
+				                                 	</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
@@ -196,10 +205,10 @@
 								        <c:forEach items="${productosSinCompra}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-                                          <a href="#" onclick="descargaCuestionarios()" title="Descargar cuestionarios">
-                                            <i class="fa fa-fw fa-download fa-4x"></i>
-                                            <br>Descargar base de datos
-                                          </a>
+			                                          <a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+			                                            <i class="fa fa-fw fa-download fa-4x"></i>
+			                                            <br>Descargar base de datos
+			                                          </a> 
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
@@ -475,9 +484,7 @@
 			                 		</div>
 			                 	</div>
 			                 	<br>
-			                 	
-			                 	
-			                 	
+
 			                     <table id="tblCuestionarios" class="display nowrap">
 			                         <thead>
 			                             <tr>
