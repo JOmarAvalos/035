@@ -157,7 +157,7 @@
 						<p id="pEmailRepetido" style="color:#B51101; text-align:left;"><span class="bold">El email ya se encuentra registado.</span></p>
 						
 						<button id="btnRegistro" type="submit" class="btn_light_blue">Registro</button>
-						<button type="button" class="btn_dark_blue" onclick="showLogin();">Ya tengo cuenta</button>
+						<button type="button" class="btn_dark_blue" onclick="showLogin();">Cancelar</button>
 					</form>
 
 				</div>
