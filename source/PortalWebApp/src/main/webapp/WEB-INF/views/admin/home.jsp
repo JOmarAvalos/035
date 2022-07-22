@@ -4,6 +4,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
 <script src="<c:url value='/resources/js/035/home.js' />" type="text/javascript"></script>
 
@@ -80,6 +81,7 @@
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
+		                                 <th>Centro Trabajo Tipo</th>
 		                                 <th>Cuestionario</th>
 										 <th>Contrato</th>
 										 <th>Contacto</th>
@@ -99,8 +101,25 @@
 				                                 	</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td align="center">
+					                                 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero <= 15}">
+								                 		Tipo 1
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 15 && producto.usuario.centroTrabajoVO.empleadoNumero <= 50}">
+								                 		Tipo 2
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 50}">
+								                 		Tipo 3
+								                 	 </c:if>
+				                                 </td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												 <td>${producto.usuario.usuario}</td>
+												 <td>
+												 	<c:set var = "string1" value = "${fn:substring(producto.usuario.usuario, 0, 4)}" />
+												 	<c:set var = "string2" value = "${fn:substring(producto.usuario.usuario, 4, 6)}" />
+												 	<c:set var = "string3" value = "${fn:substring(producto.usuario.usuario, 6, 10)}" />
+												 	<c:set var = "string4" value = "${fn:substring(producto.usuario.usuario, 10, 14)}" />
+												 	${string1} ${string2} ${string3} ${string4}
+												 </td>
 												 <td>${producto.usuario.email}</td>
 				                                 <td>
 								                    <fmt:setLocale value="es_MX" scope="session"/>
@@ -133,6 +152,7 @@
 		                             <tr>
 		                                 <th>Descargar/Cargar</th>
 		                                 <th>Producto</th>
+		                                 <th>Centro Trabajo Tipo</th>
 		                                 <th>Cuestionario</th>
 										 <th>Contrato</th>
 										 <th>Contacto</th>
@@ -153,8 +173,25 @@
 				                                 	</a>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td align="center">
+					                                 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero <= 15}">
+								                 		Tipo 1
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 15 && producto.usuario.centroTrabajoVO.empleadoNumero <= 50}">
+								                 		Tipo 2
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 50}">
+								                 		Tipo 3
+								                 	 </c:if>
+				                                 </td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												 <td>${producto.usuario.usuario}</td>
+												 <td>
+												 	<c:set var = "string1" value = "${fn:substring(producto.usuario.usuario, 0, 4)}" />
+												 	<c:set var = "string2" value = "${fn:substring(producto.usuario.usuario, 4, 6)}" />
+												 	<c:set var = "string3" value = "${fn:substring(producto.usuario.usuario, 6, 10)}" />
+												 	<c:set var = "string4" value = "${fn:substring(producto.usuario.usuario, 10, 14)}" />
+												 	${string1} ${string2} ${string3} ${string4}
+												 </td>
 												 <td>${producto.usuario.email}</td>
 				                                 <td>
 				                                 	<fmt:setLocale value="es_MX" scope="session"/>
@@ -194,6 +231,7 @@
 		                             <tr>
 		                                 <th>Descargar</th>
 		                                 <th>Producto</th>
+		                                 <th>Centro Trabajo Tipo</th>
 		                                 <th>Cuestionario</th>
 										 <th>Contrato</th>
 										 <th>Contacto</th>
@@ -211,13 +249,25 @@
 			                                          </a> 
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
+				                                 <td align="center">
+					                                 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero <= 15}">
+								                 		Tipo 1
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 15 && producto.usuario.centroTrabajoVO.empleadoNumero <= 50}">
+								                 		Tipo 2
+								                 	 </c:if>
+								                 	 <c:if test="${producto.usuario.centroTrabajoVO.empleadoNumero > 50}">
+								                 		Tipo 3
+								                 	 </c:if>
+				                                 </td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
-												 
-												 
-												 
-												 <td>${producto.usuario.usuario}</td>
-												 
-												 
+												 <td>
+												 	<c:set var = "string1" value = "${fn:substring(producto.usuario.usuario, 0, 4)}" />
+												 	<c:set var = "string2" value = "${fn:substring(producto.usuario.usuario, 4, 6)}" />
+												 	<c:set var = "string3" value = "${fn:substring(producto.usuario.usuario, 6, 10)}" />
+												 	<c:set var = "string4" value = "${fn:substring(producto.usuario.usuario, 10, 14)}" />
+												 	${string1} ${string2} ${string3} ${string4}
+												 </td>
 												 <td>${producto.usuario.email}</td>
 				                                 <td>
 				                                 	<fmt:setLocale value="es_MX" scope="session"/>
@@ -483,7 +533,7 @@
 			                 	<div class="row">
 			                 		<div class="col-md-6">
 			                 			<div class="input-group">
-		                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="http://localhost:8080/Admin035/cuestionarios?param=${centro.idCrypt}">
+		                                    <input type="text" class="form-control" readonly="readonly" id="urlCuestionarios" value="https://app.035.com.mx/035/cuestionarios?param=${centro.idCrypt}">
 		                                    <span class="input-group-addon"><i title="Copiar" class="fa fa-copy" onclick="copyToClip('urlCuestionarios', 'copiado');"></i></span>
 		                                </div>
 			                 		</div>
