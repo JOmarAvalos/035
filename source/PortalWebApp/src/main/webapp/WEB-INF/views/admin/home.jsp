@@ -212,13 +212,18 @@
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
 				                                 <td>${producto.productoVO.cuestionarioVO.nombre}</td>
+												 
+												 
+												 
 												 <td>${producto.usuario.usuario}</td>
+												 
+												 
 												 <td>${producto.usuario.email}</td>
 				                                 <td>
 				                                 	<fmt:setLocale value="es_MX" scope="session"/>
                      								<fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
 				                                 </td>
-				                                 <td>Disponible</td>
+				                                 <td>Aplicaci&oacute;n <br>de encuentas</td>
 				                             </tr>
 								        </c:forEach>
 		                         </tbody>
@@ -770,6 +775,9 @@
                     buttons: [
                         'excel'
                     ],
+                    
+                    
+                    
                     "ordering": false,
                     "language": {
                         "info":         "Mostrando pagina _PAGE_ de _PAGES_",
