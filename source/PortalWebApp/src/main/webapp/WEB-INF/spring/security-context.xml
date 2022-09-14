@@ -43,7 +43,7 @@
                              login-processing-url="/auth/login_check"
                              authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler" />
         
-        <security:logout logout-success-url="https://035.com.mx/" delete-cookies="JSESSIONID" />
+        <security:logout logout-success-url="/" delete-cookies="JSESSIONID" />
         
         <!-- enable remember me -->
         <security:remember-me token-validity-seconds="1209600" remember-me-parameter="remember_me" data-source-ref="dataSource" />

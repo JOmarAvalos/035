@@ -91,4 +91,9 @@ public class CentroTrabajoManagerImpl implements CentroTrabajoManager{
 		return centro;
 	}
 
+	@Override
+	public CentroTrabajoVO find(Integer id) {
+		return Mapper.toVO(centroTrabajoDAO.find(id));
+	}
+
 }

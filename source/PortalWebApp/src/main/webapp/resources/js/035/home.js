@@ -246,6 +246,34 @@ descargaCuestionariosV2 = function(idCuestionario, idCentroTrabajo){
 	window.open(urltxt, '_blank');
 }
 
+descargaCuestionariosV3 = function(idCuestionario, idCentroTrabajo){
+	var urltxt = ctx + '/registro/descargaCuestionarios?param1='+idCuestionario+'&param2='+idCentroTrabajo; 
+	
+	$.ajax({
+		type : "POST",
+		url : urltxt,
+		contentType : "application/json",
+		beforeSend : function() {
+			$("#wait").css("display", "block");
+		},
+		complete : function() {
+			$("#wait").css("display", "none");
+		},
+		success : function(response) {
+			result = response[0];
+			referencia = response[1];
+			if (result) {
+				alert('Hemos enviado la información solicitada al email registrado.');
+			} else {
+				alert('Ocurrio un error, por favor intenta mas tarde');
+			}
+		},
+		error : function(msg) {
+				alert('Ocurrio un error, por favor intenta mas tarde');
+		}
+	});
+}
+
 descargaResultados = function(){
 	var urltxt = ctx + '/carriito/descargaInforme'; 
 	window.open(urltxt, '_blank');
@@ -288,4 +316,34 @@ realizaPago = function(){
 
 showCarga = function(){
 	$('#modalAdvertenciaFormato').modal({backdrop: 'static', keyboard: false});
+}
+
+terminaCuestionarios = function(){
+	
+	urltxt = ctx+'/registro/terminaCuestionarios';
+	
+	$.ajax({
+		type : "POST",
+		url : urltxt,
+		contentType : "application/json",
+		beforeSend : function() {
+			$("#wait").css("display", "block");
+		},
+		complete : function() {
+			$("#wait").css("display", "none");
+		},
+		success : function(response) {
+			result = response[0];
+			referencia = response[1];
+			if (result) {
+				location.reload();
+			} else {
+				// no es valido(repetido)
+				alert('error');
+			}
+		},
+		error : function(msg) {
+			alert('error');
+		}
+	});
 }

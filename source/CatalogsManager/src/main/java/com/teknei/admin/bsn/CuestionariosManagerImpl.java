@@ -674,4 +674,10 @@ public class CuestionariosManagerImpl implements CuestionariosManager{
 		return resp;
 	}
 
+
+	@Override
+	public CuestionarioVO find(Integer id) {
+		return Mapper.toVO(cuestionarioDAO.find(id));
+	}
+
 }

@@ -50,4 +50,22 @@ public class ProductoCompradoDAOImpl extends HibernateBaseDAO<Integer,ProductoCo
 		return (List<ProductoComprado>)query.list();	
 	}
 
+	@Override
+	public ProductoComprado getLastOrderId(Integer idUsuario) {
+		
+		StringBuilder sbQuery = new StringBuilder();
+		sbQuery.append("from ProductoComprado p ");
+		sbQuery.append("where p.idUsuarioCrea = :idUsuario ");
+		sbQuery.append("and p.orderId is not null ");
+		sbQuery.append("order by p.orderId desc ");
+		Query query = sessionFactory.getCurrentSession().createQuery(sbQuery.toString());
+		
+		query.setParameter("idUsuario", idUsuario);
+		
+		query.setMaxResults(1);
+		
+		return (ProductoComprado) query.uniqueResult();
+		
+	}
+
 }

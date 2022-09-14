@@ -27,12 +27,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.teknei.jobs.ValidaFechasCuestionarios;
+
 //import com.teknei.admin.bsn.JobManager;
 //import com.teknei.vo.JobVO;
 
 
-//@WebListener
-//@Repository
+@WebListener
+@Repository
 public class QuartzListener extends QuartzInitializerListener{
     private static final Logger LOG = LoggerFactory.getLogger(QuartzListener.class);
 
@@ -42,9 +44,6 @@ public class QuartzListener extends QuartzInitializerListener{
     public static Scheduler getScheduler() {
         return scheduler;
     }
-
-//	@Autowired
-//	private JobManager jobsManager;
 
     public void init(final ServletContext config) throws ServletException {
     	WebApplicationContext springContext;
@@ -64,6 +63,28 @@ public class QuartzListener extends QuartzInitializerListener{
 		} catch (ServletException e1) {
 			e1.printStackTrace();
 		}
+        
+        try {
+            StdSchedulerFactory factory = (StdSchedulerFactory) ctx.getAttribute(QUARTZ_FACTORY_KEY);
+            
+        	//print job
+    		if(scheduler==null)
+    			scheduler = factory.getScheduler();
+    		
+            JobDataMap jobDataMap = new JobDataMap();
+            jobDataMap.put("ServletContext", sce.getServletContext());
+            JobDetail job = JobBuilder.newJob( ValidaFechasCuestionarios.class ).usingJobData(jobDataMap).build();
+
+            Trigger trigger = TriggerBuilder.newTrigger().withIdentity("ValidaFechasCuestionarios").withSchedule(CronScheduleBuilder.cronSchedule("0 0 10 * * ? *")).startNow().build();
+
+
+            scheduler.scheduleJob(job, trigger);
+            scheduler.start();
+
+		} catch (Exception e) {
+			LOG.error("Error al inicar los jobs				error:",e);
+		}
+        
 //
 //        if(jobsManager!=null)
 //        {

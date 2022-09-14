@@ -11,6 +11,7 @@ public interface CarritoManager {
 	ProductoCompradoVO save(ProductoCompradoVO productoCompradoVO);
 	List<ProductoCompradoVO> getAll();
 	List<ProductoCompradoVO> getCarritoByidUsuario(Integer idUsuario);
+	ProductoCompradoVO lastOrderId(Integer idUsuario);
 
 	
 }

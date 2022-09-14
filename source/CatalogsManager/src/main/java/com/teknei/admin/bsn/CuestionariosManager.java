@@ -21,5 +21,7 @@ public interface CuestionariosManager {
 	List<String[]> getCuestionarioTipo1Descarga(Integer idCuestionario, Integer idCentroTrabajo);
 	List<String[]> getCuestionarioTipo2Descarga(Integer idCuestionario, Integer idCentroTrabajo);
 	List<String[]> getCuestionarioTipo3Descarga(Integer idCuestionario, Integer idCentroTrabajo);
+	
+	CuestionarioVO find(Integer id);
 
 }

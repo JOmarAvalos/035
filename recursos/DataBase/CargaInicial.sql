@@ -21,7 +21,7 @@ INSERT INTO desarrollo.tbl_perfil_menu (id_perfil, id_menu, id_usuario_crea, fch
 
 
 INSERT INTO desarrollo.tbl_usuarios (usuario, contrasena, nombre, email, id_perfil, id_usuario_crea, fch_creacion, estatus, ban_activo)
-    VALUES ('ADMINGENERAL', '$2a$10$WCsR0O09qeZ9XrbbA0fn4edxPowBuY9ZlwAZ.ucqZKsN8X9U/J20C', 'ADMINISTRADOR NOMBRE', 'correo@mail.com', 1, 1, now(), 0, 1);
+    VALUES ('01012201010001', '$2a$10$WCsR0O09qeZ9XrbbA0fn4edxPowBuY9ZlwAZ.ucqZKsN8X9U/J20C', 'ADMINISTRADOR NOMBRE', 'correo@mail.com', 1, 1, now(), 0, 1);
 
 
 INSERT INTO desarrollo.tbl_cata_giros (nombre, ban_activo) values ('Agricultura, ganadería, pesca, minería', 1);

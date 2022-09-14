@@ -44,12 +44,14 @@
 				<div class="body_login">
 					<h1>¡Bienvenido!</h1>
 					<p>Inicia sesión</p>
-					<form name="loginForm" class="form"
+					<form id="loginForm" name="loginForm" class="form"
 						action="<c:url value='/auth/login_check?targetUrl=${targetUrl}' />"
 						method="POST" role="form">
+						<input type="hidden" id="username" name="username" />
 						<div class="form-group">
-							<input type="text" id="username" name="username"
-								class="form-control" placeholder="N&uacute;mero de contrato" required autocomplete="off"/>
+							<input type="text" id="contrato" name="contrato"
+								class="form-control" placeholder="N&uacute;mero de contrato" required autocomplete="off" 
+								data-inputmask="'mask': '9999 99 9999 9999'" />
 						</div>
 						<div class="form-group">
 							<input type="password" id="password" name="password"
@@ -58,7 +60,7 @@
 						<div class="form-group">
 							<input type="checkbox" name="remember_me" /> &nbsp; Recordar cuenta
 						</div>
-						<button type="submit" class="btn_light_blue">Iniciar sesi&oacute;n</button>
+						<button type="button" class="btn_light_blue" onclick="loginScript();">Iniciar sesi&oacute;n</button>
 						<button type="button" class="btn_dark_blue_bold" onclick="showRegistro();">Registro</button>
 						<button type="button" class="btn_dark_blue" onclick="showRecuperaPwd();">Olvide mi contrase&ntilde;a</button>
 					</form>
@@ -171,14 +173,16 @@
 				</div>
 				<div class="body_login">
 					<h1>Olvide mi contrase&ntilde;a</h1>
-					<p>Captura tu contrato o email</p>
+					<p>Captura tu contrato</p>
 					<div class="form-group">
 						<input type="text" id="emailRecover" name="emailRecover"
 							class="form-control" placeholder="" required/>
 					</div>
 					
 					<p>
+						<button type="button" class="btn_dark_blue" onclick="recuperaPwd();">Continuar</button>
 						<button type="button" class="btn_dark_blue" onclick="showLogin();">Cancelar</button>
+						
 					</p>
 					
 				</div>
@@ -255,7 +259,7 @@
 					</button>
 				</div>
 				<div class="modal-body text-white" style="color: grey;">
-					<h4>Hemos enviado un correo electronico a la cuenta registrada para continuar con el proceso.</h4>
+					<h4>Hemos enviado un correo electronico a la cuenta de correo registrada para continuar con el proceso.</h4>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn" onclick="goInfoHome();">Continuar</button>
@@ -264,15 +268,67 @@
 		</div>
 	</div>
 
+	
+	<div class="modal fade" id="modalOKRecover" tabindex="-1" role="dialog"
+		aria-labelledby="modalOKRecover" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content bg-glass-sknd box box-danger">
+				<div class="modal-header bg-glass-sknd ">
+					<h3 class="box-title">Recuperaci&oacute;n de contrase&ntilde;a</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true" style="color: white;">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-white" style="color: grey;">
+					<h4>Hemos enviado un correo electronico a la cuenta de correo registrada para la recuperaci&oacute;n de la contrase&ntilde;a.</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal">Cerrar</button>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modalErrRecover" tabindex="-1" role="dialog"
+		aria-labelledby="modalErrRecover" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content bg-glass-sknd box box-danger">
+				<div class="modal-header bg-glass-sknd ">
+					<h3 class="box-title">Error en la ecuperaci&oacute;n de contrase&ntilde;a</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true" style="color: white;">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-white" style="color: grey;">
+					<h4>No se encontr&oacute; el contrato.</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal">Cerrar</button>
+				</div>	
+			</div>
+		</div>
+	</div>
+	
 	<!-- jQuery 2.0.2 -->
    
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js"></script>
+ 	
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 		<!-- Bootstrap -->
 		<script src="<c:url value='/resources/js/bootstrap.min.js' />" type="text/javascript"></script>
 
        <script src="<c:url value='/resources/js/admin/prueba.js' />" type="text/javascript"></script> 
+       <script type="text/javascript">
+       
+	       $(document).ready(function() {
+	    	   $('#contrato').inputmask();
+	    	 });
+       </script>
+       
     </body>
 <div id="wait" class="loading-img" style="display: none;"></div>
 </html>

@@ -34,6 +34,26 @@ public class ActividadManagerImpl implements ActividadManager {
 		}
 		return rs;
 	}
+
+
+	@Override
+	public ActividadVO getByCentroCuestionario(Integer idCentro, Integer idCuestionario) {
+		return Mapper.toVO(actividadDAO.getByCentroCuestionario(idCentro, idCuestionario));
+	}
+
+
+	@Override
+	public ActividadVO save(ActividadVO actividadVO) {
+		
+		if(actividadVO.getId() != null && actividadVO.getId() > 0) {
+			Actividad actividad = actividadDAO.find(actividadVO.getId());
+			actividad.setFin(actividadVO.getFin());
+			actividadVO = Mapper.toVO(actividadDAO.update(actividad));
+		}else {
+			actividadVO = Mapper.toVO(actividadDAO.save(Mapper.toEntity(actividadVO)));
+		}
+		return actividadVO;
+	}
 	
 }
 

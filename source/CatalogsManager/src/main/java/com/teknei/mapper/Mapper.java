@@ -430,6 +430,7 @@ public class Mapper {
 		pr.setCreacion(p.getCreacion());
 		pr.setModificacion(p.getModificacion());
 		pr.setIdCompraEstatus(p.getIdCompraEstatus());
+		pr.setOrderId(p.getOrderId());
 
 		return pr;
 	}
@@ -455,6 +456,7 @@ public class Mapper {
 		p.setCreacion(pr.getCreacion());
 		p.setModificacion(pr.getModificacion());
 		p.setIdCompraEstatus(pr.getIdCompraEstatus());
+		p.setOrderId(pr.getOrderId());
 
 		return p;
 	}	

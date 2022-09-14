@@ -93,7 +93,7 @@
 								        <c:forEach items="${productosComprados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV3(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
 				                                 		<i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos
 				                                 	</a>
 				                                 	<a href="#" title="Subir respuesta" onclick="showCarga();">
@@ -164,7 +164,7 @@
 								        <c:forEach items="${productosEntregados}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+				                                 	<a href="#" title="Descargar reporte" onclick="descargaCuestionariosV3(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
 				                                 		<i class="fa fa-fw fa-download fa-4x"></i><br>Descargar base de datos
 				                                 	</a>
 				                                 	
@@ -243,7 +243,7 @@
 								        <c:forEach items="${productosSinCompra}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-			                                          <a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV2(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
+			                                          <a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV3(${producto.productoVO.cuestionarioVO.id},${producto.idCentroTrabajo});">
 			                                            <i class="fa fa-fw fa-download fa-4x"></i>
 			                                            <br>Descargar base de datos
 			                                          </a> 
@@ -561,7 +561,7 @@
 						                                 	</a>
 					                                 	</c:if>
 					                                 	<c:if test="${cuestionario.resueltos != 0 }">
-					                                 		<a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV2(${cuestionario.id},${centro.id});">
+					                                 		<a href="#" title="Descargar cuestionarios" onclick="descargaCuestionariosV3(${cuestionario.id},${centro.id});">
 						                                 		<i class="fa fa-fw fa-download fa-4x"></i>
 						                                 		<br>
 						                                 		Descargar cuestonarios
@@ -589,7 +589,16 @@
 	        <div class="row">
 	        	<div class="box">
 	                 <div class="box-header">
-	                     <h1 class="box-title">Resultados de evaluaciones</h1>
+	                 	<div class="row">
+		                     <h1 class="box-title">Resultados de evaluaciones</h1>
+	                 	</div>
+	                 	<div class="row">
+	                 		<c:if test="${terminado == 1}">
+								<div class="col-md-3">
+									<button type="button" class="btn btn-primary" onclick="terminaCuestionarios();">Terminar cuestionarios</button>
+								</div>
+							</c:if>
+	                 	</div>
 	                 </div><!-- /.box-header -->
 	                 <div class="box-body table-responsive">
 	                 	<c:if test="${not empty centro}">
@@ -609,14 +618,16 @@
 								        <c:forEach items="${lstProductos}" var="producto" varStatus="loop">
 				                             <tr>
 				                                 <td>
-				                                 	<c:if test="${producto.idCompraEstatus == 1 }">
-					                                 	<a href="#" title="Agregar al carrito" onclick="agregaProducto(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Agregar al carrito</a>
-				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 2 }">
-					                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
-				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
-					                                 	<a href="#" title="Descargar reporte" onclick="descargaResultados();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+				                                 	<c:if test="${terminado == -1}">
+					                                 	<c:if test="${producto.idCompraEstatus == 1 }">
+						                                 	<a href="#" title="Agregar al carrito" onclick="agregaProducto(${producto.id});"><i class="fa fa-cart-plus fa-4x"></i><br>Agregar al carrito</a>
+					                                 	</c:if>
+					                                 	<c:if test="${producto.idCompraEstatus == 2 }">
+						                                 	<a href="#" title="Quitar del carrito" onclick="quitaProducto(${producto.id});"><i class="fa fa-minus-circle fa-4x"></i><br>Quitar del carrito</a>
+					                                 	</c:if>
+					                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
+						                                 	<a href="#" title="Descargar reporte" onclick="descargaResultados();"><i class="fa fa-file-text-o fa-4x"></i><br>Descargar reporte</a>
+					                                 	</c:if>
 				                                 	</c:if>
 				                                 </td>
 				                                 <td>${producto.productoVO.nombre}</td>
@@ -626,17 +637,22 @@
 	         										 <fmt:formatNumber value = "${producto.productoVO.precio}" type = "number" pattern = "$ #,##0"/>
 				                                 </td>
 				                                 <td>
-				                                 	<c:if test="${producto.idCompraEstatus == 1 }">
-					                                 	Disponible
+				                                 	<c:if test="${terminado == -1}">
+					                                 	<c:if test="${producto.idCompraEstatus == 1 }">
+						                                 	Disponible
+					                                 	</c:if>
+					                                 	<c:if test="${producto.idCompraEstatus == 2 }">
+						                                 	Pendiene de pago
+					                                 	</c:if>
+					                                 	<c:if test="${producto.idCompraEstatus == 3 }">
+						                                 	En procesamiento por analistas  
+					                                 	</c:if>
+					                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
+						                                 	Liso para descargar
+					                                 	</c:if>
 				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 2 }">
-					                                 	Pendiene de pago
-				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 3 }">
-					                                 	En procesamiento por analistas  
-				                                 	</c:if>
-				                                 	<c:if test="${producto.idCompraEstatus == 4 || producto.idCompraEstatus == 5 }">
-					                                 	Liso para descargar
+				                                 	<c:if test="${terminado == 1}">
+				                                 		Periodo de levantamiento de cuestionarios
 				                                 	</c:if>
 				                                 </td>
 				                             </tr>
@@ -694,6 +710,27 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn" onclick="location.reload();" data-dismiss="modal">Aceptar</button>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="modalReporteEnviado" tabindex="-1" role="dialog"
+	aria-labelledby="modalReporteEnviado" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content bg-glass-sknd box box-danger">
+			<div class="modal-header bg-glass-sknd ">
+				<h3 class="box-title">&Eacute;xito</h3>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true" style="color: white;">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-white" style="color: grey;">
+				<h4>Hemos enviado la informaci&oacute;n solicitada al email registrado.</h4>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" data-dismiss="modal">Aceptar</button>
 			</div>	
 		</div>
 	</div>

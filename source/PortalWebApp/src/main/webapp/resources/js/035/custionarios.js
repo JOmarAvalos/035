@@ -197,7 +197,9 @@ openCuestionario = function(idCuestionario, idCentro){
 	
 	url = url.replaceAll("+","%2B"); 
 	
-	window.open(url, '_blank');
+	window.location = url;
+	
+	//window.open(url, '_blank');
 }
 
 terminaCuestonario = function(){
@@ -219,7 +221,7 @@ terminaCuestonario = function(){
 			result = response[0];
 			if (result) {
 				//es valido
-				window.close();
+				window.location = 'https://035.com.mx/';
 			} else {
 				// no es valido(repetido)
 				alert('error');

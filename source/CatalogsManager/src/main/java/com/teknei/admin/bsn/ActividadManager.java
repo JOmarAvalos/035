@@ -8,4 +8,8 @@ public interface ActividadManager {
 
 	List<ActividadVO> getAll();
 	
+	ActividadVO getByCentroCuestionario(Integer idCentro, Integer idCuestionario); 
+	
+	ActividadVO save(ActividadVO actividadVO);
+	
 }

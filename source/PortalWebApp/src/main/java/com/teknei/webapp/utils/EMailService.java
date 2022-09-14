@@ -261,10 +261,15 @@ public class EMailService {
 				adjunto.setFileName(attached.getName());
 
 				MimeMultipart multiParte = new MimeMultipart();
+
+				
+				MimeBodyPart bodyMessagePart = new MimeBodyPart();
+				bodyMessagePart.setContent(body, "text/html; charset=utf-8");
+				multiParte.addBodyPart(bodyMessagePart);
 				multiParte.addBodyPart(adjunto);
 
 				message.setContent(multiParte);
-
+				
 				Transport t = session.getTransport("smtp");
 
 				t.connect(mailUser, password);

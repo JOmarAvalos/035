@@ -436,3 +436,80 @@ validaPwd = function(){
 		alert('se muuestra el error');
 	}
 }
+
+
+loginScript = function(){
+	
+	var username = $('#contrato').val();
+	
+	username = username.replaceAll(' ','');
+	
+	$('#username').val(username);
+	
+	$('#loginForm').submit();
+	
+}
+
+recuperaPwd = function(){
+	//validación de alias de centro de trabajo
+	if (!notNull($("#emailRecover"))) {
+		$('#modalDatosObligatorios').modal({backdrop: 'static', keyboard: false});
+	}else{
+		
+		var urltxt = ctx+'/registro/recuperapwd?param='+$("#emailRecover").val();
+		
+		$.ajax({
+			type : "POST",
+			url : urltxt,
+			contentType : "application/json",
+			async:false,
+			beforeSend : function() {
+				$("#wait").css("display", "block");
+			},
+			complete : function() {
+				$("#wait").css("display", "none");
+			},
+			success : function(response) {
+				result = response[0];
+				if (result) {
+					$('#modalOKRecover').modal({backdrop: 'static', keyboard: false});
+				} else {
+					$('#modalErrRecover').modal({backdrop: 'static', keyboard: false});
+				}
+			},
+			error : function(msg) {
+				emailValidoReg = false;
+			}
+		});
+	}
+}
+
+
+validaPwdNew = function(){
+	
+	var regExpPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,}$/;
+	
+	datosPasswordValido = true;
+
+	if(!notNull($("#password"))){
+		datosPasswordValido = false;
+	}
+	
+	if(!notNull($("#passwordConf"))){
+		datosPasswordValido = false;
+	}else{
+		if ($("#passwordConf").val() != $("#password").val()) {
+			//pwds no coinciden
+			marcaRojo($("#passwordConf"));
+			datosPasswordValido = false;
+		} else {
+			eliminaMarcaRojo($("#datosPasswordValido"));
+		}
+	}
+	
+	if(datosPasswordValido){
+		$('#pwdForm').submit();
+	}else{
+		alert('error');
+	}
+}

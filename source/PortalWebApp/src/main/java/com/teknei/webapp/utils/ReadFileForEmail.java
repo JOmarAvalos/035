@@ -17,6 +17,9 @@ public class ReadFileForEmail {
 	public static final String EMAIL_INSTRUCCIONES = "/instrucciones.html";
 	public static final String EMAIL_CUESTIONARIOS_1_15 = "/cuestionariosA.html";
 	public static final String EMAIL_CUESTIONARIOS_16_MAS = "/cuestionariosB.html";
+	public static final String EMAIL_RECUPERA = "/recuperaC.html";
+	public static final String EMAIL_COMPRA = "/nuevaCompra.html";
+	public static final String EMAIL_BASE_DATOS = "/baseDatos.html";
 
 	public static String getFile(String file) throws IOException {
 		try {

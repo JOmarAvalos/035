@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,8 +27,9 @@ public class Main {
 	public static void main(String[] args) {
 		try  {  
 //			compareDates();
-//			encriptaPwd();
-			compareContrasenia();
+			encriptaPwd();
+//			compareContrasenia();
+//			codifica();
 
 		}  
 		catch(Exception e)  {  
@@ -36,7 +39,7 @@ public class Main {
 	
 	private static void encriptaPwd(){
 		 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		 String pwd = passwordEncoder.encode("agregar3Espacios");
+		 String pwd = passwordEncoder.encode("12345");
 		 System.out.println(pwd);
 	}
 	
@@ -399,6 +402,15 @@ public class Main {
 			// TODO: handle exception
 		}
 	} 
+	
+	private static void codifica() {
+		try {
+			String encodeUrl = URLEncoder.encode("6zpN2Ice+hS03Iw+zszmRA==","UTF-8");
+			System.out.println(encodeUrl);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

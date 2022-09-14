@@ -60,6 +60,7 @@ import com.google.gson.Gson;
 import com.teknei.security.bsn.UsersManager;
 //import com.teknei.admin.bsn.EventoSesionManager;
 import com.teknei.util.Constants;
+import com.teknei.util.Util;
 //import com.teknei.vo.CalendarioVO;
 //import com.teknei.vo.CursoVO;
 //import com.teknei.vo.DashboardVO;
@@ -117,6 +118,8 @@ public class SecurityController {
 	private CuestionariosManager cuestionariosManager;
 	@Autowired
 	private CarritoManager carritoManager;
+	@Autowired
+	private ActividadManager actividadManager;
 	
 	
 	@Value("${app.035.pay.id}")
@@ -182,6 +185,26 @@ public class SecurityController {
 					}
 				}
 				
+				ActividadVO actividadUno = actividadManager.getByCentroCuestionario(centroTrabajo.getId(), 1);
+				Date fechaBase = usuarioVO.getCreacion();
+				
+				if(actividadUno != null && actividadUno.getFin() != null ) {
+					fechaBase = actividadUno.getFin();
+				}
+				
+				Calendar inicioFch = Calendar.getInstance();
+				inicioFch.setTime(fechaBase);
+				inicioFch.set(Calendar.HOUR_OF_DAY, 0);
+				inicioFch.set(Calendar.MILLISECOND, 0);
+				inicioFch.set(Calendar.SECOND, 0);
+				inicioFch.set(Calendar.MINUTE, 0);
+				
+				Date dateInicio = inicioFch.getTime();
+				
+				Date fechaFin = Util.calculaFecha(dateInicio, 10);
+				
+				Integer terminado = fechaFin.compareTo(new Date());
+				
 				model.addAttribute(ATTR_CENTRO, centroTrabajo);
 				model.addAttribute(ATTR_LST_GIRO, giros);
 				model.addAttribute(ATTR_LST_ESTADOS, estados);
@@ -190,10 +213,12 @@ public class SecurityController {
 				model.addAttribute(ATTR_LST_PRODUCTOS, productos);
 				model.addAttribute(ATTR_TOTAL_CARRITO, total);
 				model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
+				model.addAttribute("terminado", terminado);
 				model.addAttribute("idPay", payID);
 				model.addAttribute("publicKey", payPublicKey);
 				model.addAttribute("privateKey", payPrivateKey);
 				model.addAttribute("sandbox", sandBox);
+				
 				
 			}else if(usuarioVO.getIdPerfil() == Constants.ID_PERFIL_ADMIIN) {
 				

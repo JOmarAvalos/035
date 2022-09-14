@@ -33,6 +33,7 @@ public class ProductoComprado extends BaseEntity<Integer> {
 	private Date creacion;
 	private Date modificacion;
 	private Integer idCompraEstatus;
+	private String orderId;
 	
 	
 	@Id
@@ -144,6 +145,21 @@ public class ProductoComprado extends BaseEntity<Integer> {
 	}
 	public void setIdCompraEstatus(Integer idCompraEstatus) {
 		this.idCompraEstatus = idCompraEstatus;
+	}
+
+	/**
+	 * @return the orderId
+	 */
+	@Column(name = "order_id")
+	public String getOrderId() {
+		return orderId;
+	}
+
+	/**
+	 * @param orderId the orderId to set
+	 */
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 	
 }

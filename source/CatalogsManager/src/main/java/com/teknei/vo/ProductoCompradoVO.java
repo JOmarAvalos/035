@@ -24,6 +24,7 @@ public class ProductoCompradoVO extends BaseVO implements Serializable {
 	private Date creacion;
 	private Date modificacion;
 	private Integer idCompraEstatus;
+	private String orderId;
 	
 	private ProductoVO productoVO;
 	private UsuarioVO usuario;
@@ -117,6 +118,18 @@ public class ProductoCompradoVO extends BaseVO implements Serializable {
 	}
 	public void setIdCompraEstatus(Integer idCompraEstatus) {
 		this.idCompraEstatus = idCompraEstatus;
+	}
+	/**
+	 * @return the orderId
+	 */
+	public String getOrderId() {
+		return orderId;
+	}
+	/**
+	 * @param orderId the orderId to set
+	 */
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
 	/**
 	 * @return the productoVO

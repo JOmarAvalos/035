@@ -300,6 +300,7 @@ create table desarrollo.tbl_producto_comprado
   fch_creacion timestamp without time zone NOT NULL DEFAULT now(),
   fch_modificacion timestamp without time zone,
   id_compra_estatus integer NOT NULL,
+  order_id character varying,
 
   CONSTRAINT tbl_producto_comprado_pkey PRIMARY KEY (cve_producto_comprado),
 

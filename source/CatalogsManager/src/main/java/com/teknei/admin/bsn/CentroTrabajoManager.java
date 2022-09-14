@@ -7,5 +7,7 @@ public interface CentroTrabajoManager {
 	CentroTrabajoVO getByUuario(Integer idUsuario);
 	
 	CentroTrabajoVO save(CentroTrabajoVO centro);
+	
+	CentroTrabajoVO find(Integer id);
 
 }

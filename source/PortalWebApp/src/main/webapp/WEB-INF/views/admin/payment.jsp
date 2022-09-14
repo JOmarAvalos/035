@@ -48,6 +48,10 @@
             };
 
         });
+        
+        $(document).bind("contextmenu",function(e){
+        	  return false;
+        	    });
     </script>
 <script type="text/javascript">
 goHome = function(){
@@ -81,11 +85,15 @@ realizaPago = function(){
 				$('#divPagoResumen').show();
 			} else {
 				// no es valido(repetido)
-				alert('error');
+				$('#textPagoErrorRef').html('');
+				$('#textPagoErrorRef').append(referencia);
+				$('#divPagoError').show();
 			}
 		},
 		error : function(msg) {
-			alert('error');
+			$('#textPagoErrorRef').html('');
+			$('#textPagoErrorRef').append('Error en el llamado al banco');
+			$('#divPagoError').show();
 		}
 	});
 }
@@ -351,6 +359,39 @@ a.button.disabled {
     margin-left: 30px;
 }
 
+
+.trans-expl {
+    float: left;
+    height: 200px;
+    margin: 20px 0;
+    width: 800px;
+}
+.trans-expl div {
+    background-position: left 45px;
+    background-repeat: no-repeat;
+    height: 70px;
+    padding-top: 10px;
+}
+.trans-expl div.debit {
+    background-image: url("https://035.com.mx/wp-content/uploads/app035/images/cards2.png");
+    margin-left: 20px;
+    width: 540px;
+}
+.trans-expl div.credit {
+    background-image: url("https://035.com.mx/wp-content/uploads/app035/images/cards1.png");
+    border-right: 1px solid #ccc;
+    margin-left: 30px;
+    width: 209px;
+}
+.trans-expl h4 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.trans-expl div.resumeTranns {
+    margin-left: 30px;
+}
+
 </style>
 </head>
 <body>
@@ -363,12 +404,17 @@ a.button.disabled {
                 <div class="pymnt-itm card active">
                     <h2>Resumen de la transacci&oacute;n</h2>
                     <div class="pymnt-cntnt">
-                      <div class="card-expl">
+                      <div class="trans-expl">
                           <div class="resumeTranns"><h4>Concepto: </h4>
                             <br>Compra de servicio NOM035
-                            <br>
                             <br><h4>Importe: </h4>
                             <br>$ ${totalCarrito}.00
+                            <br><h4>Productos: </h4>
+                            <c:if test="${not empty lstCarrito}">
+                            	<c:forEach items="${lstCarrito}" var="producto" varStatus="loop">
+		                            <br>${producto.productoVO.nombre}
+                            	</c:forEach>
+                            </c:if>
                         </div>
                       </div>
                     </div>
@@ -414,11 +460,23 @@ a.button.disabled {
     <div class="row" id="divPagoResumen" style="display:none;">
     	<h4>Tu pago fue realizado con &eacute;xito</h4>
 		<h4 id="textPagoExitoRef"></h4>
-		<h4>Tu pago fue realizado con &eacute;xito, a la brevedad recibiras los resultados comprados</h4>
+		<h4>Tu pago fue realizado con &eacute;xito, en un plazo maximo de 3 d&iacute;as habiles recibiras los resultados comprados.</h4>
 		
 		<div class="pymnt-cntnt">
             <div class="sctn-row">
                     <a class="button rght" onclick="goHome();">Continuar</a>
+            </div>
+        </div>
+		
+    </div>
+    
+    <div class="row" id="divPagoError" style="display:none;">
+    	<h4>Ocurrio un error al realizar el pago error:</h4>
+		<h4 id="textPagoErrorRef"></h4>
+		
+		<div class="pymnt-cntnt">
+            <div class="sctn-row">
+                    <a class="button rght" onclick="goHome();">Aceptar</a>
             </div>
         </div>
 		

@@ -120,6 +120,12 @@ public class CarritoManagerImpl implements CarritoManager {
 		return resp;
 	}
 
+
+	@Override
+	public ProductoCompradoVO lastOrderId(Integer idUsuario) {
+		return Mapper.toVO(productoCompradoDAO.getLastOrderId(idUsuario));
+	}
+
 	
 }
 
