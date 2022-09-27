@@ -151,7 +151,7 @@ public class SecurityController {
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String welcome(Model model, HttpServletRequest request) {
+	public String welcome(Model model, HttpServletRequest request,@RequestParam(value = "param", required = false) String param) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -213,6 +213,7 @@ public class SecurityController {
 				model.addAttribute(ATTR_LST_PRODUCTOS, productos);
 				model.addAttribute(ATTR_TOTAL_CARRITO, total);
 				model.addAttribute(ATTR_PRODUCTOS_CARRITO, productosCarrito);
+				model.addAttribute("registroFin", param);
 				model.addAttribute("terminado", terminado);
 				model.addAttribute("idPay", payID);
 				model.addAttribute("publicKey", payPublicKey);

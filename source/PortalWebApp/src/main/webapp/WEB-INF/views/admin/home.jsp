@@ -780,6 +780,27 @@
 	</div>
 </div>
 
+	<div class="modal fade" id="modalCorreoEnviado" tabindex="-1" role="dialog"
+		aria-labelledby="modalCorreoEnviado" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content bg-glass-sknd box box-danger">
+				<div class="modal-header bg-glass-sknd ">
+					<h3 class="box-title">Aviso</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true" style="color: white;">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-white" style="color: grey;">
+					<h4>Se ha enviado un email a tu correo para que inicies la aplicaci&oacute;n de las encuestas en tu centro de trabajo.</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn" data-dismiss="modal" >Cerrar</button>
+				</div>	
+			</div>
+		</div>
+	</div>
+
 
 <script type="text/javascript">
 
@@ -877,6 +898,10 @@
                         },
                     }
                 } );
+                
+                <c:if test="${not empty registroFin}">
+                	$('#modalCorreoEnviado').modal({backdrop: 'static', keyboard: false});
+                </c:if>
                 
             } );
             

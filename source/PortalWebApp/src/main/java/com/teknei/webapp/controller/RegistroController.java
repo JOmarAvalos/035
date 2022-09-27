@@ -502,7 +502,7 @@ public class RegistroController {
 				
 				SecurityContextHolder.getContext().setAuthentication(authenticatedUser);
 				
-				return "redirect:/";
+				return "redirect:/?param=1";
 			}else {
 				return "redirect:/";
 			}
